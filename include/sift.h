@@ -17,7 +17,8 @@
 #define SIFT_ORI_HIST_BINS 36// default number of bins in histogram for orientation assignment
 #define SIFT_ORI_SIG 1.5f// determines gaussian sigma for orientation assignment
 #define SIFT_ORI_RADIUS 3 * SIFT_ORI_SIG// determines the radius of the region used in orientation assignment
-#define SCALE 1.6
+#define SCALE 2
+#define DOG_DETECT_KPT_SIZE 3
 
 using namespace cv;
 using namespace std;

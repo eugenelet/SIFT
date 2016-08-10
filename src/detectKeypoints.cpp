@@ -4,19 +4,19 @@ void mySIFT::detectKeypoints()
 {
 	int size = blurredImgs.size() / nOctave - 1;//¨C¤@­Óoctave¡ADoGªºsize¡A²{¦b¬O4
 	double sigmaTemp = sigma;
-	cout << "size: " << size << endl;
-	for (int octave = 0; octave < nOctave; ++octave){		
-		for (int layer = octave * nLayersPerOctave + 1; layer < octave * nLayersPerOctave + size - 1; ++layer){
-			cout << octave << " " << layer << "\n";
-			for (int row = 1; row < DoGs[octave * nLayersPerOctave].rows - 1; ++row){
-				for (int col = 1; col < DoGs[octave * nLayersPerOctave].cols - 1; ++col){//¬ÝDoGs[layer]¨º±iªº[row][col]¨ºÂI¬O¤£¬Omax min
+
+	for (int octave = 0; octave < nOctave; ++octave){	
+		for (int layer = octave * nLayersPerOctave + 1; layer < octave * nLayersPerOctave + size - 1; ++layer){//DoGªºlayer
+			//cout << octave << " " << layer << "\n";
+			for (int row = 1; row < DoGs[layer].rows - 1; ++row){//octave * nLayersPerOctave
+				for (int col = 1; col < DoGs[layer].cols - 1; ++col){//¬ÝDoGs[layer]¨º±iªº[row][col]¨ºÂI¬O¤£¬Omax min
 					int value = DoGs[layer].at<int>(row, col);
 					//cout << "value : " << value << " at " << row << ", " << col << "\n";
 					bool isMax = true;
-					bool isMin = true;					
+					bool isMin = true;
 					for (int layerOffset = -1; layerOffset <= 1 && (isMin || isMax); ++layerOffset){
-						for (int i = row - 2; i <= row + 2 && (isMin || isMax); ++i){
-							for (int j = col - 2; j <= col + 2 && (isMin || isMax); ++j){
+						for (int i = row - (DOG_DETECT_KPT_SIZE - 1) / 2; i <= row + (DOG_DETECT_KPT_SIZE - 1) / 2 && (isMin || isMax); ++i){
+							for (int j = col - (DOG_DETECT_KPT_SIZE - 1) / 2; j <= col + (DOG_DETECT_KPT_SIZE - 1) / 2 && (isMin || isMax); ++j){
 								if (i >= 0 && j >= 0 && i < DoGs[octave * nLayersPerOctave].rows && j < DoGs[octave * nLayersPerOctave].cols && i != row && j != col){//¦b½d³ò¤ºªº¸Ü
 									int tester = DoGs[layer + layerOffset].at<int>(i, j);
 									if (tester + 0 >= value)
@@ -36,10 +36,9 @@ void mySIFT::detectKeypoints()
 			sigmaTemp *= k;
 		}
 	}
-	/*computeOrientationHist(keyPoints);
-	if (DoGs.size() != 9){
-		//cout << "¶ã¶ã\n";
-	}*/
+	//computeOrientationHist(keyPoints);
+	cout << keyPoints.size() << "\n";
+
 }
 
 void mySIFT::computeOrientationHist(vector< Key_Point >& keyPoints)// Computes a gradient orientation histogram at a specified pixel

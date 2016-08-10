@@ -4,10 +4,9 @@ void mySIFT::createDoG()
 {
 	double tempSigma = sigma;
 
-	for (int j = 0; j < nOctave; ++j){//nOctave = 2
-
+	for (int j = 0; j < nOctave; ++j){
 		for (int i = 0; i < nLayersPerOctave - 1; ++i){//¥]§t­ì¹Ïªº¼Ò½k¹Ï¡A¤@­ÓOctave5±i¹Ï¡A±À4¦¸¡A¦]¬°²Ä¤@±i¬O­ì¹Ï
-			blurredImgs.push_back(GaussianBlur(blurredImgs.back(), tempSigma));
+			blurredImgs.push_back(GaussianBlur(blurredImgs[j * nLayersPerOctave], tempSigma));
 			tempSigma *= k;
 			Mat DoG(blurredImgs[j * nLayersPerOctave + i + 1].rows, blurredImgs[j * nLayersPerOctave + i + 1].cols, CV_32SC1, Scalar(0));
 			for (int row = 0; row < blurredImgs[j * nLayersPerOctave + i].rows; ++row)
@@ -23,7 +22,7 @@ void mySIFT::createDoG()
 			tempSigma = tempSigma / k / k / k / k;
 			Mat src = *(blurredImgs.end() - 4);//blurredImgs[blurredImgs.size() - 3];
 			Mat firstMatInNewOctave;
-			resize(src, firstMatInNewOctave, Size(src.cols / SCALE, src.rows / SCALE));
+			resize(src, firstMatInNewOctave, Size(src.cols / SCALE, src.rows / SCALE), 0, 0, INTER_NEAREST);
 			//imshow("hey", firstMatInNewOctave);
 			//waitKey(0);
 			blurredImgs.push_back(firstMatInNewOctave);//±À¶i¤U¤@¼hoctaveªº²Ä¤@±i¹Ï
@@ -36,7 +35,7 @@ void mySIFT::createDoG()
 double2D mySIFT::getGaussianKernel(double sigma)
 {
 	int kSize = cvRound(sigma * 1.5 + 1) | 1;//kSize¬°©_¼Æ¡A¶Ã©wªº
-	
+	//cout << sigma << " " << kSize << " ";
 	vector< double > kernel_1D;
 	
 	int shift = (kSize - 1) / 2;
