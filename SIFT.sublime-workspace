@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"last",
+				"last_range"
+			],
+			[
+				"idle",
+				"idle_counter"
+			],
+			[
+				"idle_t",
+				"idle_thread"
+			],
+			[
+				"ul",
+				"ULTRA"
+			],
+			[
+				"outpu",
+				"output_ultra"
+			],
+			[
+				"answe",
+				"answer_file"
+			],
+			[
+				"bS",
+				"bScaleNum"
+			],
+			[
 				"k",
 				"keyPoints"
 			],
@@ -46,10 +74,6 @@
 			[
 				"curren",
 				"current_place"
-			],
-			[
-				"outpu",
-				"output_index"
 			],
 			[
 				"out",
@@ -490,73 +514,32 @@
 			[
 				"sear",
 				"searchOperator"
-			],
-			[
-				"current",
-				"currentNode"
-			],
-			[
-				"right",
-				"rightNode"
-			],
-			[
-				"parent",
-				"parentNode"
-			],
-			[
-				"choe",
-				"chosenNode"
-			],
-			[
-				"node2",
-				"node2_num"
-			],
-			[
-				"node1",
-				"node1_num"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "src/filterKeyPoints.cpp",
-			"settings":
-			{
-				"buffer_size": 19135,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "tmp.cpp",
-			"settings":
-			{
-				"buffer_size": 27967,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/home/gene/Documents/NCTU/Project/Docs/Meeting_5-8.txt",
-			"settings":
-			{
-				"buffer_size": 289,
-				"line_ending": "Unix",
-				"name": "Meeting"
-			}
-		},
-		{
-			"file": "src/createDoG.cpp",
-			"settings":
-			{
-				"buffer_size": 3155,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "src/match.cpp",
 			"settings":
 			{
-				"buffer_size": 11789,
+				"buffer_size": 12833,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/dumpKeyPoints.cpp",
+			"settings":
+			{
+				"buffer_size": 2544,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/filterKeyPoints.cpp.old",
+			"settings":
+			{
+				"buffer_size": 16542,
 				"line_ending": "Unix"
 			}
 		},
@@ -564,7 +547,7 @@
 			"file": "src/detectKeypoints.cpp",
 			"settings":
 			{
-				"buffer_size": 3705,
+				"buffer_size": 3763,
 				"line_ending": "Unix"
 			}
 		},
@@ -572,23 +555,34 @@
 			"file": "include/sift.h",
 			"settings":
 			{
-				"buffer_size": 3140,
+				"buffer_size": 3237,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/main.cpp",
+			"file": "src/createDoG.cpp",
 			"settings":
 			{
-				"buffer_size": 2027,
-				"line_ending": "Windows"
+				"buffer_size": 3217,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/computeSift.cpp",
+			"file": "/home/gene/Documents/NCTU/Project/raspCarVid/carPWM/car.cpp",
 			"settings":
 			{
-				"buffer_size": 2395,
+				"buffer_size": 10375,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "/**************************************************************\n * SPRITE Demo\n *\n * Copyright 2013 William Henning\n *\n * visit http://Mikronauts.com/robot-zoo/sprite/\n *\n * for more information.\n *\n **************************************************************/\n\n#include <stdio.h>\n#include <pigpio.h>\n\n#define TRIG 23\n#define ECHO 24\n\nvolatile uint32_t before;  // used for sonar distance\n\nint last_range = 0;	     // last sonar reading\n\nvoid delay(int ms) {  // delay in miliseconds\n    gpioDelay(1000*ms); \n}\n\nvoid ping(void) {     // send out an ultrasonic 'ping'\n\n   before = 0xffffffff; // set for guard variable\n\n   gpioSetMode(TRIG, PI_OUTPUT);\n\n   // trigger a sonar pulse\n   \n   gpioWrite(TRIG, PI_OFF);\n   gpioDelay(5);\n   gpioWrite(TRIG, PI_ON);\n   gpioDelay(10); 	\n   gpioWrite(TRIG, PI_OFF);\n   gpioDelay(5);\n\n   gpioSetMode(ECHO, PI_INPUT);\n\n   before = gpioTick(); // get tick right after sending pulse\n   \n}\n\n// range - callback function for measuring ping response\n\nvoid range(int gpio, int level, uint32_t tick) {\n\n   static uint32_t startTick, endTick;\n   \n   uint32_t diffTick;\n\n   if (tick>before) { // make sure we don't measure trigger pulse\n\n      if (level == PI_ON) { // start counting on rising edge\n         startTick = tick;\n      }  \n      else if (level == PI_OFF) { // stop counting on falling edge\n\n         endTick = tick;\n         diffTick = (endTick - startTick)/58;\n\n         last_range = diffTick;\n\n         if (diffTick < 600)\n            printf(\"%u\\n\", diffTick);\n         else {\n            printf(\"OUT OF RANGE\"); // for seeedstudio sensor\n            last_range = 0;\n         }\n      }\n\n   }\n\n}\n\nvoid sleep(int t) {\n  gpioSleep(PI_TIME_RELATIVE, t, 0);\n}\n\n// the main demonstration program\n\nint main(int argc, char *argv[]) {\n  \n   int i, n;\n   char buff[128], ch;          \n\n   if (gpioInitialise()<0) return 1;\n   \n   gpioSetMode(ECHO, PI_INPUT);\n\n   // register callback on change of sonar pin\n   gpioSetAlertFunc(ECHO, range); \n\n   sleep(2);    \n\n   while (1) {\n   \n      ping();	// prime the last_range variable\n      sleep(1);\n\n      printf(\"%d \\n\", last_range);\n\n   }\n\n   sleep(1);\n    \n   puts(\"Bye now!\");  \n\n   gpioTerminate();\n\n   return 0;\n\n}\n\n",
+			"file": "/home/gene/Documents/NCTU/Project/raspCarVid/carPWM/ping.c",
+			"file_size": 2208,
+			"file_write_time": 131158961444974957,
+			"settings":
+			{
+				"buffer_size": 2202,
 				"line_ending": "Unix"
 			}
 		},
@@ -597,6 +591,30 @@
 			"settings":
 			{
 				"buffer_size": 1705,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/filterKeyPoints.cpp",
+			"settings":
+			{
+				"buffer_size": 16536,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main.cpp",
+			"settings":
+			{
+				"buffer_size": 2070,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/computeSift.cpp",
+			"settings":
+			{
+				"buffer_size": 2399,
 				"line_ending": "Unix"
 			}
 		}
@@ -668,27 +686,30 @@
 	],
 	"file_history":
 	[
+		"/home/gene/Documents/NCTU/Project/raspCarVid/carPWM/ultrasound.cpp",
+		"/home/gene/Documents/NCTU/Project/SIFT/main.cpp",
+		"/home/gene/Documents/NCTU/Project/SIFT/src/createDoG.cpp",
+		"/home/gene/Documents/NCTU/Project/SIFT/src/filterKeyPoints.cpp",
+		"/home/gene/Documents/NCTU/Year3Sem2/EDA/sta/src/output.cpp",
+		"/home/gene/Documents/NCTU/Project/Docs/Meeting_5-8.txt",
+		"/home/gene/Documents/NCTU/Project/SIFT/tmp.cpp",
 		"/home/gene/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/home/gene/.config/sublime-text-3/Packages/Package Control/Package Control.sublime-settings",
 		"/home/gene/Documents/NCTU/Project/SIFT/src/match.cpp",
 		"/home/gene/Documents/NCTU/Project/SIFT/src/computeDescriptor.cpp",
 		"/home/gene/Documents/NCTU/Project/SIFT/src/drawKeyPoints.cpp",
 		"/home/gene/Documents/NCTU/Project/SIFT/include/sift.h",
-		"/home/gene/Documents/NCTU/Project/SIFT/src/createDoG.cpp",
 		"/home/gene/Documents/NCTU/Project/SIFT/src/detectKeypoints.cpp",
-		"/home/gene/Documents/NCTU/Project/SIFT/src/filterKeyPoints.cpp",
 		"/home/gene/Documents/NCTU/Project/SIFT/Makefile",
 		"/home/gene/Documents/NCTU/Project/SIFT/src/debug.cpp",
 		"/home/gene/Documents/NCTU/Project/SIFT/src/computeSift.cpp",
 		"/home/gene/Documents/NCTU/Project/SIFT/src/main.cpp",
-		"/home/gene/Documents/NCTU/Project/SIFT/tmp.cpp",
 		"/home/gene/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
 		"/home/gene/Downloads/main (5).cpp",
 		"/home/gene/Downloads/main.cpp",
 		"/home/gene/.config/sublime-text-3/Packages/CTags/Default.sublime-keymap",
 		"/home/gene/.config/sublime-text-3/Packages/SublimeCodeIntel/Default (Linux).sublime-keymap",
 		"/home/gene/Documents/NCTU/Project/SIFT/src/sift.cpp",
-		"/home/gene/Documents/NCTU/Project/SIFT/main.cpp",
 		"/home/gene/.config/sublime-text-3/Packages/SublimeGDB/Default.sublime-keymap",
 		"/home/gene/.config/sublime-text-3/Packages/SublimeGDB/SublimeGDB.sublime-settings",
 		"/home/gene/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
@@ -791,6 +812,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"last_range",
+			"output",
+			"transmit",
+			"delay",
 			"1.6",
 			"cout",
 			"){ ",
@@ -902,114 +927,111 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 6,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/filterKeyPoints.cpp",
+					"file": "src/match.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 19135,
+						"buffer_size": 12833,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6837,
-								6837
+								8440,
+								8440
 							]
 						],
 						"settings":
 						{
 							"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 4968.0,
+						"translation.y": 3784.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "tmp.cpp",
+					"file": "src/dumpKeyPoints.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 27967,
+						"buffer_size": 2544,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3322,
-								3322
+								2434,
+								2434
 							]
 						],
 						"settings":
 						{
-							"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2016.0,
+						"translation.y": 720.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "/home/gene/Documents/NCTU/Project/Docs/Meeting_5-8.txt",
+					"file": "src/filterKeyPoints.cpp.old",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 289,
+						"buffer_size": 16542,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								289,
-								289
+								12043,
+								12043
 							]
 						],
 						"settings":
 						{
-							"auto_name": "Meeting",
-							"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "src/createDoG.cpp",
+					"file": "src/detectKeypoints.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3155,
+						"buffer_size": 3763,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1091,
-								1091
+								597,
+								597
 							]
 						],
 						"settings":
@@ -1022,83 +1044,24 @@
 						"translation.y": 144.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "src/match.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11789,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7869,
-								7869
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": -0.0,
-						"translation.y": 3650.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/detectKeypoints.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3705,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3700,
-								3700
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1728.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
 					"file": "include/sift.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3140,
+						"buffer_size": 3237,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								711,
-								711
+								2268,
+								2268
 							]
 						],
 						"settings":
@@ -1108,19 +1071,76 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 72.0,
+						"translation.y": 1360.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/createDoG.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3217,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1233,
+								1233
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 432.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/home/gene/Documents/NCTU/Project/raspCarVid/carPWM/car.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10375,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3089,
+								3089
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 3633.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 7,
-					"file": "src/main.cpp",
+					"file": "/home/gene/Documents/NCTU/Project/raspCarVid/carPWM/ping.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2027,
+						"buffer_size": 2202,
 						"regions":
 						{
 						},
@@ -1133,51 +1153,21 @@
 						],
 						"settings":
 						{
-							"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 3,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 8,
-					"file": "src/computeSift.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2395,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2311,
-								2311
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1519.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
 					"file": "src/computeDescriptor.cpp",
-					"semi_transient": true,
+					"semi_transient": false,
 					"settings":
 					{
 						"buffer_size": 1705,
@@ -1187,8 +1177,66 @@
 						"selection":
 						[
 							[
-								1022,
-								1022
+								694,
+								512
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 408.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "src/filterKeyPoints.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16536,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7238,
+								7238
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 8064.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "src/main.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2070,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1020,
+								1020
 							]
 						],
 						"settings":
@@ -1198,10 +1246,40 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 792.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "src/computeSift.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2399,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1901,
+								1901
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1305.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
 					"type": "text"
 				}
 			]

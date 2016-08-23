@@ -11,13 +11,14 @@
 #include <cstdlib>
 #include <ctime>
 #include <set>
+#include <fstream>
 
 
 #define PI 3.14159265358979323846264338327
 #define SIFT_ORI_HIST_BINS 36// default number of bins in histogram for orientation assignment
 #define SIFT_ORI_SIG 1.5f// determines gaussian sigma for orientation assignment
 #define SIFT_ORI_RADIUS 3 * SIFT_ORI_SIG// determines the radius of the region used in orientation assignment
-#define SCALE 2
+#define SCALE 1.6
 #define DOG_DETECT_KPT_SIZE 3
 
 using namespace cv;
@@ -36,7 +37,7 @@ void calculateR(Mat& R, Mat& Dxx, Mat& Dxy, Mat& Dyy);
 void computeDxxDxyDyy(Mat& src, Mat& Dxx, Mat& Dxy, Mat& Dyy);
 void match_multi(mySIFT& left1, mySIFT& left2, mySIFT& right, string targetFile1, string targetFile2, Mat img_scene);
 Mat concatMultiImg(Mat& target1, Mat& target2, Mat& scene);
-
+void dumpKeyPoints(mySIFT& left, mySIFT& right);
 class Key_Point{
 public:
 	Key_Point(double s, int r, int c, int t, int l) : scale(s), row(r), col(c), type(t), layer(l){}

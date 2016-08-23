@@ -37,8 +37,16 @@ void match_multi(mySIFT& left1, mySIFT& left2, mySIFT& right, string targetFile1
 		int R = rand() % 256;
 
 		if (min < 0.5 * min2){//good matches
-			double aScaling = (a1[i].layer / 5 == 0) ? 1 : SCALE;
-			double bScaling = (b[index].layer / 5 == 0) ? 1 : SCALE;//ÁY¤p´X­¿ªº¡A­n©ñ¤j¦^¨Ó
+			int aScaleNum = a1[i].layer / left1.nLayersPerOctave;// == 0) ? 1 : 1.6;
+			double aScaling = 1;
+			for (int k = 0; k < aScaleNum; ++k){
+				aScaling *= SCALE;
+			}
+			int bScaleNum = b[index].layer / right.nLayersPerOctave;// == 0) ? 1 : 1.6;//ÁY¤p´X­¿ªº¡A­n©ñ¤j¦^¨Ó
+			double bScaling = 1;
+			for (int k = 0; k < bScaleNum; ++k){
+				bScaling *= SCALE;
+			}
 			//cout << aScaling << " " << bScaling << "\n";
 			// circle(result, Point(a1[i].col * aScaling, a1[i].row * aScaling), 3, Scalar(255, 0, 0), 1);
 			// circle(result, Point(max(target1.cols, target2.cols) + b[index].col * bScaling, b[index].row * bScaling), 3, Scalar(0, 255, 0), 1);
@@ -73,8 +81,16 @@ void match_multi(mySIFT& left1, mySIFT& left2, mySIFT& right, string targetFile1
         int R = rand() % 256;
 
         if (min < 0.5 * min2){//good matches
-            double aScaling = (a2[i].layer / 5 == 0) ? 1 : SCALE;
-            double bScaling = (b[index].layer / 5 == 0) ? 1 : SCALE;//ÁY¤p´X­¿ªº¡A­n©ñ¤j¦^¨Ó
+			int aScaleNum = a2[i].layer / left2.nLayersPerOctave;// == 0) ? 1 : 1.6;
+			double aScaling = 1;
+			for (int k = 0; k < aScaleNum; ++k){
+				aScaling *= SCALE;
+			}
+			int bScaleNum = b[index].layer / right.nLayersPerOctave;// == 0) ? 1 : 1.6;//ÁY¤p´X­¿ªº¡A­n©ñ¤j¦^¨Ó
+			double bScaling = 1;
+			for (int k = 0; k < bScaleNum; ++k){
+				bScaling *= SCALE;
+			}
             //cout << aScaling << " " << bScaling << "\n";
             line(result, Point(a2[i].col * aScaling, target1.rows + a2[i].row * aScaling), Point(max(target1.cols, target2.cols) + b[index].col * bScaling, b[index].row * bScaling), Scalar(B, G, R));
             obj2.push_back(Point2f(a2[i].col * aScaling, a2[i].row * aScaling));
@@ -154,8 +170,11 @@ Mat concatMultiImg(Mat& target1, Mat& target2, Mat& scene)
 void match(mySIFT& left, mySIFT& right, string targetFile, Mat img_scene, clock_t s)
 {
 	cout << "keyPoints (AFTER): " << right.keyPoints.size() << endl << endl;
-	vector< Key_Point >& a = left.keyPoints;
-	vector< Key_Point >& b = right.keyPoints;
+	// vector< Key_Point >& a = left.keyPoints;
+	// vector< Key_Point >& b = right.keyPoints;
+	vector< Key_Point >& b = left.keyPoints;
+
+	vector< Key_Point >& a = right.keyPoints;
 	
 	Mat target = imread(targetFile);//§Ú­n±m¦âªº
 	Mat find = img_scene;
@@ -206,12 +225,18 @@ void match(mySIFT& left, mySIFT& right, string targetFile, Mat img_scene, clock_
 				bScaling *= SCALE;
 			}
 			//cout << aScaling << " " << bScaling << "\n";
-			circle(result, Point(a[i].col * aScaling, a[i].row * aScaling), 3, Scalar(255, 0, 0), 1);
-			circle(result, Point(target.cols + b[index].col * bScaling, b[index].row * bScaling), 3, Scalar(0, 255, 0), 1);
+			// circle(result, Point(a[i].col * aScaling, a[i].row * aScaling), 3, Scalar(255, 0, 0), 1);
+			// circle(result, Point(target.cols + b[index].col * bScaling, b[index].row * bScaling), 3, Scalar(0, 255, 0), 1);
+			circle(result, Point(target.cols + a[i].col * aScaling, a[i].row * aScaling), 3, Scalar(255, 0, 0), 1);
+			circle(result, Point(b[index].col * bScaling, b[index].row * bScaling), 3, Scalar(0, 255, 0), 1);
 
-			line(result, Point(a[i].col * aScaling, a[i].row * aScaling), Point(target.cols + b[index].col * bScaling, b[index].row * bScaling), Scalar(B, G, R));
-			obj.push_back(Point2f(a[i].col * aScaling, a[i].row * aScaling));
-			scene.push_back(Point2f(b[index].col * bScaling, b[index].row * bScaling));
+			// line(result, Point(a[i].col * aScaling, a[i].row * aScaling), Point(target.cols + b[index].col * bScaling, b[index].row * bScaling), Scalar(B, G, R));
+			line(result, Point(target.cols + a[i].col * aScaling, a[i].row * aScaling), Point(b[index].col * bScaling, b[index].row * bScaling), Scalar(B, G, R));
+			// obj.push_back(Point2f(a[i].col * aScaling, a[i].row * aScaling));
+			// scene.push_back(Point2f(b[index].col * bScaling, b[index].row * bScaling));
+			scene.push_back(Point2f(a[i].col * aScaling, a[i].row * aScaling));
+			obj.push_back(Point2f(b[index].col * bScaling, b[index].row * bScaling));
+
 		}
 	}
 	//µ²§ômatch

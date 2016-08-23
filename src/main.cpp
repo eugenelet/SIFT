@@ -50,8 +50,10 @@ int main(int argc, char* argv[])
 			//start = clock();
 			if(multi_on)
 				match_multi(haha[0], haha[1], hoho, targetFile, targetFile2, img_scene);
-			else
+			else{
+				// dumpKeyPoints(haha[0], hoho);
 				match(haha[0], hoho, targetFile, img_scene, s);
+			}
 			//end = clock();
 			//cout << "Match : " << (double)(end - s) / CLOCKS_PER_SEC << "\n";
 
