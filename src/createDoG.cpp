@@ -35,7 +35,7 @@ void mySIFT::createDoG()
 double2D mySIFT::getGaussianKernel(double sigma)
 {
 	int kSize = cvRound(sigma * 1.5 + 1) | 1;//kSize¬°©_¼Æ¡A¶Ã©wªº
-	//cout << sigma << " " << kSize << " ";
+	// cout << sigma << " " << kSize << " ";
 	vector< double > kernel_1D;
 	
 	int shift = (kSize - 1) / 2;
@@ -66,6 +66,7 @@ double2D mySIFT::getGaussianKernel(double sigma)
 	return kernel_2D;
 }
 
+/*weightSum is always 1*/
 Mat mySIFT::GaussianBlur(const Mat& src, double sigma)//input (¹Ï¤ù, sigma), output (¼Ò½k¹Ï¤ù)
 {
 	double2D G_Kernel = getGaussianKernel(sigma);
@@ -74,19 +75,31 @@ Mat mySIFT::GaussianBlur(const Mat& src, double sigma)//input (¹Ï¤ù, sigma),
 	int shift = (kSize - 1) / 2;
 
 	Mat output = src.clone();
+	cout << "Sigma: " << sigma << endl;
+	for(int i = 0; i < kSize; i++)
+		for(int j = 0; j < kSize; j++)
+			cout << "G_Kernel[" << i <<"][" << j << "] " << G_Kernel[i][j] << endl; 
+	/*double weightSum = 0.0;
+	for(int i = 0; i < kSize; i++)
+		for(int j = 0; j < kSize; j++)
+			weightSum += G_Kernel[i][j];
+
+	cout << "kSize: " << kSize << "weightSum: " << weightSum << endl;*/
 
 	for (int row = 0; row < src.rows; ++row)
 		for (int col = 0; col < src.cols; ++col){//­n¹ïimg[row][col]ªºpixel°µ¼Ò½k
 			double sum = 0.0;
-			double weightSum = 0.0;//0.0
+			// double weightSum = 0.0;//0.0
 			for (int i = row - shift; i <= row + shift; ++i)
 				for (int j = col - shift; j <= col + shift; ++j){
 					if (i >= 0 && j >= 0 && i < src.rows && j < src.cols){
 						sum += src.at<uchar>(i, j) * G_Kernel[i - (row - shift)][j - (col - shift)];
-						weightSum += G_Kernel[i - (row - shift)][j - (col - shift)];
+						// weightSum += G_Kernel[i - (row - shift)][j - (col - shift)];
 					}
 				}
-			output.at<uchar>(row, col) = sum / weightSum;
+			output.at<uchar>(row, col) = sum ;// weightSum;
+			// cout << "kSize: " << kSize << "weightSum: " << weightSum << endl;
+
 			//cout << "sum : " << sum << "   " << (int)output.at<uchar>(row, col) << "\n";
 		}
 	//cout << "Finish Blurring with sigma : " << setprecision(2) << sigma << "\n";

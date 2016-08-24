@@ -32,7 +32,7 @@ int main(int argc, char* argv[])
 		computeSift(haha[1], target2, imread(targetFile),time_on);
 		// haha.filterKeyPoints_Hessian(target, imread(targetFile));
 		//haha.drawKeyPoints(targetFile);
-		VideoCapture cap(1);
+		VideoCapture cap(0);
 
 		while (1){
 

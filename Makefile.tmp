@@ -2,7 +2,7 @@ RCS = $(wildcard *.cpp)
 PROGS = $(patsubst %.cpp,%,$(SRCS))
 OBJS = $(SRCS:.cpp=.o)
 TEMPS = $(SRCS:.cpp=.txt)
-SRC = tmp.cpp
+SRC = main.cpp
 OUT = sift
 CFLAGS = `pkg-config --cflags --libs opencv` -lpthread -O3
 
