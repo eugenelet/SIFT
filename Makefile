@@ -4,7 +4,7 @@ OBJS = $(SRCS:.cpp=.o)
 TEMPS = $(SRCS:.cpp=.txt)
 SRC = src/main.cpp src/computeDescriptor.cpp src/createDoG.cpp src/detectKeypoints.cpp src/drawKeyPoints.cpp src/filterKeyPoints.cpp \
 		src/match.cpp src/debug.cpp src/computeSift.cpp \
-		src/dumpKeyPoints.cpp
+		src/dumpKeyPoints.cpp src/dumpImage.cpp
 OUT = sift
 CFLAGS = `pkg-config --cflags --libs opencv` -lpthread -O3
 

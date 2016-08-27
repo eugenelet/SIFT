@@ -99,7 +99,7 @@ int main()
 		//	imshow("hi", haha.blurredImgs[i]);
 		//	waitKey(1000);
 		//}
-		VideoCapture cap(1);
+		VideoCapture cap(0);
 
 		while (1){
 

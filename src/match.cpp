@@ -170,11 +170,11 @@ Mat concatMultiImg(Mat& target1, Mat& target2, Mat& scene)
 void match(mySIFT& left, mySIFT& right, string targetFile, Mat img_scene, clock_t s)
 {
 	cout << "keyPoints (AFTER): " << right.keyPoints.size() << endl << endl;
-	// vector< Key_Point >& a = left.keyPoints;
-	// vector< Key_Point >& b = right.keyPoints;
-	vector< Key_Point >& b = left.keyPoints;
+	vector< Key_Point >& a = left.keyPoints;
+	vector< Key_Point >& b = right.keyPoints;
+	/*vector< Key_Point >& b = left.keyPoints;
 
-	vector< Key_Point >& a = right.keyPoints;
+	vector< Key_Point >& a = right.keyPoints;*/
 	
 	Mat target = imread(targetFile);//§Ú­n±m¦âªº
 	Mat find = img_scene;
@@ -225,17 +225,17 @@ void match(mySIFT& left, mySIFT& right, string targetFile, Mat img_scene, clock_
 				bScaling *= SCALE;
 			}
 			//cout << aScaling << " " << bScaling << "\n";
-			// circle(result, Point(a[i].col * aScaling, a[i].row * aScaling), 3, Scalar(255, 0, 0), 1);
-			// circle(result, Point(target.cols + b[index].col * bScaling, b[index].row * bScaling), 3, Scalar(0, 255, 0), 1);
-			circle(result, Point(target.cols + a[i].col * aScaling, a[i].row * aScaling), 3, Scalar(255, 0, 0), 1);
-			circle(result, Point(b[index].col * bScaling, b[index].row * bScaling), 3, Scalar(0, 255, 0), 1);
+			circle(result, Point(a[i].col * aScaling, a[i].row * aScaling), 3, Scalar(255, 0, 0), 1);
+			circle(result, Point(target.cols + b[index].col * bScaling, b[index].row * bScaling), 3, Scalar(0, 255, 0), 1);
+			// circle(result, Point(target.cols + a[i].col * aScaling, a[i].row * aScaling), 3, Scalar(255, 0, 0), 1);
+			// circle(result, Point(b[index].col * bScaling, b[index].row * bScaling), 3, Scalar(0, 255, 0), 1);
 
-			// line(result, Point(a[i].col * aScaling, a[i].row * aScaling), Point(target.cols + b[index].col * bScaling, b[index].row * bScaling), Scalar(B, G, R));
-			line(result, Point(target.cols + a[i].col * aScaling, a[i].row * aScaling), Point(b[index].col * bScaling, b[index].row * bScaling), Scalar(B, G, R));
-			// obj.push_back(Point2f(a[i].col * aScaling, a[i].row * aScaling));
-			// scene.push_back(Point2f(b[index].col * bScaling, b[index].row * bScaling));
-			scene.push_back(Point2f(a[i].col * aScaling, a[i].row * aScaling));
-			obj.push_back(Point2f(b[index].col * bScaling, b[index].row * bScaling));
+			line(result, Point(a[i].col * aScaling, a[i].row * aScaling), Point(target.cols + b[index].col * bScaling, b[index].row * bScaling), Scalar(B, G, R));
+			// line(result, Point(target.cols + a[i].col * aScaling, a[i].row * aScaling), Point(b[index].col * bScaling, b[index].row * bScaling), Scalar(B, G, R));
+			obj.push_back(Point2f(a[i].col * aScaling, a[i].row * aScaling));
+			scene.push_back(Point2f(b[index].col * bScaling, b[index].row * bScaling));
+			// scene.push_back(Point2f(a[i].col * aScaling, a[i].row * aScaling));
+			// obj.push_back(Point2f(b[index].col * bScaling, b[index].row * bScaling));
 
 		}
 	}
