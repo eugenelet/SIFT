@@ -22,8 +22,10 @@ int main(int argc, char* argv[])
 	clock_t start, end;
 	if (1){
 		mySIFT haha[2];
-		haha[0] = mySIFT(1.414, 1.414, 3);//sigma k
-		haha[1] = mySIFT(1.414, 1.414, 3);//sigma k
+		// haha[0] = mySIFT(1.414, 1.414, 3);//sigma k
+		// haha[1] = mySIFT(1.414, 1.414, 3);//sigma k
+		haha[0] = mySIFT(1.414, 1.414, 1);//sigma k
+		haha[1] = mySIFT(1.414, 1.414, 1);//sigma k
 		string targetFile = "target.jpg";
 		string targetFile2 = "target2.jpg";
 		Mat target = imread(targetFile, CV_LOAD_IMAGE_GRAYSCALE);
