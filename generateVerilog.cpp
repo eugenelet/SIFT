@@ -10,7 +10,7 @@ int main()
 	char* output_file = "g_kernel_verilog_3x3.v";
 	fout.open(output_file);
 	for(int i = 1; i < 639; i++){
-		fout << "wire  [25:0]  kernel_img_mul_" << i << "[0:8]" << endl;
+		fout << "wire  [25:0]  kernel_img_mul_" << i << "[0:8];" << endl;
 		for(int kernel_y = 0; kernel_y < 3; kernel_y++)
 			for(int kernel_x = 0; kernel_x < 3; kernel_x++){
 				fout << "assign kernel_img_mul_" << i << "[" << kernel_y*3 + kernel_x << "] = buffer_data_"<<
