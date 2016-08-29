@@ -1,4 +1,4 @@
-wire  [25:0]  kernel_img_mul_1[0:8]
+wire  [25:0]  kernel_img_mul_1[0:8];
 assign kernel_img_mul_1[0] = buffer_data_2[7:0] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_1[1] = buffer_data_2[15:8] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_1[2] = buffer_data_2[23:16] * G_Kernel_3x3[0][53:36];
@@ -20,7 +20,7 @@ always @(posedge clk) begin
     blur_din[15:8] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_2[0:8]
+wire  [25:0]  kernel_img_mul_2[0:8];
 assign kernel_img_mul_2[0] = buffer_data_2[15:8] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_2[1] = buffer_data_2[23:16] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_2[2] = buffer_data_2[31:24] * G_Kernel_3x3[0][53:36];
@@ -42,7 +42,7 @@ always @(posedge clk) begin
     blur_din[23:16] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_3[0:8]
+wire  [25:0]  kernel_img_mul_3[0:8];
 assign kernel_img_mul_3[0] = buffer_data_2[23:16] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_3[1] = buffer_data_2[31:24] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_3[2] = buffer_data_2[39:32] * G_Kernel_3x3[0][53:36];
@@ -64,7 +64,7 @@ always @(posedge clk) begin
     blur_din[31:24] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_4[0:8]
+wire  [25:0]  kernel_img_mul_4[0:8];
 assign kernel_img_mul_4[0] = buffer_data_2[31:24] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_4[1] = buffer_data_2[39:32] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_4[2] = buffer_data_2[47:40] * G_Kernel_3x3[0][53:36];
@@ -86,7 +86,7 @@ always @(posedge clk) begin
     blur_din[39:32] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_5[0:8]
+wire  [25:0]  kernel_img_mul_5[0:8];
 assign kernel_img_mul_5[0] = buffer_data_2[39:32] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_5[1] = buffer_data_2[47:40] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_5[2] = buffer_data_2[55:48] * G_Kernel_3x3[0][53:36];
@@ -108,7 +108,7 @@ always @(posedge clk) begin
     blur_din[47:40] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_6[0:8]
+wire  [25:0]  kernel_img_mul_6[0:8];
 assign kernel_img_mul_6[0] = buffer_data_2[47:40] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_6[1] = buffer_data_2[55:48] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_6[2] = buffer_data_2[63:56] * G_Kernel_3x3[0][53:36];
@@ -130,7 +130,7 @@ always @(posedge clk) begin
     blur_din[55:48] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_7[0:8]
+wire  [25:0]  kernel_img_mul_7[0:8];
 assign kernel_img_mul_7[0] = buffer_data_2[55:48] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_7[1] = buffer_data_2[63:56] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_7[2] = buffer_data_2[71:64] * G_Kernel_3x3[0][53:36];
@@ -152,7 +152,7 @@ always @(posedge clk) begin
     blur_din[63:56] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_8[0:8]
+wire  [25:0]  kernel_img_mul_8[0:8];
 assign kernel_img_mul_8[0] = buffer_data_2[63:56] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_8[1] = buffer_data_2[71:64] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_8[2] = buffer_data_2[79:72] * G_Kernel_3x3[0][53:36];
@@ -174,7 +174,7 @@ always @(posedge clk) begin
     blur_din[71:64] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_9[0:8]
+wire  [25:0]  kernel_img_mul_9[0:8];
 assign kernel_img_mul_9[0] = buffer_data_2[71:64] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_9[1] = buffer_data_2[79:72] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_9[2] = buffer_data_2[87:80] * G_Kernel_3x3[0][53:36];
@@ -196,7 +196,7 @@ always @(posedge clk) begin
     blur_din[79:72] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_10[0:8]
+wire  [25:0]  kernel_img_mul_10[0:8];
 assign kernel_img_mul_10[0] = buffer_data_2[79:72] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_10[1] = buffer_data_2[87:80] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_10[2] = buffer_data_2[95:88] * G_Kernel_3x3[0][53:36];
@@ -218,7 +218,7 @@ always @(posedge clk) begin
     blur_din[87:80] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_11[0:8]
+wire  [25:0]  kernel_img_mul_11[0:8];
 assign kernel_img_mul_11[0] = buffer_data_2[87:80] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_11[1] = buffer_data_2[95:88] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_11[2] = buffer_data_2[103:96] * G_Kernel_3x3[0][53:36];
@@ -240,7 +240,7 @@ always @(posedge clk) begin
     blur_din[95:88] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_12[0:8]
+wire  [25:0]  kernel_img_mul_12[0:8];
 assign kernel_img_mul_12[0] = buffer_data_2[95:88] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_12[1] = buffer_data_2[103:96] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_12[2] = buffer_data_2[111:104] * G_Kernel_3x3[0][53:36];
@@ -262,7 +262,7 @@ always @(posedge clk) begin
     blur_din[103:96] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_13[0:8]
+wire  [25:0]  kernel_img_mul_13[0:8];
 assign kernel_img_mul_13[0] = buffer_data_2[103:96] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_13[1] = buffer_data_2[111:104] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_13[2] = buffer_data_2[119:112] * G_Kernel_3x3[0][53:36];
@@ -284,7 +284,7 @@ always @(posedge clk) begin
     blur_din[111:104] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_14[0:8]
+wire  [25:0]  kernel_img_mul_14[0:8];
 assign kernel_img_mul_14[0] = buffer_data_2[111:104] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_14[1] = buffer_data_2[119:112] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_14[2] = buffer_data_2[127:120] * G_Kernel_3x3[0][53:36];
@@ -306,7 +306,7 @@ always @(posedge clk) begin
     blur_din[119:112] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_15[0:8]
+wire  [25:0]  kernel_img_mul_15[0:8];
 assign kernel_img_mul_15[0] = buffer_data_2[119:112] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_15[1] = buffer_data_2[127:120] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_15[2] = buffer_data_2[135:128] * G_Kernel_3x3[0][53:36];
@@ -328,7 +328,7 @@ always @(posedge clk) begin
     blur_din[127:120] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_16[0:8]
+wire  [25:0]  kernel_img_mul_16[0:8];
 assign kernel_img_mul_16[0] = buffer_data_2[127:120] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_16[1] = buffer_data_2[135:128] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_16[2] = buffer_data_2[143:136] * G_Kernel_3x3[0][53:36];
@@ -350,7 +350,7 @@ always @(posedge clk) begin
     blur_din[135:128] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_17[0:8]
+wire  [25:0]  kernel_img_mul_17[0:8];
 assign kernel_img_mul_17[0] = buffer_data_2[135:128] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_17[1] = buffer_data_2[143:136] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_17[2] = buffer_data_2[151:144] * G_Kernel_3x3[0][53:36];
@@ -372,7 +372,7 @@ always @(posedge clk) begin
     blur_din[143:136] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_18[0:8]
+wire  [25:0]  kernel_img_mul_18[0:8];
 assign kernel_img_mul_18[0] = buffer_data_2[143:136] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_18[1] = buffer_data_2[151:144] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_18[2] = buffer_data_2[159:152] * G_Kernel_3x3[0][53:36];
@@ -394,7 +394,7 @@ always @(posedge clk) begin
     blur_din[151:144] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_19[0:8]
+wire  [25:0]  kernel_img_mul_19[0:8];
 assign kernel_img_mul_19[0] = buffer_data_2[151:144] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_19[1] = buffer_data_2[159:152] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_19[2] = buffer_data_2[167:160] * G_Kernel_3x3[0][53:36];
@@ -416,7 +416,7 @@ always @(posedge clk) begin
     blur_din[159:152] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_20[0:8]
+wire  [25:0]  kernel_img_mul_20[0:8];
 assign kernel_img_mul_20[0] = buffer_data_2[159:152] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_20[1] = buffer_data_2[167:160] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_20[2] = buffer_data_2[175:168] * G_Kernel_3x3[0][53:36];
@@ -438,7 +438,7 @@ always @(posedge clk) begin
     blur_din[167:160] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_21[0:8]
+wire  [25:0]  kernel_img_mul_21[0:8];
 assign kernel_img_mul_21[0] = buffer_data_2[167:160] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_21[1] = buffer_data_2[175:168] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_21[2] = buffer_data_2[183:176] * G_Kernel_3x3[0][53:36];
@@ -460,7 +460,7 @@ always @(posedge clk) begin
     blur_din[175:168] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_22[0:8]
+wire  [25:0]  kernel_img_mul_22[0:8];
 assign kernel_img_mul_22[0] = buffer_data_2[175:168] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_22[1] = buffer_data_2[183:176] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_22[2] = buffer_data_2[191:184] * G_Kernel_3x3[0][53:36];
@@ -482,7 +482,7 @@ always @(posedge clk) begin
     blur_din[183:176] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_23[0:8]
+wire  [25:0]  kernel_img_mul_23[0:8];
 assign kernel_img_mul_23[0] = buffer_data_2[183:176] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_23[1] = buffer_data_2[191:184] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_23[2] = buffer_data_2[199:192] * G_Kernel_3x3[0][53:36];
@@ -504,7 +504,7 @@ always @(posedge clk) begin
     blur_din[191:184] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_24[0:8]
+wire  [25:0]  kernel_img_mul_24[0:8];
 assign kernel_img_mul_24[0] = buffer_data_2[191:184] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_24[1] = buffer_data_2[199:192] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_24[2] = buffer_data_2[207:200] * G_Kernel_3x3[0][53:36];
@@ -526,7 +526,7 @@ always @(posedge clk) begin
     blur_din[199:192] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_25[0:8]
+wire  [25:0]  kernel_img_mul_25[0:8];
 assign kernel_img_mul_25[0] = buffer_data_2[199:192] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_25[1] = buffer_data_2[207:200] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_25[2] = buffer_data_2[215:208] * G_Kernel_3x3[0][53:36];
@@ -548,7 +548,7 @@ always @(posedge clk) begin
     blur_din[207:200] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_26[0:8]
+wire  [25:0]  kernel_img_mul_26[0:8];
 assign kernel_img_mul_26[0] = buffer_data_2[207:200] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_26[1] = buffer_data_2[215:208] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_26[2] = buffer_data_2[223:216] * G_Kernel_3x3[0][53:36];
@@ -570,7 +570,7 @@ always @(posedge clk) begin
     blur_din[215:208] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_27[0:8]
+wire  [25:0]  kernel_img_mul_27[0:8];
 assign kernel_img_mul_27[0] = buffer_data_2[215:208] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_27[1] = buffer_data_2[223:216] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_27[2] = buffer_data_2[231:224] * G_Kernel_3x3[0][53:36];
@@ -592,7 +592,7 @@ always @(posedge clk) begin
     blur_din[223:216] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_28[0:8]
+wire  [25:0]  kernel_img_mul_28[0:8];
 assign kernel_img_mul_28[0] = buffer_data_2[223:216] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_28[1] = buffer_data_2[231:224] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_28[2] = buffer_data_2[239:232] * G_Kernel_3x3[0][53:36];
@@ -614,7 +614,7 @@ always @(posedge clk) begin
     blur_din[231:224] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_29[0:8]
+wire  [25:0]  kernel_img_mul_29[0:8];
 assign kernel_img_mul_29[0] = buffer_data_2[231:224] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_29[1] = buffer_data_2[239:232] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_29[2] = buffer_data_2[247:240] * G_Kernel_3x3[0][53:36];
@@ -636,7 +636,7 @@ always @(posedge clk) begin
     blur_din[239:232] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_30[0:8]
+wire  [25:0]  kernel_img_mul_30[0:8];
 assign kernel_img_mul_30[0] = buffer_data_2[239:232] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_30[1] = buffer_data_2[247:240] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_30[2] = buffer_data_2[255:248] * G_Kernel_3x3[0][53:36];
@@ -658,7 +658,7 @@ always @(posedge clk) begin
     blur_din[247:240] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_31[0:8]
+wire  [25:0]  kernel_img_mul_31[0:8];
 assign kernel_img_mul_31[0] = buffer_data_2[247:240] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_31[1] = buffer_data_2[255:248] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_31[2] = buffer_data_2[263:256] * G_Kernel_3x3[0][53:36];
@@ -680,7 +680,7 @@ always @(posedge clk) begin
     blur_din[255:248] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_32[0:8]
+wire  [25:0]  kernel_img_mul_32[0:8];
 assign kernel_img_mul_32[0] = buffer_data_2[255:248] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_32[1] = buffer_data_2[263:256] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_32[2] = buffer_data_2[271:264] * G_Kernel_3x3[0][53:36];
@@ -702,7 +702,7 @@ always @(posedge clk) begin
     blur_din[263:256] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_33[0:8]
+wire  [25:0]  kernel_img_mul_33[0:8];
 assign kernel_img_mul_33[0] = buffer_data_2[263:256] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_33[1] = buffer_data_2[271:264] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_33[2] = buffer_data_2[279:272] * G_Kernel_3x3[0][53:36];
@@ -724,7 +724,7 @@ always @(posedge clk) begin
     blur_din[271:264] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_34[0:8]
+wire  [25:0]  kernel_img_mul_34[0:8];
 assign kernel_img_mul_34[0] = buffer_data_2[271:264] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_34[1] = buffer_data_2[279:272] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_34[2] = buffer_data_2[287:280] * G_Kernel_3x3[0][53:36];
@@ -746,7 +746,7 @@ always @(posedge clk) begin
     blur_din[279:272] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_35[0:8]
+wire  [25:0]  kernel_img_mul_35[0:8];
 assign kernel_img_mul_35[0] = buffer_data_2[279:272] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_35[1] = buffer_data_2[287:280] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_35[2] = buffer_data_2[295:288] * G_Kernel_3x3[0][53:36];
@@ -768,7 +768,7 @@ always @(posedge clk) begin
     blur_din[287:280] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_36[0:8]
+wire  [25:0]  kernel_img_mul_36[0:8];
 assign kernel_img_mul_36[0] = buffer_data_2[287:280] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_36[1] = buffer_data_2[295:288] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_36[2] = buffer_data_2[303:296] * G_Kernel_3x3[0][53:36];
@@ -790,7 +790,7 @@ always @(posedge clk) begin
     blur_din[295:288] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_37[0:8]
+wire  [25:0]  kernel_img_mul_37[0:8];
 assign kernel_img_mul_37[0] = buffer_data_2[295:288] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_37[1] = buffer_data_2[303:296] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_37[2] = buffer_data_2[311:304] * G_Kernel_3x3[0][53:36];
@@ -812,7 +812,7 @@ always @(posedge clk) begin
     blur_din[303:296] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_38[0:8]
+wire  [25:0]  kernel_img_mul_38[0:8];
 assign kernel_img_mul_38[0] = buffer_data_2[303:296] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_38[1] = buffer_data_2[311:304] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_38[2] = buffer_data_2[319:312] * G_Kernel_3x3[0][53:36];
@@ -834,7 +834,7 @@ always @(posedge clk) begin
     blur_din[311:304] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_39[0:8]
+wire  [25:0]  kernel_img_mul_39[0:8];
 assign kernel_img_mul_39[0] = buffer_data_2[311:304] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_39[1] = buffer_data_2[319:312] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_39[2] = buffer_data_2[327:320] * G_Kernel_3x3[0][53:36];
@@ -856,7 +856,7 @@ always @(posedge clk) begin
     blur_din[319:312] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_40[0:8]
+wire  [25:0]  kernel_img_mul_40[0:8];
 assign kernel_img_mul_40[0] = buffer_data_2[319:312] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_40[1] = buffer_data_2[327:320] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_40[2] = buffer_data_2[335:328] * G_Kernel_3x3[0][53:36];
@@ -878,7 +878,7 @@ always @(posedge clk) begin
     blur_din[327:320] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_41[0:8]
+wire  [25:0]  kernel_img_mul_41[0:8];
 assign kernel_img_mul_41[0] = buffer_data_2[327:320] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_41[1] = buffer_data_2[335:328] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_41[2] = buffer_data_2[343:336] * G_Kernel_3x3[0][53:36];
@@ -900,7 +900,7 @@ always @(posedge clk) begin
     blur_din[335:328] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_42[0:8]
+wire  [25:0]  kernel_img_mul_42[0:8];
 assign kernel_img_mul_42[0] = buffer_data_2[335:328] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_42[1] = buffer_data_2[343:336] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_42[2] = buffer_data_2[351:344] * G_Kernel_3x3[0][53:36];
@@ -922,7 +922,7 @@ always @(posedge clk) begin
     blur_din[343:336] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_43[0:8]
+wire  [25:0]  kernel_img_mul_43[0:8];
 assign kernel_img_mul_43[0] = buffer_data_2[343:336] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_43[1] = buffer_data_2[351:344] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_43[2] = buffer_data_2[359:352] * G_Kernel_3x3[0][53:36];
@@ -944,7 +944,7 @@ always @(posedge clk) begin
     blur_din[351:344] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_44[0:8]
+wire  [25:0]  kernel_img_mul_44[0:8];
 assign kernel_img_mul_44[0] = buffer_data_2[351:344] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_44[1] = buffer_data_2[359:352] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_44[2] = buffer_data_2[367:360] * G_Kernel_3x3[0][53:36];
@@ -966,7 +966,7 @@ always @(posedge clk) begin
     blur_din[359:352] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_45[0:8]
+wire  [25:0]  kernel_img_mul_45[0:8];
 assign kernel_img_mul_45[0] = buffer_data_2[359:352] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_45[1] = buffer_data_2[367:360] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_45[2] = buffer_data_2[375:368] * G_Kernel_3x3[0][53:36];
@@ -988,7 +988,7 @@ always @(posedge clk) begin
     blur_din[367:360] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_46[0:8]
+wire  [25:0]  kernel_img_mul_46[0:8];
 assign kernel_img_mul_46[0] = buffer_data_2[367:360] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_46[1] = buffer_data_2[375:368] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_46[2] = buffer_data_2[383:376] * G_Kernel_3x3[0][53:36];
@@ -1010,7 +1010,7 @@ always @(posedge clk) begin
     blur_din[375:368] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_47[0:8]
+wire  [25:0]  kernel_img_mul_47[0:8];
 assign kernel_img_mul_47[0] = buffer_data_2[375:368] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_47[1] = buffer_data_2[383:376] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_47[2] = buffer_data_2[391:384] * G_Kernel_3x3[0][53:36];
@@ -1032,7 +1032,7 @@ always @(posedge clk) begin
     blur_din[383:376] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_48[0:8]
+wire  [25:0]  kernel_img_mul_48[0:8];
 assign kernel_img_mul_48[0] = buffer_data_2[383:376] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_48[1] = buffer_data_2[391:384] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_48[2] = buffer_data_2[399:392] * G_Kernel_3x3[0][53:36];
@@ -1054,7 +1054,7 @@ always @(posedge clk) begin
     blur_din[391:384] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_49[0:8]
+wire  [25:0]  kernel_img_mul_49[0:8];
 assign kernel_img_mul_49[0] = buffer_data_2[391:384] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_49[1] = buffer_data_2[399:392] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_49[2] = buffer_data_2[407:400] * G_Kernel_3x3[0][53:36];
@@ -1076,7 +1076,7 @@ always @(posedge clk) begin
     blur_din[399:392] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_50[0:8]
+wire  [25:0]  kernel_img_mul_50[0:8];
 assign kernel_img_mul_50[0] = buffer_data_2[399:392] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_50[1] = buffer_data_2[407:400] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_50[2] = buffer_data_2[415:408] * G_Kernel_3x3[0][53:36];
@@ -1098,7 +1098,7 @@ always @(posedge clk) begin
     blur_din[407:400] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_51[0:8]
+wire  [25:0]  kernel_img_mul_51[0:8];
 assign kernel_img_mul_51[0] = buffer_data_2[407:400] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_51[1] = buffer_data_2[415:408] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_51[2] = buffer_data_2[423:416] * G_Kernel_3x3[0][53:36];
@@ -1120,7 +1120,7 @@ always @(posedge clk) begin
     blur_din[415:408] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_52[0:8]
+wire  [25:0]  kernel_img_mul_52[0:8];
 assign kernel_img_mul_52[0] = buffer_data_2[415:408] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_52[1] = buffer_data_2[423:416] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_52[2] = buffer_data_2[431:424] * G_Kernel_3x3[0][53:36];
@@ -1142,7 +1142,7 @@ always @(posedge clk) begin
     blur_din[423:416] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_53[0:8]
+wire  [25:0]  kernel_img_mul_53[0:8];
 assign kernel_img_mul_53[0] = buffer_data_2[423:416] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_53[1] = buffer_data_2[431:424] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_53[2] = buffer_data_2[439:432] * G_Kernel_3x3[0][53:36];
@@ -1164,7 +1164,7 @@ always @(posedge clk) begin
     blur_din[431:424] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_54[0:8]
+wire  [25:0]  kernel_img_mul_54[0:8];
 assign kernel_img_mul_54[0] = buffer_data_2[431:424] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_54[1] = buffer_data_2[439:432] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_54[2] = buffer_data_2[447:440] * G_Kernel_3x3[0][53:36];
@@ -1186,7 +1186,7 @@ always @(posedge clk) begin
     blur_din[439:432] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_55[0:8]
+wire  [25:0]  kernel_img_mul_55[0:8];
 assign kernel_img_mul_55[0] = buffer_data_2[439:432] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_55[1] = buffer_data_2[447:440] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_55[2] = buffer_data_2[455:448] * G_Kernel_3x3[0][53:36];
@@ -1208,7 +1208,7 @@ always @(posedge clk) begin
     blur_din[447:440] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_56[0:8]
+wire  [25:0]  kernel_img_mul_56[0:8];
 assign kernel_img_mul_56[0] = buffer_data_2[447:440] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_56[1] = buffer_data_2[455:448] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_56[2] = buffer_data_2[463:456] * G_Kernel_3x3[0][53:36];
@@ -1230,7 +1230,7 @@ always @(posedge clk) begin
     blur_din[455:448] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_57[0:8]
+wire  [25:0]  kernel_img_mul_57[0:8];
 assign kernel_img_mul_57[0] = buffer_data_2[455:448] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_57[1] = buffer_data_2[463:456] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_57[2] = buffer_data_2[471:464] * G_Kernel_3x3[0][53:36];
@@ -1252,7 +1252,7 @@ always @(posedge clk) begin
     blur_din[463:456] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_58[0:8]
+wire  [25:0]  kernel_img_mul_58[0:8];
 assign kernel_img_mul_58[0] = buffer_data_2[463:456] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_58[1] = buffer_data_2[471:464] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_58[2] = buffer_data_2[479:472] * G_Kernel_3x3[0][53:36];
@@ -1274,7 +1274,7 @@ always @(posedge clk) begin
     blur_din[471:464] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_59[0:8]
+wire  [25:0]  kernel_img_mul_59[0:8];
 assign kernel_img_mul_59[0] = buffer_data_2[471:464] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_59[1] = buffer_data_2[479:472] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_59[2] = buffer_data_2[487:480] * G_Kernel_3x3[0][53:36];
@@ -1296,7 +1296,7 @@ always @(posedge clk) begin
     blur_din[479:472] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_60[0:8]
+wire  [25:0]  kernel_img_mul_60[0:8];
 assign kernel_img_mul_60[0] = buffer_data_2[479:472] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_60[1] = buffer_data_2[487:480] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_60[2] = buffer_data_2[495:488] * G_Kernel_3x3[0][53:36];
@@ -1318,7 +1318,7 @@ always @(posedge clk) begin
     blur_din[487:480] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_61[0:8]
+wire  [25:0]  kernel_img_mul_61[0:8];
 assign kernel_img_mul_61[0] = buffer_data_2[487:480] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_61[1] = buffer_data_2[495:488] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_61[2] = buffer_data_2[503:496] * G_Kernel_3x3[0][53:36];
@@ -1340,7 +1340,7 @@ always @(posedge clk) begin
     blur_din[495:488] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_62[0:8]
+wire  [25:0]  kernel_img_mul_62[0:8];
 assign kernel_img_mul_62[0] = buffer_data_2[495:488] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_62[1] = buffer_data_2[503:496] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_62[2] = buffer_data_2[511:504] * G_Kernel_3x3[0][53:36];
@@ -1362,7 +1362,7 @@ always @(posedge clk) begin
     blur_din[503:496] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_63[0:8]
+wire  [25:0]  kernel_img_mul_63[0:8];
 assign kernel_img_mul_63[0] = buffer_data_2[503:496] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_63[1] = buffer_data_2[511:504] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_63[2] = buffer_data_2[519:512] * G_Kernel_3x3[0][53:36];
@@ -1384,7 +1384,7 @@ always @(posedge clk) begin
     blur_din[511:504] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_64[0:8]
+wire  [25:0]  kernel_img_mul_64[0:8];
 assign kernel_img_mul_64[0] = buffer_data_2[511:504] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_64[1] = buffer_data_2[519:512] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_64[2] = buffer_data_2[527:520] * G_Kernel_3x3[0][53:36];
@@ -1406,7 +1406,7 @@ always @(posedge clk) begin
     blur_din[519:512] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_65[0:8]
+wire  [25:0]  kernel_img_mul_65[0:8];
 assign kernel_img_mul_65[0] = buffer_data_2[519:512] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_65[1] = buffer_data_2[527:520] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_65[2] = buffer_data_2[535:528] * G_Kernel_3x3[0][53:36];
@@ -1428,7 +1428,7 @@ always @(posedge clk) begin
     blur_din[527:520] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_66[0:8]
+wire  [25:0]  kernel_img_mul_66[0:8];
 assign kernel_img_mul_66[0] = buffer_data_2[527:520] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_66[1] = buffer_data_2[535:528] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_66[2] = buffer_data_2[543:536] * G_Kernel_3x3[0][53:36];
@@ -1450,7 +1450,7 @@ always @(posedge clk) begin
     blur_din[535:528] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_67[0:8]
+wire  [25:0]  kernel_img_mul_67[0:8];
 assign kernel_img_mul_67[0] = buffer_data_2[535:528] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_67[1] = buffer_data_2[543:536] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_67[2] = buffer_data_2[551:544] * G_Kernel_3x3[0][53:36];
@@ -1472,7 +1472,7 @@ always @(posedge clk) begin
     blur_din[543:536] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_68[0:8]
+wire  [25:0]  kernel_img_mul_68[0:8];
 assign kernel_img_mul_68[0] = buffer_data_2[543:536] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_68[1] = buffer_data_2[551:544] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_68[2] = buffer_data_2[559:552] * G_Kernel_3x3[0][53:36];
@@ -1494,7 +1494,7 @@ always @(posedge clk) begin
     blur_din[551:544] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_69[0:8]
+wire  [25:0]  kernel_img_mul_69[0:8];
 assign kernel_img_mul_69[0] = buffer_data_2[551:544] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_69[1] = buffer_data_2[559:552] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_69[2] = buffer_data_2[567:560] * G_Kernel_3x3[0][53:36];
@@ -1516,7 +1516,7 @@ always @(posedge clk) begin
     blur_din[559:552] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_70[0:8]
+wire  [25:0]  kernel_img_mul_70[0:8];
 assign kernel_img_mul_70[0] = buffer_data_2[559:552] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_70[1] = buffer_data_2[567:560] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_70[2] = buffer_data_2[575:568] * G_Kernel_3x3[0][53:36];
@@ -1538,7 +1538,7 @@ always @(posedge clk) begin
     blur_din[567:560] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_71[0:8]
+wire  [25:0]  kernel_img_mul_71[0:8];
 assign kernel_img_mul_71[0] = buffer_data_2[567:560] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_71[1] = buffer_data_2[575:568] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_71[2] = buffer_data_2[583:576] * G_Kernel_3x3[0][53:36];
@@ -1560,7 +1560,7 @@ always @(posedge clk) begin
     blur_din[575:568] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_72[0:8]
+wire  [25:0]  kernel_img_mul_72[0:8];
 assign kernel_img_mul_72[0] = buffer_data_2[575:568] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_72[1] = buffer_data_2[583:576] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_72[2] = buffer_data_2[591:584] * G_Kernel_3x3[0][53:36];
@@ -1582,7 +1582,7 @@ always @(posedge clk) begin
     blur_din[583:576] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_73[0:8]
+wire  [25:0]  kernel_img_mul_73[0:8];
 assign kernel_img_mul_73[0] = buffer_data_2[583:576] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_73[1] = buffer_data_2[591:584] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_73[2] = buffer_data_2[599:592] * G_Kernel_3x3[0][53:36];
@@ -1604,7 +1604,7 @@ always @(posedge clk) begin
     blur_din[591:584] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_74[0:8]
+wire  [25:0]  kernel_img_mul_74[0:8];
 assign kernel_img_mul_74[0] = buffer_data_2[591:584] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_74[1] = buffer_data_2[599:592] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_74[2] = buffer_data_2[607:600] * G_Kernel_3x3[0][53:36];
@@ -1626,7 +1626,7 @@ always @(posedge clk) begin
     blur_din[599:592] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_75[0:8]
+wire  [25:0]  kernel_img_mul_75[0:8];
 assign kernel_img_mul_75[0] = buffer_data_2[599:592] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_75[1] = buffer_data_2[607:600] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_75[2] = buffer_data_2[615:608] * G_Kernel_3x3[0][53:36];
@@ -1648,7 +1648,7 @@ always @(posedge clk) begin
     blur_din[607:600] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_76[0:8]
+wire  [25:0]  kernel_img_mul_76[0:8];
 assign kernel_img_mul_76[0] = buffer_data_2[607:600] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_76[1] = buffer_data_2[615:608] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_76[2] = buffer_data_2[623:616] * G_Kernel_3x3[0][53:36];
@@ -1670,7 +1670,7 @@ always @(posedge clk) begin
     blur_din[615:608] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_77[0:8]
+wire  [25:0]  kernel_img_mul_77[0:8];
 assign kernel_img_mul_77[0] = buffer_data_2[615:608] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_77[1] = buffer_data_2[623:616] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_77[2] = buffer_data_2[631:624] * G_Kernel_3x3[0][53:36];
@@ -1692,7 +1692,7 @@ always @(posedge clk) begin
     blur_din[623:616] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_78[0:8]
+wire  [25:0]  kernel_img_mul_78[0:8];
 assign kernel_img_mul_78[0] = buffer_data_2[623:616] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_78[1] = buffer_data_2[631:624] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_78[2] = buffer_data_2[639:632] * G_Kernel_3x3[0][53:36];
@@ -1714,7 +1714,7 @@ always @(posedge clk) begin
     blur_din[631:624] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_79[0:8]
+wire  [25:0]  kernel_img_mul_79[0:8];
 assign kernel_img_mul_79[0] = buffer_data_2[631:624] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_79[1] = buffer_data_2[639:632] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_79[2] = buffer_data_2[647:640] * G_Kernel_3x3[0][53:36];
@@ -1736,7 +1736,7 @@ always @(posedge clk) begin
     blur_din[639:632] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_80[0:8]
+wire  [25:0]  kernel_img_mul_80[0:8];
 assign kernel_img_mul_80[0] = buffer_data_2[639:632] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_80[1] = buffer_data_2[647:640] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_80[2] = buffer_data_2[655:648] * G_Kernel_3x3[0][53:36];
@@ -1758,7 +1758,7 @@ always @(posedge clk) begin
     blur_din[647:640] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_81[0:8]
+wire  [25:0]  kernel_img_mul_81[0:8];
 assign kernel_img_mul_81[0] = buffer_data_2[647:640] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_81[1] = buffer_data_2[655:648] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_81[2] = buffer_data_2[663:656] * G_Kernel_3x3[0][53:36];
@@ -1780,7 +1780,7 @@ always @(posedge clk) begin
     blur_din[655:648] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_82[0:8]
+wire  [25:0]  kernel_img_mul_82[0:8];
 assign kernel_img_mul_82[0] = buffer_data_2[655:648] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_82[1] = buffer_data_2[663:656] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_82[2] = buffer_data_2[671:664] * G_Kernel_3x3[0][53:36];
@@ -1802,7 +1802,7 @@ always @(posedge clk) begin
     blur_din[663:656] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_83[0:8]
+wire  [25:0]  kernel_img_mul_83[0:8];
 assign kernel_img_mul_83[0] = buffer_data_2[663:656] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_83[1] = buffer_data_2[671:664] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_83[2] = buffer_data_2[679:672] * G_Kernel_3x3[0][53:36];
@@ -1824,7 +1824,7 @@ always @(posedge clk) begin
     blur_din[671:664] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_84[0:8]
+wire  [25:0]  kernel_img_mul_84[0:8];
 assign kernel_img_mul_84[0] = buffer_data_2[671:664] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_84[1] = buffer_data_2[679:672] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_84[2] = buffer_data_2[687:680] * G_Kernel_3x3[0][53:36];
@@ -1846,7 +1846,7 @@ always @(posedge clk) begin
     blur_din[679:672] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_85[0:8]
+wire  [25:0]  kernel_img_mul_85[0:8];
 assign kernel_img_mul_85[0] = buffer_data_2[679:672] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_85[1] = buffer_data_2[687:680] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_85[2] = buffer_data_2[695:688] * G_Kernel_3x3[0][53:36];
@@ -1868,7 +1868,7 @@ always @(posedge clk) begin
     blur_din[687:680] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_86[0:8]
+wire  [25:0]  kernel_img_mul_86[0:8];
 assign kernel_img_mul_86[0] = buffer_data_2[687:680] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_86[1] = buffer_data_2[695:688] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_86[2] = buffer_data_2[703:696] * G_Kernel_3x3[0][53:36];
@@ -1890,7 +1890,7 @@ always @(posedge clk) begin
     blur_din[695:688] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_87[0:8]
+wire  [25:0]  kernel_img_mul_87[0:8];
 assign kernel_img_mul_87[0] = buffer_data_2[695:688] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_87[1] = buffer_data_2[703:696] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_87[2] = buffer_data_2[711:704] * G_Kernel_3x3[0][53:36];
@@ -1912,7 +1912,7 @@ always @(posedge clk) begin
     blur_din[703:696] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_88[0:8]
+wire  [25:0]  kernel_img_mul_88[0:8];
 assign kernel_img_mul_88[0] = buffer_data_2[703:696] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_88[1] = buffer_data_2[711:704] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_88[2] = buffer_data_2[719:712] * G_Kernel_3x3[0][53:36];
@@ -1934,7 +1934,7 @@ always @(posedge clk) begin
     blur_din[711:704] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_89[0:8]
+wire  [25:0]  kernel_img_mul_89[0:8];
 assign kernel_img_mul_89[0] = buffer_data_2[711:704] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_89[1] = buffer_data_2[719:712] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_89[2] = buffer_data_2[727:720] * G_Kernel_3x3[0][53:36];
@@ -1956,7 +1956,7 @@ always @(posedge clk) begin
     blur_din[719:712] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_90[0:8]
+wire  [25:0]  kernel_img_mul_90[0:8];
 assign kernel_img_mul_90[0] = buffer_data_2[719:712] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_90[1] = buffer_data_2[727:720] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_90[2] = buffer_data_2[735:728] * G_Kernel_3x3[0][53:36];
@@ -1978,7 +1978,7 @@ always @(posedge clk) begin
     blur_din[727:720] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_91[0:8]
+wire  [25:0]  kernel_img_mul_91[0:8];
 assign kernel_img_mul_91[0] = buffer_data_2[727:720] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_91[1] = buffer_data_2[735:728] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_91[2] = buffer_data_2[743:736] * G_Kernel_3x3[0][53:36];
@@ -2000,7 +2000,7 @@ always @(posedge clk) begin
     blur_din[735:728] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_92[0:8]
+wire  [25:0]  kernel_img_mul_92[0:8];
 assign kernel_img_mul_92[0] = buffer_data_2[735:728] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_92[1] = buffer_data_2[743:736] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_92[2] = buffer_data_2[751:744] * G_Kernel_3x3[0][53:36];
@@ -2022,7 +2022,7 @@ always @(posedge clk) begin
     blur_din[743:736] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_93[0:8]
+wire  [25:0]  kernel_img_mul_93[0:8];
 assign kernel_img_mul_93[0] = buffer_data_2[743:736] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_93[1] = buffer_data_2[751:744] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_93[2] = buffer_data_2[759:752] * G_Kernel_3x3[0][53:36];
@@ -2044,7 +2044,7 @@ always @(posedge clk) begin
     blur_din[751:744] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_94[0:8]
+wire  [25:0]  kernel_img_mul_94[0:8];
 assign kernel_img_mul_94[0] = buffer_data_2[751:744] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_94[1] = buffer_data_2[759:752] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_94[2] = buffer_data_2[767:760] * G_Kernel_3x3[0][53:36];
@@ -2066,7 +2066,7 @@ always @(posedge clk) begin
     blur_din[759:752] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_95[0:8]
+wire  [25:0]  kernel_img_mul_95[0:8];
 assign kernel_img_mul_95[0] = buffer_data_2[759:752] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_95[1] = buffer_data_2[767:760] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_95[2] = buffer_data_2[775:768] * G_Kernel_3x3[0][53:36];
@@ -2088,7 +2088,7 @@ always @(posedge clk) begin
     blur_din[767:760] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_96[0:8]
+wire  [25:0]  kernel_img_mul_96[0:8];
 assign kernel_img_mul_96[0] = buffer_data_2[767:760] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_96[1] = buffer_data_2[775:768] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_96[2] = buffer_data_2[783:776] * G_Kernel_3x3[0][53:36];
@@ -2110,7 +2110,7 @@ always @(posedge clk) begin
     blur_din[775:768] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_97[0:8]
+wire  [25:0]  kernel_img_mul_97[0:8];
 assign kernel_img_mul_97[0] = buffer_data_2[775:768] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_97[1] = buffer_data_2[783:776] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_97[2] = buffer_data_2[791:784] * G_Kernel_3x3[0][53:36];
@@ -2132,7 +2132,7 @@ always @(posedge clk) begin
     blur_din[783:776] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_98[0:8]
+wire  [25:0]  kernel_img_mul_98[0:8];
 assign kernel_img_mul_98[0] = buffer_data_2[783:776] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_98[1] = buffer_data_2[791:784] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_98[2] = buffer_data_2[799:792] * G_Kernel_3x3[0][53:36];
@@ -2154,7 +2154,7 @@ always @(posedge clk) begin
     blur_din[791:784] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_99[0:8]
+wire  [25:0]  kernel_img_mul_99[0:8];
 assign kernel_img_mul_99[0] = buffer_data_2[791:784] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_99[1] = buffer_data_2[799:792] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_99[2] = buffer_data_2[807:800] * G_Kernel_3x3[0][53:36];
@@ -2176,7 +2176,7 @@ always @(posedge clk) begin
     blur_din[799:792] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_100[0:8]
+wire  [25:0]  kernel_img_mul_100[0:8];
 assign kernel_img_mul_100[0] = buffer_data_2[799:792] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_100[1] = buffer_data_2[807:800] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_100[2] = buffer_data_2[815:808] * G_Kernel_3x3[0][53:36];
@@ -2198,7 +2198,7 @@ always @(posedge clk) begin
     blur_din[807:800] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_101[0:8]
+wire  [25:0]  kernel_img_mul_101[0:8];
 assign kernel_img_mul_101[0] = buffer_data_2[807:800] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_101[1] = buffer_data_2[815:808] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_101[2] = buffer_data_2[823:816] * G_Kernel_3x3[0][53:36];
@@ -2220,7 +2220,7 @@ always @(posedge clk) begin
     blur_din[815:808] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_102[0:8]
+wire  [25:0]  kernel_img_mul_102[0:8];
 assign kernel_img_mul_102[0] = buffer_data_2[815:808] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_102[1] = buffer_data_2[823:816] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_102[2] = buffer_data_2[831:824] * G_Kernel_3x3[0][53:36];
@@ -2242,7 +2242,7 @@ always @(posedge clk) begin
     blur_din[823:816] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_103[0:8]
+wire  [25:0]  kernel_img_mul_103[0:8];
 assign kernel_img_mul_103[0] = buffer_data_2[823:816] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_103[1] = buffer_data_2[831:824] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_103[2] = buffer_data_2[839:832] * G_Kernel_3x3[0][53:36];
@@ -2264,7 +2264,7 @@ always @(posedge clk) begin
     blur_din[831:824] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_104[0:8]
+wire  [25:0]  kernel_img_mul_104[0:8];
 assign kernel_img_mul_104[0] = buffer_data_2[831:824] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_104[1] = buffer_data_2[839:832] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_104[2] = buffer_data_2[847:840] * G_Kernel_3x3[0][53:36];
@@ -2286,7 +2286,7 @@ always @(posedge clk) begin
     blur_din[839:832] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_105[0:8]
+wire  [25:0]  kernel_img_mul_105[0:8];
 assign kernel_img_mul_105[0] = buffer_data_2[839:832] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_105[1] = buffer_data_2[847:840] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_105[2] = buffer_data_2[855:848] * G_Kernel_3x3[0][53:36];
@@ -2308,7 +2308,7 @@ always @(posedge clk) begin
     blur_din[847:840] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_106[0:8]
+wire  [25:0]  kernel_img_mul_106[0:8];
 assign kernel_img_mul_106[0] = buffer_data_2[847:840] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_106[1] = buffer_data_2[855:848] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_106[2] = buffer_data_2[863:856] * G_Kernel_3x3[0][53:36];
@@ -2330,7 +2330,7 @@ always @(posedge clk) begin
     blur_din[855:848] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_107[0:8]
+wire  [25:0]  kernel_img_mul_107[0:8];
 assign kernel_img_mul_107[0] = buffer_data_2[855:848] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_107[1] = buffer_data_2[863:856] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_107[2] = buffer_data_2[871:864] * G_Kernel_3x3[0][53:36];
@@ -2352,7 +2352,7 @@ always @(posedge clk) begin
     blur_din[863:856] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_108[0:8]
+wire  [25:0]  kernel_img_mul_108[0:8];
 assign kernel_img_mul_108[0] = buffer_data_2[863:856] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_108[1] = buffer_data_2[871:864] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_108[2] = buffer_data_2[879:872] * G_Kernel_3x3[0][53:36];
@@ -2374,7 +2374,7 @@ always @(posedge clk) begin
     blur_din[871:864] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_109[0:8]
+wire  [25:0]  kernel_img_mul_109[0:8];
 assign kernel_img_mul_109[0] = buffer_data_2[871:864] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_109[1] = buffer_data_2[879:872] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_109[2] = buffer_data_2[887:880] * G_Kernel_3x3[0][53:36];
@@ -2396,7 +2396,7 @@ always @(posedge clk) begin
     blur_din[879:872] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_110[0:8]
+wire  [25:0]  kernel_img_mul_110[0:8];
 assign kernel_img_mul_110[0] = buffer_data_2[879:872] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_110[1] = buffer_data_2[887:880] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_110[2] = buffer_data_2[895:888] * G_Kernel_3x3[0][53:36];
@@ -2418,7 +2418,7 @@ always @(posedge clk) begin
     blur_din[887:880] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_111[0:8]
+wire  [25:0]  kernel_img_mul_111[0:8];
 assign kernel_img_mul_111[0] = buffer_data_2[887:880] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_111[1] = buffer_data_2[895:888] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_111[2] = buffer_data_2[903:896] * G_Kernel_3x3[0][53:36];
@@ -2440,7 +2440,7 @@ always @(posedge clk) begin
     blur_din[895:888] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_112[0:8]
+wire  [25:0]  kernel_img_mul_112[0:8];
 assign kernel_img_mul_112[0] = buffer_data_2[895:888] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_112[1] = buffer_data_2[903:896] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_112[2] = buffer_data_2[911:904] * G_Kernel_3x3[0][53:36];
@@ -2462,7 +2462,7 @@ always @(posedge clk) begin
     blur_din[903:896] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_113[0:8]
+wire  [25:0]  kernel_img_mul_113[0:8];
 assign kernel_img_mul_113[0] = buffer_data_2[903:896] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_113[1] = buffer_data_2[911:904] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_113[2] = buffer_data_2[919:912] * G_Kernel_3x3[0][53:36];
@@ -2484,7 +2484,7 @@ always @(posedge clk) begin
     blur_din[911:904] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_114[0:8]
+wire  [25:0]  kernel_img_mul_114[0:8];
 assign kernel_img_mul_114[0] = buffer_data_2[911:904] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_114[1] = buffer_data_2[919:912] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_114[2] = buffer_data_2[927:920] * G_Kernel_3x3[0][53:36];
@@ -2506,7 +2506,7 @@ always @(posedge clk) begin
     blur_din[919:912] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_115[0:8]
+wire  [25:0]  kernel_img_mul_115[0:8];
 assign kernel_img_mul_115[0] = buffer_data_2[919:912] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_115[1] = buffer_data_2[927:920] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_115[2] = buffer_data_2[935:928] * G_Kernel_3x3[0][53:36];
@@ -2528,7 +2528,7 @@ always @(posedge clk) begin
     blur_din[927:920] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_116[0:8]
+wire  [25:0]  kernel_img_mul_116[0:8];
 assign kernel_img_mul_116[0] = buffer_data_2[927:920] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_116[1] = buffer_data_2[935:928] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_116[2] = buffer_data_2[943:936] * G_Kernel_3x3[0][53:36];
@@ -2550,7 +2550,7 @@ always @(posedge clk) begin
     blur_din[935:928] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_117[0:8]
+wire  [25:0]  kernel_img_mul_117[0:8];
 assign kernel_img_mul_117[0] = buffer_data_2[935:928] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_117[1] = buffer_data_2[943:936] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_117[2] = buffer_data_2[951:944] * G_Kernel_3x3[0][53:36];
@@ -2572,7 +2572,7 @@ always @(posedge clk) begin
     blur_din[943:936] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_118[0:8]
+wire  [25:0]  kernel_img_mul_118[0:8];
 assign kernel_img_mul_118[0] = buffer_data_2[943:936] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_118[1] = buffer_data_2[951:944] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_118[2] = buffer_data_2[959:952] * G_Kernel_3x3[0][53:36];
@@ -2594,7 +2594,7 @@ always @(posedge clk) begin
     blur_din[951:944] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_119[0:8]
+wire  [25:0]  kernel_img_mul_119[0:8];
 assign kernel_img_mul_119[0] = buffer_data_2[951:944] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_119[1] = buffer_data_2[959:952] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_119[2] = buffer_data_2[967:960] * G_Kernel_3x3[0][53:36];
@@ -2616,7 +2616,7 @@ always @(posedge clk) begin
     blur_din[959:952] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_120[0:8]
+wire  [25:0]  kernel_img_mul_120[0:8];
 assign kernel_img_mul_120[0] = buffer_data_2[959:952] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_120[1] = buffer_data_2[967:960] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_120[2] = buffer_data_2[975:968] * G_Kernel_3x3[0][53:36];
@@ -2638,7 +2638,7 @@ always @(posedge clk) begin
     blur_din[967:960] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_121[0:8]
+wire  [25:0]  kernel_img_mul_121[0:8];
 assign kernel_img_mul_121[0] = buffer_data_2[967:960] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_121[1] = buffer_data_2[975:968] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_121[2] = buffer_data_2[983:976] * G_Kernel_3x3[0][53:36];
@@ -2660,7 +2660,7 @@ always @(posedge clk) begin
     blur_din[975:968] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_122[0:8]
+wire  [25:0]  kernel_img_mul_122[0:8];
 assign kernel_img_mul_122[0] = buffer_data_2[975:968] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_122[1] = buffer_data_2[983:976] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_122[2] = buffer_data_2[991:984] * G_Kernel_3x3[0][53:36];
@@ -2682,7 +2682,7 @@ always @(posedge clk) begin
     blur_din[983:976] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_123[0:8]
+wire  [25:0]  kernel_img_mul_123[0:8];
 assign kernel_img_mul_123[0] = buffer_data_2[983:976] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_123[1] = buffer_data_2[991:984] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_123[2] = buffer_data_2[999:992] * G_Kernel_3x3[0][53:36];
@@ -2704,7 +2704,7 @@ always @(posedge clk) begin
     blur_din[991:984] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_124[0:8]
+wire  [25:0]  kernel_img_mul_124[0:8];
 assign kernel_img_mul_124[0] = buffer_data_2[991:984] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_124[1] = buffer_data_2[999:992] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_124[2] = buffer_data_2[1007:1000] * G_Kernel_3x3[0][53:36];
@@ -2726,7 +2726,7 @@ always @(posedge clk) begin
     blur_din[999:992] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_125[0:8]
+wire  [25:0]  kernel_img_mul_125[0:8];
 assign kernel_img_mul_125[0] = buffer_data_2[999:992] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_125[1] = buffer_data_2[1007:1000] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_125[2] = buffer_data_2[1015:1008] * G_Kernel_3x3[0][53:36];
@@ -2748,7 +2748,7 @@ always @(posedge clk) begin
     blur_din[1007:1000] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_126[0:8]
+wire  [25:0]  kernel_img_mul_126[0:8];
 assign kernel_img_mul_126[0] = buffer_data_2[1007:1000] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_126[1] = buffer_data_2[1015:1008] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_126[2] = buffer_data_2[1023:1016] * G_Kernel_3x3[0][53:36];
@@ -2770,7 +2770,7 @@ always @(posedge clk) begin
     blur_din[1015:1008] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_127[0:8]
+wire  [25:0]  kernel_img_mul_127[0:8];
 assign kernel_img_mul_127[0] = buffer_data_2[1015:1008] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_127[1] = buffer_data_2[1023:1016] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_127[2] = buffer_data_2[1031:1024] * G_Kernel_3x3[0][53:36];
@@ -2792,7 +2792,7 @@ always @(posedge clk) begin
     blur_din[1023:1016] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_128[0:8]
+wire  [25:0]  kernel_img_mul_128[0:8];
 assign kernel_img_mul_128[0] = buffer_data_2[1023:1016] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_128[1] = buffer_data_2[1031:1024] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_128[2] = buffer_data_2[1039:1032] * G_Kernel_3x3[0][53:36];
@@ -2814,7 +2814,7 @@ always @(posedge clk) begin
     blur_din[1031:1024] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_129[0:8]
+wire  [25:0]  kernel_img_mul_129[0:8];
 assign kernel_img_mul_129[0] = buffer_data_2[1031:1024] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_129[1] = buffer_data_2[1039:1032] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_129[2] = buffer_data_2[1047:1040] * G_Kernel_3x3[0][53:36];
@@ -2836,7 +2836,7 @@ always @(posedge clk) begin
     blur_din[1039:1032] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_130[0:8]
+wire  [25:0]  kernel_img_mul_130[0:8];
 assign kernel_img_mul_130[0] = buffer_data_2[1039:1032] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_130[1] = buffer_data_2[1047:1040] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_130[2] = buffer_data_2[1055:1048] * G_Kernel_3x3[0][53:36];
@@ -2858,7 +2858,7 @@ always @(posedge clk) begin
     blur_din[1047:1040] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_131[0:8]
+wire  [25:0]  kernel_img_mul_131[0:8];
 assign kernel_img_mul_131[0] = buffer_data_2[1047:1040] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_131[1] = buffer_data_2[1055:1048] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_131[2] = buffer_data_2[1063:1056] * G_Kernel_3x3[0][53:36];
@@ -2880,7 +2880,7 @@ always @(posedge clk) begin
     blur_din[1055:1048] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_132[0:8]
+wire  [25:0]  kernel_img_mul_132[0:8];
 assign kernel_img_mul_132[0] = buffer_data_2[1055:1048] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_132[1] = buffer_data_2[1063:1056] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_132[2] = buffer_data_2[1071:1064] * G_Kernel_3x3[0][53:36];
@@ -2902,7 +2902,7 @@ always @(posedge clk) begin
     blur_din[1063:1056] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_133[0:8]
+wire  [25:0]  kernel_img_mul_133[0:8];
 assign kernel_img_mul_133[0] = buffer_data_2[1063:1056] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_133[1] = buffer_data_2[1071:1064] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_133[2] = buffer_data_2[1079:1072] * G_Kernel_3x3[0][53:36];
@@ -2924,7 +2924,7 @@ always @(posedge clk) begin
     blur_din[1071:1064] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_134[0:8]
+wire  [25:0]  kernel_img_mul_134[0:8];
 assign kernel_img_mul_134[0] = buffer_data_2[1071:1064] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_134[1] = buffer_data_2[1079:1072] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_134[2] = buffer_data_2[1087:1080] * G_Kernel_3x3[0][53:36];
@@ -2946,7 +2946,7 @@ always @(posedge clk) begin
     blur_din[1079:1072] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_135[0:8]
+wire  [25:0]  kernel_img_mul_135[0:8];
 assign kernel_img_mul_135[0] = buffer_data_2[1079:1072] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_135[1] = buffer_data_2[1087:1080] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_135[2] = buffer_data_2[1095:1088] * G_Kernel_3x3[0][53:36];
@@ -2968,7 +2968,7 @@ always @(posedge clk) begin
     blur_din[1087:1080] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_136[0:8]
+wire  [25:0]  kernel_img_mul_136[0:8];
 assign kernel_img_mul_136[0] = buffer_data_2[1087:1080] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_136[1] = buffer_data_2[1095:1088] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_136[2] = buffer_data_2[1103:1096] * G_Kernel_3x3[0][53:36];
@@ -2990,7 +2990,7 @@ always @(posedge clk) begin
     blur_din[1095:1088] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_137[0:8]
+wire  [25:0]  kernel_img_mul_137[0:8];
 assign kernel_img_mul_137[0] = buffer_data_2[1095:1088] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_137[1] = buffer_data_2[1103:1096] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_137[2] = buffer_data_2[1111:1104] * G_Kernel_3x3[0][53:36];
@@ -3012,7 +3012,7 @@ always @(posedge clk) begin
     blur_din[1103:1096] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_138[0:8]
+wire  [25:0]  kernel_img_mul_138[0:8];
 assign kernel_img_mul_138[0] = buffer_data_2[1103:1096] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_138[1] = buffer_data_2[1111:1104] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_138[2] = buffer_data_2[1119:1112] * G_Kernel_3x3[0][53:36];
@@ -3034,7 +3034,7 @@ always @(posedge clk) begin
     blur_din[1111:1104] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_139[0:8]
+wire  [25:0]  kernel_img_mul_139[0:8];
 assign kernel_img_mul_139[0] = buffer_data_2[1111:1104] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_139[1] = buffer_data_2[1119:1112] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_139[2] = buffer_data_2[1127:1120] * G_Kernel_3x3[0][53:36];
@@ -3056,7 +3056,7 @@ always @(posedge clk) begin
     blur_din[1119:1112] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_140[0:8]
+wire  [25:0]  kernel_img_mul_140[0:8];
 assign kernel_img_mul_140[0] = buffer_data_2[1119:1112] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_140[1] = buffer_data_2[1127:1120] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_140[2] = buffer_data_2[1135:1128] * G_Kernel_3x3[0][53:36];
@@ -3078,7 +3078,7 @@ always @(posedge clk) begin
     blur_din[1127:1120] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_141[0:8]
+wire  [25:0]  kernel_img_mul_141[0:8];
 assign kernel_img_mul_141[0] = buffer_data_2[1127:1120] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_141[1] = buffer_data_2[1135:1128] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_141[2] = buffer_data_2[1143:1136] * G_Kernel_3x3[0][53:36];
@@ -3100,7 +3100,7 @@ always @(posedge clk) begin
     blur_din[1135:1128] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_142[0:8]
+wire  [25:0]  kernel_img_mul_142[0:8];
 assign kernel_img_mul_142[0] = buffer_data_2[1135:1128] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_142[1] = buffer_data_2[1143:1136] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_142[2] = buffer_data_2[1151:1144] * G_Kernel_3x3[0][53:36];
@@ -3122,7 +3122,7 @@ always @(posedge clk) begin
     blur_din[1143:1136] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_143[0:8]
+wire  [25:0]  kernel_img_mul_143[0:8];
 assign kernel_img_mul_143[0] = buffer_data_2[1143:1136] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_143[1] = buffer_data_2[1151:1144] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_143[2] = buffer_data_2[1159:1152] * G_Kernel_3x3[0][53:36];
@@ -3144,7 +3144,7 @@ always @(posedge clk) begin
     blur_din[1151:1144] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_144[0:8]
+wire  [25:0]  kernel_img_mul_144[0:8];
 assign kernel_img_mul_144[0] = buffer_data_2[1151:1144] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_144[1] = buffer_data_2[1159:1152] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_144[2] = buffer_data_2[1167:1160] * G_Kernel_3x3[0][53:36];
@@ -3166,7 +3166,7 @@ always @(posedge clk) begin
     blur_din[1159:1152] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_145[0:8]
+wire  [25:0]  kernel_img_mul_145[0:8];
 assign kernel_img_mul_145[0] = buffer_data_2[1159:1152] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_145[1] = buffer_data_2[1167:1160] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_145[2] = buffer_data_2[1175:1168] * G_Kernel_3x3[0][53:36];
@@ -3188,7 +3188,7 @@ always @(posedge clk) begin
     blur_din[1167:1160] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_146[0:8]
+wire  [25:0]  kernel_img_mul_146[0:8];
 assign kernel_img_mul_146[0] = buffer_data_2[1167:1160] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_146[1] = buffer_data_2[1175:1168] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_146[2] = buffer_data_2[1183:1176] * G_Kernel_3x3[0][53:36];
@@ -3210,7 +3210,7 @@ always @(posedge clk) begin
     blur_din[1175:1168] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_147[0:8]
+wire  [25:0]  kernel_img_mul_147[0:8];
 assign kernel_img_mul_147[0] = buffer_data_2[1175:1168] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_147[1] = buffer_data_2[1183:1176] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_147[2] = buffer_data_2[1191:1184] * G_Kernel_3x3[0][53:36];
@@ -3232,7 +3232,7 @@ always @(posedge clk) begin
     blur_din[1183:1176] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_148[0:8]
+wire  [25:0]  kernel_img_mul_148[0:8];
 assign kernel_img_mul_148[0] = buffer_data_2[1183:1176] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_148[1] = buffer_data_2[1191:1184] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_148[2] = buffer_data_2[1199:1192] * G_Kernel_3x3[0][53:36];
@@ -3254,7 +3254,7 @@ always @(posedge clk) begin
     blur_din[1191:1184] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_149[0:8]
+wire  [25:0]  kernel_img_mul_149[0:8];
 assign kernel_img_mul_149[0] = buffer_data_2[1191:1184] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_149[1] = buffer_data_2[1199:1192] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_149[2] = buffer_data_2[1207:1200] * G_Kernel_3x3[0][53:36];
@@ -3276,7 +3276,7 @@ always @(posedge clk) begin
     blur_din[1199:1192] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_150[0:8]
+wire  [25:0]  kernel_img_mul_150[0:8];
 assign kernel_img_mul_150[0] = buffer_data_2[1199:1192] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_150[1] = buffer_data_2[1207:1200] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_150[2] = buffer_data_2[1215:1208] * G_Kernel_3x3[0][53:36];
@@ -3298,7 +3298,7 @@ always @(posedge clk) begin
     blur_din[1207:1200] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_151[0:8]
+wire  [25:0]  kernel_img_mul_151[0:8];
 assign kernel_img_mul_151[0] = buffer_data_2[1207:1200] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_151[1] = buffer_data_2[1215:1208] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_151[2] = buffer_data_2[1223:1216] * G_Kernel_3x3[0][53:36];
@@ -3320,7 +3320,7 @@ always @(posedge clk) begin
     blur_din[1215:1208] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_152[0:8]
+wire  [25:0]  kernel_img_mul_152[0:8];
 assign kernel_img_mul_152[0] = buffer_data_2[1215:1208] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_152[1] = buffer_data_2[1223:1216] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_152[2] = buffer_data_2[1231:1224] * G_Kernel_3x3[0][53:36];
@@ -3342,7 +3342,7 @@ always @(posedge clk) begin
     blur_din[1223:1216] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_153[0:8]
+wire  [25:0]  kernel_img_mul_153[0:8];
 assign kernel_img_mul_153[0] = buffer_data_2[1223:1216] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_153[1] = buffer_data_2[1231:1224] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_153[2] = buffer_data_2[1239:1232] * G_Kernel_3x3[0][53:36];
@@ -3364,7 +3364,7 @@ always @(posedge clk) begin
     blur_din[1231:1224] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_154[0:8]
+wire  [25:0]  kernel_img_mul_154[0:8];
 assign kernel_img_mul_154[0] = buffer_data_2[1231:1224] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_154[1] = buffer_data_2[1239:1232] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_154[2] = buffer_data_2[1247:1240] * G_Kernel_3x3[0][53:36];
@@ -3386,7 +3386,7 @@ always @(posedge clk) begin
     blur_din[1239:1232] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_155[0:8]
+wire  [25:0]  kernel_img_mul_155[0:8];
 assign kernel_img_mul_155[0] = buffer_data_2[1239:1232] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_155[1] = buffer_data_2[1247:1240] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_155[2] = buffer_data_2[1255:1248] * G_Kernel_3x3[0][53:36];
@@ -3408,7 +3408,7 @@ always @(posedge clk) begin
     blur_din[1247:1240] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_156[0:8]
+wire  [25:0]  kernel_img_mul_156[0:8];
 assign kernel_img_mul_156[0] = buffer_data_2[1247:1240] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_156[1] = buffer_data_2[1255:1248] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_156[2] = buffer_data_2[1263:1256] * G_Kernel_3x3[0][53:36];
@@ -3430,7 +3430,7 @@ always @(posedge clk) begin
     blur_din[1255:1248] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_157[0:8]
+wire  [25:0]  kernel_img_mul_157[0:8];
 assign kernel_img_mul_157[0] = buffer_data_2[1255:1248] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_157[1] = buffer_data_2[1263:1256] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_157[2] = buffer_data_2[1271:1264] * G_Kernel_3x3[0][53:36];
@@ -3452,7 +3452,7 @@ always @(posedge clk) begin
     blur_din[1263:1256] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_158[0:8]
+wire  [25:0]  kernel_img_mul_158[0:8];
 assign kernel_img_mul_158[0] = buffer_data_2[1263:1256] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_158[1] = buffer_data_2[1271:1264] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_158[2] = buffer_data_2[1279:1272] * G_Kernel_3x3[0][53:36];
@@ -3474,7 +3474,7 @@ always @(posedge clk) begin
     blur_din[1271:1264] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_159[0:8]
+wire  [25:0]  kernel_img_mul_159[0:8];
 assign kernel_img_mul_159[0] = buffer_data_2[1271:1264] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_159[1] = buffer_data_2[1279:1272] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_159[2] = buffer_data_2[1287:1280] * G_Kernel_3x3[0][53:36];
@@ -3496,7 +3496,7 @@ always @(posedge clk) begin
     blur_din[1279:1272] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_160[0:8]
+wire  [25:0]  kernel_img_mul_160[0:8];
 assign kernel_img_mul_160[0] = buffer_data_2[1279:1272] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_160[1] = buffer_data_2[1287:1280] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_160[2] = buffer_data_2[1295:1288] * G_Kernel_3x3[0][53:36];
@@ -3518,7 +3518,7 @@ always @(posedge clk) begin
     blur_din[1287:1280] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_161[0:8]
+wire  [25:0]  kernel_img_mul_161[0:8];
 assign kernel_img_mul_161[0] = buffer_data_2[1287:1280] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_161[1] = buffer_data_2[1295:1288] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_161[2] = buffer_data_2[1303:1296] * G_Kernel_3x3[0][53:36];
@@ -3540,7 +3540,7 @@ always @(posedge clk) begin
     blur_din[1295:1288] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_162[0:8]
+wire  [25:0]  kernel_img_mul_162[0:8];
 assign kernel_img_mul_162[0] = buffer_data_2[1295:1288] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_162[1] = buffer_data_2[1303:1296] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_162[2] = buffer_data_2[1311:1304] * G_Kernel_3x3[0][53:36];
@@ -3562,7 +3562,7 @@ always @(posedge clk) begin
     blur_din[1303:1296] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_163[0:8]
+wire  [25:0]  kernel_img_mul_163[0:8];
 assign kernel_img_mul_163[0] = buffer_data_2[1303:1296] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_163[1] = buffer_data_2[1311:1304] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_163[2] = buffer_data_2[1319:1312] * G_Kernel_3x3[0][53:36];
@@ -3584,7 +3584,7 @@ always @(posedge clk) begin
     blur_din[1311:1304] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_164[0:8]
+wire  [25:0]  kernel_img_mul_164[0:8];
 assign kernel_img_mul_164[0] = buffer_data_2[1311:1304] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_164[1] = buffer_data_2[1319:1312] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_164[2] = buffer_data_2[1327:1320] * G_Kernel_3x3[0][53:36];
@@ -3606,7 +3606,7 @@ always @(posedge clk) begin
     blur_din[1319:1312] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_165[0:8]
+wire  [25:0]  kernel_img_mul_165[0:8];
 assign kernel_img_mul_165[0] = buffer_data_2[1319:1312] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_165[1] = buffer_data_2[1327:1320] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_165[2] = buffer_data_2[1335:1328] * G_Kernel_3x3[0][53:36];
@@ -3628,7 +3628,7 @@ always @(posedge clk) begin
     blur_din[1327:1320] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_166[0:8]
+wire  [25:0]  kernel_img_mul_166[0:8];
 assign kernel_img_mul_166[0] = buffer_data_2[1327:1320] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_166[1] = buffer_data_2[1335:1328] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_166[2] = buffer_data_2[1343:1336] * G_Kernel_3x3[0][53:36];
@@ -3650,7 +3650,7 @@ always @(posedge clk) begin
     blur_din[1335:1328] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_167[0:8]
+wire  [25:0]  kernel_img_mul_167[0:8];
 assign kernel_img_mul_167[0] = buffer_data_2[1335:1328] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_167[1] = buffer_data_2[1343:1336] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_167[2] = buffer_data_2[1351:1344] * G_Kernel_3x3[0][53:36];
@@ -3672,7 +3672,7 @@ always @(posedge clk) begin
     blur_din[1343:1336] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_168[0:8]
+wire  [25:0]  kernel_img_mul_168[0:8];
 assign kernel_img_mul_168[0] = buffer_data_2[1343:1336] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_168[1] = buffer_data_2[1351:1344] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_168[2] = buffer_data_2[1359:1352] * G_Kernel_3x3[0][53:36];
@@ -3694,7 +3694,7 @@ always @(posedge clk) begin
     blur_din[1351:1344] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_169[0:8]
+wire  [25:0]  kernel_img_mul_169[0:8];
 assign kernel_img_mul_169[0] = buffer_data_2[1351:1344] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_169[1] = buffer_data_2[1359:1352] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_169[2] = buffer_data_2[1367:1360] * G_Kernel_3x3[0][53:36];
@@ -3716,7 +3716,7 @@ always @(posedge clk) begin
     blur_din[1359:1352] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_170[0:8]
+wire  [25:0]  kernel_img_mul_170[0:8];
 assign kernel_img_mul_170[0] = buffer_data_2[1359:1352] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_170[1] = buffer_data_2[1367:1360] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_170[2] = buffer_data_2[1375:1368] * G_Kernel_3x3[0][53:36];
@@ -3738,7 +3738,7 @@ always @(posedge clk) begin
     blur_din[1367:1360] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_171[0:8]
+wire  [25:0]  kernel_img_mul_171[0:8];
 assign kernel_img_mul_171[0] = buffer_data_2[1367:1360] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_171[1] = buffer_data_2[1375:1368] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_171[2] = buffer_data_2[1383:1376] * G_Kernel_3x3[0][53:36];
@@ -3760,7 +3760,7 @@ always @(posedge clk) begin
     blur_din[1375:1368] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_172[0:8]
+wire  [25:0]  kernel_img_mul_172[0:8];
 assign kernel_img_mul_172[0] = buffer_data_2[1375:1368] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_172[1] = buffer_data_2[1383:1376] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_172[2] = buffer_data_2[1391:1384] * G_Kernel_3x3[0][53:36];
@@ -3782,7 +3782,7 @@ always @(posedge clk) begin
     blur_din[1383:1376] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_173[0:8]
+wire  [25:0]  kernel_img_mul_173[0:8];
 assign kernel_img_mul_173[0] = buffer_data_2[1383:1376] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_173[1] = buffer_data_2[1391:1384] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_173[2] = buffer_data_2[1399:1392] * G_Kernel_3x3[0][53:36];
@@ -3804,7 +3804,7 @@ always @(posedge clk) begin
     blur_din[1391:1384] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_174[0:8]
+wire  [25:0]  kernel_img_mul_174[0:8];
 assign kernel_img_mul_174[0] = buffer_data_2[1391:1384] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_174[1] = buffer_data_2[1399:1392] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_174[2] = buffer_data_2[1407:1400] * G_Kernel_3x3[0][53:36];
@@ -3826,7 +3826,7 @@ always @(posedge clk) begin
     blur_din[1399:1392] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_175[0:8]
+wire  [25:0]  kernel_img_mul_175[0:8];
 assign kernel_img_mul_175[0] = buffer_data_2[1399:1392] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_175[1] = buffer_data_2[1407:1400] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_175[2] = buffer_data_2[1415:1408] * G_Kernel_3x3[0][53:36];
@@ -3848,7 +3848,7 @@ always @(posedge clk) begin
     blur_din[1407:1400] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_176[0:8]
+wire  [25:0]  kernel_img_mul_176[0:8];
 assign kernel_img_mul_176[0] = buffer_data_2[1407:1400] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_176[1] = buffer_data_2[1415:1408] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_176[2] = buffer_data_2[1423:1416] * G_Kernel_3x3[0][53:36];
@@ -3870,7 +3870,7 @@ always @(posedge clk) begin
     blur_din[1415:1408] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_177[0:8]
+wire  [25:0]  kernel_img_mul_177[0:8];
 assign kernel_img_mul_177[0] = buffer_data_2[1415:1408] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_177[1] = buffer_data_2[1423:1416] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_177[2] = buffer_data_2[1431:1424] * G_Kernel_3x3[0][53:36];
@@ -3892,7 +3892,7 @@ always @(posedge clk) begin
     blur_din[1423:1416] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_178[0:8]
+wire  [25:0]  kernel_img_mul_178[0:8];
 assign kernel_img_mul_178[0] = buffer_data_2[1423:1416] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_178[1] = buffer_data_2[1431:1424] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_178[2] = buffer_data_2[1439:1432] * G_Kernel_3x3[0][53:36];
@@ -3914,7 +3914,7 @@ always @(posedge clk) begin
     blur_din[1431:1424] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_179[0:8]
+wire  [25:0]  kernel_img_mul_179[0:8];
 assign kernel_img_mul_179[0] = buffer_data_2[1431:1424] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_179[1] = buffer_data_2[1439:1432] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_179[2] = buffer_data_2[1447:1440] * G_Kernel_3x3[0][53:36];
@@ -3936,7 +3936,7 @@ always @(posedge clk) begin
     blur_din[1439:1432] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_180[0:8]
+wire  [25:0]  kernel_img_mul_180[0:8];
 assign kernel_img_mul_180[0] = buffer_data_2[1439:1432] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_180[1] = buffer_data_2[1447:1440] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_180[2] = buffer_data_2[1455:1448] * G_Kernel_3x3[0][53:36];
@@ -3958,7 +3958,7 @@ always @(posedge clk) begin
     blur_din[1447:1440] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_181[0:8]
+wire  [25:0]  kernel_img_mul_181[0:8];
 assign kernel_img_mul_181[0] = buffer_data_2[1447:1440] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_181[1] = buffer_data_2[1455:1448] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_181[2] = buffer_data_2[1463:1456] * G_Kernel_3x3[0][53:36];
@@ -3980,7 +3980,7 @@ always @(posedge clk) begin
     blur_din[1455:1448] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_182[0:8]
+wire  [25:0]  kernel_img_mul_182[0:8];
 assign kernel_img_mul_182[0] = buffer_data_2[1455:1448] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_182[1] = buffer_data_2[1463:1456] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_182[2] = buffer_data_2[1471:1464] * G_Kernel_3x3[0][53:36];
@@ -4002,7 +4002,7 @@ always @(posedge clk) begin
     blur_din[1463:1456] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_183[0:8]
+wire  [25:0]  kernel_img_mul_183[0:8];
 assign kernel_img_mul_183[0] = buffer_data_2[1463:1456] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_183[1] = buffer_data_2[1471:1464] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_183[2] = buffer_data_2[1479:1472] * G_Kernel_3x3[0][53:36];
@@ -4024,7 +4024,7 @@ always @(posedge clk) begin
     blur_din[1471:1464] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_184[0:8]
+wire  [25:0]  kernel_img_mul_184[0:8];
 assign kernel_img_mul_184[0] = buffer_data_2[1471:1464] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_184[1] = buffer_data_2[1479:1472] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_184[2] = buffer_data_2[1487:1480] * G_Kernel_3x3[0][53:36];
@@ -4046,7 +4046,7 @@ always @(posedge clk) begin
     blur_din[1479:1472] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_185[0:8]
+wire  [25:0]  kernel_img_mul_185[0:8];
 assign kernel_img_mul_185[0] = buffer_data_2[1479:1472] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_185[1] = buffer_data_2[1487:1480] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_185[2] = buffer_data_2[1495:1488] * G_Kernel_3x3[0][53:36];
@@ -4068,7 +4068,7 @@ always @(posedge clk) begin
     blur_din[1487:1480] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_186[0:8]
+wire  [25:0]  kernel_img_mul_186[0:8];
 assign kernel_img_mul_186[0] = buffer_data_2[1487:1480] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_186[1] = buffer_data_2[1495:1488] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_186[2] = buffer_data_2[1503:1496] * G_Kernel_3x3[0][53:36];
@@ -4090,7 +4090,7 @@ always @(posedge clk) begin
     blur_din[1495:1488] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_187[0:8]
+wire  [25:0]  kernel_img_mul_187[0:8];
 assign kernel_img_mul_187[0] = buffer_data_2[1495:1488] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_187[1] = buffer_data_2[1503:1496] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_187[2] = buffer_data_2[1511:1504] * G_Kernel_3x3[0][53:36];
@@ -4112,7 +4112,7 @@ always @(posedge clk) begin
     blur_din[1503:1496] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_188[0:8]
+wire  [25:0]  kernel_img_mul_188[0:8];
 assign kernel_img_mul_188[0] = buffer_data_2[1503:1496] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_188[1] = buffer_data_2[1511:1504] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_188[2] = buffer_data_2[1519:1512] * G_Kernel_3x3[0][53:36];
@@ -4134,7 +4134,7 @@ always @(posedge clk) begin
     blur_din[1511:1504] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_189[0:8]
+wire  [25:0]  kernel_img_mul_189[0:8];
 assign kernel_img_mul_189[0] = buffer_data_2[1511:1504] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_189[1] = buffer_data_2[1519:1512] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_189[2] = buffer_data_2[1527:1520] * G_Kernel_3x3[0][53:36];
@@ -4156,7 +4156,7 @@ always @(posedge clk) begin
     blur_din[1519:1512] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_190[0:8]
+wire  [25:0]  kernel_img_mul_190[0:8];
 assign kernel_img_mul_190[0] = buffer_data_2[1519:1512] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_190[1] = buffer_data_2[1527:1520] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_190[2] = buffer_data_2[1535:1528] * G_Kernel_3x3[0][53:36];
@@ -4178,7 +4178,7 @@ always @(posedge clk) begin
     blur_din[1527:1520] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_191[0:8]
+wire  [25:0]  kernel_img_mul_191[0:8];
 assign kernel_img_mul_191[0] = buffer_data_2[1527:1520] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_191[1] = buffer_data_2[1535:1528] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_191[2] = buffer_data_2[1543:1536] * G_Kernel_3x3[0][53:36];
@@ -4200,7 +4200,7 @@ always @(posedge clk) begin
     blur_din[1535:1528] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_192[0:8]
+wire  [25:0]  kernel_img_mul_192[0:8];
 assign kernel_img_mul_192[0] = buffer_data_2[1535:1528] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_192[1] = buffer_data_2[1543:1536] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_192[2] = buffer_data_2[1551:1544] * G_Kernel_3x3[0][53:36];
@@ -4222,7 +4222,7 @@ always @(posedge clk) begin
     blur_din[1543:1536] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_193[0:8]
+wire  [25:0]  kernel_img_mul_193[0:8];
 assign kernel_img_mul_193[0] = buffer_data_2[1543:1536] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_193[1] = buffer_data_2[1551:1544] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_193[2] = buffer_data_2[1559:1552] * G_Kernel_3x3[0][53:36];
@@ -4244,7 +4244,7 @@ always @(posedge clk) begin
     blur_din[1551:1544] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_194[0:8]
+wire  [25:0]  kernel_img_mul_194[0:8];
 assign kernel_img_mul_194[0] = buffer_data_2[1551:1544] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_194[1] = buffer_data_2[1559:1552] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_194[2] = buffer_data_2[1567:1560] * G_Kernel_3x3[0][53:36];
@@ -4266,7 +4266,7 @@ always @(posedge clk) begin
     blur_din[1559:1552] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_195[0:8]
+wire  [25:0]  kernel_img_mul_195[0:8];
 assign kernel_img_mul_195[0] = buffer_data_2[1559:1552] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_195[1] = buffer_data_2[1567:1560] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_195[2] = buffer_data_2[1575:1568] * G_Kernel_3x3[0][53:36];
@@ -4288,7 +4288,7 @@ always @(posedge clk) begin
     blur_din[1567:1560] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_196[0:8]
+wire  [25:0]  kernel_img_mul_196[0:8];
 assign kernel_img_mul_196[0] = buffer_data_2[1567:1560] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_196[1] = buffer_data_2[1575:1568] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_196[2] = buffer_data_2[1583:1576] * G_Kernel_3x3[0][53:36];
@@ -4310,7 +4310,7 @@ always @(posedge clk) begin
     blur_din[1575:1568] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_197[0:8]
+wire  [25:0]  kernel_img_mul_197[0:8];
 assign kernel_img_mul_197[0] = buffer_data_2[1575:1568] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_197[1] = buffer_data_2[1583:1576] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_197[2] = buffer_data_2[1591:1584] * G_Kernel_3x3[0][53:36];
@@ -4332,7 +4332,7 @@ always @(posedge clk) begin
     blur_din[1583:1576] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_198[0:8]
+wire  [25:0]  kernel_img_mul_198[0:8];
 assign kernel_img_mul_198[0] = buffer_data_2[1583:1576] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_198[1] = buffer_data_2[1591:1584] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_198[2] = buffer_data_2[1599:1592] * G_Kernel_3x3[0][53:36];
@@ -4354,7 +4354,7 @@ always @(posedge clk) begin
     blur_din[1591:1584] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_199[0:8]
+wire  [25:0]  kernel_img_mul_199[0:8];
 assign kernel_img_mul_199[0] = buffer_data_2[1591:1584] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_199[1] = buffer_data_2[1599:1592] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_199[2] = buffer_data_2[1607:1600] * G_Kernel_3x3[0][53:36];
@@ -4376,7 +4376,7 @@ always @(posedge clk) begin
     blur_din[1599:1592] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_200[0:8]
+wire  [25:0]  kernel_img_mul_200[0:8];
 assign kernel_img_mul_200[0] = buffer_data_2[1599:1592] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_200[1] = buffer_data_2[1607:1600] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_200[2] = buffer_data_2[1615:1608] * G_Kernel_3x3[0][53:36];
@@ -4398,7 +4398,7 @@ always @(posedge clk) begin
     blur_din[1607:1600] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_201[0:8]
+wire  [25:0]  kernel_img_mul_201[0:8];
 assign kernel_img_mul_201[0] = buffer_data_2[1607:1600] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_201[1] = buffer_data_2[1615:1608] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_201[2] = buffer_data_2[1623:1616] * G_Kernel_3x3[0][53:36];
@@ -4420,7 +4420,7 @@ always @(posedge clk) begin
     blur_din[1615:1608] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_202[0:8]
+wire  [25:0]  kernel_img_mul_202[0:8];
 assign kernel_img_mul_202[0] = buffer_data_2[1615:1608] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_202[1] = buffer_data_2[1623:1616] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_202[2] = buffer_data_2[1631:1624] * G_Kernel_3x3[0][53:36];
@@ -4442,7 +4442,7 @@ always @(posedge clk) begin
     blur_din[1623:1616] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_203[0:8]
+wire  [25:0]  kernel_img_mul_203[0:8];
 assign kernel_img_mul_203[0] = buffer_data_2[1623:1616] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_203[1] = buffer_data_2[1631:1624] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_203[2] = buffer_data_2[1639:1632] * G_Kernel_3x3[0][53:36];
@@ -4464,7 +4464,7 @@ always @(posedge clk) begin
     blur_din[1631:1624] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_204[0:8]
+wire  [25:0]  kernel_img_mul_204[0:8];
 assign kernel_img_mul_204[0] = buffer_data_2[1631:1624] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_204[1] = buffer_data_2[1639:1632] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_204[2] = buffer_data_2[1647:1640] * G_Kernel_3x3[0][53:36];
@@ -4486,7 +4486,7 @@ always @(posedge clk) begin
     blur_din[1639:1632] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_205[0:8]
+wire  [25:0]  kernel_img_mul_205[0:8];
 assign kernel_img_mul_205[0] = buffer_data_2[1639:1632] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_205[1] = buffer_data_2[1647:1640] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_205[2] = buffer_data_2[1655:1648] * G_Kernel_3x3[0][53:36];
@@ -4508,7 +4508,7 @@ always @(posedge clk) begin
     blur_din[1647:1640] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_206[0:8]
+wire  [25:0]  kernel_img_mul_206[0:8];
 assign kernel_img_mul_206[0] = buffer_data_2[1647:1640] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_206[1] = buffer_data_2[1655:1648] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_206[2] = buffer_data_2[1663:1656] * G_Kernel_3x3[0][53:36];
@@ -4530,7 +4530,7 @@ always @(posedge clk) begin
     blur_din[1655:1648] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_207[0:8]
+wire  [25:0]  kernel_img_mul_207[0:8];
 assign kernel_img_mul_207[0] = buffer_data_2[1655:1648] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_207[1] = buffer_data_2[1663:1656] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_207[2] = buffer_data_2[1671:1664] * G_Kernel_3x3[0][53:36];
@@ -4552,7 +4552,7 @@ always @(posedge clk) begin
     blur_din[1663:1656] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_208[0:8]
+wire  [25:0]  kernel_img_mul_208[0:8];
 assign kernel_img_mul_208[0] = buffer_data_2[1663:1656] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_208[1] = buffer_data_2[1671:1664] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_208[2] = buffer_data_2[1679:1672] * G_Kernel_3x3[0][53:36];
@@ -4574,7 +4574,7 @@ always @(posedge clk) begin
     blur_din[1671:1664] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_209[0:8]
+wire  [25:0]  kernel_img_mul_209[0:8];
 assign kernel_img_mul_209[0] = buffer_data_2[1671:1664] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_209[1] = buffer_data_2[1679:1672] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_209[2] = buffer_data_2[1687:1680] * G_Kernel_3x3[0][53:36];
@@ -4596,7 +4596,7 @@ always @(posedge clk) begin
     blur_din[1679:1672] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_210[0:8]
+wire  [25:0]  kernel_img_mul_210[0:8];
 assign kernel_img_mul_210[0] = buffer_data_2[1679:1672] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_210[1] = buffer_data_2[1687:1680] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_210[2] = buffer_data_2[1695:1688] * G_Kernel_3x3[0][53:36];
@@ -4618,7 +4618,7 @@ always @(posedge clk) begin
     blur_din[1687:1680] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_211[0:8]
+wire  [25:0]  kernel_img_mul_211[0:8];
 assign kernel_img_mul_211[0] = buffer_data_2[1687:1680] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_211[1] = buffer_data_2[1695:1688] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_211[2] = buffer_data_2[1703:1696] * G_Kernel_3x3[0][53:36];
@@ -4640,7 +4640,7 @@ always @(posedge clk) begin
     blur_din[1695:1688] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_212[0:8]
+wire  [25:0]  kernel_img_mul_212[0:8];
 assign kernel_img_mul_212[0] = buffer_data_2[1695:1688] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_212[1] = buffer_data_2[1703:1696] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_212[2] = buffer_data_2[1711:1704] * G_Kernel_3x3[0][53:36];
@@ -4662,7 +4662,7 @@ always @(posedge clk) begin
     blur_din[1703:1696] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_213[0:8]
+wire  [25:0]  kernel_img_mul_213[0:8];
 assign kernel_img_mul_213[0] = buffer_data_2[1703:1696] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_213[1] = buffer_data_2[1711:1704] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_213[2] = buffer_data_2[1719:1712] * G_Kernel_3x3[0][53:36];
@@ -4684,7 +4684,7 @@ always @(posedge clk) begin
     blur_din[1711:1704] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_214[0:8]
+wire  [25:0]  kernel_img_mul_214[0:8];
 assign kernel_img_mul_214[0] = buffer_data_2[1711:1704] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_214[1] = buffer_data_2[1719:1712] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_214[2] = buffer_data_2[1727:1720] * G_Kernel_3x3[0][53:36];
@@ -4706,7 +4706,7 @@ always @(posedge clk) begin
     blur_din[1719:1712] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_215[0:8]
+wire  [25:0]  kernel_img_mul_215[0:8];
 assign kernel_img_mul_215[0] = buffer_data_2[1719:1712] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_215[1] = buffer_data_2[1727:1720] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_215[2] = buffer_data_2[1735:1728] * G_Kernel_3x3[0][53:36];
@@ -4728,7 +4728,7 @@ always @(posedge clk) begin
     blur_din[1727:1720] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_216[0:8]
+wire  [25:0]  kernel_img_mul_216[0:8];
 assign kernel_img_mul_216[0] = buffer_data_2[1727:1720] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_216[1] = buffer_data_2[1735:1728] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_216[2] = buffer_data_2[1743:1736] * G_Kernel_3x3[0][53:36];
@@ -4750,7 +4750,7 @@ always @(posedge clk) begin
     blur_din[1735:1728] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_217[0:8]
+wire  [25:0]  kernel_img_mul_217[0:8];
 assign kernel_img_mul_217[0] = buffer_data_2[1735:1728] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_217[1] = buffer_data_2[1743:1736] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_217[2] = buffer_data_2[1751:1744] * G_Kernel_3x3[0][53:36];
@@ -4772,7 +4772,7 @@ always @(posedge clk) begin
     blur_din[1743:1736] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_218[0:8]
+wire  [25:0]  kernel_img_mul_218[0:8];
 assign kernel_img_mul_218[0] = buffer_data_2[1743:1736] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_218[1] = buffer_data_2[1751:1744] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_218[2] = buffer_data_2[1759:1752] * G_Kernel_3x3[0][53:36];
@@ -4794,7 +4794,7 @@ always @(posedge clk) begin
     blur_din[1751:1744] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_219[0:8]
+wire  [25:0]  kernel_img_mul_219[0:8];
 assign kernel_img_mul_219[0] = buffer_data_2[1751:1744] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_219[1] = buffer_data_2[1759:1752] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_219[2] = buffer_data_2[1767:1760] * G_Kernel_3x3[0][53:36];
@@ -4816,7 +4816,7 @@ always @(posedge clk) begin
     blur_din[1759:1752] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_220[0:8]
+wire  [25:0]  kernel_img_mul_220[0:8];
 assign kernel_img_mul_220[0] = buffer_data_2[1759:1752] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_220[1] = buffer_data_2[1767:1760] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_220[2] = buffer_data_2[1775:1768] * G_Kernel_3x3[0][53:36];
@@ -4838,7 +4838,7 @@ always @(posedge clk) begin
     blur_din[1767:1760] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_221[0:8]
+wire  [25:0]  kernel_img_mul_221[0:8];
 assign kernel_img_mul_221[0] = buffer_data_2[1767:1760] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_221[1] = buffer_data_2[1775:1768] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_221[2] = buffer_data_2[1783:1776] * G_Kernel_3x3[0][53:36];
@@ -4860,7 +4860,7 @@ always @(posedge clk) begin
     blur_din[1775:1768] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_222[0:8]
+wire  [25:0]  kernel_img_mul_222[0:8];
 assign kernel_img_mul_222[0] = buffer_data_2[1775:1768] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_222[1] = buffer_data_2[1783:1776] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_222[2] = buffer_data_2[1791:1784] * G_Kernel_3x3[0][53:36];
@@ -4882,7 +4882,7 @@ always @(posedge clk) begin
     blur_din[1783:1776] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_223[0:8]
+wire  [25:0]  kernel_img_mul_223[0:8];
 assign kernel_img_mul_223[0] = buffer_data_2[1783:1776] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_223[1] = buffer_data_2[1791:1784] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_223[2] = buffer_data_2[1799:1792] * G_Kernel_3x3[0][53:36];
@@ -4904,7 +4904,7 @@ always @(posedge clk) begin
     blur_din[1791:1784] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_224[0:8]
+wire  [25:0]  kernel_img_mul_224[0:8];
 assign kernel_img_mul_224[0] = buffer_data_2[1791:1784] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_224[1] = buffer_data_2[1799:1792] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_224[2] = buffer_data_2[1807:1800] * G_Kernel_3x3[0][53:36];
@@ -4926,7 +4926,7 @@ always @(posedge clk) begin
     blur_din[1799:1792] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_225[0:8]
+wire  [25:0]  kernel_img_mul_225[0:8];
 assign kernel_img_mul_225[0] = buffer_data_2[1799:1792] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_225[1] = buffer_data_2[1807:1800] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_225[2] = buffer_data_2[1815:1808] * G_Kernel_3x3[0][53:36];
@@ -4948,7 +4948,7 @@ always @(posedge clk) begin
     blur_din[1807:1800] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_226[0:8]
+wire  [25:0]  kernel_img_mul_226[0:8];
 assign kernel_img_mul_226[0] = buffer_data_2[1807:1800] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_226[1] = buffer_data_2[1815:1808] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_226[2] = buffer_data_2[1823:1816] * G_Kernel_3x3[0][53:36];
@@ -4970,7 +4970,7 @@ always @(posedge clk) begin
     blur_din[1815:1808] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_227[0:8]
+wire  [25:0]  kernel_img_mul_227[0:8];
 assign kernel_img_mul_227[0] = buffer_data_2[1815:1808] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_227[1] = buffer_data_2[1823:1816] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_227[2] = buffer_data_2[1831:1824] * G_Kernel_3x3[0][53:36];
@@ -4992,7 +4992,7 @@ always @(posedge clk) begin
     blur_din[1823:1816] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_228[0:8]
+wire  [25:0]  kernel_img_mul_228[0:8];
 assign kernel_img_mul_228[0] = buffer_data_2[1823:1816] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_228[1] = buffer_data_2[1831:1824] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_228[2] = buffer_data_2[1839:1832] * G_Kernel_3x3[0][53:36];
@@ -5014,7 +5014,7 @@ always @(posedge clk) begin
     blur_din[1831:1824] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_229[0:8]
+wire  [25:0]  kernel_img_mul_229[0:8];
 assign kernel_img_mul_229[0] = buffer_data_2[1831:1824] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_229[1] = buffer_data_2[1839:1832] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_229[2] = buffer_data_2[1847:1840] * G_Kernel_3x3[0][53:36];
@@ -5036,7 +5036,7 @@ always @(posedge clk) begin
     blur_din[1839:1832] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_230[0:8]
+wire  [25:0]  kernel_img_mul_230[0:8];
 assign kernel_img_mul_230[0] = buffer_data_2[1839:1832] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_230[1] = buffer_data_2[1847:1840] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_230[2] = buffer_data_2[1855:1848] * G_Kernel_3x3[0][53:36];
@@ -5058,7 +5058,7 @@ always @(posedge clk) begin
     blur_din[1847:1840] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_231[0:8]
+wire  [25:0]  kernel_img_mul_231[0:8];
 assign kernel_img_mul_231[0] = buffer_data_2[1847:1840] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_231[1] = buffer_data_2[1855:1848] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_231[2] = buffer_data_2[1863:1856] * G_Kernel_3x3[0][53:36];
@@ -5080,7 +5080,7 @@ always @(posedge clk) begin
     blur_din[1855:1848] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_232[0:8]
+wire  [25:0]  kernel_img_mul_232[0:8];
 assign kernel_img_mul_232[0] = buffer_data_2[1855:1848] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_232[1] = buffer_data_2[1863:1856] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_232[2] = buffer_data_2[1871:1864] * G_Kernel_3x3[0][53:36];
@@ -5102,7 +5102,7 @@ always @(posedge clk) begin
     blur_din[1863:1856] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_233[0:8]
+wire  [25:0]  kernel_img_mul_233[0:8];
 assign kernel_img_mul_233[0] = buffer_data_2[1863:1856] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_233[1] = buffer_data_2[1871:1864] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_233[2] = buffer_data_2[1879:1872] * G_Kernel_3x3[0][53:36];
@@ -5124,7 +5124,7 @@ always @(posedge clk) begin
     blur_din[1871:1864] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_234[0:8]
+wire  [25:0]  kernel_img_mul_234[0:8];
 assign kernel_img_mul_234[0] = buffer_data_2[1871:1864] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_234[1] = buffer_data_2[1879:1872] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_234[2] = buffer_data_2[1887:1880] * G_Kernel_3x3[0][53:36];
@@ -5146,7 +5146,7 @@ always @(posedge clk) begin
     blur_din[1879:1872] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_235[0:8]
+wire  [25:0]  kernel_img_mul_235[0:8];
 assign kernel_img_mul_235[0] = buffer_data_2[1879:1872] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_235[1] = buffer_data_2[1887:1880] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_235[2] = buffer_data_2[1895:1888] * G_Kernel_3x3[0][53:36];
@@ -5168,7 +5168,7 @@ always @(posedge clk) begin
     blur_din[1887:1880] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_236[0:8]
+wire  [25:0]  kernel_img_mul_236[0:8];
 assign kernel_img_mul_236[0] = buffer_data_2[1887:1880] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_236[1] = buffer_data_2[1895:1888] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_236[2] = buffer_data_2[1903:1896] * G_Kernel_3x3[0][53:36];
@@ -5190,7 +5190,7 @@ always @(posedge clk) begin
     blur_din[1895:1888] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_237[0:8]
+wire  [25:0]  kernel_img_mul_237[0:8];
 assign kernel_img_mul_237[0] = buffer_data_2[1895:1888] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_237[1] = buffer_data_2[1903:1896] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_237[2] = buffer_data_2[1911:1904] * G_Kernel_3x3[0][53:36];
@@ -5212,7 +5212,7 @@ always @(posedge clk) begin
     blur_din[1903:1896] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_238[0:8]
+wire  [25:0]  kernel_img_mul_238[0:8];
 assign kernel_img_mul_238[0] = buffer_data_2[1903:1896] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_238[1] = buffer_data_2[1911:1904] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_238[2] = buffer_data_2[1919:1912] * G_Kernel_3x3[0][53:36];
@@ -5234,7 +5234,7 @@ always @(posedge clk) begin
     blur_din[1911:1904] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_239[0:8]
+wire  [25:0]  kernel_img_mul_239[0:8];
 assign kernel_img_mul_239[0] = buffer_data_2[1911:1904] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_239[1] = buffer_data_2[1919:1912] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_239[2] = buffer_data_2[1927:1920] * G_Kernel_3x3[0][53:36];
@@ -5256,7 +5256,7 @@ always @(posedge clk) begin
     blur_din[1919:1912] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_240[0:8]
+wire  [25:0]  kernel_img_mul_240[0:8];
 assign kernel_img_mul_240[0] = buffer_data_2[1919:1912] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_240[1] = buffer_data_2[1927:1920] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_240[2] = buffer_data_2[1935:1928] * G_Kernel_3x3[0][53:36];
@@ -5278,7 +5278,7 @@ always @(posedge clk) begin
     blur_din[1927:1920] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_241[0:8]
+wire  [25:0]  kernel_img_mul_241[0:8];
 assign kernel_img_mul_241[0] = buffer_data_2[1927:1920] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_241[1] = buffer_data_2[1935:1928] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_241[2] = buffer_data_2[1943:1936] * G_Kernel_3x3[0][53:36];
@@ -5300,7 +5300,7 @@ always @(posedge clk) begin
     blur_din[1935:1928] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_242[0:8]
+wire  [25:0]  kernel_img_mul_242[0:8];
 assign kernel_img_mul_242[0] = buffer_data_2[1935:1928] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_242[1] = buffer_data_2[1943:1936] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_242[2] = buffer_data_2[1951:1944] * G_Kernel_3x3[0][53:36];
@@ -5322,7 +5322,7 @@ always @(posedge clk) begin
     blur_din[1943:1936] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_243[0:8]
+wire  [25:0]  kernel_img_mul_243[0:8];
 assign kernel_img_mul_243[0] = buffer_data_2[1943:1936] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_243[1] = buffer_data_2[1951:1944] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_243[2] = buffer_data_2[1959:1952] * G_Kernel_3x3[0][53:36];
@@ -5344,7 +5344,7 @@ always @(posedge clk) begin
     blur_din[1951:1944] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_244[0:8]
+wire  [25:0]  kernel_img_mul_244[0:8];
 assign kernel_img_mul_244[0] = buffer_data_2[1951:1944] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_244[1] = buffer_data_2[1959:1952] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_244[2] = buffer_data_2[1967:1960] * G_Kernel_3x3[0][53:36];
@@ -5366,7 +5366,7 @@ always @(posedge clk) begin
     blur_din[1959:1952] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_245[0:8]
+wire  [25:0]  kernel_img_mul_245[0:8];
 assign kernel_img_mul_245[0] = buffer_data_2[1959:1952] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_245[1] = buffer_data_2[1967:1960] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_245[2] = buffer_data_2[1975:1968] * G_Kernel_3x3[0][53:36];
@@ -5388,7 +5388,7 @@ always @(posedge clk) begin
     blur_din[1967:1960] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_246[0:8]
+wire  [25:0]  kernel_img_mul_246[0:8];
 assign kernel_img_mul_246[0] = buffer_data_2[1967:1960] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_246[1] = buffer_data_2[1975:1968] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_246[2] = buffer_data_2[1983:1976] * G_Kernel_3x3[0][53:36];
@@ -5410,7 +5410,7 @@ always @(posedge clk) begin
     blur_din[1975:1968] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_247[0:8]
+wire  [25:0]  kernel_img_mul_247[0:8];
 assign kernel_img_mul_247[0] = buffer_data_2[1975:1968] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_247[1] = buffer_data_2[1983:1976] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_247[2] = buffer_data_2[1991:1984] * G_Kernel_3x3[0][53:36];
@@ -5432,7 +5432,7 @@ always @(posedge clk) begin
     blur_din[1983:1976] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_248[0:8]
+wire  [25:0]  kernel_img_mul_248[0:8];
 assign kernel_img_mul_248[0] = buffer_data_2[1983:1976] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_248[1] = buffer_data_2[1991:1984] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_248[2] = buffer_data_2[1999:1992] * G_Kernel_3x3[0][53:36];
@@ -5454,7 +5454,7 @@ always @(posedge clk) begin
     blur_din[1991:1984] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_249[0:8]
+wire  [25:0]  kernel_img_mul_249[0:8];
 assign kernel_img_mul_249[0] = buffer_data_2[1991:1984] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_249[1] = buffer_data_2[1999:1992] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_249[2] = buffer_data_2[2007:2000] * G_Kernel_3x3[0][53:36];
@@ -5476,7 +5476,7 @@ always @(posedge clk) begin
     blur_din[1999:1992] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_250[0:8]
+wire  [25:0]  kernel_img_mul_250[0:8];
 assign kernel_img_mul_250[0] = buffer_data_2[1999:1992] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_250[1] = buffer_data_2[2007:2000] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_250[2] = buffer_data_2[2015:2008] * G_Kernel_3x3[0][53:36];
@@ -5498,7 +5498,7 @@ always @(posedge clk) begin
     blur_din[2007:2000] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_251[0:8]
+wire  [25:0]  kernel_img_mul_251[0:8];
 assign kernel_img_mul_251[0] = buffer_data_2[2007:2000] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_251[1] = buffer_data_2[2015:2008] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_251[2] = buffer_data_2[2023:2016] * G_Kernel_3x3[0][53:36];
@@ -5520,7 +5520,7 @@ always @(posedge clk) begin
     blur_din[2015:2008] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_252[0:8]
+wire  [25:0]  kernel_img_mul_252[0:8];
 assign kernel_img_mul_252[0] = buffer_data_2[2015:2008] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_252[1] = buffer_data_2[2023:2016] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_252[2] = buffer_data_2[2031:2024] * G_Kernel_3x3[0][53:36];
@@ -5542,7 +5542,7 @@ always @(posedge clk) begin
     blur_din[2023:2016] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_253[0:8]
+wire  [25:0]  kernel_img_mul_253[0:8];
 assign kernel_img_mul_253[0] = buffer_data_2[2023:2016] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_253[1] = buffer_data_2[2031:2024] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_253[2] = buffer_data_2[2039:2032] * G_Kernel_3x3[0][53:36];
@@ -5564,7 +5564,7 @@ always @(posedge clk) begin
     blur_din[2031:2024] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_254[0:8]
+wire  [25:0]  kernel_img_mul_254[0:8];
 assign kernel_img_mul_254[0] = buffer_data_2[2031:2024] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_254[1] = buffer_data_2[2039:2032] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_254[2] = buffer_data_2[2047:2040] * G_Kernel_3x3[0][53:36];
@@ -5586,7 +5586,7 @@ always @(posedge clk) begin
     blur_din[2039:2032] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_255[0:8]
+wire  [25:0]  kernel_img_mul_255[0:8];
 assign kernel_img_mul_255[0] = buffer_data_2[2039:2032] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_255[1] = buffer_data_2[2047:2040] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_255[2] = buffer_data_2[2055:2048] * G_Kernel_3x3[0][53:36];
@@ -5608,7 +5608,7 @@ always @(posedge clk) begin
     blur_din[2047:2040] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_256[0:8]
+wire  [25:0]  kernel_img_mul_256[0:8];
 assign kernel_img_mul_256[0] = buffer_data_2[2047:2040] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_256[1] = buffer_data_2[2055:2048] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_256[2] = buffer_data_2[2063:2056] * G_Kernel_3x3[0][53:36];
@@ -5630,7 +5630,7 @@ always @(posedge clk) begin
     blur_din[2055:2048] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_257[0:8]
+wire  [25:0]  kernel_img_mul_257[0:8];
 assign kernel_img_mul_257[0] = buffer_data_2[2055:2048] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_257[1] = buffer_data_2[2063:2056] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_257[2] = buffer_data_2[2071:2064] * G_Kernel_3x3[0][53:36];
@@ -5652,7 +5652,7 @@ always @(posedge clk) begin
     blur_din[2063:2056] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_258[0:8]
+wire  [25:0]  kernel_img_mul_258[0:8];
 assign kernel_img_mul_258[0] = buffer_data_2[2063:2056] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_258[1] = buffer_data_2[2071:2064] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_258[2] = buffer_data_2[2079:2072] * G_Kernel_3x3[0][53:36];
@@ -5674,7 +5674,7 @@ always @(posedge clk) begin
     blur_din[2071:2064] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_259[0:8]
+wire  [25:0]  kernel_img_mul_259[0:8];
 assign kernel_img_mul_259[0] = buffer_data_2[2071:2064] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_259[1] = buffer_data_2[2079:2072] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_259[2] = buffer_data_2[2087:2080] * G_Kernel_3x3[0][53:36];
@@ -5696,7 +5696,7 @@ always @(posedge clk) begin
     blur_din[2079:2072] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_260[0:8]
+wire  [25:0]  kernel_img_mul_260[0:8];
 assign kernel_img_mul_260[0] = buffer_data_2[2079:2072] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_260[1] = buffer_data_2[2087:2080] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_260[2] = buffer_data_2[2095:2088] * G_Kernel_3x3[0][53:36];
@@ -5718,7 +5718,7 @@ always @(posedge clk) begin
     blur_din[2087:2080] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_261[0:8]
+wire  [25:0]  kernel_img_mul_261[0:8];
 assign kernel_img_mul_261[0] = buffer_data_2[2087:2080] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_261[1] = buffer_data_2[2095:2088] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_261[2] = buffer_data_2[2103:2096] * G_Kernel_3x3[0][53:36];
@@ -5740,7 +5740,7 @@ always @(posedge clk) begin
     blur_din[2095:2088] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_262[0:8]
+wire  [25:0]  kernel_img_mul_262[0:8];
 assign kernel_img_mul_262[0] = buffer_data_2[2095:2088] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_262[1] = buffer_data_2[2103:2096] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_262[2] = buffer_data_2[2111:2104] * G_Kernel_3x3[0][53:36];
@@ -5762,7 +5762,7 @@ always @(posedge clk) begin
     blur_din[2103:2096] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_263[0:8]
+wire  [25:0]  kernel_img_mul_263[0:8];
 assign kernel_img_mul_263[0] = buffer_data_2[2103:2096] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_263[1] = buffer_data_2[2111:2104] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_263[2] = buffer_data_2[2119:2112] * G_Kernel_3x3[0][53:36];
@@ -5784,7 +5784,7 @@ always @(posedge clk) begin
     blur_din[2111:2104] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_264[0:8]
+wire  [25:0]  kernel_img_mul_264[0:8];
 assign kernel_img_mul_264[0] = buffer_data_2[2111:2104] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_264[1] = buffer_data_2[2119:2112] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_264[2] = buffer_data_2[2127:2120] * G_Kernel_3x3[0][53:36];
@@ -5806,7 +5806,7 @@ always @(posedge clk) begin
     blur_din[2119:2112] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_265[0:8]
+wire  [25:0]  kernel_img_mul_265[0:8];
 assign kernel_img_mul_265[0] = buffer_data_2[2119:2112] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_265[1] = buffer_data_2[2127:2120] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_265[2] = buffer_data_2[2135:2128] * G_Kernel_3x3[0][53:36];
@@ -5828,7 +5828,7 @@ always @(posedge clk) begin
     blur_din[2127:2120] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_266[0:8]
+wire  [25:0]  kernel_img_mul_266[0:8];
 assign kernel_img_mul_266[0] = buffer_data_2[2127:2120] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_266[1] = buffer_data_2[2135:2128] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_266[2] = buffer_data_2[2143:2136] * G_Kernel_3x3[0][53:36];
@@ -5850,7 +5850,7 @@ always @(posedge clk) begin
     blur_din[2135:2128] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_267[0:8]
+wire  [25:0]  kernel_img_mul_267[0:8];
 assign kernel_img_mul_267[0] = buffer_data_2[2135:2128] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_267[1] = buffer_data_2[2143:2136] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_267[2] = buffer_data_2[2151:2144] * G_Kernel_3x3[0][53:36];
@@ -5872,7 +5872,7 @@ always @(posedge clk) begin
     blur_din[2143:2136] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_268[0:8]
+wire  [25:0]  kernel_img_mul_268[0:8];
 assign kernel_img_mul_268[0] = buffer_data_2[2143:2136] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_268[1] = buffer_data_2[2151:2144] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_268[2] = buffer_data_2[2159:2152] * G_Kernel_3x3[0][53:36];
@@ -5894,7 +5894,7 @@ always @(posedge clk) begin
     blur_din[2151:2144] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_269[0:8]
+wire  [25:0]  kernel_img_mul_269[0:8];
 assign kernel_img_mul_269[0] = buffer_data_2[2151:2144] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_269[1] = buffer_data_2[2159:2152] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_269[2] = buffer_data_2[2167:2160] * G_Kernel_3x3[0][53:36];
@@ -5916,7 +5916,7 @@ always @(posedge clk) begin
     blur_din[2159:2152] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_270[0:8]
+wire  [25:0]  kernel_img_mul_270[0:8];
 assign kernel_img_mul_270[0] = buffer_data_2[2159:2152] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_270[1] = buffer_data_2[2167:2160] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_270[2] = buffer_data_2[2175:2168] * G_Kernel_3x3[0][53:36];
@@ -5938,7 +5938,7 @@ always @(posedge clk) begin
     blur_din[2167:2160] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_271[0:8]
+wire  [25:0]  kernel_img_mul_271[0:8];
 assign kernel_img_mul_271[0] = buffer_data_2[2167:2160] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_271[1] = buffer_data_2[2175:2168] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_271[2] = buffer_data_2[2183:2176] * G_Kernel_3x3[0][53:36];
@@ -5960,7 +5960,7 @@ always @(posedge clk) begin
     blur_din[2175:2168] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_272[0:8]
+wire  [25:0]  kernel_img_mul_272[0:8];
 assign kernel_img_mul_272[0] = buffer_data_2[2175:2168] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_272[1] = buffer_data_2[2183:2176] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_272[2] = buffer_data_2[2191:2184] * G_Kernel_3x3[0][53:36];
@@ -5982,7 +5982,7 @@ always @(posedge clk) begin
     blur_din[2183:2176] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_273[0:8]
+wire  [25:0]  kernel_img_mul_273[0:8];
 assign kernel_img_mul_273[0] = buffer_data_2[2183:2176] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_273[1] = buffer_data_2[2191:2184] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_273[2] = buffer_data_2[2199:2192] * G_Kernel_3x3[0][53:36];
@@ -6004,7 +6004,7 @@ always @(posedge clk) begin
     blur_din[2191:2184] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_274[0:8]
+wire  [25:0]  kernel_img_mul_274[0:8];
 assign kernel_img_mul_274[0] = buffer_data_2[2191:2184] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_274[1] = buffer_data_2[2199:2192] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_274[2] = buffer_data_2[2207:2200] * G_Kernel_3x3[0][53:36];
@@ -6026,7 +6026,7 @@ always @(posedge clk) begin
     blur_din[2199:2192] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_275[0:8]
+wire  [25:0]  kernel_img_mul_275[0:8];
 assign kernel_img_mul_275[0] = buffer_data_2[2199:2192] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_275[1] = buffer_data_2[2207:2200] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_275[2] = buffer_data_2[2215:2208] * G_Kernel_3x3[0][53:36];
@@ -6048,7 +6048,7 @@ always @(posedge clk) begin
     blur_din[2207:2200] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_276[0:8]
+wire  [25:0]  kernel_img_mul_276[0:8];
 assign kernel_img_mul_276[0] = buffer_data_2[2207:2200] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_276[1] = buffer_data_2[2215:2208] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_276[2] = buffer_data_2[2223:2216] * G_Kernel_3x3[0][53:36];
@@ -6070,7 +6070,7 @@ always @(posedge clk) begin
     blur_din[2215:2208] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_277[0:8]
+wire  [25:0]  kernel_img_mul_277[0:8];
 assign kernel_img_mul_277[0] = buffer_data_2[2215:2208] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_277[1] = buffer_data_2[2223:2216] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_277[2] = buffer_data_2[2231:2224] * G_Kernel_3x3[0][53:36];
@@ -6092,7 +6092,7 @@ always @(posedge clk) begin
     blur_din[2223:2216] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_278[0:8]
+wire  [25:0]  kernel_img_mul_278[0:8];
 assign kernel_img_mul_278[0] = buffer_data_2[2223:2216] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_278[1] = buffer_data_2[2231:2224] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_278[2] = buffer_data_2[2239:2232] * G_Kernel_3x3[0][53:36];
@@ -6114,7 +6114,7 @@ always @(posedge clk) begin
     blur_din[2231:2224] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_279[0:8]
+wire  [25:0]  kernel_img_mul_279[0:8];
 assign kernel_img_mul_279[0] = buffer_data_2[2231:2224] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_279[1] = buffer_data_2[2239:2232] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_279[2] = buffer_data_2[2247:2240] * G_Kernel_3x3[0][53:36];
@@ -6136,7 +6136,7 @@ always @(posedge clk) begin
     blur_din[2239:2232] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_280[0:8]
+wire  [25:0]  kernel_img_mul_280[0:8];
 assign kernel_img_mul_280[0] = buffer_data_2[2239:2232] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_280[1] = buffer_data_2[2247:2240] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_280[2] = buffer_data_2[2255:2248] * G_Kernel_3x3[0][53:36];
@@ -6158,7 +6158,7 @@ always @(posedge clk) begin
     blur_din[2247:2240] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_281[0:8]
+wire  [25:0]  kernel_img_mul_281[0:8];
 assign kernel_img_mul_281[0] = buffer_data_2[2247:2240] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_281[1] = buffer_data_2[2255:2248] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_281[2] = buffer_data_2[2263:2256] * G_Kernel_3x3[0][53:36];
@@ -6180,7 +6180,7 @@ always @(posedge clk) begin
     blur_din[2255:2248] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_282[0:8]
+wire  [25:0]  kernel_img_mul_282[0:8];
 assign kernel_img_mul_282[0] = buffer_data_2[2255:2248] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_282[1] = buffer_data_2[2263:2256] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_282[2] = buffer_data_2[2271:2264] * G_Kernel_3x3[0][53:36];
@@ -6202,7 +6202,7 @@ always @(posedge clk) begin
     blur_din[2263:2256] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_283[0:8]
+wire  [25:0]  kernel_img_mul_283[0:8];
 assign kernel_img_mul_283[0] = buffer_data_2[2263:2256] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_283[1] = buffer_data_2[2271:2264] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_283[2] = buffer_data_2[2279:2272] * G_Kernel_3x3[0][53:36];
@@ -6224,7 +6224,7 @@ always @(posedge clk) begin
     blur_din[2271:2264] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_284[0:8]
+wire  [25:0]  kernel_img_mul_284[0:8];
 assign kernel_img_mul_284[0] = buffer_data_2[2271:2264] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_284[1] = buffer_data_2[2279:2272] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_284[2] = buffer_data_2[2287:2280] * G_Kernel_3x3[0][53:36];
@@ -6246,7 +6246,7 @@ always @(posedge clk) begin
     blur_din[2279:2272] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_285[0:8]
+wire  [25:0]  kernel_img_mul_285[0:8];
 assign kernel_img_mul_285[0] = buffer_data_2[2279:2272] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_285[1] = buffer_data_2[2287:2280] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_285[2] = buffer_data_2[2295:2288] * G_Kernel_3x3[0][53:36];
@@ -6268,7 +6268,7 @@ always @(posedge clk) begin
     blur_din[2287:2280] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_286[0:8]
+wire  [25:0]  kernel_img_mul_286[0:8];
 assign kernel_img_mul_286[0] = buffer_data_2[2287:2280] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_286[1] = buffer_data_2[2295:2288] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_286[2] = buffer_data_2[2303:2296] * G_Kernel_3x3[0][53:36];
@@ -6290,7 +6290,7 @@ always @(posedge clk) begin
     blur_din[2295:2288] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_287[0:8]
+wire  [25:0]  kernel_img_mul_287[0:8];
 assign kernel_img_mul_287[0] = buffer_data_2[2295:2288] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_287[1] = buffer_data_2[2303:2296] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_287[2] = buffer_data_2[2311:2304] * G_Kernel_3x3[0][53:36];
@@ -6312,7 +6312,7 @@ always @(posedge clk) begin
     blur_din[2303:2296] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_288[0:8]
+wire  [25:0]  kernel_img_mul_288[0:8];
 assign kernel_img_mul_288[0] = buffer_data_2[2303:2296] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_288[1] = buffer_data_2[2311:2304] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_288[2] = buffer_data_2[2319:2312] * G_Kernel_3x3[0][53:36];
@@ -6334,7 +6334,7 @@ always @(posedge clk) begin
     blur_din[2311:2304] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_289[0:8]
+wire  [25:0]  kernel_img_mul_289[0:8];
 assign kernel_img_mul_289[0] = buffer_data_2[2311:2304] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_289[1] = buffer_data_2[2319:2312] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_289[2] = buffer_data_2[2327:2320] * G_Kernel_3x3[0][53:36];
@@ -6356,7 +6356,7 @@ always @(posedge clk) begin
     blur_din[2319:2312] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_290[0:8]
+wire  [25:0]  kernel_img_mul_290[0:8];
 assign kernel_img_mul_290[0] = buffer_data_2[2319:2312] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_290[1] = buffer_data_2[2327:2320] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_290[2] = buffer_data_2[2335:2328] * G_Kernel_3x3[0][53:36];
@@ -6378,7 +6378,7 @@ always @(posedge clk) begin
     blur_din[2327:2320] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_291[0:8]
+wire  [25:0]  kernel_img_mul_291[0:8];
 assign kernel_img_mul_291[0] = buffer_data_2[2327:2320] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_291[1] = buffer_data_2[2335:2328] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_291[2] = buffer_data_2[2343:2336] * G_Kernel_3x3[0][53:36];
@@ -6400,7 +6400,7 @@ always @(posedge clk) begin
     blur_din[2335:2328] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_292[0:8]
+wire  [25:0]  kernel_img_mul_292[0:8];
 assign kernel_img_mul_292[0] = buffer_data_2[2335:2328] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_292[1] = buffer_data_2[2343:2336] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_292[2] = buffer_data_2[2351:2344] * G_Kernel_3x3[0][53:36];
@@ -6422,7 +6422,7 @@ always @(posedge clk) begin
     blur_din[2343:2336] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_293[0:8]
+wire  [25:0]  kernel_img_mul_293[0:8];
 assign kernel_img_mul_293[0] = buffer_data_2[2343:2336] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_293[1] = buffer_data_2[2351:2344] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_293[2] = buffer_data_2[2359:2352] * G_Kernel_3x3[0][53:36];
@@ -6444,7 +6444,7 @@ always @(posedge clk) begin
     blur_din[2351:2344] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_294[0:8]
+wire  [25:0]  kernel_img_mul_294[0:8];
 assign kernel_img_mul_294[0] = buffer_data_2[2351:2344] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_294[1] = buffer_data_2[2359:2352] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_294[2] = buffer_data_2[2367:2360] * G_Kernel_3x3[0][53:36];
@@ -6466,7 +6466,7 @@ always @(posedge clk) begin
     blur_din[2359:2352] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_295[0:8]
+wire  [25:0]  kernel_img_mul_295[0:8];
 assign kernel_img_mul_295[0] = buffer_data_2[2359:2352] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_295[1] = buffer_data_2[2367:2360] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_295[2] = buffer_data_2[2375:2368] * G_Kernel_3x3[0][53:36];
@@ -6488,7 +6488,7 @@ always @(posedge clk) begin
     blur_din[2367:2360] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_296[0:8]
+wire  [25:0]  kernel_img_mul_296[0:8];
 assign kernel_img_mul_296[0] = buffer_data_2[2367:2360] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_296[1] = buffer_data_2[2375:2368] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_296[2] = buffer_data_2[2383:2376] * G_Kernel_3x3[0][53:36];
@@ -6510,7 +6510,7 @@ always @(posedge clk) begin
     blur_din[2375:2368] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_297[0:8]
+wire  [25:0]  kernel_img_mul_297[0:8];
 assign kernel_img_mul_297[0] = buffer_data_2[2375:2368] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_297[1] = buffer_data_2[2383:2376] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_297[2] = buffer_data_2[2391:2384] * G_Kernel_3x3[0][53:36];
@@ -6532,7 +6532,7 @@ always @(posedge clk) begin
     blur_din[2383:2376] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_298[0:8]
+wire  [25:0]  kernel_img_mul_298[0:8];
 assign kernel_img_mul_298[0] = buffer_data_2[2383:2376] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_298[1] = buffer_data_2[2391:2384] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_298[2] = buffer_data_2[2399:2392] * G_Kernel_3x3[0][53:36];
@@ -6554,7 +6554,7 @@ always @(posedge clk) begin
     blur_din[2391:2384] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_299[0:8]
+wire  [25:0]  kernel_img_mul_299[0:8];
 assign kernel_img_mul_299[0] = buffer_data_2[2391:2384] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_299[1] = buffer_data_2[2399:2392] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_299[2] = buffer_data_2[2407:2400] * G_Kernel_3x3[0][53:36];
@@ -6576,7 +6576,7 @@ always @(posedge clk) begin
     blur_din[2399:2392] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_300[0:8]
+wire  [25:0]  kernel_img_mul_300[0:8];
 assign kernel_img_mul_300[0] = buffer_data_2[2399:2392] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_300[1] = buffer_data_2[2407:2400] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_300[2] = buffer_data_2[2415:2408] * G_Kernel_3x3[0][53:36];
@@ -6598,7 +6598,7 @@ always @(posedge clk) begin
     blur_din[2407:2400] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_301[0:8]
+wire  [25:0]  kernel_img_mul_301[0:8];
 assign kernel_img_mul_301[0] = buffer_data_2[2407:2400] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_301[1] = buffer_data_2[2415:2408] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_301[2] = buffer_data_2[2423:2416] * G_Kernel_3x3[0][53:36];
@@ -6620,7 +6620,7 @@ always @(posedge clk) begin
     blur_din[2415:2408] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_302[0:8]
+wire  [25:0]  kernel_img_mul_302[0:8];
 assign kernel_img_mul_302[0] = buffer_data_2[2415:2408] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_302[1] = buffer_data_2[2423:2416] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_302[2] = buffer_data_2[2431:2424] * G_Kernel_3x3[0][53:36];
@@ -6642,7 +6642,7 @@ always @(posedge clk) begin
     blur_din[2423:2416] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_303[0:8]
+wire  [25:0]  kernel_img_mul_303[0:8];
 assign kernel_img_mul_303[0] = buffer_data_2[2423:2416] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_303[1] = buffer_data_2[2431:2424] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_303[2] = buffer_data_2[2439:2432] * G_Kernel_3x3[0][53:36];
@@ -6664,7 +6664,7 @@ always @(posedge clk) begin
     blur_din[2431:2424] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_304[0:8]
+wire  [25:0]  kernel_img_mul_304[0:8];
 assign kernel_img_mul_304[0] = buffer_data_2[2431:2424] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_304[1] = buffer_data_2[2439:2432] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_304[2] = buffer_data_2[2447:2440] * G_Kernel_3x3[0][53:36];
@@ -6686,7 +6686,7 @@ always @(posedge clk) begin
     blur_din[2439:2432] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_305[0:8]
+wire  [25:0]  kernel_img_mul_305[0:8];
 assign kernel_img_mul_305[0] = buffer_data_2[2439:2432] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_305[1] = buffer_data_2[2447:2440] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_305[2] = buffer_data_2[2455:2448] * G_Kernel_3x3[0][53:36];
@@ -6708,7 +6708,7 @@ always @(posedge clk) begin
     blur_din[2447:2440] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_306[0:8]
+wire  [25:0]  kernel_img_mul_306[0:8];
 assign kernel_img_mul_306[0] = buffer_data_2[2447:2440] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_306[1] = buffer_data_2[2455:2448] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_306[2] = buffer_data_2[2463:2456] * G_Kernel_3x3[0][53:36];
@@ -6730,7 +6730,7 @@ always @(posedge clk) begin
     blur_din[2455:2448] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_307[0:8]
+wire  [25:0]  kernel_img_mul_307[0:8];
 assign kernel_img_mul_307[0] = buffer_data_2[2455:2448] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_307[1] = buffer_data_2[2463:2456] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_307[2] = buffer_data_2[2471:2464] * G_Kernel_3x3[0][53:36];
@@ -6752,7 +6752,7 @@ always @(posedge clk) begin
     blur_din[2463:2456] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_308[0:8]
+wire  [25:0]  kernel_img_mul_308[0:8];
 assign kernel_img_mul_308[0] = buffer_data_2[2463:2456] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_308[1] = buffer_data_2[2471:2464] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_308[2] = buffer_data_2[2479:2472] * G_Kernel_3x3[0][53:36];
@@ -6774,7 +6774,7 @@ always @(posedge clk) begin
     blur_din[2471:2464] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_309[0:8]
+wire  [25:0]  kernel_img_mul_309[0:8];
 assign kernel_img_mul_309[0] = buffer_data_2[2471:2464] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_309[1] = buffer_data_2[2479:2472] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_309[2] = buffer_data_2[2487:2480] * G_Kernel_3x3[0][53:36];
@@ -6796,7 +6796,7 @@ always @(posedge clk) begin
     blur_din[2479:2472] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_310[0:8]
+wire  [25:0]  kernel_img_mul_310[0:8];
 assign kernel_img_mul_310[0] = buffer_data_2[2479:2472] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_310[1] = buffer_data_2[2487:2480] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_310[2] = buffer_data_2[2495:2488] * G_Kernel_3x3[0][53:36];
@@ -6818,7 +6818,7 @@ always @(posedge clk) begin
     blur_din[2487:2480] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_311[0:8]
+wire  [25:0]  kernel_img_mul_311[0:8];
 assign kernel_img_mul_311[0] = buffer_data_2[2487:2480] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_311[1] = buffer_data_2[2495:2488] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_311[2] = buffer_data_2[2503:2496] * G_Kernel_3x3[0][53:36];
@@ -6840,7 +6840,7 @@ always @(posedge clk) begin
     blur_din[2495:2488] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_312[0:8]
+wire  [25:0]  kernel_img_mul_312[0:8];
 assign kernel_img_mul_312[0] = buffer_data_2[2495:2488] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_312[1] = buffer_data_2[2503:2496] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_312[2] = buffer_data_2[2511:2504] * G_Kernel_3x3[0][53:36];
@@ -6862,7 +6862,7 @@ always @(posedge clk) begin
     blur_din[2503:2496] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_313[0:8]
+wire  [25:0]  kernel_img_mul_313[0:8];
 assign kernel_img_mul_313[0] = buffer_data_2[2503:2496] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_313[1] = buffer_data_2[2511:2504] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_313[2] = buffer_data_2[2519:2512] * G_Kernel_3x3[0][53:36];
@@ -6884,7 +6884,7 @@ always @(posedge clk) begin
     blur_din[2511:2504] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_314[0:8]
+wire  [25:0]  kernel_img_mul_314[0:8];
 assign kernel_img_mul_314[0] = buffer_data_2[2511:2504] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_314[1] = buffer_data_2[2519:2512] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_314[2] = buffer_data_2[2527:2520] * G_Kernel_3x3[0][53:36];
@@ -6906,7 +6906,7 @@ always @(posedge clk) begin
     blur_din[2519:2512] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_315[0:8]
+wire  [25:0]  kernel_img_mul_315[0:8];
 assign kernel_img_mul_315[0] = buffer_data_2[2519:2512] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_315[1] = buffer_data_2[2527:2520] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_315[2] = buffer_data_2[2535:2528] * G_Kernel_3x3[0][53:36];
@@ -6928,7 +6928,7 @@ always @(posedge clk) begin
     blur_din[2527:2520] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_316[0:8]
+wire  [25:0]  kernel_img_mul_316[0:8];
 assign kernel_img_mul_316[0] = buffer_data_2[2527:2520] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_316[1] = buffer_data_2[2535:2528] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_316[2] = buffer_data_2[2543:2536] * G_Kernel_3x3[0][53:36];
@@ -6950,7 +6950,7 @@ always @(posedge clk) begin
     blur_din[2535:2528] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_317[0:8]
+wire  [25:0]  kernel_img_mul_317[0:8];
 assign kernel_img_mul_317[0] = buffer_data_2[2535:2528] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_317[1] = buffer_data_2[2543:2536] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_317[2] = buffer_data_2[2551:2544] * G_Kernel_3x3[0][53:36];
@@ -6972,7 +6972,7 @@ always @(posedge clk) begin
     blur_din[2543:2536] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_318[0:8]
+wire  [25:0]  kernel_img_mul_318[0:8];
 assign kernel_img_mul_318[0] = buffer_data_2[2543:2536] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_318[1] = buffer_data_2[2551:2544] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_318[2] = buffer_data_2[2559:2552] * G_Kernel_3x3[0][53:36];
@@ -6994,7 +6994,7 @@ always @(posedge clk) begin
     blur_din[2551:2544] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_319[0:8]
+wire  [25:0]  kernel_img_mul_319[0:8];
 assign kernel_img_mul_319[0] = buffer_data_2[2551:2544] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_319[1] = buffer_data_2[2559:2552] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_319[2] = buffer_data_2[2567:2560] * G_Kernel_3x3[0][53:36];
@@ -7016,7 +7016,7 @@ always @(posedge clk) begin
     blur_din[2559:2552] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_320[0:8]
+wire  [25:0]  kernel_img_mul_320[0:8];
 assign kernel_img_mul_320[0] = buffer_data_2[2559:2552] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_320[1] = buffer_data_2[2567:2560] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_320[2] = buffer_data_2[2575:2568] * G_Kernel_3x3[0][53:36];
@@ -7038,7 +7038,7 @@ always @(posedge clk) begin
     blur_din[2567:2560] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_321[0:8]
+wire  [25:0]  kernel_img_mul_321[0:8];
 assign kernel_img_mul_321[0] = buffer_data_2[2567:2560] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_321[1] = buffer_data_2[2575:2568] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_321[2] = buffer_data_2[2583:2576] * G_Kernel_3x3[0][53:36];
@@ -7060,7 +7060,7 @@ always @(posedge clk) begin
     blur_din[2575:2568] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_322[0:8]
+wire  [25:0]  kernel_img_mul_322[0:8];
 assign kernel_img_mul_322[0] = buffer_data_2[2575:2568] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_322[1] = buffer_data_2[2583:2576] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_322[2] = buffer_data_2[2591:2584] * G_Kernel_3x3[0][53:36];
@@ -7082,7 +7082,7 @@ always @(posedge clk) begin
     blur_din[2583:2576] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_323[0:8]
+wire  [25:0]  kernel_img_mul_323[0:8];
 assign kernel_img_mul_323[0] = buffer_data_2[2583:2576] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_323[1] = buffer_data_2[2591:2584] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_323[2] = buffer_data_2[2599:2592] * G_Kernel_3x3[0][53:36];
@@ -7104,7 +7104,7 @@ always @(posedge clk) begin
     blur_din[2591:2584] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_324[0:8]
+wire  [25:0]  kernel_img_mul_324[0:8];
 assign kernel_img_mul_324[0] = buffer_data_2[2591:2584] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_324[1] = buffer_data_2[2599:2592] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_324[2] = buffer_data_2[2607:2600] * G_Kernel_3x3[0][53:36];
@@ -7126,7 +7126,7 @@ always @(posedge clk) begin
     blur_din[2599:2592] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_325[0:8]
+wire  [25:0]  kernel_img_mul_325[0:8];
 assign kernel_img_mul_325[0] = buffer_data_2[2599:2592] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_325[1] = buffer_data_2[2607:2600] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_325[2] = buffer_data_2[2615:2608] * G_Kernel_3x3[0][53:36];
@@ -7148,7 +7148,7 @@ always @(posedge clk) begin
     blur_din[2607:2600] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_326[0:8]
+wire  [25:0]  kernel_img_mul_326[0:8];
 assign kernel_img_mul_326[0] = buffer_data_2[2607:2600] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_326[1] = buffer_data_2[2615:2608] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_326[2] = buffer_data_2[2623:2616] * G_Kernel_3x3[0][53:36];
@@ -7170,7 +7170,7 @@ always @(posedge clk) begin
     blur_din[2615:2608] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_327[0:8]
+wire  [25:0]  kernel_img_mul_327[0:8];
 assign kernel_img_mul_327[0] = buffer_data_2[2615:2608] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_327[1] = buffer_data_2[2623:2616] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_327[2] = buffer_data_2[2631:2624] * G_Kernel_3x3[0][53:36];
@@ -7192,7 +7192,7 @@ always @(posedge clk) begin
     blur_din[2623:2616] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_328[0:8]
+wire  [25:0]  kernel_img_mul_328[0:8];
 assign kernel_img_mul_328[0] = buffer_data_2[2623:2616] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_328[1] = buffer_data_2[2631:2624] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_328[2] = buffer_data_2[2639:2632] * G_Kernel_3x3[0][53:36];
@@ -7214,7 +7214,7 @@ always @(posedge clk) begin
     blur_din[2631:2624] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_329[0:8]
+wire  [25:0]  kernel_img_mul_329[0:8];
 assign kernel_img_mul_329[0] = buffer_data_2[2631:2624] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_329[1] = buffer_data_2[2639:2632] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_329[2] = buffer_data_2[2647:2640] * G_Kernel_3x3[0][53:36];
@@ -7236,7 +7236,7 @@ always @(posedge clk) begin
     blur_din[2639:2632] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_330[0:8]
+wire  [25:0]  kernel_img_mul_330[0:8];
 assign kernel_img_mul_330[0] = buffer_data_2[2639:2632] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_330[1] = buffer_data_2[2647:2640] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_330[2] = buffer_data_2[2655:2648] * G_Kernel_3x3[0][53:36];
@@ -7258,7 +7258,7 @@ always @(posedge clk) begin
     blur_din[2647:2640] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_331[0:8]
+wire  [25:0]  kernel_img_mul_331[0:8];
 assign kernel_img_mul_331[0] = buffer_data_2[2647:2640] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_331[1] = buffer_data_2[2655:2648] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_331[2] = buffer_data_2[2663:2656] * G_Kernel_3x3[0][53:36];
@@ -7280,7 +7280,7 @@ always @(posedge clk) begin
     blur_din[2655:2648] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_332[0:8]
+wire  [25:0]  kernel_img_mul_332[0:8];
 assign kernel_img_mul_332[0] = buffer_data_2[2655:2648] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_332[1] = buffer_data_2[2663:2656] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_332[2] = buffer_data_2[2671:2664] * G_Kernel_3x3[0][53:36];
@@ -7302,7 +7302,7 @@ always @(posedge clk) begin
     blur_din[2663:2656] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_333[0:8]
+wire  [25:0]  kernel_img_mul_333[0:8];
 assign kernel_img_mul_333[0] = buffer_data_2[2663:2656] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_333[1] = buffer_data_2[2671:2664] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_333[2] = buffer_data_2[2679:2672] * G_Kernel_3x3[0][53:36];
@@ -7324,7 +7324,7 @@ always @(posedge clk) begin
     blur_din[2671:2664] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_334[0:8]
+wire  [25:0]  kernel_img_mul_334[0:8];
 assign kernel_img_mul_334[0] = buffer_data_2[2671:2664] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_334[1] = buffer_data_2[2679:2672] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_334[2] = buffer_data_2[2687:2680] * G_Kernel_3x3[0][53:36];
@@ -7346,7 +7346,7 @@ always @(posedge clk) begin
     blur_din[2679:2672] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_335[0:8]
+wire  [25:0]  kernel_img_mul_335[0:8];
 assign kernel_img_mul_335[0] = buffer_data_2[2679:2672] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_335[1] = buffer_data_2[2687:2680] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_335[2] = buffer_data_2[2695:2688] * G_Kernel_3x3[0][53:36];
@@ -7368,7 +7368,7 @@ always @(posedge clk) begin
     blur_din[2687:2680] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_336[0:8]
+wire  [25:0]  kernel_img_mul_336[0:8];
 assign kernel_img_mul_336[0] = buffer_data_2[2687:2680] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_336[1] = buffer_data_2[2695:2688] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_336[2] = buffer_data_2[2703:2696] * G_Kernel_3x3[0][53:36];
@@ -7390,7 +7390,7 @@ always @(posedge clk) begin
     blur_din[2695:2688] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_337[0:8]
+wire  [25:0]  kernel_img_mul_337[0:8];
 assign kernel_img_mul_337[0] = buffer_data_2[2695:2688] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_337[1] = buffer_data_2[2703:2696] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_337[2] = buffer_data_2[2711:2704] * G_Kernel_3x3[0][53:36];
@@ -7412,7 +7412,7 @@ always @(posedge clk) begin
     blur_din[2703:2696] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_338[0:8]
+wire  [25:0]  kernel_img_mul_338[0:8];
 assign kernel_img_mul_338[0] = buffer_data_2[2703:2696] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_338[1] = buffer_data_2[2711:2704] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_338[2] = buffer_data_2[2719:2712] * G_Kernel_3x3[0][53:36];
@@ -7434,7 +7434,7 @@ always @(posedge clk) begin
     blur_din[2711:2704] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_339[0:8]
+wire  [25:0]  kernel_img_mul_339[0:8];
 assign kernel_img_mul_339[0] = buffer_data_2[2711:2704] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_339[1] = buffer_data_2[2719:2712] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_339[2] = buffer_data_2[2727:2720] * G_Kernel_3x3[0][53:36];
@@ -7456,7 +7456,7 @@ always @(posedge clk) begin
     blur_din[2719:2712] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_340[0:8]
+wire  [25:0]  kernel_img_mul_340[0:8];
 assign kernel_img_mul_340[0] = buffer_data_2[2719:2712] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_340[1] = buffer_data_2[2727:2720] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_340[2] = buffer_data_2[2735:2728] * G_Kernel_3x3[0][53:36];
@@ -7478,7 +7478,7 @@ always @(posedge clk) begin
     blur_din[2727:2720] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_341[0:8]
+wire  [25:0]  kernel_img_mul_341[0:8];
 assign kernel_img_mul_341[0] = buffer_data_2[2727:2720] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_341[1] = buffer_data_2[2735:2728] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_341[2] = buffer_data_2[2743:2736] * G_Kernel_3x3[0][53:36];
@@ -7500,7 +7500,7 @@ always @(posedge clk) begin
     blur_din[2735:2728] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_342[0:8]
+wire  [25:0]  kernel_img_mul_342[0:8];
 assign kernel_img_mul_342[0] = buffer_data_2[2735:2728] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_342[1] = buffer_data_2[2743:2736] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_342[2] = buffer_data_2[2751:2744] * G_Kernel_3x3[0][53:36];
@@ -7522,7 +7522,7 @@ always @(posedge clk) begin
     blur_din[2743:2736] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_343[0:8]
+wire  [25:0]  kernel_img_mul_343[0:8];
 assign kernel_img_mul_343[0] = buffer_data_2[2743:2736] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_343[1] = buffer_data_2[2751:2744] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_343[2] = buffer_data_2[2759:2752] * G_Kernel_3x3[0][53:36];
@@ -7544,7 +7544,7 @@ always @(posedge clk) begin
     blur_din[2751:2744] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_344[0:8]
+wire  [25:0]  kernel_img_mul_344[0:8];
 assign kernel_img_mul_344[0] = buffer_data_2[2751:2744] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_344[1] = buffer_data_2[2759:2752] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_344[2] = buffer_data_2[2767:2760] * G_Kernel_3x3[0][53:36];
@@ -7566,7 +7566,7 @@ always @(posedge clk) begin
     blur_din[2759:2752] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_345[0:8]
+wire  [25:0]  kernel_img_mul_345[0:8];
 assign kernel_img_mul_345[0] = buffer_data_2[2759:2752] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_345[1] = buffer_data_2[2767:2760] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_345[2] = buffer_data_2[2775:2768] * G_Kernel_3x3[0][53:36];
@@ -7588,7 +7588,7 @@ always @(posedge clk) begin
     blur_din[2767:2760] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_346[0:8]
+wire  [25:0]  kernel_img_mul_346[0:8];
 assign kernel_img_mul_346[0] = buffer_data_2[2767:2760] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_346[1] = buffer_data_2[2775:2768] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_346[2] = buffer_data_2[2783:2776] * G_Kernel_3x3[0][53:36];
@@ -7610,7 +7610,7 @@ always @(posedge clk) begin
     blur_din[2775:2768] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_347[0:8]
+wire  [25:0]  kernel_img_mul_347[0:8];
 assign kernel_img_mul_347[0] = buffer_data_2[2775:2768] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_347[1] = buffer_data_2[2783:2776] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_347[2] = buffer_data_2[2791:2784] * G_Kernel_3x3[0][53:36];
@@ -7632,7 +7632,7 @@ always @(posedge clk) begin
     blur_din[2783:2776] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_348[0:8]
+wire  [25:0]  kernel_img_mul_348[0:8];
 assign kernel_img_mul_348[0] = buffer_data_2[2783:2776] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_348[1] = buffer_data_2[2791:2784] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_348[2] = buffer_data_2[2799:2792] * G_Kernel_3x3[0][53:36];
@@ -7654,7 +7654,7 @@ always @(posedge clk) begin
     blur_din[2791:2784] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_349[0:8]
+wire  [25:0]  kernel_img_mul_349[0:8];
 assign kernel_img_mul_349[0] = buffer_data_2[2791:2784] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_349[1] = buffer_data_2[2799:2792] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_349[2] = buffer_data_2[2807:2800] * G_Kernel_3x3[0][53:36];
@@ -7676,7 +7676,7 @@ always @(posedge clk) begin
     blur_din[2799:2792] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_350[0:8]
+wire  [25:0]  kernel_img_mul_350[0:8];
 assign kernel_img_mul_350[0] = buffer_data_2[2799:2792] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_350[1] = buffer_data_2[2807:2800] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_350[2] = buffer_data_2[2815:2808] * G_Kernel_3x3[0][53:36];
@@ -7698,7 +7698,7 @@ always @(posedge clk) begin
     blur_din[2807:2800] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_351[0:8]
+wire  [25:0]  kernel_img_mul_351[0:8];
 assign kernel_img_mul_351[0] = buffer_data_2[2807:2800] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_351[1] = buffer_data_2[2815:2808] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_351[2] = buffer_data_2[2823:2816] * G_Kernel_3x3[0][53:36];
@@ -7720,7 +7720,7 @@ always @(posedge clk) begin
     blur_din[2815:2808] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_352[0:8]
+wire  [25:0]  kernel_img_mul_352[0:8];
 assign kernel_img_mul_352[0] = buffer_data_2[2815:2808] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_352[1] = buffer_data_2[2823:2816] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_352[2] = buffer_data_2[2831:2824] * G_Kernel_3x3[0][53:36];
@@ -7742,7 +7742,7 @@ always @(posedge clk) begin
     blur_din[2823:2816] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_353[0:8]
+wire  [25:0]  kernel_img_mul_353[0:8];
 assign kernel_img_mul_353[0] = buffer_data_2[2823:2816] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_353[1] = buffer_data_2[2831:2824] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_353[2] = buffer_data_2[2839:2832] * G_Kernel_3x3[0][53:36];
@@ -7764,7 +7764,7 @@ always @(posedge clk) begin
     blur_din[2831:2824] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_354[0:8]
+wire  [25:0]  kernel_img_mul_354[0:8];
 assign kernel_img_mul_354[0] = buffer_data_2[2831:2824] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_354[1] = buffer_data_2[2839:2832] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_354[2] = buffer_data_2[2847:2840] * G_Kernel_3x3[0][53:36];
@@ -7786,7 +7786,7 @@ always @(posedge clk) begin
     blur_din[2839:2832] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_355[0:8]
+wire  [25:0]  kernel_img_mul_355[0:8];
 assign kernel_img_mul_355[0] = buffer_data_2[2839:2832] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_355[1] = buffer_data_2[2847:2840] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_355[2] = buffer_data_2[2855:2848] * G_Kernel_3x3[0][53:36];
@@ -7808,7 +7808,7 @@ always @(posedge clk) begin
     blur_din[2847:2840] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_356[0:8]
+wire  [25:0]  kernel_img_mul_356[0:8];
 assign kernel_img_mul_356[0] = buffer_data_2[2847:2840] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_356[1] = buffer_data_2[2855:2848] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_356[2] = buffer_data_2[2863:2856] * G_Kernel_3x3[0][53:36];
@@ -7830,7 +7830,7 @@ always @(posedge clk) begin
     blur_din[2855:2848] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_357[0:8]
+wire  [25:0]  kernel_img_mul_357[0:8];
 assign kernel_img_mul_357[0] = buffer_data_2[2855:2848] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_357[1] = buffer_data_2[2863:2856] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_357[2] = buffer_data_2[2871:2864] * G_Kernel_3x3[0][53:36];
@@ -7852,7 +7852,7 @@ always @(posedge clk) begin
     blur_din[2863:2856] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_358[0:8]
+wire  [25:0]  kernel_img_mul_358[0:8];
 assign kernel_img_mul_358[0] = buffer_data_2[2863:2856] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_358[1] = buffer_data_2[2871:2864] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_358[2] = buffer_data_2[2879:2872] * G_Kernel_3x3[0][53:36];
@@ -7874,7 +7874,7 @@ always @(posedge clk) begin
     blur_din[2871:2864] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_359[0:8]
+wire  [25:0]  kernel_img_mul_359[0:8];
 assign kernel_img_mul_359[0] = buffer_data_2[2871:2864] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_359[1] = buffer_data_2[2879:2872] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_359[2] = buffer_data_2[2887:2880] * G_Kernel_3x3[0][53:36];
@@ -7896,7 +7896,7 @@ always @(posedge clk) begin
     blur_din[2879:2872] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_360[0:8]
+wire  [25:0]  kernel_img_mul_360[0:8];
 assign kernel_img_mul_360[0] = buffer_data_2[2879:2872] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_360[1] = buffer_data_2[2887:2880] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_360[2] = buffer_data_2[2895:2888] * G_Kernel_3x3[0][53:36];
@@ -7918,7 +7918,7 @@ always @(posedge clk) begin
     blur_din[2887:2880] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_361[0:8]
+wire  [25:0]  kernel_img_mul_361[0:8];
 assign kernel_img_mul_361[0] = buffer_data_2[2887:2880] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_361[1] = buffer_data_2[2895:2888] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_361[2] = buffer_data_2[2903:2896] * G_Kernel_3x3[0][53:36];
@@ -7940,7 +7940,7 @@ always @(posedge clk) begin
     blur_din[2895:2888] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_362[0:8]
+wire  [25:0]  kernel_img_mul_362[0:8];
 assign kernel_img_mul_362[0] = buffer_data_2[2895:2888] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_362[1] = buffer_data_2[2903:2896] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_362[2] = buffer_data_2[2911:2904] * G_Kernel_3x3[0][53:36];
@@ -7962,7 +7962,7 @@ always @(posedge clk) begin
     blur_din[2903:2896] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_363[0:8]
+wire  [25:0]  kernel_img_mul_363[0:8];
 assign kernel_img_mul_363[0] = buffer_data_2[2903:2896] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_363[1] = buffer_data_2[2911:2904] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_363[2] = buffer_data_2[2919:2912] * G_Kernel_3x3[0][53:36];
@@ -7984,7 +7984,7 @@ always @(posedge clk) begin
     blur_din[2911:2904] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_364[0:8]
+wire  [25:0]  kernel_img_mul_364[0:8];
 assign kernel_img_mul_364[0] = buffer_data_2[2911:2904] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_364[1] = buffer_data_2[2919:2912] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_364[2] = buffer_data_2[2927:2920] * G_Kernel_3x3[0][53:36];
@@ -8006,7 +8006,7 @@ always @(posedge clk) begin
     blur_din[2919:2912] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_365[0:8]
+wire  [25:0]  kernel_img_mul_365[0:8];
 assign kernel_img_mul_365[0] = buffer_data_2[2919:2912] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_365[1] = buffer_data_2[2927:2920] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_365[2] = buffer_data_2[2935:2928] * G_Kernel_3x3[0][53:36];
@@ -8028,7 +8028,7 @@ always @(posedge clk) begin
     blur_din[2927:2920] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_366[0:8]
+wire  [25:0]  kernel_img_mul_366[0:8];
 assign kernel_img_mul_366[0] = buffer_data_2[2927:2920] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_366[1] = buffer_data_2[2935:2928] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_366[2] = buffer_data_2[2943:2936] * G_Kernel_3x3[0][53:36];
@@ -8050,7 +8050,7 @@ always @(posedge clk) begin
     blur_din[2935:2928] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_367[0:8]
+wire  [25:0]  kernel_img_mul_367[0:8];
 assign kernel_img_mul_367[0] = buffer_data_2[2935:2928] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_367[1] = buffer_data_2[2943:2936] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_367[2] = buffer_data_2[2951:2944] * G_Kernel_3x3[0][53:36];
@@ -8072,7 +8072,7 @@ always @(posedge clk) begin
     blur_din[2943:2936] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_368[0:8]
+wire  [25:0]  kernel_img_mul_368[0:8];
 assign kernel_img_mul_368[0] = buffer_data_2[2943:2936] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_368[1] = buffer_data_2[2951:2944] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_368[2] = buffer_data_2[2959:2952] * G_Kernel_3x3[0][53:36];
@@ -8094,7 +8094,7 @@ always @(posedge clk) begin
     blur_din[2951:2944] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_369[0:8]
+wire  [25:0]  kernel_img_mul_369[0:8];
 assign kernel_img_mul_369[0] = buffer_data_2[2951:2944] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_369[1] = buffer_data_2[2959:2952] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_369[2] = buffer_data_2[2967:2960] * G_Kernel_3x3[0][53:36];
@@ -8116,7 +8116,7 @@ always @(posedge clk) begin
     blur_din[2959:2952] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_370[0:8]
+wire  [25:0]  kernel_img_mul_370[0:8];
 assign kernel_img_mul_370[0] = buffer_data_2[2959:2952] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_370[1] = buffer_data_2[2967:2960] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_370[2] = buffer_data_2[2975:2968] * G_Kernel_3x3[0][53:36];
@@ -8138,7 +8138,7 @@ always @(posedge clk) begin
     blur_din[2967:2960] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_371[0:8]
+wire  [25:0]  kernel_img_mul_371[0:8];
 assign kernel_img_mul_371[0] = buffer_data_2[2967:2960] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_371[1] = buffer_data_2[2975:2968] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_371[2] = buffer_data_2[2983:2976] * G_Kernel_3x3[0][53:36];
@@ -8160,7 +8160,7 @@ always @(posedge clk) begin
     blur_din[2975:2968] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_372[0:8]
+wire  [25:0]  kernel_img_mul_372[0:8];
 assign kernel_img_mul_372[0] = buffer_data_2[2975:2968] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_372[1] = buffer_data_2[2983:2976] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_372[2] = buffer_data_2[2991:2984] * G_Kernel_3x3[0][53:36];
@@ -8182,7 +8182,7 @@ always @(posedge clk) begin
     blur_din[2983:2976] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_373[0:8]
+wire  [25:0]  kernel_img_mul_373[0:8];
 assign kernel_img_mul_373[0] = buffer_data_2[2983:2976] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_373[1] = buffer_data_2[2991:2984] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_373[2] = buffer_data_2[2999:2992] * G_Kernel_3x3[0][53:36];
@@ -8204,7 +8204,7 @@ always @(posedge clk) begin
     blur_din[2991:2984] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_374[0:8]
+wire  [25:0]  kernel_img_mul_374[0:8];
 assign kernel_img_mul_374[0] = buffer_data_2[2991:2984] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_374[1] = buffer_data_2[2999:2992] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_374[2] = buffer_data_2[3007:3000] * G_Kernel_3x3[0][53:36];
@@ -8226,7 +8226,7 @@ always @(posedge clk) begin
     blur_din[2999:2992] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_375[0:8]
+wire  [25:0]  kernel_img_mul_375[0:8];
 assign kernel_img_mul_375[0] = buffer_data_2[2999:2992] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_375[1] = buffer_data_2[3007:3000] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_375[2] = buffer_data_2[3015:3008] * G_Kernel_3x3[0][53:36];
@@ -8248,7 +8248,7 @@ always @(posedge clk) begin
     blur_din[3007:3000] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_376[0:8]
+wire  [25:0]  kernel_img_mul_376[0:8];
 assign kernel_img_mul_376[0] = buffer_data_2[3007:3000] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_376[1] = buffer_data_2[3015:3008] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_376[2] = buffer_data_2[3023:3016] * G_Kernel_3x3[0][53:36];
@@ -8270,7 +8270,7 @@ always @(posedge clk) begin
     blur_din[3015:3008] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_377[0:8]
+wire  [25:0]  kernel_img_mul_377[0:8];
 assign kernel_img_mul_377[0] = buffer_data_2[3015:3008] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_377[1] = buffer_data_2[3023:3016] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_377[2] = buffer_data_2[3031:3024] * G_Kernel_3x3[0][53:36];
@@ -8292,7 +8292,7 @@ always @(posedge clk) begin
     blur_din[3023:3016] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_378[0:8]
+wire  [25:0]  kernel_img_mul_378[0:8];
 assign kernel_img_mul_378[0] = buffer_data_2[3023:3016] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_378[1] = buffer_data_2[3031:3024] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_378[2] = buffer_data_2[3039:3032] * G_Kernel_3x3[0][53:36];
@@ -8314,7 +8314,7 @@ always @(posedge clk) begin
     blur_din[3031:3024] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_379[0:8]
+wire  [25:0]  kernel_img_mul_379[0:8];
 assign kernel_img_mul_379[0] = buffer_data_2[3031:3024] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_379[1] = buffer_data_2[3039:3032] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_379[2] = buffer_data_2[3047:3040] * G_Kernel_3x3[0][53:36];
@@ -8336,7 +8336,7 @@ always @(posedge clk) begin
     blur_din[3039:3032] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_380[0:8]
+wire  [25:0]  kernel_img_mul_380[0:8];
 assign kernel_img_mul_380[0] = buffer_data_2[3039:3032] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_380[1] = buffer_data_2[3047:3040] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_380[2] = buffer_data_2[3055:3048] * G_Kernel_3x3[0][53:36];
@@ -8358,7 +8358,7 @@ always @(posedge clk) begin
     blur_din[3047:3040] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_381[0:8]
+wire  [25:0]  kernel_img_mul_381[0:8];
 assign kernel_img_mul_381[0] = buffer_data_2[3047:3040] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_381[1] = buffer_data_2[3055:3048] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_381[2] = buffer_data_2[3063:3056] * G_Kernel_3x3[0][53:36];
@@ -8380,7 +8380,7 @@ always @(posedge clk) begin
     blur_din[3055:3048] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_382[0:8]
+wire  [25:0]  kernel_img_mul_382[0:8];
 assign kernel_img_mul_382[0] = buffer_data_2[3055:3048] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_382[1] = buffer_data_2[3063:3056] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_382[2] = buffer_data_2[3071:3064] * G_Kernel_3x3[0][53:36];
@@ -8402,7 +8402,7 @@ always @(posedge clk) begin
     blur_din[3063:3056] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_383[0:8]
+wire  [25:0]  kernel_img_mul_383[0:8];
 assign kernel_img_mul_383[0] = buffer_data_2[3063:3056] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_383[1] = buffer_data_2[3071:3064] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_383[2] = buffer_data_2[3079:3072] * G_Kernel_3x3[0][53:36];
@@ -8424,7 +8424,7 @@ always @(posedge clk) begin
     blur_din[3071:3064] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_384[0:8]
+wire  [25:0]  kernel_img_mul_384[0:8];
 assign kernel_img_mul_384[0] = buffer_data_2[3071:3064] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_384[1] = buffer_data_2[3079:3072] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_384[2] = buffer_data_2[3087:3080] * G_Kernel_3x3[0][53:36];
@@ -8446,7 +8446,7 @@ always @(posedge clk) begin
     blur_din[3079:3072] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_385[0:8]
+wire  [25:0]  kernel_img_mul_385[0:8];
 assign kernel_img_mul_385[0] = buffer_data_2[3079:3072] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_385[1] = buffer_data_2[3087:3080] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_385[2] = buffer_data_2[3095:3088] * G_Kernel_3x3[0][53:36];
@@ -8468,7 +8468,7 @@ always @(posedge clk) begin
     blur_din[3087:3080] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_386[0:8]
+wire  [25:0]  kernel_img_mul_386[0:8];
 assign kernel_img_mul_386[0] = buffer_data_2[3087:3080] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_386[1] = buffer_data_2[3095:3088] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_386[2] = buffer_data_2[3103:3096] * G_Kernel_3x3[0][53:36];
@@ -8490,7 +8490,7 @@ always @(posedge clk) begin
     blur_din[3095:3088] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_387[0:8]
+wire  [25:0]  kernel_img_mul_387[0:8];
 assign kernel_img_mul_387[0] = buffer_data_2[3095:3088] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_387[1] = buffer_data_2[3103:3096] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_387[2] = buffer_data_2[3111:3104] * G_Kernel_3x3[0][53:36];
@@ -8512,7 +8512,7 @@ always @(posedge clk) begin
     blur_din[3103:3096] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_388[0:8]
+wire  [25:0]  kernel_img_mul_388[0:8];
 assign kernel_img_mul_388[0] = buffer_data_2[3103:3096] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_388[1] = buffer_data_2[3111:3104] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_388[2] = buffer_data_2[3119:3112] * G_Kernel_3x3[0][53:36];
@@ -8534,7 +8534,7 @@ always @(posedge clk) begin
     blur_din[3111:3104] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_389[0:8]
+wire  [25:0]  kernel_img_mul_389[0:8];
 assign kernel_img_mul_389[0] = buffer_data_2[3111:3104] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_389[1] = buffer_data_2[3119:3112] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_389[2] = buffer_data_2[3127:3120] * G_Kernel_3x3[0][53:36];
@@ -8556,7 +8556,7 @@ always @(posedge clk) begin
     blur_din[3119:3112] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_390[0:8]
+wire  [25:0]  kernel_img_mul_390[0:8];
 assign kernel_img_mul_390[0] = buffer_data_2[3119:3112] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_390[1] = buffer_data_2[3127:3120] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_390[2] = buffer_data_2[3135:3128] * G_Kernel_3x3[0][53:36];
@@ -8578,7 +8578,7 @@ always @(posedge clk) begin
     blur_din[3127:3120] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_391[0:8]
+wire  [25:0]  kernel_img_mul_391[0:8];
 assign kernel_img_mul_391[0] = buffer_data_2[3127:3120] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_391[1] = buffer_data_2[3135:3128] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_391[2] = buffer_data_2[3143:3136] * G_Kernel_3x3[0][53:36];
@@ -8600,7 +8600,7 @@ always @(posedge clk) begin
     blur_din[3135:3128] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_392[0:8]
+wire  [25:0]  kernel_img_mul_392[0:8];
 assign kernel_img_mul_392[0] = buffer_data_2[3135:3128] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_392[1] = buffer_data_2[3143:3136] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_392[2] = buffer_data_2[3151:3144] * G_Kernel_3x3[0][53:36];
@@ -8622,7 +8622,7 @@ always @(posedge clk) begin
     blur_din[3143:3136] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_393[0:8]
+wire  [25:0]  kernel_img_mul_393[0:8];
 assign kernel_img_mul_393[0] = buffer_data_2[3143:3136] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_393[1] = buffer_data_2[3151:3144] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_393[2] = buffer_data_2[3159:3152] * G_Kernel_3x3[0][53:36];
@@ -8644,7 +8644,7 @@ always @(posedge clk) begin
     blur_din[3151:3144] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_394[0:8]
+wire  [25:0]  kernel_img_mul_394[0:8];
 assign kernel_img_mul_394[0] = buffer_data_2[3151:3144] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_394[1] = buffer_data_2[3159:3152] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_394[2] = buffer_data_2[3167:3160] * G_Kernel_3x3[0][53:36];
@@ -8666,7 +8666,7 @@ always @(posedge clk) begin
     blur_din[3159:3152] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_395[0:8]
+wire  [25:0]  kernel_img_mul_395[0:8];
 assign kernel_img_mul_395[0] = buffer_data_2[3159:3152] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_395[1] = buffer_data_2[3167:3160] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_395[2] = buffer_data_2[3175:3168] * G_Kernel_3x3[0][53:36];
@@ -8688,7 +8688,7 @@ always @(posedge clk) begin
     blur_din[3167:3160] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_396[0:8]
+wire  [25:0]  kernel_img_mul_396[0:8];
 assign kernel_img_mul_396[0] = buffer_data_2[3167:3160] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_396[1] = buffer_data_2[3175:3168] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_396[2] = buffer_data_2[3183:3176] * G_Kernel_3x3[0][53:36];
@@ -8710,7 +8710,7 @@ always @(posedge clk) begin
     blur_din[3175:3168] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_397[0:8]
+wire  [25:0]  kernel_img_mul_397[0:8];
 assign kernel_img_mul_397[0] = buffer_data_2[3175:3168] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_397[1] = buffer_data_2[3183:3176] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_397[2] = buffer_data_2[3191:3184] * G_Kernel_3x3[0][53:36];
@@ -8732,7 +8732,7 @@ always @(posedge clk) begin
     blur_din[3183:3176] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_398[0:8]
+wire  [25:0]  kernel_img_mul_398[0:8];
 assign kernel_img_mul_398[0] = buffer_data_2[3183:3176] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_398[1] = buffer_data_2[3191:3184] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_398[2] = buffer_data_2[3199:3192] * G_Kernel_3x3[0][53:36];
@@ -8754,7 +8754,7 @@ always @(posedge clk) begin
     blur_din[3191:3184] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_399[0:8]
+wire  [25:0]  kernel_img_mul_399[0:8];
 assign kernel_img_mul_399[0] = buffer_data_2[3191:3184] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_399[1] = buffer_data_2[3199:3192] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_399[2] = buffer_data_2[3207:3200] * G_Kernel_3x3[0][53:36];
@@ -8776,7 +8776,7 @@ always @(posedge clk) begin
     blur_din[3199:3192] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_400[0:8]
+wire  [25:0]  kernel_img_mul_400[0:8];
 assign kernel_img_mul_400[0] = buffer_data_2[3199:3192] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_400[1] = buffer_data_2[3207:3200] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_400[2] = buffer_data_2[3215:3208] * G_Kernel_3x3[0][53:36];
@@ -8798,7 +8798,7 @@ always @(posedge clk) begin
     blur_din[3207:3200] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_401[0:8]
+wire  [25:0]  kernel_img_mul_401[0:8];
 assign kernel_img_mul_401[0] = buffer_data_2[3207:3200] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_401[1] = buffer_data_2[3215:3208] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_401[2] = buffer_data_2[3223:3216] * G_Kernel_3x3[0][53:36];
@@ -8820,7 +8820,7 @@ always @(posedge clk) begin
     blur_din[3215:3208] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_402[0:8]
+wire  [25:0]  kernel_img_mul_402[0:8];
 assign kernel_img_mul_402[0] = buffer_data_2[3215:3208] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_402[1] = buffer_data_2[3223:3216] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_402[2] = buffer_data_2[3231:3224] * G_Kernel_3x3[0][53:36];
@@ -8842,7 +8842,7 @@ always @(posedge clk) begin
     blur_din[3223:3216] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_403[0:8]
+wire  [25:0]  kernel_img_mul_403[0:8];
 assign kernel_img_mul_403[0] = buffer_data_2[3223:3216] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_403[1] = buffer_data_2[3231:3224] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_403[2] = buffer_data_2[3239:3232] * G_Kernel_3x3[0][53:36];
@@ -8864,7 +8864,7 @@ always @(posedge clk) begin
     blur_din[3231:3224] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_404[0:8]
+wire  [25:0]  kernel_img_mul_404[0:8];
 assign kernel_img_mul_404[0] = buffer_data_2[3231:3224] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_404[1] = buffer_data_2[3239:3232] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_404[2] = buffer_data_2[3247:3240] * G_Kernel_3x3[0][53:36];
@@ -8886,7 +8886,7 @@ always @(posedge clk) begin
     blur_din[3239:3232] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_405[0:8]
+wire  [25:0]  kernel_img_mul_405[0:8];
 assign kernel_img_mul_405[0] = buffer_data_2[3239:3232] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_405[1] = buffer_data_2[3247:3240] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_405[2] = buffer_data_2[3255:3248] * G_Kernel_3x3[0][53:36];
@@ -8908,7 +8908,7 @@ always @(posedge clk) begin
     blur_din[3247:3240] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_406[0:8]
+wire  [25:0]  kernel_img_mul_406[0:8];
 assign kernel_img_mul_406[0] = buffer_data_2[3247:3240] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_406[1] = buffer_data_2[3255:3248] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_406[2] = buffer_data_2[3263:3256] * G_Kernel_3x3[0][53:36];
@@ -8930,7 +8930,7 @@ always @(posedge clk) begin
     blur_din[3255:3248] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_407[0:8]
+wire  [25:0]  kernel_img_mul_407[0:8];
 assign kernel_img_mul_407[0] = buffer_data_2[3255:3248] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_407[1] = buffer_data_2[3263:3256] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_407[2] = buffer_data_2[3271:3264] * G_Kernel_3x3[0][53:36];
@@ -8952,7 +8952,7 @@ always @(posedge clk) begin
     blur_din[3263:3256] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_408[0:8]
+wire  [25:0]  kernel_img_mul_408[0:8];
 assign kernel_img_mul_408[0] = buffer_data_2[3263:3256] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_408[1] = buffer_data_2[3271:3264] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_408[2] = buffer_data_2[3279:3272] * G_Kernel_3x3[0][53:36];
@@ -8974,7 +8974,7 @@ always @(posedge clk) begin
     blur_din[3271:3264] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_409[0:8]
+wire  [25:0]  kernel_img_mul_409[0:8];
 assign kernel_img_mul_409[0] = buffer_data_2[3271:3264] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_409[1] = buffer_data_2[3279:3272] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_409[2] = buffer_data_2[3287:3280] * G_Kernel_3x3[0][53:36];
@@ -8996,7 +8996,7 @@ always @(posedge clk) begin
     blur_din[3279:3272] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_410[0:8]
+wire  [25:0]  kernel_img_mul_410[0:8];
 assign kernel_img_mul_410[0] = buffer_data_2[3279:3272] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_410[1] = buffer_data_2[3287:3280] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_410[2] = buffer_data_2[3295:3288] * G_Kernel_3x3[0][53:36];
@@ -9018,7 +9018,7 @@ always @(posedge clk) begin
     blur_din[3287:3280] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_411[0:8]
+wire  [25:0]  kernel_img_mul_411[0:8];
 assign kernel_img_mul_411[0] = buffer_data_2[3287:3280] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_411[1] = buffer_data_2[3295:3288] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_411[2] = buffer_data_2[3303:3296] * G_Kernel_3x3[0][53:36];
@@ -9040,7 +9040,7 @@ always @(posedge clk) begin
     blur_din[3295:3288] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_412[0:8]
+wire  [25:0]  kernel_img_mul_412[0:8];
 assign kernel_img_mul_412[0] = buffer_data_2[3295:3288] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_412[1] = buffer_data_2[3303:3296] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_412[2] = buffer_data_2[3311:3304] * G_Kernel_3x3[0][53:36];
@@ -9062,7 +9062,7 @@ always @(posedge clk) begin
     blur_din[3303:3296] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_413[0:8]
+wire  [25:0]  kernel_img_mul_413[0:8];
 assign kernel_img_mul_413[0] = buffer_data_2[3303:3296] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_413[1] = buffer_data_2[3311:3304] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_413[2] = buffer_data_2[3319:3312] * G_Kernel_3x3[0][53:36];
@@ -9084,7 +9084,7 @@ always @(posedge clk) begin
     blur_din[3311:3304] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_414[0:8]
+wire  [25:0]  kernel_img_mul_414[0:8];
 assign kernel_img_mul_414[0] = buffer_data_2[3311:3304] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_414[1] = buffer_data_2[3319:3312] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_414[2] = buffer_data_2[3327:3320] * G_Kernel_3x3[0][53:36];
@@ -9106,7 +9106,7 @@ always @(posedge clk) begin
     blur_din[3319:3312] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_415[0:8]
+wire  [25:0]  kernel_img_mul_415[0:8];
 assign kernel_img_mul_415[0] = buffer_data_2[3319:3312] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_415[1] = buffer_data_2[3327:3320] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_415[2] = buffer_data_2[3335:3328] * G_Kernel_3x3[0][53:36];
@@ -9128,7 +9128,7 @@ always @(posedge clk) begin
     blur_din[3327:3320] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_416[0:8]
+wire  [25:0]  kernel_img_mul_416[0:8];
 assign kernel_img_mul_416[0] = buffer_data_2[3327:3320] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_416[1] = buffer_data_2[3335:3328] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_416[2] = buffer_data_2[3343:3336] * G_Kernel_3x3[0][53:36];
@@ -9150,7 +9150,7 @@ always @(posedge clk) begin
     blur_din[3335:3328] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_417[0:8]
+wire  [25:0]  kernel_img_mul_417[0:8];
 assign kernel_img_mul_417[0] = buffer_data_2[3335:3328] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_417[1] = buffer_data_2[3343:3336] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_417[2] = buffer_data_2[3351:3344] * G_Kernel_3x3[0][53:36];
@@ -9172,7 +9172,7 @@ always @(posedge clk) begin
     blur_din[3343:3336] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_418[0:8]
+wire  [25:0]  kernel_img_mul_418[0:8];
 assign kernel_img_mul_418[0] = buffer_data_2[3343:3336] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_418[1] = buffer_data_2[3351:3344] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_418[2] = buffer_data_2[3359:3352] * G_Kernel_3x3[0][53:36];
@@ -9194,7 +9194,7 @@ always @(posedge clk) begin
     blur_din[3351:3344] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_419[0:8]
+wire  [25:0]  kernel_img_mul_419[0:8];
 assign kernel_img_mul_419[0] = buffer_data_2[3351:3344] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_419[1] = buffer_data_2[3359:3352] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_419[2] = buffer_data_2[3367:3360] * G_Kernel_3x3[0][53:36];
@@ -9216,7 +9216,7 @@ always @(posedge clk) begin
     blur_din[3359:3352] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_420[0:8]
+wire  [25:0]  kernel_img_mul_420[0:8];
 assign kernel_img_mul_420[0] = buffer_data_2[3359:3352] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_420[1] = buffer_data_2[3367:3360] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_420[2] = buffer_data_2[3375:3368] * G_Kernel_3x3[0][53:36];
@@ -9238,7 +9238,7 @@ always @(posedge clk) begin
     blur_din[3367:3360] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_421[0:8]
+wire  [25:0]  kernel_img_mul_421[0:8];
 assign kernel_img_mul_421[0] = buffer_data_2[3367:3360] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_421[1] = buffer_data_2[3375:3368] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_421[2] = buffer_data_2[3383:3376] * G_Kernel_3x3[0][53:36];
@@ -9260,7 +9260,7 @@ always @(posedge clk) begin
     blur_din[3375:3368] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_422[0:8]
+wire  [25:0]  kernel_img_mul_422[0:8];
 assign kernel_img_mul_422[0] = buffer_data_2[3375:3368] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_422[1] = buffer_data_2[3383:3376] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_422[2] = buffer_data_2[3391:3384] * G_Kernel_3x3[0][53:36];
@@ -9282,7 +9282,7 @@ always @(posedge clk) begin
     blur_din[3383:3376] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_423[0:8]
+wire  [25:0]  kernel_img_mul_423[0:8];
 assign kernel_img_mul_423[0] = buffer_data_2[3383:3376] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_423[1] = buffer_data_2[3391:3384] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_423[2] = buffer_data_2[3399:3392] * G_Kernel_3x3[0][53:36];
@@ -9304,7 +9304,7 @@ always @(posedge clk) begin
     blur_din[3391:3384] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_424[0:8]
+wire  [25:0]  kernel_img_mul_424[0:8];
 assign kernel_img_mul_424[0] = buffer_data_2[3391:3384] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_424[1] = buffer_data_2[3399:3392] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_424[2] = buffer_data_2[3407:3400] * G_Kernel_3x3[0][53:36];
@@ -9326,7 +9326,7 @@ always @(posedge clk) begin
     blur_din[3399:3392] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_425[0:8]
+wire  [25:0]  kernel_img_mul_425[0:8];
 assign kernel_img_mul_425[0] = buffer_data_2[3399:3392] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_425[1] = buffer_data_2[3407:3400] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_425[2] = buffer_data_2[3415:3408] * G_Kernel_3x3[0][53:36];
@@ -9348,7 +9348,7 @@ always @(posedge clk) begin
     blur_din[3407:3400] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_426[0:8]
+wire  [25:0]  kernel_img_mul_426[0:8];
 assign kernel_img_mul_426[0] = buffer_data_2[3407:3400] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_426[1] = buffer_data_2[3415:3408] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_426[2] = buffer_data_2[3423:3416] * G_Kernel_3x3[0][53:36];
@@ -9370,7 +9370,7 @@ always @(posedge clk) begin
     blur_din[3415:3408] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_427[0:8]
+wire  [25:0]  kernel_img_mul_427[0:8];
 assign kernel_img_mul_427[0] = buffer_data_2[3415:3408] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_427[1] = buffer_data_2[3423:3416] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_427[2] = buffer_data_2[3431:3424] * G_Kernel_3x3[0][53:36];
@@ -9392,7 +9392,7 @@ always @(posedge clk) begin
     blur_din[3423:3416] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_428[0:8]
+wire  [25:0]  kernel_img_mul_428[0:8];
 assign kernel_img_mul_428[0] = buffer_data_2[3423:3416] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_428[1] = buffer_data_2[3431:3424] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_428[2] = buffer_data_2[3439:3432] * G_Kernel_3x3[0][53:36];
@@ -9414,7 +9414,7 @@ always @(posedge clk) begin
     blur_din[3431:3424] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_429[0:8]
+wire  [25:0]  kernel_img_mul_429[0:8];
 assign kernel_img_mul_429[0] = buffer_data_2[3431:3424] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_429[1] = buffer_data_2[3439:3432] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_429[2] = buffer_data_2[3447:3440] * G_Kernel_3x3[0][53:36];
@@ -9436,7 +9436,7 @@ always @(posedge clk) begin
     blur_din[3439:3432] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_430[0:8]
+wire  [25:0]  kernel_img_mul_430[0:8];
 assign kernel_img_mul_430[0] = buffer_data_2[3439:3432] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_430[1] = buffer_data_2[3447:3440] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_430[2] = buffer_data_2[3455:3448] * G_Kernel_3x3[0][53:36];
@@ -9458,7 +9458,7 @@ always @(posedge clk) begin
     blur_din[3447:3440] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_431[0:8]
+wire  [25:0]  kernel_img_mul_431[0:8];
 assign kernel_img_mul_431[0] = buffer_data_2[3447:3440] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_431[1] = buffer_data_2[3455:3448] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_431[2] = buffer_data_2[3463:3456] * G_Kernel_3x3[0][53:36];
@@ -9480,7 +9480,7 @@ always @(posedge clk) begin
     blur_din[3455:3448] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_432[0:8]
+wire  [25:0]  kernel_img_mul_432[0:8];
 assign kernel_img_mul_432[0] = buffer_data_2[3455:3448] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_432[1] = buffer_data_2[3463:3456] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_432[2] = buffer_data_2[3471:3464] * G_Kernel_3x3[0][53:36];
@@ -9502,7 +9502,7 @@ always @(posedge clk) begin
     blur_din[3463:3456] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_433[0:8]
+wire  [25:0]  kernel_img_mul_433[0:8];
 assign kernel_img_mul_433[0] = buffer_data_2[3463:3456] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_433[1] = buffer_data_2[3471:3464] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_433[2] = buffer_data_2[3479:3472] * G_Kernel_3x3[0][53:36];
@@ -9524,7 +9524,7 @@ always @(posedge clk) begin
     blur_din[3471:3464] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_434[0:8]
+wire  [25:0]  kernel_img_mul_434[0:8];
 assign kernel_img_mul_434[0] = buffer_data_2[3471:3464] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_434[1] = buffer_data_2[3479:3472] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_434[2] = buffer_data_2[3487:3480] * G_Kernel_3x3[0][53:36];
@@ -9546,7 +9546,7 @@ always @(posedge clk) begin
     blur_din[3479:3472] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_435[0:8]
+wire  [25:0]  kernel_img_mul_435[0:8];
 assign kernel_img_mul_435[0] = buffer_data_2[3479:3472] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_435[1] = buffer_data_2[3487:3480] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_435[2] = buffer_data_2[3495:3488] * G_Kernel_3x3[0][53:36];
@@ -9568,7 +9568,7 @@ always @(posedge clk) begin
     blur_din[3487:3480] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_436[0:8]
+wire  [25:0]  kernel_img_mul_436[0:8];
 assign kernel_img_mul_436[0] = buffer_data_2[3487:3480] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_436[1] = buffer_data_2[3495:3488] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_436[2] = buffer_data_2[3503:3496] * G_Kernel_3x3[0][53:36];
@@ -9590,7 +9590,7 @@ always @(posedge clk) begin
     blur_din[3495:3488] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_437[0:8]
+wire  [25:0]  kernel_img_mul_437[0:8];
 assign kernel_img_mul_437[0] = buffer_data_2[3495:3488] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_437[1] = buffer_data_2[3503:3496] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_437[2] = buffer_data_2[3511:3504] * G_Kernel_3x3[0][53:36];
@@ -9612,7 +9612,7 @@ always @(posedge clk) begin
     blur_din[3503:3496] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_438[0:8]
+wire  [25:0]  kernel_img_mul_438[0:8];
 assign kernel_img_mul_438[0] = buffer_data_2[3503:3496] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_438[1] = buffer_data_2[3511:3504] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_438[2] = buffer_data_2[3519:3512] * G_Kernel_3x3[0][53:36];
@@ -9634,7 +9634,7 @@ always @(posedge clk) begin
     blur_din[3511:3504] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_439[0:8]
+wire  [25:0]  kernel_img_mul_439[0:8];
 assign kernel_img_mul_439[0] = buffer_data_2[3511:3504] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_439[1] = buffer_data_2[3519:3512] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_439[2] = buffer_data_2[3527:3520] * G_Kernel_3x3[0][53:36];
@@ -9656,7 +9656,7 @@ always @(posedge clk) begin
     blur_din[3519:3512] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_440[0:8]
+wire  [25:0]  kernel_img_mul_440[0:8];
 assign kernel_img_mul_440[0] = buffer_data_2[3519:3512] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_440[1] = buffer_data_2[3527:3520] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_440[2] = buffer_data_2[3535:3528] * G_Kernel_3x3[0][53:36];
@@ -9678,7 +9678,7 @@ always @(posedge clk) begin
     blur_din[3527:3520] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_441[0:8]
+wire  [25:0]  kernel_img_mul_441[0:8];
 assign kernel_img_mul_441[0] = buffer_data_2[3527:3520] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_441[1] = buffer_data_2[3535:3528] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_441[2] = buffer_data_2[3543:3536] * G_Kernel_3x3[0][53:36];
@@ -9700,7 +9700,7 @@ always @(posedge clk) begin
     blur_din[3535:3528] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_442[0:8]
+wire  [25:0]  kernel_img_mul_442[0:8];
 assign kernel_img_mul_442[0] = buffer_data_2[3535:3528] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_442[1] = buffer_data_2[3543:3536] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_442[2] = buffer_data_2[3551:3544] * G_Kernel_3x3[0][53:36];
@@ -9722,7 +9722,7 @@ always @(posedge clk) begin
     blur_din[3543:3536] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_443[0:8]
+wire  [25:0]  kernel_img_mul_443[0:8];
 assign kernel_img_mul_443[0] = buffer_data_2[3543:3536] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_443[1] = buffer_data_2[3551:3544] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_443[2] = buffer_data_2[3559:3552] * G_Kernel_3x3[0][53:36];
@@ -9744,7 +9744,7 @@ always @(posedge clk) begin
     blur_din[3551:3544] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_444[0:8]
+wire  [25:0]  kernel_img_mul_444[0:8];
 assign kernel_img_mul_444[0] = buffer_data_2[3551:3544] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_444[1] = buffer_data_2[3559:3552] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_444[2] = buffer_data_2[3567:3560] * G_Kernel_3x3[0][53:36];
@@ -9766,7 +9766,7 @@ always @(posedge clk) begin
     blur_din[3559:3552] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_445[0:8]
+wire  [25:0]  kernel_img_mul_445[0:8];
 assign kernel_img_mul_445[0] = buffer_data_2[3559:3552] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_445[1] = buffer_data_2[3567:3560] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_445[2] = buffer_data_2[3575:3568] * G_Kernel_3x3[0][53:36];
@@ -9788,7 +9788,7 @@ always @(posedge clk) begin
     blur_din[3567:3560] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_446[0:8]
+wire  [25:0]  kernel_img_mul_446[0:8];
 assign kernel_img_mul_446[0] = buffer_data_2[3567:3560] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_446[1] = buffer_data_2[3575:3568] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_446[2] = buffer_data_2[3583:3576] * G_Kernel_3x3[0][53:36];
@@ -9810,7 +9810,7 @@ always @(posedge clk) begin
     blur_din[3575:3568] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_447[0:8]
+wire  [25:0]  kernel_img_mul_447[0:8];
 assign kernel_img_mul_447[0] = buffer_data_2[3575:3568] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_447[1] = buffer_data_2[3583:3576] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_447[2] = buffer_data_2[3591:3584] * G_Kernel_3x3[0][53:36];
@@ -9832,7 +9832,7 @@ always @(posedge clk) begin
     blur_din[3583:3576] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_448[0:8]
+wire  [25:0]  kernel_img_mul_448[0:8];
 assign kernel_img_mul_448[0] = buffer_data_2[3583:3576] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_448[1] = buffer_data_2[3591:3584] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_448[2] = buffer_data_2[3599:3592] * G_Kernel_3x3[0][53:36];
@@ -9854,7 +9854,7 @@ always @(posedge clk) begin
     blur_din[3591:3584] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_449[0:8]
+wire  [25:0]  kernel_img_mul_449[0:8];
 assign kernel_img_mul_449[0] = buffer_data_2[3591:3584] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_449[1] = buffer_data_2[3599:3592] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_449[2] = buffer_data_2[3607:3600] * G_Kernel_3x3[0][53:36];
@@ -9876,7 +9876,7 @@ always @(posedge clk) begin
     blur_din[3599:3592] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_450[0:8]
+wire  [25:0]  kernel_img_mul_450[0:8];
 assign kernel_img_mul_450[0] = buffer_data_2[3599:3592] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_450[1] = buffer_data_2[3607:3600] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_450[2] = buffer_data_2[3615:3608] * G_Kernel_3x3[0][53:36];
@@ -9898,7 +9898,7 @@ always @(posedge clk) begin
     blur_din[3607:3600] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_451[0:8]
+wire  [25:0]  kernel_img_mul_451[0:8];
 assign kernel_img_mul_451[0] = buffer_data_2[3607:3600] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_451[1] = buffer_data_2[3615:3608] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_451[2] = buffer_data_2[3623:3616] * G_Kernel_3x3[0][53:36];
@@ -9920,7 +9920,7 @@ always @(posedge clk) begin
     blur_din[3615:3608] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_452[0:8]
+wire  [25:0]  kernel_img_mul_452[0:8];
 assign kernel_img_mul_452[0] = buffer_data_2[3615:3608] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_452[1] = buffer_data_2[3623:3616] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_452[2] = buffer_data_2[3631:3624] * G_Kernel_3x3[0][53:36];
@@ -9942,7 +9942,7 @@ always @(posedge clk) begin
     blur_din[3623:3616] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_453[0:8]
+wire  [25:0]  kernel_img_mul_453[0:8];
 assign kernel_img_mul_453[0] = buffer_data_2[3623:3616] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_453[1] = buffer_data_2[3631:3624] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_453[2] = buffer_data_2[3639:3632] * G_Kernel_3x3[0][53:36];
@@ -9964,7 +9964,7 @@ always @(posedge clk) begin
     blur_din[3631:3624] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_454[0:8]
+wire  [25:0]  kernel_img_mul_454[0:8];
 assign kernel_img_mul_454[0] = buffer_data_2[3631:3624] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_454[1] = buffer_data_2[3639:3632] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_454[2] = buffer_data_2[3647:3640] * G_Kernel_3x3[0][53:36];
@@ -9986,7 +9986,7 @@ always @(posedge clk) begin
     blur_din[3639:3632] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_455[0:8]
+wire  [25:0]  kernel_img_mul_455[0:8];
 assign kernel_img_mul_455[0] = buffer_data_2[3639:3632] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_455[1] = buffer_data_2[3647:3640] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_455[2] = buffer_data_2[3655:3648] * G_Kernel_3x3[0][53:36];
@@ -10008,7 +10008,7 @@ always @(posedge clk) begin
     blur_din[3647:3640] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_456[0:8]
+wire  [25:0]  kernel_img_mul_456[0:8];
 assign kernel_img_mul_456[0] = buffer_data_2[3647:3640] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_456[1] = buffer_data_2[3655:3648] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_456[2] = buffer_data_2[3663:3656] * G_Kernel_3x3[0][53:36];
@@ -10030,7 +10030,7 @@ always @(posedge clk) begin
     blur_din[3655:3648] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_457[0:8]
+wire  [25:0]  kernel_img_mul_457[0:8];
 assign kernel_img_mul_457[0] = buffer_data_2[3655:3648] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_457[1] = buffer_data_2[3663:3656] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_457[2] = buffer_data_2[3671:3664] * G_Kernel_3x3[0][53:36];
@@ -10052,7 +10052,7 @@ always @(posedge clk) begin
     blur_din[3663:3656] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_458[0:8]
+wire  [25:0]  kernel_img_mul_458[0:8];
 assign kernel_img_mul_458[0] = buffer_data_2[3663:3656] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_458[1] = buffer_data_2[3671:3664] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_458[2] = buffer_data_2[3679:3672] * G_Kernel_3x3[0][53:36];
@@ -10074,7 +10074,7 @@ always @(posedge clk) begin
     blur_din[3671:3664] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_459[0:8]
+wire  [25:0]  kernel_img_mul_459[0:8];
 assign kernel_img_mul_459[0] = buffer_data_2[3671:3664] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_459[1] = buffer_data_2[3679:3672] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_459[2] = buffer_data_2[3687:3680] * G_Kernel_3x3[0][53:36];
@@ -10096,7 +10096,7 @@ always @(posedge clk) begin
     blur_din[3679:3672] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_460[0:8]
+wire  [25:0]  kernel_img_mul_460[0:8];
 assign kernel_img_mul_460[0] = buffer_data_2[3679:3672] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_460[1] = buffer_data_2[3687:3680] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_460[2] = buffer_data_2[3695:3688] * G_Kernel_3x3[0][53:36];
@@ -10118,7 +10118,7 @@ always @(posedge clk) begin
     blur_din[3687:3680] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_461[0:8]
+wire  [25:0]  kernel_img_mul_461[0:8];
 assign kernel_img_mul_461[0] = buffer_data_2[3687:3680] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_461[1] = buffer_data_2[3695:3688] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_461[2] = buffer_data_2[3703:3696] * G_Kernel_3x3[0][53:36];
@@ -10140,7 +10140,7 @@ always @(posedge clk) begin
     blur_din[3695:3688] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_462[0:8]
+wire  [25:0]  kernel_img_mul_462[0:8];
 assign kernel_img_mul_462[0] = buffer_data_2[3695:3688] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_462[1] = buffer_data_2[3703:3696] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_462[2] = buffer_data_2[3711:3704] * G_Kernel_3x3[0][53:36];
@@ -10162,7 +10162,7 @@ always @(posedge clk) begin
     blur_din[3703:3696] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_463[0:8]
+wire  [25:0]  kernel_img_mul_463[0:8];
 assign kernel_img_mul_463[0] = buffer_data_2[3703:3696] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_463[1] = buffer_data_2[3711:3704] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_463[2] = buffer_data_2[3719:3712] * G_Kernel_3x3[0][53:36];
@@ -10184,7 +10184,7 @@ always @(posedge clk) begin
     blur_din[3711:3704] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_464[0:8]
+wire  [25:0]  kernel_img_mul_464[0:8];
 assign kernel_img_mul_464[0] = buffer_data_2[3711:3704] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_464[1] = buffer_data_2[3719:3712] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_464[2] = buffer_data_2[3727:3720] * G_Kernel_3x3[0][53:36];
@@ -10206,7 +10206,7 @@ always @(posedge clk) begin
     blur_din[3719:3712] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_465[0:8]
+wire  [25:0]  kernel_img_mul_465[0:8];
 assign kernel_img_mul_465[0] = buffer_data_2[3719:3712] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_465[1] = buffer_data_2[3727:3720] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_465[2] = buffer_data_2[3735:3728] * G_Kernel_3x3[0][53:36];
@@ -10228,7 +10228,7 @@ always @(posedge clk) begin
     blur_din[3727:3720] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_466[0:8]
+wire  [25:0]  kernel_img_mul_466[0:8];
 assign kernel_img_mul_466[0] = buffer_data_2[3727:3720] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_466[1] = buffer_data_2[3735:3728] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_466[2] = buffer_data_2[3743:3736] * G_Kernel_3x3[0][53:36];
@@ -10250,7 +10250,7 @@ always @(posedge clk) begin
     blur_din[3735:3728] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_467[0:8]
+wire  [25:0]  kernel_img_mul_467[0:8];
 assign kernel_img_mul_467[0] = buffer_data_2[3735:3728] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_467[1] = buffer_data_2[3743:3736] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_467[2] = buffer_data_2[3751:3744] * G_Kernel_3x3[0][53:36];
@@ -10272,7 +10272,7 @@ always @(posedge clk) begin
     blur_din[3743:3736] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_468[0:8]
+wire  [25:0]  kernel_img_mul_468[0:8];
 assign kernel_img_mul_468[0] = buffer_data_2[3743:3736] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_468[1] = buffer_data_2[3751:3744] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_468[2] = buffer_data_2[3759:3752] * G_Kernel_3x3[0][53:36];
@@ -10294,7 +10294,7 @@ always @(posedge clk) begin
     blur_din[3751:3744] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_469[0:8]
+wire  [25:0]  kernel_img_mul_469[0:8];
 assign kernel_img_mul_469[0] = buffer_data_2[3751:3744] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_469[1] = buffer_data_2[3759:3752] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_469[2] = buffer_data_2[3767:3760] * G_Kernel_3x3[0][53:36];
@@ -10316,7 +10316,7 @@ always @(posedge clk) begin
     blur_din[3759:3752] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_470[0:8]
+wire  [25:0]  kernel_img_mul_470[0:8];
 assign kernel_img_mul_470[0] = buffer_data_2[3759:3752] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_470[1] = buffer_data_2[3767:3760] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_470[2] = buffer_data_2[3775:3768] * G_Kernel_3x3[0][53:36];
@@ -10338,7 +10338,7 @@ always @(posedge clk) begin
     blur_din[3767:3760] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_471[0:8]
+wire  [25:0]  kernel_img_mul_471[0:8];
 assign kernel_img_mul_471[0] = buffer_data_2[3767:3760] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_471[1] = buffer_data_2[3775:3768] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_471[2] = buffer_data_2[3783:3776] * G_Kernel_3x3[0][53:36];
@@ -10360,7 +10360,7 @@ always @(posedge clk) begin
     blur_din[3775:3768] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_472[0:8]
+wire  [25:0]  kernel_img_mul_472[0:8];
 assign kernel_img_mul_472[0] = buffer_data_2[3775:3768] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_472[1] = buffer_data_2[3783:3776] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_472[2] = buffer_data_2[3791:3784] * G_Kernel_3x3[0][53:36];
@@ -10382,7 +10382,7 @@ always @(posedge clk) begin
     blur_din[3783:3776] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_473[0:8]
+wire  [25:0]  kernel_img_mul_473[0:8];
 assign kernel_img_mul_473[0] = buffer_data_2[3783:3776] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_473[1] = buffer_data_2[3791:3784] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_473[2] = buffer_data_2[3799:3792] * G_Kernel_3x3[0][53:36];
@@ -10404,7 +10404,7 @@ always @(posedge clk) begin
     blur_din[3791:3784] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_474[0:8]
+wire  [25:0]  kernel_img_mul_474[0:8];
 assign kernel_img_mul_474[0] = buffer_data_2[3791:3784] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_474[1] = buffer_data_2[3799:3792] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_474[2] = buffer_data_2[3807:3800] * G_Kernel_3x3[0][53:36];
@@ -10426,7 +10426,7 @@ always @(posedge clk) begin
     blur_din[3799:3792] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_475[0:8]
+wire  [25:0]  kernel_img_mul_475[0:8];
 assign kernel_img_mul_475[0] = buffer_data_2[3799:3792] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_475[1] = buffer_data_2[3807:3800] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_475[2] = buffer_data_2[3815:3808] * G_Kernel_3x3[0][53:36];
@@ -10448,7 +10448,7 @@ always @(posedge clk) begin
     blur_din[3807:3800] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_476[0:8]
+wire  [25:0]  kernel_img_mul_476[0:8];
 assign kernel_img_mul_476[0] = buffer_data_2[3807:3800] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_476[1] = buffer_data_2[3815:3808] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_476[2] = buffer_data_2[3823:3816] * G_Kernel_3x3[0][53:36];
@@ -10470,7 +10470,7 @@ always @(posedge clk) begin
     blur_din[3815:3808] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_477[0:8]
+wire  [25:0]  kernel_img_mul_477[0:8];
 assign kernel_img_mul_477[0] = buffer_data_2[3815:3808] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_477[1] = buffer_data_2[3823:3816] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_477[2] = buffer_data_2[3831:3824] * G_Kernel_3x3[0][53:36];
@@ -10492,7 +10492,7 @@ always @(posedge clk) begin
     blur_din[3823:3816] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_478[0:8]
+wire  [25:0]  kernel_img_mul_478[0:8];
 assign kernel_img_mul_478[0] = buffer_data_2[3823:3816] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_478[1] = buffer_data_2[3831:3824] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_478[2] = buffer_data_2[3839:3832] * G_Kernel_3x3[0][53:36];
@@ -10514,7 +10514,7 @@ always @(posedge clk) begin
     blur_din[3831:3824] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_479[0:8]
+wire  [25:0]  kernel_img_mul_479[0:8];
 assign kernel_img_mul_479[0] = buffer_data_2[3831:3824] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_479[1] = buffer_data_2[3839:3832] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_479[2] = buffer_data_2[3847:3840] * G_Kernel_3x3[0][53:36];
@@ -10536,7 +10536,7 @@ always @(posedge clk) begin
     blur_din[3839:3832] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_480[0:8]
+wire  [25:0]  kernel_img_mul_480[0:8];
 assign kernel_img_mul_480[0] = buffer_data_2[3839:3832] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_480[1] = buffer_data_2[3847:3840] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_480[2] = buffer_data_2[3855:3848] * G_Kernel_3x3[0][53:36];
@@ -10558,7 +10558,7 @@ always @(posedge clk) begin
     blur_din[3847:3840] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_481[0:8]
+wire  [25:0]  kernel_img_mul_481[0:8];
 assign kernel_img_mul_481[0] = buffer_data_2[3847:3840] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_481[1] = buffer_data_2[3855:3848] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_481[2] = buffer_data_2[3863:3856] * G_Kernel_3x3[0][53:36];
@@ -10580,7 +10580,7 @@ always @(posedge clk) begin
     blur_din[3855:3848] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_482[0:8]
+wire  [25:0]  kernel_img_mul_482[0:8];
 assign kernel_img_mul_482[0] = buffer_data_2[3855:3848] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_482[1] = buffer_data_2[3863:3856] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_482[2] = buffer_data_2[3871:3864] * G_Kernel_3x3[0][53:36];
@@ -10602,7 +10602,7 @@ always @(posedge clk) begin
     blur_din[3863:3856] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_483[0:8]
+wire  [25:0]  kernel_img_mul_483[0:8];
 assign kernel_img_mul_483[0] = buffer_data_2[3863:3856] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_483[1] = buffer_data_2[3871:3864] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_483[2] = buffer_data_2[3879:3872] * G_Kernel_3x3[0][53:36];
@@ -10624,7 +10624,7 @@ always @(posedge clk) begin
     blur_din[3871:3864] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_484[0:8]
+wire  [25:0]  kernel_img_mul_484[0:8];
 assign kernel_img_mul_484[0] = buffer_data_2[3871:3864] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_484[1] = buffer_data_2[3879:3872] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_484[2] = buffer_data_2[3887:3880] * G_Kernel_3x3[0][53:36];
@@ -10646,7 +10646,7 @@ always @(posedge clk) begin
     blur_din[3879:3872] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_485[0:8]
+wire  [25:0]  kernel_img_mul_485[0:8];
 assign kernel_img_mul_485[0] = buffer_data_2[3879:3872] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_485[1] = buffer_data_2[3887:3880] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_485[2] = buffer_data_2[3895:3888] * G_Kernel_3x3[0][53:36];
@@ -10668,7 +10668,7 @@ always @(posedge clk) begin
     blur_din[3887:3880] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_486[0:8]
+wire  [25:0]  kernel_img_mul_486[0:8];
 assign kernel_img_mul_486[0] = buffer_data_2[3887:3880] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_486[1] = buffer_data_2[3895:3888] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_486[2] = buffer_data_2[3903:3896] * G_Kernel_3x3[0][53:36];
@@ -10690,7 +10690,7 @@ always @(posedge clk) begin
     blur_din[3895:3888] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_487[0:8]
+wire  [25:0]  kernel_img_mul_487[0:8];
 assign kernel_img_mul_487[0] = buffer_data_2[3895:3888] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_487[1] = buffer_data_2[3903:3896] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_487[2] = buffer_data_2[3911:3904] * G_Kernel_3x3[0][53:36];
@@ -10712,7 +10712,7 @@ always @(posedge clk) begin
     blur_din[3903:3896] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_488[0:8]
+wire  [25:0]  kernel_img_mul_488[0:8];
 assign kernel_img_mul_488[0] = buffer_data_2[3903:3896] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_488[1] = buffer_data_2[3911:3904] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_488[2] = buffer_data_2[3919:3912] * G_Kernel_3x3[0][53:36];
@@ -10734,7 +10734,7 @@ always @(posedge clk) begin
     blur_din[3911:3904] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_489[0:8]
+wire  [25:0]  kernel_img_mul_489[0:8];
 assign kernel_img_mul_489[0] = buffer_data_2[3911:3904] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_489[1] = buffer_data_2[3919:3912] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_489[2] = buffer_data_2[3927:3920] * G_Kernel_3x3[0][53:36];
@@ -10756,7 +10756,7 @@ always @(posedge clk) begin
     blur_din[3919:3912] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_490[0:8]
+wire  [25:0]  kernel_img_mul_490[0:8];
 assign kernel_img_mul_490[0] = buffer_data_2[3919:3912] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_490[1] = buffer_data_2[3927:3920] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_490[2] = buffer_data_2[3935:3928] * G_Kernel_3x3[0][53:36];
@@ -10778,7 +10778,7 @@ always @(posedge clk) begin
     blur_din[3927:3920] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_491[0:8]
+wire  [25:0]  kernel_img_mul_491[0:8];
 assign kernel_img_mul_491[0] = buffer_data_2[3927:3920] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_491[1] = buffer_data_2[3935:3928] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_491[2] = buffer_data_2[3943:3936] * G_Kernel_3x3[0][53:36];
@@ -10800,7 +10800,7 @@ always @(posedge clk) begin
     blur_din[3935:3928] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_492[0:8]
+wire  [25:0]  kernel_img_mul_492[0:8];
 assign kernel_img_mul_492[0] = buffer_data_2[3935:3928] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_492[1] = buffer_data_2[3943:3936] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_492[2] = buffer_data_2[3951:3944] * G_Kernel_3x3[0][53:36];
@@ -10822,7 +10822,7 @@ always @(posedge clk) begin
     blur_din[3943:3936] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_493[0:8]
+wire  [25:0]  kernel_img_mul_493[0:8];
 assign kernel_img_mul_493[0] = buffer_data_2[3943:3936] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_493[1] = buffer_data_2[3951:3944] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_493[2] = buffer_data_2[3959:3952] * G_Kernel_3x3[0][53:36];
@@ -10844,7 +10844,7 @@ always @(posedge clk) begin
     blur_din[3951:3944] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_494[0:8]
+wire  [25:0]  kernel_img_mul_494[0:8];
 assign kernel_img_mul_494[0] = buffer_data_2[3951:3944] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_494[1] = buffer_data_2[3959:3952] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_494[2] = buffer_data_2[3967:3960] * G_Kernel_3x3[0][53:36];
@@ -10866,7 +10866,7 @@ always @(posedge clk) begin
     blur_din[3959:3952] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_495[0:8]
+wire  [25:0]  kernel_img_mul_495[0:8];
 assign kernel_img_mul_495[0] = buffer_data_2[3959:3952] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_495[1] = buffer_data_2[3967:3960] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_495[2] = buffer_data_2[3975:3968] * G_Kernel_3x3[0][53:36];
@@ -10888,7 +10888,7 @@ always @(posedge clk) begin
     blur_din[3967:3960] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_496[0:8]
+wire  [25:0]  kernel_img_mul_496[0:8];
 assign kernel_img_mul_496[0] = buffer_data_2[3967:3960] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_496[1] = buffer_data_2[3975:3968] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_496[2] = buffer_data_2[3983:3976] * G_Kernel_3x3[0][53:36];
@@ -10910,7 +10910,7 @@ always @(posedge clk) begin
     blur_din[3975:3968] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_497[0:8]
+wire  [25:0]  kernel_img_mul_497[0:8];
 assign kernel_img_mul_497[0] = buffer_data_2[3975:3968] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_497[1] = buffer_data_2[3983:3976] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_497[2] = buffer_data_2[3991:3984] * G_Kernel_3x3[0][53:36];
@@ -10932,7 +10932,7 @@ always @(posedge clk) begin
     blur_din[3983:3976] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_498[0:8]
+wire  [25:0]  kernel_img_mul_498[0:8];
 assign kernel_img_mul_498[0] = buffer_data_2[3983:3976] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_498[1] = buffer_data_2[3991:3984] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_498[2] = buffer_data_2[3999:3992] * G_Kernel_3x3[0][53:36];
@@ -10954,7 +10954,7 @@ always @(posedge clk) begin
     blur_din[3991:3984] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_499[0:8]
+wire  [25:0]  kernel_img_mul_499[0:8];
 assign kernel_img_mul_499[0] = buffer_data_2[3991:3984] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_499[1] = buffer_data_2[3999:3992] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_499[2] = buffer_data_2[4007:4000] * G_Kernel_3x3[0][53:36];
@@ -10976,7 +10976,7 @@ always @(posedge clk) begin
     blur_din[3999:3992] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_500[0:8]
+wire  [25:0]  kernel_img_mul_500[0:8];
 assign kernel_img_mul_500[0] = buffer_data_2[3999:3992] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_500[1] = buffer_data_2[4007:4000] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_500[2] = buffer_data_2[4015:4008] * G_Kernel_3x3[0][53:36];
@@ -10998,7 +10998,7 @@ always @(posedge clk) begin
     blur_din[4007:4000] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_501[0:8]
+wire  [25:0]  kernel_img_mul_501[0:8];
 assign kernel_img_mul_501[0] = buffer_data_2[4007:4000] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_501[1] = buffer_data_2[4015:4008] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_501[2] = buffer_data_2[4023:4016] * G_Kernel_3x3[0][53:36];
@@ -11020,7 +11020,7 @@ always @(posedge clk) begin
     blur_din[4015:4008] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_502[0:8]
+wire  [25:0]  kernel_img_mul_502[0:8];
 assign kernel_img_mul_502[0] = buffer_data_2[4015:4008] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_502[1] = buffer_data_2[4023:4016] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_502[2] = buffer_data_2[4031:4024] * G_Kernel_3x3[0][53:36];
@@ -11042,7 +11042,7 @@ always @(posedge clk) begin
     blur_din[4023:4016] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_503[0:8]
+wire  [25:0]  kernel_img_mul_503[0:8];
 assign kernel_img_mul_503[0] = buffer_data_2[4023:4016] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_503[1] = buffer_data_2[4031:4024] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_503[2] = buffer_data_2[4039:4032] * G_Kernel_3x3[0][53:36];
@@ -11064,7 +11064,7 @@ always @(posedge clk) begin
     blur_din[4031:4024] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_504[0:8]
+wire  [25:0]  kernel_img_mul_504[0:8];
 assign kernel_img_mul_504[0] = buffer_data_2[4031:4024] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_504[1] = buffer_data_2[4039:4032] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_504[2] = buffer_data_2[4047:4040] * G_Kernel_3x3[0][53:36];
@@ -11086,7 +11086,7 @@ always @(posedge clk) begin
     blur_din[4039:4032] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_505[0:8]
+wire  [25:0]  kernel_img_mul_505[0:8];
 assign kernel_img_mul_505[0] = buffer_data_2[4039:4032] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_505[1] = buffer_data_2[4047:4040] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_505[2] = buffer_data_2[4055:4048] * G_Kernel_3x3[0][53:36];
@@ -11108,7 +11108,7 @@ always @(posedge clk) begin
     blur_din[4047:4040] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_506[0:8]
+wire  [25:0]  kernel_img_mul_506[0:8];
 assign kernel_img_mul_506[0] = buffer_data_2[4047:4040] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_506[1] = buffer_data_2[4055:4048] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_506[2] = buffer_data_2[4063:4056] * G_Kernel_3x3[0][53:36];
@@ -11130,7 +11130,7 @@ always @(posedge clk) begin
     blur_din[4055:4048] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_507[0:8]
+wire  [25:0]  kernel_img_mul_507[0:8];
 assign kernel_img_mul_507[0] = buffer_data_2[4055:4048] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_507[1] = buffer_data_2[4063:4056] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_507[2] = buffer_data_2[4071:4064] * G_Kernel_3x3[0][53:36];
@@ -11152,7 +11152,7 @@ always @(posedge clk) begin
     blur_din[4063:4056] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_508[0:8]
+wire  [25:0]  kernel_img_mul_508[0:8];
 assign kernel_img_mul_508[0] = buffer_data_2[4063:4056] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_508[1] = buffer_data_2[4071:4064] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_508[2] = buffer_data_2[4079:4072] * G_Kernel_3x3[0][53:36];
@@ -11174,7 +11174,7 @@ always @(posedge clk) begin
     blur_din[4071:4064] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_509[0:8]
+wire  [25:0]  kernel_img_mul_509[0:8];
 assign kernel_img_mul_509[0] = buffer_data_2[4071:4064] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_509[1] = buffer_data_2[4079:4072] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_509[2] = buffer_data_2[4087:4080] * G_Kernel_3x3[0][53:36];
@@ -11196,7 +11196,7 @@ always @(posedge clk) begin
     blur_din[4079:4072] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_510[0:8]
+wire  [25:0]  kernel_img_mul_510[0:8];
 assign kernel_img_mul_510[0] = buffer_data_2[4079:4072] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_510[1] = buffer_data_2[4087:4080] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_510[2] = buffer_data_2[4095:4088] * G_Kernel_3x3[0][53:36];
@@ -11218,7 +11218,7 @@ always @(posedge clk) begin
     blur_din[4087:4080] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_511[0:8]
+wire  [25:0]  kernel_img_mul_511[0:8];
 assign kernel_img_mul_511[0] = buffer_data_2[4087:4080] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_511[1] = buffer_data_2[4095:4088] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_511[2] = buffer_data_2[4103:4096] * G_Kernel_3x3[0][53:36];
@@ -11240,7 +11240,7 @@ always @(posedge clk) begin
     blur_din[4095:4088] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_512[0:8]
+wire  [25:0]  kernel_img_mul_512[0:8];
 assign kernel_img_mul_512[0] = buffer_data_2[4095:4088] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_512[1] = buffer_data_2[4103:4096] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_512[2] = buffer_data_2[4111:4104] * G_Kernel_3x3[0][53:36];
@@ -11262,7 +11262,7 @@ always @(posedge clk) begin
     blur_din[4103:4096] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_513[0:8]
+wire  [25:0]  kernel_img_mul_513[0:8];
 assign kernel_img_mul_513[0] = buffer_data_2[4103:4096] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_513[1] = buffer_data_2[4111:4104] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_513[2] = buffer_data_2[4119:4112] * G_Kernel_3x3[0][53:36];
@@ -11284,7 +11284,7 @@ always @(posedge clk) begin
     blur_din[4111:4104] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_514[0:8]
+wire  [25:0]  kernel_img_mul_514[0:8];
 assign kernel_img_mul_514[0] = buffer_data_2[4111:4104] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_514[1] = buffer_data_2[4119:4112] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_514[2] = buffer_data_2[4127:4120] * G_Kernel_3x3[0][53:36];
@@ -11306,7 +11306,7 @@ always @(posedge clk) begin
     blur_din[4119:4112] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_515[0:8]
+wire  [25:0]  kernel_img_mul_515[0:8];
 assign kernel_img_mul_515[0] = buffer_data_2[4119:4112] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_515[1] = buffer_data_2[4127:4120] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_515[2] = buffer_data_2[4135:4128] * G_Kernel_3x3[0][53:36];
@@ -11328,7 +11328,7 @@ always @(posedge clk) begin
     blur_din[4127:4120] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_516[0:8]
+wire  [25:0]  kernel_img_mul_516[0:8];
 assign kernel_img_mul_516[0] = buffer_data_2[4127:4120] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_516[1] = buffer_data_2[4135:4128] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_516[2] = buffer_data_2[4143:4136] * G_Kernel_3x3[0][53:36];
@@ -11350,7 +11350,7 @@ always @(posedge clk) begin
     blur_din[4135:4128] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_517[0:8]
+wire  [25:0]  kernel_img_mul_517[0:8];
 assign kernel_img_mul_517[0] = buffer_data_2[4135:4128] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_517[1] = buffer_data_2[4143:4136] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_517[2] = buffer_data_2[4151:4144] * G_Kernel_3x3[0][53:36];
@@ -11372,7 +11372,7 @@ always @(posedge clk) begin
     blur_din[4143:4136] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_518[0:8]
+wire  [25:0]  kernel_img_mul_518[0:8];
 assign kernel_img_mul_518[0] = buffer_data_2[4143:4136] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_518[1] = buffer_data_2[4151:4144] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_518[2] = buffer_data_2[4159:4152] * G_Kernel_3x3[0][53:36];
@@ -11394,7 +11394,7 @@ always @(posedge clk) begin
     blur_din[4151:4144] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_519[0:8]
+wire  [25:0]  kernel_img_mul_519[0:8];
 assign kernel_img_mul_519[0] = buffer_data_2[4151:4144] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_519[1] = buffer_data_2[4159:4152] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_519[2] = buffer_data_2[4167:4160] * G_Kernel_3x3[0][53:36];
@@ -11416,7 +11416,7 @@ always @(posedge clk) begin
     blur_din[4159:4152] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_520[0:8]
+wire  [25:0]  kernel_img_mul_520[0:8];
 assign kernel_img_mul_520[0] = buffer_data_2[4159:4152] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_520[1] = buffer_data_2[4167:4160] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_520[2] = buffer_data_2[4175:4168] * G_Kernel_3x3[0][53:36];
@@ -11438,7 +11438,7 @@ always @(posedge clk) begin
     blur_din[4167:4160] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_521[0:8]
+wire  [25:0]  kernel_img_mul_521[0:8];
 assign kernel_img_mul_521[0] = buffer_data_2[4167:4160] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_521[1] = buffer_data_2[4175:4168] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_521[2] = buffer_data_2[4183:4176] * G_Kernel_3x3[0][53:36];
@@ -11460,7 +11460,7 @@ always @(posedge clk) begin
     blur_din[4175:4168] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_522[0:8]
+wire  [25:0]  kernel_img_mul_522[0:8];
 assign kernel_img_mul_522[0] = buffer_data_2[4175:4168] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_522[1] = buffer_data_2[4183:4176] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_522[2] = buffer_data_2[4191:4184] * G_Kernel_3x3[0][53:36];
@@ -11482,7 +11482,7 @@ always @(posedge clk) begin
     blur_din[4183:4176] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_523[0:8]
+wire  [25:0]  kernel_img_mul_523[0:8];
 assign kernel_img_mul_523[0] = buffer_data_2[4183:4176] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_523[1] = buffer_data_2[4191:4184] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_523[2] = buffer_data_2[4199:4192] * G_Kernel_3x3[0][53:36];
@@ -11504,7 +11504,7 @@ always @(posedge clk) begin
     blur_din[4191:4184] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_524[0:8]
+wire  [25:0]  kernel_img_mul_524[0:8];
 assign kernel_img_mul_524[0] = buffer_data_2[4191:4184] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_524[1] = buffer_data_2[4199:4192] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_524[2] = buffer_data_2[4207:4200] * G_Kernel_3x3[0][53:36];
@@ -11526,7 +11526,7 @@ always @(posedge clk) begin
     blur_din[4199:4192] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_525[0:8]
+wire  [25:0]  kernel_img_mul_525[0:8];
 assign kernel_img_mul_525[0] = buffer_data_2[4199:4192] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_525[1] = buffer_data_2[4207:4200] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_525[2] = buffer_data_2[4215:4208] * G_Kernel_3x3[0][53:36];
@@ -11548,7 +11548,7 @@ always @(posedge clk) begin
     blur_din[4207:4200] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_526[0:8]
+wire  [25:0]  kernel_img_mul_526[0:8];
 assign kernel_img_mul_526[0] = buffer_data_2[4207:4200] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_526[1] = buffer_data_2[4215:4208] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_526[2] = buffer_data_2[4223:4216] * G_Kernel_3x3[0][53:36];
@@ -11570,7 +11570,7 @@ always @(posedge clk) begin
     blur_din[4215:4208] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_527[0:8]
+wire  [25:0]  kernel_img_mul_527[0:8];
 assign kernel_img_mul_527[0] = buffer_data_2[4215:4208] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_527[1] = buffer_data_2[4223:4216] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_527[2] = buffer_data_2[4231:4224] * G_Kernel_3x3[0][53:36];
@@ -11592,7 +11592,7 @@ always @(posedge clk) begin
     blur_din[4223:4216] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_528[0:8]
+wire  [25:0]  kernel_img_mul_528[0:8];
 assign kernel_img_mul_528[0] = buffer_data_2[4223:4216] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_528[1] = buffer_data_2[4231:4224] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_528[2] = buffer_data_2[4239:4232] * G_Kernel_3x3[0][53:36];
@@ -11614,7 +11614,7 @@ always @(posedge clk) begin
     blur_din[4231:4224] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_529[0:8]
+wire  [25:0]  kernel_img_mul_529[0:8];
 assign kernel_img_mul_529[0] = buffer_data_2[4231:4224] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_529[1] = buffer_data_2[4239:4232] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_529[2] = buffer_data_2[4247:4240] * G_Kernel_3x3[0][53:36];
@@ -11636,7 +11636,7 @@ always @(posedge clk) begin
     blur_din[4239:4232] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_530[0:8]
+wire  [25:0]  kernel_img_mul_530[0:8];
 assign kernel_img_mul_530[0] = buffer_data_2[4239:4232] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_530[1] = buffer_data_2[4247:4240] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_530[2] = buffer_data_2[4255:4248] * G_Kernel_3x3[0][53:36];
@@ -11658,7 +11658,7 @@ always @(posedge clk) begin
     blur_din[4247:4240] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_531[0:8]
+wire  [25:0]  kernel_img_mul_531[0:8];
 assign kernel_img_mul_531[0] = buffer_data_2[4247:4240] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_531[1] = buffer_data_2[4255:4248] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_531[2] = buffer_data_2[4263:4256] * G_Kernel_3x3[0][53:36];
@@ -11680,7 +11680,7 @@ always @(posedge clk) begin
     blur_din[4255:4248] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_532[0:8]
+wire  [25:0]  kernel_img_mul_532[0:8];
 assign kernel_img_mul_532[0] = buffer_data_2[4255:4248] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_532[1] = buffer_data_2[4263:4256] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_532[2] = buffer_data_2[4271:4264] * G_Kernel_3x3[0][53:36];
@@ -11702,7 +11702,7 @@ always @(posedge clk) begin
     blur_din[4263:4256] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_533[0:8]
+wire  [25:0]  kernel_img_mul_533[0:8];
 assign kernel_img_mul_533[0] = buffer_data_2[4263:4256] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_533[1] = buffer_data_2[4271:4264] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_533[2] = buffer_data_2[4279:4272] * G_Kernel_3x3[0][53:36];
@@ -11724,7 +11724,7 @@ always @(posedge clk) begin
     blur_din[4271:4264] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_534[0:8]
+wire  [25:0]  kernel_img_mul_534[0:8];
 assign kernel_img_mul_534[0] = buffer_data_2[4271:4264] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_534[1] = buffer_data_2[4279:4272] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_534[2] = buffer_data_2[4287:4280] * G_Kernel_3x3[0][53:36];
@@ -11746,7 +11746,7 @@ always @(posedge clk) begin
     blur_din[4279:4272] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_535[0:8]
+wire  [25:0]  kernel_img_mul_535[0:8];
 assign kernel_img_mul_535[0] = buffer_data_2[4279:4272] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_535[1] = buffer_data_2[4287:4280] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_535[2] = buffer_data_2[4295:4288] * G_Kernel_3x3[0][53:36];
@@ -11768,7 +11768,7 @@ always @(posedge clk) begin
     blur_din[4287:4280] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_536[0:8]
+wire  [25:0]  kernel_img_mul_536[0:8];
 assign kernel_img_mul_536[0] = buffer_data_2[4287:4280] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_536[1] = buffer_data_2[4295:4288] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_536[2] = buffer_data_2[4303:4296] * G_Kernel_3x3[0][53:36];
@@ -11790,7 +11790,7 @@ always @(posedge clk) begin
     blur_din[4295:4288] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_537[0:8]
+wire  [25:0]  kernel_img_mul_537[0:8];
 assign kernel_img_mul_537[0] = buffer_data_2[4295:4288] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_537[1] = buffer_data_2[4303:4296] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_537[2] = buffer_data_2[4311:4304] * G_Kernel_3x3[0][53:36];
@@ -11812,7 +11812,7 @@ always @(posedge clk) begin
     blur_din[4303:4296] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_538[0:8]
+wire  [25:0]  kernel_img_mul_538[0:8];
 assign kernel_img_mul_538[0] = buffer_data_2[4303:4296] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_538[1] = buffer_data_2[4311:4304] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_538[2] = buffer_data_2[4319:4312] * G_Kernel_3x3[0][53:36];
@@ -11834,7 +11834,7 @@ always @(posedge clk) begin
     blur_din[4311:4304] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_539[0:8]
+wire  [25:0]  kernel_img_mul_539[0:8];
 assign kernel_img_mul_539[0] = buffer_data_2[4311:4304] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_539[1] = buffer_data_2[4319:4312] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_539[2] = buffer_data_2[4327:4320] * G_Kernel_3x3[0][53:36];
@@ -11856,7 +11856,7 @@ always @(posedge clk) begin
     blur_din[4319:4312] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_540[0:8]
+wire  [25:0]  kernel_img_mul_540[0:8];
 assign kernel_img_mul_540[0] = buffer_data_2[4319:4312] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_540[1] = buffer_data_2[4327:4320] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_540[2] = buffer_data_2[4335:4328] * G_Kernel_3x3[0][53:36];
@@ -11878,7 +11878,7 @@ always @(posedge clk) begin
     blur_din[4327:4320] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_541[0:8]
+wire  [25:0]  kernel_img_mul_541[0:8];
 assign kernel_img_mul_541[0] = buffer_data_2[4327:4320] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_541[1] = buffer_data_2[4335:4328] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_541[2] = buffer_data_2[4343:4336] * G_Kernel_3x3[0][53:36];
@@ -11900,7 +11900,7 @@ always @(posedge clk) begin
     blur_din[4335:4328] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_542[0:8]
+wire  [25:0]  kernel_img_mul_542[0:8];
 assign kernel_img_mul_542[0] = buffer_data_2[4335:4328] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_542[1] = buffer_data_2[4343:4336] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_542[2] = buffer_data_2[4351:4344] * G_Kernel_3x3[0][53:36];
@@ -11922,7 +11922,7 @@ always @(posedge clk) begin
     blur_din[4343:4336] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_543[0:8]
+wire  [25:0]  kernel_img_mul_543[0:8];
 assign kernel_img_mul_543[0] = buffer_data_2[4343:4336] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_543[1] = buffer_data_2[4351:4344] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_543[2] = buffer_data_2[4359:4352] * G_Kernel_3x3[0][53:36];
@@ -11944,7 +11944,7 @@ always @(posedge clk) begin
     blur_din[4351:4344] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_544[0:8]
+wire  [25:0]  kernel_img_mul_544[0:8];
 assign kernel_img_mul_544[0] = buffer_data_2[4351:4344] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_544[1] = buffer_data_2[4359:4352] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_544[2] = buffer_data_2[4367:4360] * G_Kernel_3x3[0][53:36];
@@ -11966,7 +11966,7 @@ always @(posedge clk) begin
     blur_din[4359:4352] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_545[0:8]
+wire  [25:0]  kernel_img_mul_545[0:8];
 assign kernel_img_mul_545[0] = buffer_data_2[4359:4352] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_545[1] = buffer_data_2[4367:4360] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_545[2] = buffer_data_2[4375:4368] * G_Kernel_3x3[0][53:36];
@@ -11988,7 +11988,7 @@ always @(posedge clk) begin
     blur_din[4367:4360] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_546[0:8]
+wire  [25:0]  kernel_img_mul_546[0:8];
 assign kernel_img_mul_546[0] = buffer_data_2[4367:4360] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_546[1] = buffer_data_2[4375:4368] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_546[2] = buffer_data_2[4383:4376] * G_Kernel_3x3[0][53:36];
@@ -12010,7 +12010,7 @@ always @(posedge clk) begin
     blur_din[4375:4368] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_547[0:8]
+wire  [25:0]  kernel_img_mul_547[0:8];
 assign kernel_img_mul_547[0] = buffer_data_2[4375:4368] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_547[1] = buffer_data_2[4383:4376] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_547[2] = buffer_data_2[4391:4384] * G_Kernel_3x3[0][53:36];
@@ -12032,7 +12032,7 @@ always @(posedge clk) begin
     blur_din[4383:4376] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_548[0:8]
+wire  [25:0]  kernel_img_mul_548[0:8];
 assign kernel_img_mul_548[0] = buffer_data_2[4383:4376] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_548[1] = buffer_data_2[4391:4384] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_548[2] = buffer_data_2[4399:4392] * G_Kernel_3x3[0][53:36];
@@ -12054,7 +12054,7 @@ always @(posedge clk) begin
     blur_din[4391:4384] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_549[0:8]
+wire  [25:0]  kernel_img_mul_549[0:8];
 assign kernel_img_mul_549[0] = buffer_data_2[4391:4384] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_549[1] = buffer_data_2[4399:4392] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_549[2] = buffer_data_2[4407:4400] * G_Kernel_3x3[0][53:36];
@@ -12076,7 +12076,7 @@ always @(posedge clk) begin
     blur_din[4399:4392] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_550[0:8]
+wire  [25:0]  kernel_img_mul_550[0:8];
 assign kernel_img_mul_550[0] = buffer_data_2[4399:4392] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_550[1] = buffer_data_2[4407:4400] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_550[2] = buffer_data_2[4415:4408] * G_Kernel_3x3[0][53:36];
@@ -12098,7 +12098,7 @@ always @(posedge clk) begin
     blur_din[4407:4400] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_551[0:8]
+wire  [25:0]  kernel_img_mul_551[0:8];
 assign kernel_img_mul_551[0] = buffer_data_2[4407:4400] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_551[1] = buffer_data_2[4415:4408] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_551[2] = buffer_data_2[4423:4416] * G_Kernel_3x3[0][53:36];
@@ -12120,7 +12120,7 @@ always @(posedge clk) begin
     blur_din[4415:4408] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_552[0:8]
+wire  [25:0]  kernel_img_mul_552[0:8];
 assign kernel_img_mul_552[0] = buffer_data_2[4415:4408] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_552[1] = buffer_data_2[4423:4416] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_552[2] = buffer_data_2[4431:4424] * G_Kernel_3x3[0][53:36];
@@ -12142,7 +12142,7 @@ always @(posedge clk) begin
     blur_din[4423:4416] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_553[0:8]
+wire  [25:0]  kernel_img_mul_553[0:8];
 assign kernel_img_mul_553[0] = buffer_data_2[4423:4416] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_553[1] = buffer_data_2[4431:4424] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_553[2] = buffer_data_2[4439:4432] * G_Kernel_3x3[0][53:36];
@@ -12164,7 +12164,7 @@ always @(posedge clk) begin
     blur_din[4431:4424] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_554[0:8]
+wire  [25:0]  kernel_img_mul_554[0:8];
 assign kernel_img_mul_554[0] = buffer_data_2[4431:4424] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_554[1] = buffer_data_2[4439:4432] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_554[2] = buffer_data_2[4447:4440] * G_Kernel_3x3[0][53:36];
@@ -12186,7 +12186,7 @@ always @(posedge clk) begin
     blur_din[4439:4432] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_555[0:8]
+wire  [25:0]  kernel_img_mul_555[0:8];
 assign kernel_img_mul_555[0] = buffer_data_2[4439:4432] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_555[1] = buffer_data_2[4447:4440] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_555[2] = buffer_data_2[4455:4448] * G_Kernel_3x3[0][53:36];
@@ -12208,7 +12208,7 @@ always @(posedge clk) begin
     blur_din[4447:4440] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_556[0:8]
+wire  [25:0]  kernel_img_mul_556[0:8];
 assign kernel_img_mul_556[0] = buffer_data_2[4447:4440] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_556[1] = buffer_data_2[4455:4448] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_556[2] = buffer_data_2[4463:4456] * G_Kernel_3x3[0][53:36];
@@ -12230,7 +12230,7 @@ always @(posedge clk) begin
     blur_din[4455:4448] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_557[0:8]
+wire  [25:0]  kernel_img_mul_557[0:8];
 assign kernel_img_mul_557[0] = buffer_data_2[4455:4448] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_557[1] = buffer_data_2[4463:4456] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_557[2] = buffer_data_2[4471:4464] * G_Kernel_3x3[0][53:36];
@@ -12252,7 +12252,7 @@ always @(posedge clk) begin
     blur_din[4463:4456] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_558[0:8]
+wire  [25:0]  kernel_img_mul_558[0:8];
 assign kernel_img_mul_558[0] = buffer_data_2[4463:4456] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_558[1] = buffer_data_2[4471:4464] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_558[2] = buffer_data_2[4479:4472] * G_Kernel_3x3[0][53:36];
@@ -12274,7 +12274,7 @@ always @(posedge clk) begin
     blur_din[4471:4464] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_559[0:8]
+wire  [25:0]  kernel_img_mul_559[0:8];
 assign kernel_img_mul_559[0] = buffer_data_2[4471:4464] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_559[1] = buffer_data_2[4479:4472] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_559[2] = buffer_data_2[4487:4480] * G_Kernel_3x3[0][53:36];
@@ -12296,7 +12296,7 @@ always @(posedge clk) begin
     blur_din[4479:4472] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_560[0:8]
+wire  [25:0]  kernel_img_mul_560[0:8];
 assign kernel_img_mul_560[0] = buffer_data_2[4479:4472] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_560[1] = buffer_data_2[4487:4480] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_560[2] = buffer_data_2[4495:4488] * G_Kernel_3x3[0][53:36];
@@ -12318,7 +12318,7 @@ always @(posedge clk) begin
     blur_din[4487:4480] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_561[0:8]
+wire  [25:0]  kernel_img_mul_561[0:8];
 assign kernel_img_mul_561[0] = buffer_data_2[4487:4480] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_561[1] = buffer_data_2[4495:4488] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_561[2] = buffer_data_2[4503:4496] * G_Kernel_3x3[0][53:36];
@@ -12340,7 +12340,7 @@ always @(posedge clk) begin
     blur_din[4495:4488] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_562[0:8]
+wire  [25:0]  kernel_img_mul_562[0:8];
 assign kernel_img_mul_562[0] = buffer_data_2[4495:4488] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_562[1] = buffer_data_2[4503:4496] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_562[2] = buffer_data_2[4511:4504] * G_Kernel_3x3[0][53:36];
@@ -12362,7 +12362,7 @@ always @(posedge clk) begin
     blur_din[4503:4496] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_563[0:8]
+wire  [25:0]  kernel_img_mul_563[0:8];
 assign kernel_img_mul_563[0] = buffer_data_2[4503:4496] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_563[1] = buffer_data_2[4511:4504] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_563[2] = buffer_data_2[4519:4512] * G_Kernel_3x3[0][53:36];
@@ -12384,7 +12384,7 @@ always @(posedge clk) begin
     blur_din[4511:4504] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_564[0:8]
+wire  [25:0]  kernel_img_mul_564[0:8];
 assign kernel_img_mul_564[0] = buffer_data_2[4511:4504] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_564[1] = buffer_data_2[4519:4512] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_564[2] = buffer_data_2[4527:4520] * G_Kernel_3x3[0][53:36];
@@ -12406,7 +12406,7 @@ always @(posedge clk) begin
     blur_din[4519:4512] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_565[0:8]
+wire  [25:0]  kernel_img_mul_565[0:8];
 assign kernel_img_mul_565[0] = buffer_data_2[4519:4512] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_565[1] = buffer_data_2[4527:4520] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_565[2] = buffer_data_2[4535:4528] * G_Kernel_3x3[0][53:36];
@@ -12428,7 +12428,7 @@ always @(posedge clk) begin
     blur_din[4527:4520] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_566[0:8]
+wire  [25:0]  kernel_img_mul_566[0:8];
 assign kernel_img_mul_566[0] = buffer_data_2[4527:4520] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_566[1] = buffer_data_2[4535:4528] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_566[2] = buffer_data_2[4543:4536] * G_Kernel_3x3[0][53:36];
@@ -12450,7 +12450,7 @@ always @(posedge clk) begin
     blur_din[4535:4528] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_567[0:8]
+wire  [25:0]  kernel_img_mul_567[0:8];
 assign kernel_img_mul_567[0] = buffer_data_2[4535:4528] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_567[1] = buffer_data_2[4543:4536] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_567[2] = buffer_data_2[4551:4544] * G_Kernel_3x3[0][53:36];
@@ -12472,7 +12472,7 @@ always @(posedge clk) begin
     blur_din[4543:4536] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_568[0:8]
+wire  [25:0]  kernel_img_mul_568[0:8];
 assign kernel_img_mul_568[0] = buffer_data_2[4543:4536] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_568[1] = buffer_data_2[4551:4544] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_568[2] = buffer_data_2[4559:4552] * G_Kernel_3x3[0][53:36];
@@ -12494,7 +12494,7 @@ always @(posedge clk) begin
     blur_din[4551:4544] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_569[0:8]
+wire  [25:0]  kernel_img_mul_569[0:8];
 assign kernel_img_mul_569[0] = buffer_data_2[4551:4544] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_569[1] = buffer_data_2[4559:4552] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_569[2] = buffer_data_2[4567:4560] * G_Kernel_3x3[0][53:36];
@@ -12516,7 +12516,7 @@ always @(posedge clk) begin
     blur_din[4559:4552] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_570[0:8]
+wire  [25:0]  kernel_img_mul_570[0:8];
 assign kernel_img_mul_570[0] = buffer_data_2[4559:4552] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_570[1] = buffer_data_2[4567:4560] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_570[2] = buffer_data_2[4575:4568] * G_Kernel_3x3[0][53:36];
@@ -12538,7 +12538,7 @@ always @(posedge clk) begin
     blur_din[4567:4560] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_571[0:8]
+wire  [25:0]  kernel_img_mul_571[0:8];
 assign kernel_img_mul_571[0] = buffer_data_2[4567:4560] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_571[1] = buffer_data_2[4575:4568] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_571[2] = buffer_data_2[4583:4576] * G_Kernel_3x3[0][53:36];
@@ -12560,7 +12560,7 @@ always @(posedge clk) begin
     blur_din[4575:4568] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_572[0:8]
+wire  [25:0]  kernel_img_mul_572[0:8];
 assign kernel_img_mul_572[0] = buffer_data_2[4575:4568] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_572[1] = buffer_data_2[4583:4576] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_572[2] = buffer_data_2[4591:4584] * G_Kernel_3x3[0][53:36];
@@ -12582,7 +12582,7 @@ always @(posedge clk) begin
     blur_din[4583:4576] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_573[0:8]
+wire  [25:0]  kernel_img_mul_573[0:8];
 assign kernel_img_mul_573[0] = buffer_data_2[4583:4576] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_573[1] = buffer_data_2[4591:4584] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_573[2] = buffer_data_2[4599:4592] * G_Kernel_3x3[0][53:36];
@@ -12604,7 +12604,7 @@ always @(posedge clk) begin
     blur_din[4591:4584] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_574[0:8]
+wire  [25:0]  kernel_img_mul_574[0:8];
 assign kernel_img_mul_574[0] = buffer_data_2[4591:4584] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_574[1] = buffer_data_2[4599:4592] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_574[2] = buffer_data_2[4607:4600] * G_Kernel_3x3[0][53:36];
@@ -12626,7 +12626,7 @@ always @(posedge clk) begin
     blur_din[4599:4592] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_575[0:8]
+wire  [25:0]  kernel_img_mul_575[0:8];
 assign kernel_img_mul_575[0] = buffer_data_2[4599:4592] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_575[1] = buffer_data_2[4607:4600] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_575[2] = buffer_data_2[4615:4608] * G_Kernel_3x3[0][53:36];
@@ -12648,7 +12648,7 @@ always @(posedge clk) begin
     blur_din[4607:4600] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_576[0:8]
+wire  [25:0]  kernel_img_mul_576[0:8];
 assign kernel_img_mul_576[0] = buffer_data_2[4607:4600] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_576[1] = buffer_data_2[4615:4608] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_576[2] = buffer_data_2[4623:4616] * G_Kernel_3x3[0][53:36];
@@ -12670,7 +12670,7 @@ always @(posedge clk) begin
     blur_din[4615:4608] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_577[0:8]
+wire  [25:0]  kernel_img_mul_577[0:8];
 assign kernel_img_mul_577[0] = buffer_data_2[4615:4608] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_577[1] = buffer_data_2[4623:4616] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_577[2] = buffer_data_2[4631:4624] * G_Kernel_3x3[0][53:36];
@@ -12692,7 +12692,7 @@ always @(posedge clk) begin
     blur_din[4623:4616] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_578[0:8]
+wire  [25:0]  kernel_img_mul_578[0:8];
 assign kernel_img_mul_578[0] = buffer_data_2[4623:4616] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_578[1] = buffer_data_2[4631:4624] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_578[2] = buffer_data_2[4639:4632] * G_Kernel_3x3[0][53:36];
@@ -12714,7 +12714,7 @@ always @(posedge clk) begin
     blur_din[4631:4624] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_579[0:8]
+wire  [25:0]  kernel_img_mul_579[0:8];
 assign kernel_img_mul_579[0] = buffer_data_2[4631:4624] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_579[1] = buffer_data_2[4639:4632] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_579[2] = buffer_data_2[4647:4640] * G_Kernel_3x3[0][53:36];
@@ -12736,7 +12736,7 @@ always @(posedge clk) begin
     blur_din[4639:4632] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_580[0:8]
+wire  [25:0]  kernel_img_mul_580[0:8];
 assign kernel_img_mul_580[0] = buffer_data_2[4639:4632] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_580[1] = buffer_data_2[4647:4640] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_580[2] = buffer_data_2[4655:4648] * G_Kernel_3x3[0][53:36];
@@ -12758,7 +12758,7 @@ always @(posedge clk) begin
     blur_din[4647:4640] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_581[0:8]
+wire  [25:0]  kernel_img_mul_581[0:8];
 assign kernel_img_mul_581[0] = buffer_data_2[4647:4640] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_581[1] = buffer_data_2[4655:4648] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_581[2] = buffer_data_2[4663:4656] * G_Kernel_3x3[0][53:36];
@@ -12780,7 +12780,7 @@ always @(posedge clk) begin
     blur_din[4655:4648] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_582[0:8]
+wire  [25:0]  kernel_img_mul_582[0:8];
 assign kernel_img_mul_582[0] = buffer_data_2[4655:4648] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_582[1] = buffer_data_2[4663:4656] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_582[2] = buffer_data_2[4671:4664] * G_Kernel_3x3[0][53:36];
@@ -12802,7 +12802,7 @@ always @(posedge clk) begin
     blur_din[4663:4656] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_583[0:8]
+wire  [25:0]  kernel_img_mul_583[0:8];
 assign kernel_img_mul_583[0] = buffer_data_2[4663:4656] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_583[1] = buffer_data_2[4671:4664] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_583[2] = buffer_data_2[4679:4672] * G_Kernel_3x3[0][53:36];
@@ -12824,7 +12824,7 @@ always @(posedge clk) begin
     blur_din[4671:4664] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_584[0:8]
+wire  [25:0]  kernel_img_mul_584[0:8];
 assign kernel_img_mul_584[0] = buffer_data_2[4671:4664] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_584[1] = buffer_data_2[4679:4672] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_584[2] = buffer_data_2[4687:4680] * G_Kernel_3x3[0][53:36];
@@ -12846,7 +12846,7 @@ always @(posedge clk) begin
     blur_din[4679:4672] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_585[0:8]
+wire  [25:0]  kernel_img_mul_585[0:8];
 assign kernel_img_mul_585[0] = buffer_data_2[4679:4672] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_585[1] = buffer_data_2[4687:4680] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_585[2] = buffer_data_2[4695:4688] * G_Kernel_3x3[0][53:36];
@@ -12868,7 +12868,7 @@ always @(posedge clk) begin
     blur_din[4687:4680] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_586[0:8]
+wire  [25:0]  kernel_img_mul_586[0:8];
 assign kernel_img_mul_586[0] = buffer_data_2[4687:4680] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_586[1] = buffer_data_2[4695:4688] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_586[2] = buffer_data_2[4703:4696] * G_Kernel_3x3[0][53:36];
@@ -12890,7 +12890,7 @@ always @(posedge clk) begin
     blur_din[4695:4688] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_587[0:8]
+wire  [25:0]  kernel_img_mul_587[0:8];
 assign kernel_img_mul_587[0] = buffer_data_2[4695:4688] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_587[1] = buffer_data_2[4703:4696] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_587[2] = buffer_data_2[4711:4704] * G_Kernel_3x3[0][53:36];
@@ -12912,7 +12912,7 @@ always @(posedge clk) begin
     blur_din[4703:4696] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_588[0:8]
+wire  [25:0]  kernel_img_mul_588[0:8];
 assign kernel_img_mul_588[0] = buffer_data_2[4703:4696] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_588[1] = buffer_data_2[4711:4704] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_588[2] = buffer_data_2[4719:4712] * G_Kernel_3x3[0][53:36];
@@ -12934,7 +12934,7 @@ always @(posedge clk) begin
     blur_din[4711:4704] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_589[0:8]
+wire  [25:0]  kernel_img_mul_589[0:8];
 assign kernel_img_mul_589[0] = buffer_data_2[4711:4704] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_589[1] = buffer_data_2[4719:4712] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_589[2] = buffer_data_2[4727:4720] * G_Kernel_3x3[0][53:36];
@@ -12956,7 +12956,7 @@ always @(posedge clk) begin
     blur_din[4719:4712] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_590[0:8]
+wire  [25:0]  kernel_img_mul_590[0:8];
 assign kernel_img_mul_590[0] = buffer_data_2[4719:4712] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_590[1] = buffer_data_2[4727:4720] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_590[2] = buffer_data_2[4735:4728] * G_Kernel_3x3[0][53:36];
@@ -12978,7 +12978,7 @@ always @(posedge clk) begin
     blur_din[4727:4720] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_591[0:8]
+wire  [25:0]  kernel_img_mul_591[0:8];
 assign kernel_img_mul_591[0] = buffer_data_2[4727:4720] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_591[1] = buffer_data_2[4735:4728] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_591[2] = buffer_data_2[4743:4736] * G_Kernel_3x3[0][53:36];
@@ -13000,7 +13000,7 @@ always @(posedge clk) begin
     blur_din[4735:4728] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_592[0:8]
+wire  [25:0]  kernel_img_mul_592[0:8];
 assign kernel_img_mul_592[0] = buffer_data_2[4735:4728] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_592[1] = buffer_data_2[4743:4736] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_592[2] = buffer_data_2[4751:4744] * G_Kernel_3x3[0][53:36];
@@ -13022,7 +13022,7 @@ always @(posedge clk) begin
     blur_din[4743:4736] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_593[0:8]
+wire  [25:0]  kernel_img_mul_593[0:8];
 assign kernel_img_mul_593[0] = buffer_data_2[4743:4736] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_593[1] = buffer_data_2[4751:4744] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_593[2] = buffer_data_2[4759:4752] * G_Kernel_3x3[0][53:36];
@@ -13044,7 +13044,7 @@ always @(posedge clk) begin
     blur_din[4751:4744] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_594[0:8]
+wire  [25:0]  kernel_img_mul_594[0:8];
 assign kernel_img_mul_594[0] = buffer_data_2[4751:4744] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_594[1] = buffer_data_2[4759:4752] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_594[2] = buffer_data_2[4767:4760] * G_Kernel_3x3[0][53:36];
@@ -13066,7 +13066,7 @@ always @(posedge clk) begin
     blur_din[4759:4752] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_595[0:8]
+wire  [25:0]  kernel_img_mul_595[0:8];
 assign kernel_img_mul_595[0] = buffer_data_2[4759:4752] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_595[1] = buffer_data_2[4767:4760] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_595[2] = buffer_data_2[4775:4768] * G_Kernel_3x3[0][53:36];
@@ -13088,7 +13088,7 @@ always @(posedge clk) begin
     blur_din[4767:4760] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_596[0:8]
+wire  [25:0]  kernel_img_mul_596[0:8];
 assign kernel_img_mul_596[0] = buffer_data_2[4767:4760] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_596[1] = buffer_data_2[4775:4768] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_596[2] = buffer_data_2[4783:4776] * G_Kernel_3x3[0][53:36];
@@ -13110,7 +13110,7 @@ always @(posedge clk) begin
     blur_din[4775:4768] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_597[0:8]
+wire  [25:0]  kernel_img_mul_597[0:8];
 assign kernel_img_mul_597[0] = buffer_data_2[4775:4768] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_597[1] = buffer_data_2[4783:4776] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_597[2] = buffer_data_2[4791:4784] * G_Kernel_3x3[0][53:36];
@@ -13132,7 +13132,7 @@ always @(posedge clk) begin
     blur_din[4783:4776] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_598[0:8]
+wire  [25:0]  kernel_img_mul_598[0:8];
 assign kernel_img_mul_598[0] = buffer_data_2[4783:4776] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_598[1] = buffer_data_2[4791:4784] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_598[2] = buffer_data_2[4799:4792] * G_Kernel_3x3[0][53:36];
@@ -13154,7 +13154,7 @@ always @(posedge clk) begin
     blur_din[4791:4784] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_599[0:8]
+wire  [25:0]  kernel_img_mul_599[0:8];
 assign kernel_img_mul_599[0] = buffer_data_2[4791:4784] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_599[1] = buffer_data_2[4799:4792] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_599[2] = buffer_data_2[4807:4800] * G_Kernel_3x3[0][53:36];
@@ -13176,7 +13176,7 @@ always @(posedge clk) begin
     blur_din[4799:4792] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_600[0:8]
+wire  [25:0]  kernel_img_mul_600[0:8];
 assign kernel_img_mul_600[0] = buffer_data_2[4799:4792] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_600[1] = buffer_data_2[4807:4800] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_600[2] = buffer_data_2[4815:4808] * G_Kernel_3x3[0][53:36];
@@ -13198,7 +13198,7 @@ always @(posedge clk) begin
     blur_din[4807:4800] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_601[0:8]
+wire  [25:0]  kernel_img_mul_601[0:8];
 assign kernel_img_mul_601[0] = buffer_data_2[4807:4800] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_601[1] = buffer_data_2[4815:4808] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_601[2] = buffer_data_2[4823:4816] * G_Kernel_3x3[0][53:36];
@@ -13220,7 +13220,7 @@ always @(posedge clk) begin
     blur_din[4815:4808] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_602[0:8]
+wire  [25:0]  kernel_img_mul_602[0:8];
 assign kernel_img_mul_602[0] = buffer_data_2[4815:4808] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_602[1] = buffer_data_2[4823:4816] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_602[2] = buffer_data_2[4831:4824] * G_Kernel_3x3[0][53:36];
@@ -13242,7 +13242,7 @@ always @(posedge clk) begin
     blur_din[4823:4816] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_603[0:8]
+wire  [25:0]  kernel_img_mul_603[0:8];
 assign kernel_img_mul_603[0] = buffer_data_2[4823:4816] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_603[1] = buffer_data_2[4831:4824] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_603[2] = buffer_data_2[4839:4832] * G_Kernel_3x3[0][53:36];
@@ -13264,7 +13264,7 @@ always @(posedge clk) begin
     blur_din[4831:4824] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_604[0:8]
+wire  [25:0]  kernel_img_mul_604[0:8];
 assign kernel_img_mul_604[0] = buffer_data_2[4831:4824] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_604[1] = buffer_data_2[4839:4832] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_604[2] = buffer_data_2[4847:4840] * G_Kernel_3x3[0][53:36];
@@ -13286,7 +13286,7 @@ always @(posedge clk) begin
     blur_din[4839:4832] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_605[0:8]
+wire  [25:0]  kernel_img_mul_605[0:8];
 assign kernel_img_mul_605[0] = buffer_data_2[4839:4832] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_605[1] = buffer_data_2[4847:4840] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_605[2] = buffer_data_2[4855:4848] * G_Kernel_3x3[0][53:36];
@@ -13308,7 +13308,7 @@ always @(posedge clk) begin
     blur_din[4847:4840] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_606[0:8]
+wire  [25:0]  kernel_img_mul_606[0:8];
 assign kernel_img_mul_606[0] = buffer_data_2[4847:4840] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_606[1] = buffer_data_2[4855:4848] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_606[2] = buffer_data_2[4863:4856] * G_Kernel_3x3[0][53:36];
@@ -13330,7 +13330,7 @@ always @(posedge clk) begin
     blur_din[4855:4848] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_607[0:8]
+wire  [25:0]  kernel_img_mul_607[0:8];
 assign kernel_img_mul_607[0] = buffer_data_2[4855:4848] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_607[1] = buffer_data_2[4863:4856] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_607[2] = buffer_data_2[4871:4864] * G_Kernel_3x3[0][53:36];
@@ -13352,7 +13352,7 @@ always @(posedge clk) begin
     blur_din[4863:4856] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_608[0:8]
+wire  [25:0]  kernel_img_mul_608[0:8];
 assign kernel_img_mul_608[0] = buffer_data_2[4863:4856] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_608[1] = buffer_data_2[4871:4864] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_608[2] = buffer_data_2[4879:4872] * G_Kernel_3x3[0][53:36];
@@ -13374,7 +13374,7 @@ always @(posedge clk) begin
     blur_din[4871:4864] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_609[0:8]
+wire  [25:0]  kernel_img_mul_609[0:8];
 assign kernel_img_mul_609[0] = buffer_data_2[4871:4864] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_609[1] = buffer_data_2[4879:4872] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_609[2] = buffer_data_2[4887:4880] * G_Kernel_3x3[0][53:36];
@@ -13396,7 +13396,7 @@ always @(posedge clk) begin
     blur_din[4879:4872] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_610[0:8]
+wire  [25:0]  kernel_img_mul_610[0:8];
 assign kernel_img_mul_610[0] = buffer_data_2[4879:4872] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_610[1] = buffer_data_2[4887:4880] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_610[2] = buffer_data_2[4895:4888] * G_Kernel_3x3[0][53:36];
@@ -13418,7 +13418,7 @@ always @(posedge clk) begin
     blur_din[4887:4880] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_611[0:8]
+wire  [25:0]  kernel_img_mul_611[0:8];
 assign kernel_img_mul_611[0] = buffer_data_2[4887:4880] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_611[1] = buffer_data_2[4895:4888] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_611[2] = buffer_data_2[4903:4896] * G_Kernel_3x3[0][53:36];
@@ -13440,7 +13440,7 @@ always @(posedge clk) begin
     blur_din[4895:4888] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_612[0:8]
+wire  [25:0]  kernel_img_mul_612[0:8];
 assign kernel_img_mul_612[0] = buffer_data_2[4895:4888] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_612[1] = buffer_data_2[4903:4896] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_612[2] = buffer_data_2[4911:4904] * G_Kernel_3x3[0][53:36];
@@ -13462,7 +13462,7 @@ always @(posedge clk) begin
     blur_din[4903:4896] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_613[0:8]
+wire  [25:0]  kernel_img_mul_613[0:8];
 assign kernel_img_mul_613[0] = buffer_data_2[4903:4896] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_613[1] = buffer_data_2[4911:4904] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_613[2] = buffer_data_2[4919:4912] * G_Kernel_3x3[0][53:36];
@@ -13484,7 +13484,7 @@ always @(posedge clk) begin
     blur_din[4911:4904] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_614[0:8]
+wire  [25:0]  kernel_img_mul_614[0:8];
 assign kernel_img_mul_614[0] = buffer_data_2[4911:4904] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_614[1] = buffer_data_2[4919:4912] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_614[2] = buffer_data_2[4927:4920] * G_Kernel_3x3[0][53:36];
@@ -13506,7 +13506,7 @@ always @(posedge clk) begin
     blur_din[4919:4912] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_615[0:8]
+wire  [25:0]  kernel_img_mul_615[0:8];
 assign kernel_img_mul_615[0] = buffer_data_2[4919:4912] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_615[1] = buffer_data_2[4927:4920] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_615[2] = buffer_data_2[4935:4928] * G_Kernel_3x3[0][53:36];
@@ -13528,7 +13528,7 @@ always @(posedge clk) begin
     blur_din[4927:4920] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_616[0:8]
+wire  [25:0]  kernel_img_mul_616[0:8];
 assign kernel_img_mul_616[0] = buffer_data_2[4927:4920] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_616[1] = buffer_data_2[4935:4928] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_616[2] = buffer_data_2[4943:4936] * G_Kernel_3x3[0][53:36];
@@ -13550,7 +13550,7 @@ always @(posedge clk) begin
     blur_din[4935:4928] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_617[0:8]
+wire  [25:0]  kernel_img_mul_617[0:8];
 assign kernel_img_mul_617[0] = buffer_data_2[4935:4928] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_617[1] = buffer_data_2[4943:4936] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_617[2] = buffer_data_2[4951:4944] * G_Kernel_3x3[0][53:36];
@@ -13572,7 +13572,7 @@ always @(posedge clk) begin
     blur_din[4943:4936] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_618[0:8]
+wire  [25:0]  kernel_img_mul_618[0:8];
 assign kernel_img_mul_618[0] = buffer_data_2[4943:4936] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_618[1] = buffer_data_2[4951:4944] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_618[2] = buffer_data_2[4959:4952] * G_Kernel_3x3[0][53:36];
@@ -13594,7 +13594,7 @@ always @(posedge clk) begin
     blur_din[4951:4944] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_619[0:8]
+wire  [25:0]  kernel_img_mul_619[0:8];
 assign kernel_img_mul_619[0] = buffer_data_2[4951:4944] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_619[1] = buffer_data_2[4959:4952] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_619[2] = buffer_data_2[4967:4960] * G_Kernel_3x3[0][53:36];
@@ -13616,7 +13616,7 @@ always @(posedge clk) begin
     blur_din[4959:4952] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_620[0:8]
+wire  [25:0]  kernel_img_mul_620[0:8];
 assign kernel_img_mul_620[0] = buffer_data_2[4959:4952] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_620[1] = buffer_data_2[4967:4960] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_620[2] = buffer_data_2[4975:4968] * G_Kernel_3x3[0][53:36];
@@ -13638,7 +13638,7 @@ always @(posedge clk) begin
     blur_din[4967:4960] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_621[0:8]
+wire  [25:0]  kernel_img_mul_621[0:8];
 assign kernel_img_mul_621[0] = buffer_data_2[4967:4960] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_621[1] = buffer_data_2[4975:4968] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_621[2] = buffer_data_2[4983:4976] * G_Kernel_3x3[0][53:36];
@@ -13660,7 +13660,7 @@ always @(posedge clk) begin
     blur_din[4975:4968] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_622[0:8]
+wire  [25:0]  kernel_img_mul_622[0:8];
 assign kernel_img_mul_622[0] = buffer_data_2[4975:4968] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_622[1] = buffer_data_2[4983:4976] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_622[2] = buffer_data_2[4991:4984] * G_Kernel_3x3[0][53:36];
@@ -13682,7 +13682,7 @@ always @(posedge clk) begin
     blur_din[4983:4976] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_623[0:8]
+wire  [25:0]  kernel_img_mul_623[0:8];
 assign kernel_img_mul_623[0] = buffer_data_2[4983:4976] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_623[1] = buffer_data_2[4991:4984] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_623[2] = buffer_data_2[4999:4992] * G_Kernel_3x3[0][53:36];
@@ -13704,7 +13704,7 @@ always @(posedge clk) begin
     blur_din[4991:4984] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_624[0:8]
+wire  [25:0]  kernel_img_mul_624[0:8];
 assign kernel_img_mul_624[0] = buffer_data_2[4991:4984] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_624[1] = buffer_data_2[4999:4992] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_624[2] = buffer_data_2[5007:5000] * G_Kernel_3x3[0][53:36];
@@ -13726,7 +13726,7 @@ always @(posedge clk) begin
     blur_din[4999:4992] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_625[0:8]
+wire  [25:0]  kernel_img_mul_625[0:8];
 assign kernel_img_mul_625[0] = buffer_data_2[4999:4992] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_625[1] = buffer_data_2[5007:5000] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_625[2] = buffer_data_2[5015:5008] * G_Kernel_3x3[0][53:36];
@@ -13748,7 +13748,7 @@ always @(posedge clk) begin
     blur_din[5007:5000] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_626[0:8]
+wire  [25:0]  kernel_img_mul_626[0:8];
 assign kernel_img_mul_626[0] = buffer_data_2[5007:5000] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_626[1] = buffer_data_2[5015:5008] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_626[2] = buffer_data_2[5023:5016] * G_Kernel_3x3[0][53:36];
@@ -13770,7 +13770,7 @@ always @(posedge clk) begin
     blur_din[5015:5008] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_627[0:8]
+wire  [25:0]  kernel_img_mul_627[0:8];
 assign kernel_img_mul_627[0] = buffer_data_2[5015:5008] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_627[1] = buffer_data_2[5023:5016] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_627[2] = buffer_data_2[5031:5024] * G_Kernel_3x3[0][53:36];
@@ -13792,7 +13792,7 @@ always @(posedge clk) begin
     blur_din[5023:5016] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_628[0:8]
+wire  [25:0]  kernel_img_mul_628[0:8];
 assign kernel_img_mul_628[0] = buffer_data_2[5023:5016] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_628[1] = buffer_data_2[5031:5024] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_628[2] = buffer_data_2[5039:5032] * G_Kernel_3x3[0][53:36];
@@ -13814,7 +13814,7 @@ always @(posedge clk) begin
     blur_din[5031:5024] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_629[0:8]
+wire  [25:0]  kernel_img_mul_629[0:8];
 assign kernel_img_mul_629[0] = buffer_data_2[5031:5024] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_629[1] = buffer_data_2[5039:5032] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_629[2] = buffer_data_2[5047:5040] * G_Kernel_3x3[0][53:36];
@@ -13836,7 +13836,7 @@ always @(posedge clk) begin
     blur_din[5039:5032] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_630[0:8]
+wire  [25:0]  kernel_img_mul_630[0:8];
 assign kernel_img_mul_630[0] = buffer_data_2[5039:5032] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_630[1] = buffer_data_2[5047:5040] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_630[2] = buffer_data_2[5055:5048] * G_Kernel_3x3[0][53:36];
@@ -13858,7 +13858,7 @@ always @(posedge clk) begin
     blur_din[5047:5040] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_631[0:8]
+wire  [25:0]  kernel_img_mul_631[0:8];
 assign kernel_img_mul_631[0] = buffer_data_2[5047:5040] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_631[1] = buffer_data_2[5055:5048] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_631[2] = buffer_data_2[5063:5056] * G_Kernel_3x3[0][53:36];
@@ -13880,7 +13880,7 @@ always @(posedge clk) begin
     blur_din[5055:5048] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_632[0:8]
+wire  [25:0]  kernel_img_mul_632[0:8];
 assign kernel_img_mul_632[0] = buffer_data_2[5055:5048] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_632[1] = buffer_data_2[5063:5056] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_632[2] = buffer_data_2[5071:5064] * G_Kernel_3x3[0][53:36];
@@ -13902,7 +13902,7 @@ always @(posedge clk) begin
     blur_din[5063:5056] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_633[0:8]
+wire  [25:0]  kernel_img_mul_633[0:8];
 assign kernel_img_mul_633[0] = buffer_data_2[5063:5056] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_633[1] = buffer_data_2[5071:5064] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_633[2] = buffer_data_2[5079:5072] * G_Kernel_3x3[0][53:36];
@@ -13924,7 +13924,7 @@ always @(posedge clk) begin
     blur_din[5071:5064] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_634[0:8]
+wire  [25:0]  kernel_img_mul_634[0:8];
 assign kernel_img_mul_634[0] = buffer_data_2[5071:5064] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_634[1] = buffer_data_2[5079:5072] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_634[2] = buffer_data_2[5087:5080] * G_Kernel_3x3[0][53:36];
@@ -13946,7 +13946,7 @@ always @(posedge clk) begin
     blur_din[5079:5072] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_635[0:8]
+wire  [25:0]  kernel_img_mul_635[0:8];
 assign kernel_img_mul_635[0] = buffer_data_2[5079:5072] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_635[1] = buffer_data_2[5087:5080] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_635[2] = buffer_data_2[5095:5088] * G_Kernel_3x3[0][53:36];
@@ -13968,7 +13968,7 @@ always @(posedge clk) begin
     blur_din[5087:5080] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_636[0:8]
+wire  [25:0]  kernel_img_mul_636[0:8];
 assign kernel_img_mul_636[0] = buffer_data_2[5087:5080] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_636[1] = buffer_data_2[5095:5088] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_636[2] = buffer_data_2[5103:5096] * G_Kernel_3x3[0][53:36];
@@ -13990,7 +13990,7 @@ always @(posedge clk) begin
     blur_din[5095:5088] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_637[0:8]
+wire  [25:0]  kernel_img_mul_637[0:8];
 assign kernel_img_mul_637[0] = buffer_data_2[5095:5088] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_637[1] = buffer_data_2[5103:5096] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_637[2] = buffer_data_2[5111:5104] * G_Kernel_3x3[0][53:36];
@@ -14012,7 +14012,7 @@ always @(posedge clk) begin
     blur_din[5103:5096] <= 'd0;
 end
 
-wire  [25:0]  kernel_img_mul_638[0:8]
+wire  [25:0]  kernel_img_mul_638[0:8];
 assign kernel_img_mul_638[0] = buffer_data_2[5103:5096] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_638[1] = buffer_data_2[5111:5104] * G_Kernel_3x3[0][35:18];
 assign kernel_img_mul_638[2] = buffer_data_2[5119:5112] * G_Kernel_3x3[0][53:36];
