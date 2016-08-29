@@ -286,7 +286,7 @@ void match(mySIFT& left, mySIFT& right, string targetFile, Mat img_scene, clock_
 	line(result, computed_corners[3] + obj_corners[1], computed_corners[0] + obj_corners[1], Scalar(255, 0, 255), 4);
 
 	imshow("haha", result);
-	//imwrite("result.jpg", result);
+	// imwrite("result.jpg", result);
 	waitKey(1);
 }
 

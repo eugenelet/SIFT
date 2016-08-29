@@ -43,6 +43,7 @@ int main(int argc, char* argv[])
 			s = clock();
 			Mat img_scene;
 			cap >> img_scene;
+			imwrite("test.jpg", img_scene);
 			clock_t start, end;
 
 			mySIFT hoho(1.414, 1.414, 1);//sigma k
