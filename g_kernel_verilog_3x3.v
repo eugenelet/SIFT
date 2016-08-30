@@ -1,3 +1,22 @@
+wire  [25:0]  kernel_img_mul_0[0:8];
+assign kernel_img_mul_0[0] = buffer_data_2[7:0] * G_Kernel_3x3[0][35:18];
+assign kernel_img_mul_0[1] = buffer_data_2[15:8] * G_Kernel_3x3[0][53:36];
+assign kernel_img_mul_0[3] = buffer_data_1[7:0] * G_Kernel_3x3[1][35:18];
+assign kernel_img_mul_0[4] = buffer_data_1[15:8] * G_Kernel_3x3[1][53:36];
+assign kernel_img_mul_0[6] = buffer_data_0[7:0] * G_Kernel_3x3[0][35:18];
+assign kernel_img_mul_0[7] = buffer_data_0[15:8] * G_Kernel_3x3[0][53:36];
+wire  [29:0]  kernel_img_sum_0 = kernel_img_mul_0[0] + kernel_img_mul_0[1] + kernel_img_mul_0[3] + 
+                kernel_img_mul_0[4] + kernel_img_mul_0[6] + kernel_img_mul_0[7] + 
+                'd0;
+always @(posedge clk) begin
+  if (!rst_n)
+    blur_din[7:0] <= 'd0;
+  else if (current_state==ST_START)
+    blur_din[7:0] <= kernel_img_sum_0[25:18];/*Q12.18 -> Q8.0*/
+  else if (current_state==ST_IDLE)
+    blur_din[7:0] <= 'd0;
+end
+
 wire  [25:0]  kernel_img_mul_1[0:8];
 assign kernel_img_mul_1[0] = buffer_data_2[7:0] * G_Kernel_3x3[0][17:0];
 assign kernel_img_mul_1[1] = buffer_data_2[15:8] * G_Kernel_3x3[0][35:18];
@@ -14,7 +33,7 @@ wire  [29:0]  kernel_img_sum_1 = kernel_img_mul_1[0] + kernel_img_mul_1[1] + ker
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[15:8] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[15:8] <= kernel_img_sum_1[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[15:8] <= 'd0;
@@ -36,7 +55,7 @@ wire  [29:0]  kernel_img_sum_2 = kernel_img_mul_2[0] + kernel_img_mul_2[1] + ker
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[23:16] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[23:16] <= kernel_img_sum_2[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[23:16] <= 'd0;
@@ -58,7 +77,7 @@ wire  [29:0]  kernel_img_sum_3 = kernel_img_mul_3[0] + kernel_img_mul_3[1] + ker
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[31:24] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[31:24] <= kernel_img_sum_3[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[31:24] <= 'd0;
@@ -80,7 +99,7 @@ wire  [29:0]  kernel_img_sum_4 = kernel_img_mul_4[0] + kernel_img_mul_4[1] + ker
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[39:32] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[39:32] <= kernel_img_sum_4[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[39:32] <= 'd0;
@@ -102,7 +121,7 @@ wire  [29:0]  kernel_img_sum_5 = kernel_img_mul_5[0] + kernel_img_mul_5[1] + ker
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[47:40] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[47:40] <= kernel_img_sum_5[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[47:40] <= 'd0;
@@ -124,7 +143,7 @@ wire  [29:0]  kernel_img_sum_6 = kernel_img_mul_6[0] + kernel_img_mul_6[1] + ker
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[55:48] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[55:48] <= kernel_img_sum_6[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[55:48] <= 'd0;
@@ -146,7 +165,7 @@ wire  [29:0]  kernel_img_sum_7 = kernel_img_mul_7[0] + kernel_img_mul_7[1] + ker
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[63:56] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[63:56] <= kernel_img_sum_7[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[63:56] <= 'd0;
@@ -168,7 +187,7 @@ wire  [29:0]  kernel_img_sum_8 = kernel_img_mul_8[0] + kernel_img_mul_8[1] + ker
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[71:64] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[71:64] <= kernel_img_sum_8[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[71:64] <= 'd0;
@@ -190,7 +209,7 @@ wire  [29:0]  kernel_img_sum_9 = kernel_img_mul_9[0] + kernel_img_mul_9[1] + ker
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[79:72] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[79:72] <= kernel_img_sum_9[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[79:72] <= 'd0;
@@ -212,7 +231,7 @@ wire  [29:0]  kernel_img_sum_10 = kernel_img_mul_10[0] + kernel_img_mul_10[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[87:80] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[87:80] <= kernel_img_sum_10[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[87:80] <= 'd0;
@@ -234,7 +253,7 @@ wire  [29:0]  kernel_img_sum_11 = kernel_img_mul_11[0] + kernel_img_mul_11[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[95:88] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[95:88] <= kernel_img_sum_11[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[95:88] <= 'd0;
@@ -256,7 +275,7 @@ wire  [29:0]  kernel_img_sum_12 = kernel_img_mul_12[0] + kernel_img_mul_12[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[103:96] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[103:96] <= kernel_img_sum_12[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[103:96] <= 'd0;
@@ -278,7 +297,7 @@ wire  [29:0]  kernel_img_sum_13 = kernel_img_mul_13[0] + kernel_img_mul_13[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[111:104] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[111:104] <= kernel_img_sum_13[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[111:104] <= 'd0;
@@ -300,7 +319,7 @@ wire  [29:0]  kernel_img_sum_14 = kernel_img_mul_14[0] + kernel_img_mul_14[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[119:112] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[119:112] <= kernel_img_sum_14[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[119:112] <= 'd0;
@@ -322,7 +341,7 @@ wire  [29:0]  kernel_img_sum_15 = kernel_img_mul_15[0] + kernel_img_mul_15[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[127:120] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[127:120] <= kernel_img_sum_15[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[127:120] <= 'd0;
@@ -344,7 +363,7 @@ wire  [29:0]  kernel_img_sum_16 = kernel_img_mul_16[0] + kernel_img_mul_16[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[135:128] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[135:128] <= kernel_img_sum_16[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[135:128] <= 'd0;
@@ -366,7 +385,7 @@ wire  [29:0]  kernel_img_sum_17 = kernel_img_mul_17[0] + kernel_img_mul_17[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[143:136] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[143:136] <= kernel_img_sum_17[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[143:136] <= 'd0;
@@ -388,7 +407,7 @@ wire  [29:0]  kernel_img_sum_18 = kernel_img_mul_18[0] + kernel_img_mul_18[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[151:144] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[151:144] <= kernel_img_sum_18[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[151:144] <= 'd0;
@@ -410,7 +429,7 @@ wire  [29:0]  kernel_img_sum_19 = kernel_img_mul_19[0] + kernel_img_mul_19[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[159:152] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[159:152] <= kernel_img_sum_19[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[159:152] <= 'd0;
@@ -432,7 +451,7 @@ wire  [29:0]  kernel_img_sum_20 = kernel_img_mul_20[0] + kernel_img_mul_20[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[167:160] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[167:160] <= kernel_img_sum_20[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[167:160] <= 'd0;
@@ -454,7 +473,7 @@ wire  [29:0]  kernel_img_sum_21 = kernel_img_mul_21[0] + kernel_img_mul_21[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[175:168] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[175:168] <= kernel_img_sum_21[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[175:168] <= 'd0;
@@ -476,7 +495,7 @@ wire  [29:0]  kernel_img_sum_22 = kernel_img_mul_22[0] + kernel_img_mul_22[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[183:176] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[183:176] <= kernel_img_sum_22[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[183:176] <= 'd0;
@@ -498,7 +517,7 @@ wire  [29:0]  kernel_img_sum_23 = kernel_img_mul_23[0] + kernel_img_mul_23[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[191:184] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[191:184] <= kernel_img_sum_23[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[191:184] <= 'd0;
@@ -520,7 +539,7 @@ wire  [29:0]  kernel_img_sum_24 = kernel_img_mul_24[0] + kernel_img_mul_24[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[199:192] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[199:192] <= kernel_img_sum_24[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[199:192] <= 'd0;
@@ -542,7 +561,7 @@ wire  [29:0]  kernel_img_sum_25 = kernel_img_mul_25[0] + kernel_img_mul_25[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[207:200] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[207:200] <= kernel_img_sum_25[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[207:200] <= 'd0;
@@ -564,7 +583,7 @@ wire  [29:0]  kernel_img_sum_26 = kernel_img_mul_26[0] + kernel_img_mul_26[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[215:208] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[215:208] <= kernel_img_sum_26[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[215:208] <= 'd0;
@@ -586,7 +605,7 @@ wire  [29:0]  kernel_img_sum_27 = kernel_img_mul_27[0] + kernel_img_mul_27[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[223:216] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[223:216] <= kernel_img_sum_27[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[223:216] <= 'd0;
@@ -608,7 +627,7 @@ wire  [29:0]  kernel_img_sum_28 = kernel_img_mul_28[0] + kernel_img_mul_28[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[231:224] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[231:224] <= kernel_img_sum_28[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[231:224] <= 'd0;
@@ -630,7 +649,7 @@ wire  [29:0]  kernel_img_sum_29 = kernel_img_mul_29[0] + kernel_img_mul_29[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[239:232] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[239:232] <= kernel_img_sum_29[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[239:232] <= 'd0;
@@ -652,7 +671,7 @@ wire  [29:0]  kernel_img_sum_30 = kernel_img_mul_30[0] + kernel_img_mul_30[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[247:240] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[247:240] <= kernel_img_sum_30[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[247:240] <= 'd0;
@@ -674,7 +693,7 @@ wire  [29:0]  kernel_img_sum_31 = kernel_img_mul_31[0] + kernel_img_mul_31[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[255:248] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[255:248] <= kernel_img_sum_31[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[255:248] <= 'd0;
@@ -696,7 +715,7 @@ wire  [29:0]  kernel_img_sum_32 = kernel_img_mul_32[0] + kernel_img_mul_32[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[263:256] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[263:256] <= kernel_img_sum_32[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[263:256] <= 'd0;
@@ -718,7 +737,7 @@ wire  [29:0]  kernel_img_sum_33 = kernel_img_mul_33[0] + kernel_img_mul_33[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[271:264] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[271:264] <= kernel_img_sum_33[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[271:264] <= 'd0;
@@ -740,7 +759,7 @@ wire  [29:0]  kernel_img_sum_34 = kernel_img_mul_34[0] + kernel_img_mul_34[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[279:272] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[279:272] <= kernel_img_sum_34[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[279:272] <= 'd0;
@@ -762,7 +781,7 @@ wire  [29:0]  kernel_img_sum_35 = kernel_img_mul_35[0] + kernel_img_mul_35[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[287:280] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[287:280] <= kernel_img_sum_35[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[287:280] <= 'd0;
@@ -784,7 +803,7 @@ wire  [29:0]  kernel_img_sum_36 = kernel_img_mul_36[0] + kernel_img_mul_36[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[295:288] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[295:288] <= kernel_img_sum_36[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[295:288] <= 'd0;
@@ -806,7 +825,7 @@ wire  [29:0]  kernel_img_sum_37 = kernel_img_mul_37[0] + kernel_img_mul_37[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[303:296] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[303:296] <= kernel_img_sum_37[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[303:296] <= 'd0;
@@ -828,7 +847,7 @@ wire  [29:0]  kernel_img_sum_38 = kernel_img_mul_38[0] + kernel_img_mul_38[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[311:304] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[311:304] <= kernel_img_sum_38[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[311:304] <= 'd0;
@@ -850,7 +869,7 @@ wire  [29:0]  kernel_img_sum_39 = kernel_img_mul_39[0] + kernel_img_mul_39[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[319:312] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[319:312] <= kernel_img_sum_39[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[319:312] <= 'd0;
@@ -872,7 +891,7 @@ wire  [29:0]  kernel_img_sum_40 = kernel_img_mul_40[0] + kernel_img_mul_40[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[327:320] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[327:320] <= kernel_img_sum_40[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[327:320] <= 'd0;
@@ -894,7 +913,7 @@ wire  [29:0]  kernel_img_sum_41 = kernel_img_mul_41[0] + kernel_img_mul_41[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[335:328] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[335:328] <= kernel_img_sum_41[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[335:328] <= 'd0;
@@ -916,7 +935,7 @@ wire  [29:0]  kernel_img_sum_42 = kernel_img_mul_42[0] + kernel_img_mul_42[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[343:336] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[343:336] <= kernel_img_sum_42[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[343:336] <= 'd0;
@@ -938,7 +957,7 @@ wire  [29:0]  kernel_img_sum_43 = kernel_img_mul_43[0] + kernel_img_mul_43[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[351:344] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[351:344] <= kernel_img_sum_43[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[351:344] <= 'd0;
@@ -960,7 +979,7 @@ wire  [29:0]  kernel_img_sum_44 = kernel_img_mul_44[0] + kernel_img_mul_44[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[359:352] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[359:352] <= kernel_img_sum_44[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[359:352] <= 'd0;
@@ -982,7 +1001,7 @@ wire  [29:0]  kernel_img_sum_45 = kernel_img_mul_45[0] + kernel_img_mul_45[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[367:360] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[367:360] <= kernel_img_sum_45[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[367:360] <= 'd0;
@@ -1004,7 +1023,7 @@ wire  [29:0]  kernel_img_sum_46 = kernel_img_mul_46[0] + kernel_img_mul_46[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[375:368] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[375:368] <= kernel_img_sum_46[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[375:368] <= 'd0;
@@ -1026,7 +1045,7 @@ wire  [29:0]  kernel_img_sum_47 = kernel_img_mul_47[0] + kernel_img_mul_47[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[383:376] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[383:376] <= kernel_img_sum_47[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[383:376] <= 'd0;
@@ -1048,7 +1067,7 @@ wire  [29:0]  kernel_img_sum_48 = kernel_img_mul_48[0] + kernel_img_mul_48[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[391:384] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[391:384] <= kernel_img_sum_48[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[391:384] <= 'd0;
@@ -1070,7 +1089,7 @@ wire  [29:0]  kernel_img_sum_49 = kernel_img_mul_49[0] + kernel_img_mul_49[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[399:392] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[399:392] <= kernel_img_sum_49[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[399:392] <= 'd0;
@@ -1092,7 +1111,7 @@ wire  [29:0]  kernel_img_sum_50 = kernel_img_mul_50[0] + kernel_img_mul_50[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[407:400] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[407:400] <= kernel_img_sum_50[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[407:400] <= 'd0;
@@ -1114,7 +1133,7 @@ wire  [29:0]  kernel_img_sum_51 = kernel_img_mul_51[0] + kernel_img_mul_51[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[415:408] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[415:408] <= kernel_img_sum_51[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[415:408] <= 'd0;
@@ -1136,7 +1155,7 @@ wire  [29:0]  kernel_img_sum_52 = kernel_img_mul_52[0] + kernel_img_mul_52[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[423:416] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[423:416] <= kernel_img_sum_52[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[423:416] <= 'd0;
@@ -1158,7 +1177,7 @@ wire  [29:0]  kernel_img_sum_53 = kernel_img_mul_53[0] + kernel_img_mul_53[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[431:424] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[431:424] <= kernel_img_sum_53[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[431:424] <= 'd0;
@@ -1180,7 +1199,7 @@ wire  [29:0]  kernel_img_sum_54 = kernel_img_mul_54[0] + kernel_img_mul_54[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[439:432] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[439:432] <= kernel_img_sum_54[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[439:432] <= 'd0;
@@ -1202,7 +1221,7 @@ wire  [29:0]  kernel_img_sum_55 = kernel_img_mul_55[0] + kernel_img_mul_55[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[447:440] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[447:440] <= kernel_img_sum_55[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[447:440] <= 'd0;
@@ -1224,7 +1243,7 @@ wire  [29:0]  kernel_img_sum_56 = kernel_img_mul_56[0] + kernel_img_mul_56[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[455:448] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[455:448] <= kernel_img_sum_56[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[455:448] <= 'd0;
@@ -1246,7 +1265,7 @@ wire  [29:0]  kernel_img_sum_57 = kernel_img_mul_57[0] + kernel_img_mul_57[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[463:456] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[463:456] <= kernel_img_sum_57[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[463:456] <= 'd0;
@@ -1268,7 +1287,7 @@ wire  [29:0]  kernel_img_sum_58 = kernel_img_mul_58[0] + kernel_img_mul_58[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[471:464] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[471:464] <= kernel_img_sum_58[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[471:464] <= 'd0;
@@ -1290,7 +1309,7 @@ wire  [29:0]  kernel_img_sum_59 = kernel_img_mul_59[0] + kernel_img_mul_59[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[479:472] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[479:472] <= kernel_img_sum_59[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[479:472] <= 'd0;
@@ -1312,7 +1331,7 @@ wire  [29:0]  kernel_img_sum_60 = kernel_img_mul_60[0] + kernel_img_mul_60[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[487:480] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[487:480] <= kernel_img_sum_60[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[487:480] <= 'd0;
@@ -1334,7 +1353,7 @@ wire  [29:0]  kernel_img_sum_61 = kernel_img_mul_61[0] + kernel_img_mul_61[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[495:488] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[495:488] <= kernel_img_sum_61[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[495:488] <= 'd0;
@@ -1356,7 +1375,7 @@ wire  [29:0]  kernel_img_sum_62 = kernel_img_mul_62[0] + kernel_img_mul_62[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[503:496] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[503:496] <= kernel_img_sum_62[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[503:496] <= 'd0;
@@ -1378,7 +1397,7 @@ wire  [29:0]  kernel_img_sum_63 = kernel_img_mul_63[0] + kernel_img_mul_63[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[511:504] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[511:504] <= kernel_img_sum_63[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[511:504] <= 'd0;
@@ -1400,7 +1419,7 @@ wire  [29:0]  kernel_img_sum_64 = kernel_img_mul_64[0] + kernel_img_mul_64[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[519:512] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[519:512] <= kernel_img_sum_64[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[519:512] <= 'd0;
@@ -1422,7 +1441,7 @@ wire  [29:0]  kernel_img_sum_65 = kernel_img_mul_65[0] + kernel_img_mul_65[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[527:520] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[527:520] <= kernel_img_sum_65[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[527:520] <= 'd0;
@@ -1444,7 +1463,7 @@ wire  [29:0]  kernel_img_sum_66 = kernel_img_mul_66[0] + kernel_img_mul_66[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[535:528] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[535:528] <= kernel_img_sum_66[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[535:528] <= 'd0;
@@ -1466,7 +1485,7 @@ wire  [29:0]  kernel_img_sum_67 = kernel_img_mul_67[0] + kernel_img_mul_67[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[543:536] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[543:536] <= kernel_img_sum_67[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[543:536] <= 'd0;
@@ -1488,7 +1507,7 @@ wire  [29:0]  kernel_img_sum_68 = kernel_img_mul_68[0] + kernel_img_mul_68[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[551:544] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[551:544] <= kernel_img_sum_68[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[551:544] <= 'd0;
@@ -1510,7 +1529,7 @@ wire  [29:0]  kernel_img_sum_69 = kernel_img_mul_69[0] + kernel_img_mul_69[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[559:552] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[559:552] <= kernel_img_sum_69[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[559:552] <= 'd0;
@@ -1532,7 +1551,7 @@ wire  [29:0]  kernel_img_sum_70 = kernel_img_mul_70[0] + kernel_img_mul_70[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[567:560] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[567:560] <= kernel_img_sum_70[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[567:560] <= 'd0;
@@ -1554,7 +1573,7 @@ wire  [29:0]  kernel_img_sum_71 = kernel_img_mul_71[0] + kernel_img_mul_71[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[575:568] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[575:568] <= kernel_img_sum_71[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[575:568] <= 'd0;
@@ -1576,7 +1595,7 @@ wire  [29:0]  kernel_img_sum_72 = kernel_img_mul_72[0] + kernel_img_mul_72[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[583:576] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[583:576] <= kernel_img_sum_72[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[583:576] <= 'd0;
@@ -1598,7 +1617,7 @@ wire  [29:0]  kernel_img_sum_73 = kernel_img_mul_73[0] + kernel_img_mul_73[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[591:584] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[591:584] <= kernel_img_sum_73[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[591:584] <= 'd0;
@@ -1620,7 +1639,7 @@ wire  [29:0]  kernel_img_sum_74 = kernel_img_mul_74[0] + kernel_img_mul_74[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[599:592] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[599:592] <= kernel_img_sum_74[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[599:592] <= 'd0;
@@ -1642,7 +1661,7 @@ wire  [29:0]  kernel_img_sum_75 = kernel_img_mul_75[0] + kernel_img_mul_75[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[607:600] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[607:600] <= kernel_img_sum_75[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[607:600] <= 'd0;
@@ -1664,7 +1683,7 @@ wire  [29:0]  kernel_img_sum_76 = kernel_img_mul_76[0] + kernel_img_mul_76[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[615:608] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[615:608] <= kernel_img_sum_76[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[615:608] <= 'd0;
@@ -1686,7 +1705,7 @@ wire  [29:0]  kernel_img_sum_77 = kernel_img_mul_77[0] + kernel_img_mul_77[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[623:616] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[623:616] <= kernel_img_sum_77[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[623:616] <= 'd0;
@@ -1708,7 +1727,7 @@ wire  [29:0]  kernel_img_sum_78 = kernel_img_mul_78[0] + kernel_img_mul_78[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[631:624] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[631:624] <= kernel_img_sum_78[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[631:624] <= 'd0;
@@ -1730,7 +1749,7 @@ wire  [29:0]  kernel_img_sum_79 = kernel_img_mul_79[0] + kernel_img_mul_79[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[639:632] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[639:632] <= kernel_img_sum_79[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[639:632] <= 'd0;
@@ -1752,7 +1771,7 @@ wire  [29:0]  kernel_img_sum_80 = kernel_img_mul_80[0] + kernel_img_mul_80[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[647:640] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[647:640] <= kernel_img_sum_80[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[647:640] <= 'd0;
@@ -1774,7 +1793,7 @@ wire  [29:0]  kernel_img_sum_81 = kernel_img_mul_81[0] + kernel_img_mul_81[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[655:648] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[655:648] <= kernel_img_sum_81[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[655:648] <= 'd0;
@@ -1796,7 +1815,7 @@ wire  [29:0]  kernel_img_sum_82 = kernel_img_mul_82[0] + kernel_img_mul_82[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[663:656] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[663:656] <= kernel_img_sum_82[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[663:656] <= 'd0;
@@ -1818,7 +1837,7 @@ wire  [29:0]  kernel_img_sum_83 = kernel_img_mul_83[0] + kernel_img_mul_83[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[671:664] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[671:664] <= kernel_img_sum_83[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[671:664] <= 'd0;
@@ -1840,7 +1859,7 @@ wire  [29:0]  kernel_img_sum_84 = kernel_img_mul_84[0] + kernel_img_mul_84[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[679:672] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[679:672] <= kernel_img_sum_84[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[679:672] <= 'd0;
@@ -1862,7 +1881,7 @@ wire  [29:0]  kernel_img_sum_85 = kernel_img_mul_85[0] + kernel_img_mul_85[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[687:680] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[687:680] <= kernel_img_sum_85[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[687:680] <= 'd0;
@@ -1884,7 +1903,7 @@ wire  [29:0]  kernel_img_sum_86 = kernel_img_mul_86[0] + kernel_img_mul_86[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[695:688] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[695:688] <= kernel_img_sum_86[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[695:688] <= 'd0;
@@ -1906,7 +1925,7 @@ wire  [29:0]  kernel_img_sum_87 = kernel_img_mul_87[0] + kernel_img_mul_87[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[703:696] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[703:696] <= kernel_img_sum_87[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[703:696] <= 'd0;
@@ -1928,7 +1947,7 @@ wire  [29:0]  kernel_img_sum_88 = kernel_img_mul_88[0] + kernel_img_mul_88[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[711:704] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[711:704] <= kernel_img_sum_88[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[711:704] <= 'd0;
@@ -1950,7 +1969,7 @@ wire  [29:0]  kernel_img_sum_89 = kernel_img_mul_89[0] + kernel_img_mul_89[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[719:712] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[719:712] <= kernel_img_sum_89[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[719:712] <= 'd0;
@@ -1972,7 +1991,7 @@ wire  [29:0]  kernel_img_sum_90 = kernel_img_mul_90[0] + kernel_img_mul_90[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[727:720] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[727:720] <= kernel_img_sum_90[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[727:720] <= 'd0;
@@ -1994,7 +2013,7 @@ wire  [29:0]  kernel_img_sum_91 = kernel_img_mul_91[0] + kernel_img_mul_91[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[735:728] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[735:728] <= kernel_img_sum_91[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[735:728] <= 'd0;
@@ -2016,7 +2035,7 @@ wire  [29:0]  kernel_img_sum_92 = kernel_img_mul_92[0] + kernel_img_mul_92[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[743:736] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[743:736] <= kernel_img_sum_92[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[743:736] <= 'd0;
@@ -2038,7 +2057,7 @@ wire  [29:0]  kernel_img_sum_93 = kernel_img_mul_93[0] + kernel_img_mul_93[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[751:744] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[751:744] <= kernel_img_sum_93[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[751:744] <= 'd0;
@@ -2060,7 +2079,7 @@ wire  [29:0]  kernel_img_sum_94 = kernel_img_mul_94[0] + kernel_img_mul_94[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[759:752] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[759:752] <= kernel_img_sum_94[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[759:752] <= 'd0;
@@ -2082,7 +2101,7 @@ wire  [29:0]  kernel_img_sum_95 = kernel_img_mul_95[0] + kernel_img_mul_95[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[767:760] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[767:760] <= kernel_img_sum_95[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[767:760] <= 'd0;
@@ -2104,7 +2123,7 @@ wire  [29:0]  kernel_img_sum_96 = kernel_img_mul_96[0] + kernel_img_mul_96[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[775:768] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[775:768] <= kernel_img_sum_96[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[775:768] <= 'd0;
@@ -2126,7 +2145,7 @@ wire  [29:0]  kernel_img_sum_97 = kernel_img_mul_97[0] + kernel_img_mul_97[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[783:776] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[783:776] <= kernel_img_sum_97[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[783:776] <= 'd0;
@@ -2148,7 +2167,7 @@ wire  [29:0]  kernel_img_sum_98 = kernel_img_mul_98[0] + kernel_img_mul_98[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[791:784] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[791:784] <= kernel_img_sum_98[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[791:784] <= 'd0;
@@ -2170,7 +2189,7 @@ wire  [29:0]  kernel_img_sum_99 = kernel_img_mul_99[0] + kernel_img_mul_99[1] + 
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[799:792] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[799:792] <= kernel_img_sum_99[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[799:792] <= 'd0;
@@ -2192,7 +2211,7 @@ wire  [29:0]  kernel_img_sum_100 = kernel_img_mul_100[0] + kernel_img_mul_100[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[807:800] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[807:800] <= kernel_img_sum_100[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[807:800] <= 'd0;
@@ -2214,7 +2233,7 @@ wire  [29:0]  kernel_img_sum_101 = kernel_img_mul_101[0] + kernel_img_mul_101[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[815:808] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[815:808] <= kernel_img_sum_101[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[815:808] <= 'd0;
@@ -2236,7 +2255,7 @@ wire  [29:0]  kernel_img_sum_102 = kernel_img_mul_102[0] + kernel_img_mul_102[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[823:816] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[823:816] <= kernel_img_sum_102[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[823:816] <= 'd0;
@@ -2258,7 +2277,7 @@ wire  [29:0]  kernel_img_sum_103 = kernel_img_mul_103[0] + kernel_img_mul_103[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[831:824] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[831:824] <= kernel_img_sum_103[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[831:824] <= 'd0;
@@ -2280,7 +2299,7 @@ wire  [29:0]  kernel_img_sum_104 = kernel_img_mul_104[0] + kernel_img_mul_104[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[839:832] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[839:832] <= kernel_img_sum_104[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[839:832] <= 'd0;
@@ -2302,7 +2321,7 @@ wire  [29:0]  kernel_img_sum_105 = kernel_img_mul_105[0] + kernel_img_mul_105[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[847:840] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[847:840] <= kernel_img_sum_105[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[847:840] <= 'd0;
@@ -2324,7 +2343,7 @@ wire  [29:0]  kernel_img_sum_106 = kernel_img_mul_106[0] + kernel_img_mul_106[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[855:848] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[855:848] <= kernel_img_sum_106[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[855:848] <= 'd0;
@@ -2346,7 +2365,7 @@ wire  [29:0]  kernel_img_sum_107 = kernel_img_mul_107[0] + kernel_img_mul_107[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[863:856] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[863:856] <= kernel_img_sum_107[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[863:856] <= 'd0;
@@ -2368,7 +2387,7 @@ wire  [29:0]  kernel_img_sum_108 = kernel_img_mul_108[0] + kernel_img_mul_108[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[871:864] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[871:864] <= kernel_img_sum_108[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[871:864] <= 'd0;
@@ -2390,7 +2409,7 @@ wire  [29:0]  kernel_img_sum_109 = kernel_img_mul_109[0] + kernel_img_mul_109[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[879:872] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[879:872] <= kernel_img_sum_109[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[879:872] <= 'd0;
@@ -2412,7 +2431,7 @@ wire  [29:0]  kernel_img_sum_110 = kernel_img_mul_110[0] + kernel_img_mul_110[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[887:880] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[887:880] <= kernel_img_sum_110[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[887:880] <= 'd0;
@@ -2434,7 +2453,7 @@ wire  [29:0]  kernel_img_sum_111 = kernel_img_mul_111[0] + kernel_img_mul_111[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[895:888] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[895:888] <= kernel_img_sum_111[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[895:888] <= 'd0;
@@ -2456,7 +2475,7 @@ wire  [29:0]  kernel_img_sum_112 = kernel_img_mul_112[0] + kernel_img_mul_112[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[903:896] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[903:896] <= kernel_img_sum_112[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[903:896] <= 'd0;
@@ -2478,7 +2497,7 @@ wire  [29:0]  kernel_img_sum_113 = kernel_img_mul_113[0] + kernel_img_mul_113[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[911:904] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[911:904] <= kernel_img_sum_113[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[911:904] <= 'd0;
@@ -2500,7 +2519,7 @@ wire  [29:0]  kernel_img_sum_114 = kernel_img_mul_114[0] + kernel_img_mul_114[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[919:912] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[919:912] <= kernel_img_sum_114[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[919:912] <= 'd0;
@@ -2522,7 +2541,7 @@ wire  [29:0]  kernel_img_sum_115 = kernel_img_mul_115[0] + kernel_img_mul_115[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[927:920] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[927:920] <= kernel_img_sum_115[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[927:920] <= 'd0;
@@ -2544,7 +2563,7 @@ wire  [29:0]  kernel_img_sum_116 = kernel_img_mul_116[0] + kernel_img_mul_116[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[935:928] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[935:928] <= kernel_img_sum_116[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[935:928] <= 'd0;
@@ -2566,7 +2585,7 @@ wire  [29:0]  kernel_img_sum_117 = kernel_img_mul_117[0] + kernel_img_mul_117[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[943:936] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[943:936] <= kernel_img_sum_117[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[943:936] <= 'd0;
@@ -2588,7 +2607,7 @@ wire  [29:0]  kernel_img_sum_118 = kernel_img_mul_118[0] + kernel_img_mul_118[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[951:944] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[951:944] <= kernel_img_sum_118[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[951:944] <= 'd0;
@@ -2610,7 +2629,7 @@ wire  [29:0]  kernel_img_sum_119 = kernel_img_mul_119[0] + kernel_img_mul_119[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[959:952] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[959:952] <= kernel_img_sum_119[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[959:952] <= 'd0;
@@ -2632,7 +2651,7 @@ wire  [29:0]  kernel_img_sum_120 = kernel_img_mul_120[0] + kernel_img_mul_120[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[967:960] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[967:960] <= kernel_img_sum_120[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[967:960] <= 'd0;
@@ -2654,7 +2673,7 @@ wire  [29:0]  kernel_img_sum_121 = kernel_img_mul_121[0] + kernel_img_mul_121[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[975:968] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[975:968] <= kernel_img_sum_121[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[975:968] <= 'd0;
@@ -2676,7 +2695,7 @@ wire  [29:0]  kernel_img_sum_122 = kernel_img_mul_122[0] + kernel_img_mul_122[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[983:976] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[983:976] <= kernel_img_sum_122[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[983:976] <= 'd0;
@@ -2698,7 +2717,7 @@ wire  [29:0]  kernel_img_sum_123 = kernel_img_mul_123[0] + kernel_img_mul_123[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[991:984] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[991:984] <= kernel_img_sum_123[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[991:984] <= 'd0;
@@ -2720,7 +2739,7 @@ wire  [29:0]  kernel_img_sum_124 = kernel_img_mul_124[0] + kernel_img_mul_124[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[999:992] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[999:992] <= kernel_img_sum_124[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[999:992] <= 'd0;
@@ -2742,7 +2761,7 @@ wire  [29:0]  kernel_img_sum_125 = kernel_img_mul_125[0] + kernel_img_mul_125[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1007:1000] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1007:1000] <= kernel_img_sum_125[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1007:1000] <= 'd0;
@@ -2764,7 +2783,7 @@ wire  [29:0]  kernel_img_sum_126 = kernel_img_mul_126[0] + kernel_img_mul_126[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1015:1008] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1015:1008] <= kernel_img_sum_126[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1015:1008] <= 'd0;
@@ -2786,7 +2805,7 @@ wire  [29:0]  kernel_img_sum_127 = kernel_img_mul_127[0] + kernel_img_mul_127[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1023:1016] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1023:1016] <= kernel_img_sum_127[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1023:1016] <= 'd0;
@@ -2808,7 +2827,7 @@ wire  [29:0]  kernel_img_sum_128 = kernel_img_mul_128[0] + kernel_img_mul_128[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1031:1024] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1031:1024] <= kernel_img_sum_128[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1031:1024] <= 'd0;
@@ -2830,7 +2849,7 @@ wire  [29:0]  kernel_img_sum_129 = kernel_img_mul_129[0] + kernel_img_mul_129[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1039:1032] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1039:1032] <= kernel_img_sum_129[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1039:1032] <= 'd0;
@@ -2852,7 +2871,7 @@ wire  [29:0]  kernel_img_sum_130 = kernel_img_mul_130[0] + kernel_img_mul_130[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1047:1040] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1047:1040] <= kernel_img_sum_130[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1047:1040] <= 'd0;
@@ -2874,7 +2893,7 @@ wire  [29:0]  kernel_img_sum_131 = kernel_img_mul_131[0] + kernel_img_mul_131[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1055:1048] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1055:1048] <= kernel_img_sum_131[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1055:1048] <= 'd0;
@@ -2896,7 +2915,7 @@ wire  [29:0]  kernel_img_sum_132 = kernel_img_mul_132[0] + kernel_img_mul_132[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1063:1056] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1063:1056] <= kernel_img_sum_132[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1063:1056] <= 'd0;
@@ -2918,7 +2937,7 @@ wire  [29:0]  kernel_img_sum_133 = kernel_img_mul_133[0] + kernel_img_mul_133[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1071:1064] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1071:1064] <= kernel_img_sum_133[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1071:1064] <= 'd0;
@@ -2940,7 +2959,7 @@ wire  [29:0]  kernel_img_sum_134 = kernel_img_mul_134[0] + kernel_img_mul_134[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1079:1072] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1079:1072] <= kernel_img_sum_134[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1079:1072] <= 'd0;
@@ -2962,7 +2981,7 @@ wire  [29:0]  kernel_img_sum_135 = kernel_img_mul_135[0] + kernel_img_mul_135[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1087:1080] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1087:1080] <= kernel_img_sum_135[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1087:1080] <= 'd0;
@@ -2984,7 +3003,7 @@ wire  [29:0]  kernel_img_sum_136 = kernel_img_mul_136[0] + kernel_img_mul_136[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1095:1088] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1095:1088] <= kernel_img_sum_136[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1095:1088] <= 'd0;
@@ -3006,7 +3025,7 @@ wire  [29:0]  kernel_img_sum_137 = kernel_img_mul_137[0] + kernel_img_mul_137[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1103:1096] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1103:1096] <= kernel_img_sum_137[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1103:1096] <= 'd0;
@@ -3028,7 +3047,7 @@ wire  [29:0]  kernel_img_sum_138 = kernel_img_mul_138[0] + kernel_img_mul_138[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1111:1104] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1111:1104] <= kernel_img_sum_138[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1111:1104] <= 'd0;
@@ -3050,7 +3069,7 @@ wire  [29:0]  kernel_img_sum_139 = kernel_img_mul_139[0] + kernel_img_mul_139[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1119:1112] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1119:1112] <= kernel_img_sum_139[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1119:1112] <= 'd0;
@@ -3072,7 +3091,7 @@ wire  [29:0]  kernel_img_sum_140 = kernel_img_mul_140[0] + kernel_img_mul_140[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1127:1120] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1127:1120] <= kernel_img_sum_140[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1127:1120] <= 'd0;
@@ -3094,7 +3113,7 @@ wire  [29:0]  kernel_img_sum_141 = kernel_img_mul_141[0] + kernel_img_mul_141[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1135:1128] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1135:1128] <= kernel_img_sum_141[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1135:1128] <= 'd0;
@@ -3116,7 +3135,7 @@ wire  [29:0]  kernel_img_sum_142 = kernel_img_mul_142[0] + kernel_img_mul_142[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1143:1136] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1143:1136] <= kernel_img_sum_142[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1143:1136] <= 'd0;
@@ -3138,7 +3157,7 @@ wire  [29:0]  kernel_img_sum_143 = kernel_img_mul_143[0] + kernel_img_mul_143[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1151:1144] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1151:1144] <= kernel_img_sum_143[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1151:1144] <= 'd0;
@@ -3160,7 +3179,7 @@ wire  [29:0]  kernel_img_sum_144 = kernel_img_mul_144[0] + kernel_img_mul_144[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1159:1152] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1159:1152] <= kernel_img_sum_144[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1159:1152] <= 'd0;
@@ -3182,7 +3201,7 @@ wire  [29:0]  kernel_img_sum_145 = kernel_img_mul_145[0] + kernel_img_mul_145[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1167:1160] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1167:1160] <= kernel_img_sum_145[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1167:1160] <= 'd0;
@@ -3204,7 +3223,7 @@ wire  [29:0]  kernel_img_sum_146 = kernel_img_mul_146[0] + kernel_img_mul_146[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1175:1168] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1175:1168] <= kernel_img_sum_146[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1175:1168] <= 'd0;
@@ -3226,7 +3245,7 @@ wire  [29:0]  kernel_img_sum_147 = kernel_img_mul_147[0] + kernel_img_mul_147[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1183:1176] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1183:1176] <= kernel_img_sum_147[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1183:1176] <= 'd0;
@@ -3248,7 +3267,7 @@ wire  [29:0]  kernel_img_sum_148 = kernel_img_mul_148[0] + kernel_img_mul_148[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1191:1184] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1191:1184] <= kernel_img_sum_148[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1191:1184] <= 'd0;
@@ -3270,7 +3289,7 @@ wire  [29:0]  kernel_img_sum_149 = kernel_img_mul_149[0] + kernel_img_mul_149[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1199:1192] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1199:1192] <= kernel_img_sum_149[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1199:1192] <= 'd0;
@@ -3292,7 +3311,7 @@ wire  [29:0]  kernel_img_sum_150 = kernel_img_mul_150[0] + kernel_img_mul_150[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1207:1200] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1207:1200] <= kernel_img_sum_150[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1207:1200] <= 'd0;
@@ -3314,7 +3333,7 @@ wire  [29:0]  kernel_img_sum_151 = kernel_img_mul_151[0] + kernel_img_mul_151[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1215:1208] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1215:1208] <= kernel_img_sum_151[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1215:1208] <= 'd0;
@@ -3336,7 +3355,7 @@ wire  [29:0]  kernel_img_sum_152 = kernel_img_mul_152[0] + kernel_img_mul_152[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1223:1216] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1223:1216] <= kernel_img_sum_152[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1223:1216] <= 'd0;
@@ -3358,7 +3377,7 @@ wire  [29:0]  kernel_img_sum_153 = kernel_img_mul_153[0] + kernel_img_mul_153[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1231:1224] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1231:1224] <= kernel_img_sum_153[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1231:1224] <= 'd0;
@@ -3380,7 +3399,7 @@ wire  [29:0]  kernel_img_sum_154 = kernel_img_mul_154[0] + kernel_img_mul_154[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1239:1232] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1239:1232] <= kernel_img_sum_154[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1239:1232] <= 'd0;
@@ -3402,7 +3421,7 @@ wire  [29:0]  kernel_img_sum_155 = kernel_img_mul_155[0] + kernel_img_mul_155[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1247:1240] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1247:1240] <= kernel_img_sum_155[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1247:1240] <= 'd0;
@@ -3424,7 +3443,7 @@ wire  [29:0]  kernel_img_sum_156 = kernel_img_mul_156[0] + kernel_img_mul_156[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1255:1248] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1255:1248] <= kernel_img_sum_156[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1255:1248] <= 'd0;
@@ -3446,7 +3465,7 @@ wire  [29:0]  kernel_img_sum_157 = kernel_img_mul_157[0] + kernel_img_mul_157[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1263:1256] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1263:1256] <= kernel_img_sum_157[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1263:1256] <= 'd0;
@@ -3468,7 +3487,7 @@ wire  [29:0]  kernel_img_sum_158 = kernel_img_mul_158[0] + kernel_img_mul_158[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1271:1264] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1271:1264] <= kernel_img_sum_158[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1271:1264] <= 'd0;
@@ -3490,7 +3509,7 @@ wire  [29:0]  kernel_img_sum_159 = kernel_img_mul_159[0] + kernel_img_mul_159[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1279:1272] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1279:1272] <= kernel_img_sum_159[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1279:1272] <= 'd0;
@@ -3512,7 +3531,7 @@ wire  [29:0]  kernel_img_sum_160 = kernel_img_mul_160[0] + kernel_img_mul_160[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1287:1280] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1287:1280] <= kernel_img_sum_160[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1287:1280] <= 'd0;
@@ -3534,7 +3553,7 @@ wire  [29:0]  kernel_img_sum_161 = kernel_img_mul_161[0] + kernel_img_mul_161[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1295:1288] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1295:1288] <= kernel_img_sum_161[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1295:1288] <= 'd0;
@@ -3556,7 +3575,7 @@ wire  [29:0]  kernel_img_sum_162 = kernel_img_mul_162[0] + kernel_img_mul_162[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1303:1296] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1303:1296] <= kernel_img_sum_162[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1303:1296] <= 'd0;
@@ -3578,7 +3597,7 @@ wire  [29:0]  kernel_img_sum_163 = kernel_img_mul_163[0] + kernel_img_mul_163[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1311:1304] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1311:1304] <= kernel_img_sum_163[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1311:1304] <= 'd0;
@@ -3600,7 +3619,7 @@ wire  [29:0]  kernel_img_sum_164 = kernel_img_mul_164[0] + kernel_img_mul_164[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1319:1312] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1319:1312] <= kernel_img_sum_164[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1319:1312] <= 'd0;
@@ -3622,7 +3641,7 @@ wire  [29:0]  kernel_img_sum_165 = kernel_img_mul_165[0] + kernel_img_mul_165[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1327:1320] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1327:1320] <= kernel_img_sum_165[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1327:1320] <= 'd0;
@@ -3644,7 +3663,7 @@ wire  [29:0]  kernel_img_sum_166 = kernel_img_mul_166[0] + kernel_img_mul_166[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1335:1328] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1335:1328] <= kernel_img_sum_166[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1335:1328] <= 'd0;
@@ -3666,7 +3685,7 @@ wire  [29:0]  kernel_img_sum_167 = kernel_img_mul_167[0] + kernel_img_mul_167[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1343:1336] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1343:1336] <= kernel_img_sum_167[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1343:1336] <= 'd0;
@@ -3688,7 +3707,7 @@ wire  [29:0]  kernel_img_sum_168 = kernel_img_mul_168[0] + kernel_img_mul_168[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1351:1344] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1351:1344] <= kernel_img_sum_168[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1351:1344] <= 'd0;
@@ -3710,7 +3729,7 @@ wire  [29:0]  kernel_img_sum_169 = kernel_img_mul_169[0] + kernel_img_mul_169[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1359:1352] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1359:1352] <= kernel_img_sum_169[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1359:1352] <= 'd0;
@@ -3732,7 +3751,7 @@ wire  [29:0]  kernel_img_sum_170 = kernel_img_mul_170[0] + kernel_img_mul_170[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1367:1360] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1367:1360] <= kernel_img_sum_170[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1367:1360] <= 'd0;
@@ -3754,7 +3773,7 @@ wire  [29:0]  kernel_img_sum_171 = kernel_img_mul_171[0] + kernel_img_mul_171[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1375:1368] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1375:1368] <= kernel_img_sum_171[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1375:1368] <= 'd0;
@@ -3776,7 +3795,7 @@ wire  [29:0]  kernel_img_sum_172 = kernel_img_mul_172[0] + kernel_img_mul_172[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1383:1376] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1383:1376] <= kernel_img_sum_172[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1383:1376] <= 'd0;
@@ -3798,7 +3817,7 @@ wire  [29:0]  kernel_img_sum_173 = kernel_img_mul_173[0] + kernel_img_mul_173[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1391:1384] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1391:1384] <= kernel_img_sum_173[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1391:1384] <= 'd0;
@@ -3820,7 +3839,7 @@ wire  [29:0]  kernel_img_sum_174 = kernel_img_mul_174[0] + kernel_img_mul_174[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1399:1392] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1399:1392] <= kernel_img_sum_174[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1399:1392] <= 'd0;
@@ -3842,7 +3861,7 @@ wire  [29:0]  kernel_img_sum_175 = kernel_img_mul_175[0] + kernel_img_mul_175[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1407:1400] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1407:1400] <= kernel_img_sum_175[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1407:1400] <= 'd0;
@@ -3864,7 +3883,7 @@ wire  [29:0]  kernel_img_sum_176 = kernel_img_mul_176[0] + kernel_img_mul_176[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1415:1408] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1415:1408] <= kernel_img_sum_176[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1415:1408] <= 'd0;
@@ -3886,7 +3905,7 @@ wire  [29:0]  kernel_img_sum_177 = kernel_img_mul_177[0] + kernel_img_mul_177[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1423:1416] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1423:1416] <= kernel_img_sum_177[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1423:1416] <= 'd0;
@@ -3908,7 +3927,7 @@ wire  [29:0]  kernel_img_sum_178 = kernel_img_mul_178[0] + kernel_img_mul_178[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1431:1424] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1431:1424] <= kernel_img_sum_178[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1431:1424] <= 'd0;
@@ -3930,7 +3949,7 @@ wire  [29:0]  kernel_img_sum_179 = kernel_img_mul_179[0] + kernel_img_mul_179[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1439:1432] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1439:1432] <= kernel_img_sum_179[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1439:1432] <= 'd0;
@@ -3952,7 +3971,7 @@ wire  [29:0]  kernel_img_sum_180 = kernel_img_mul_180[0] + kernel_img_mul_180[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1447:1440] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1447:1440] <= kernel_img_sum_180[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1447:1440] <= 'd0;
@@ -3974,7 +3993,7 @@ wire  [29:0]  kernel_img_sum_181 = kernel_img_mul_181[0] + kernel_img_mul_181[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1455:1448] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1455:1448] <= kernel_img_sum_181[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1455:1448] <= 'd0;
@@ -3996,7 +4015,7 @@ wire  [29:0]  kernel_img_sum_182 = kernel_img_mul_182[0] + kernel_img_mul_182[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1463:1456] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1463:1456] <= kernel_img_sum_182[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1463:1456] <= 'd0;
@@ -4018,7 +4037,7 @@ wire  [29:0]  kernel_img_sum_183 = kernel_img_mul_183[0] + kernel_img_mul_183[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1471:1464] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1471:1464] <= kernel_img_sum_183[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1471:1464] <= 'd0;
@@ -4040,7 +4059,7 @@ wire  [29:0]  kernel_img_sum_184 = kernel_img_mul_184[0] + kernel_img_mul_184[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1479:1472] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1479:1472] <= kernel_img_sum_184[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1479:1472] <= 'd0;
@@ -4062,7 +4081,7 @@ wire  [29:0]  kernel_img_sum_185 = kernel_img_mul_185[0] + kernel_img_mul_185[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1487:1480] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1487:1480] <= kernel_img_sum_185[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1487:1480] <= 'd0;
@@ -4084,7 +4103,7 @@ wire  [29:0]  kernel_img_sum_186 = kernel_img_mul_186[0] + kernel_img_mul_186[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1495:1488] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1495:1488] <= kernel_img_sum_186[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1495:1488] <= 'd0;
@@ -4106,7 +4125,7 @@ wire  [29:0]  kernel_img_sum_187 = kernel_img_mul_187[0] + kernel_img_mul_187[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1503:1496] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1503:1496] <= kernel_img_sum_187[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1503:1496] <= 'd0;
@@ -4128,7 +4147,7 @@ wire  [29:0]  kernel_img_sum_188 = kernel_img_mul_188[0] + kernel_img_mul_188[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1511:1504] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1511:1504] <= kernel_img_sum_188[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1511:1504] <= 'd0;
@@ -4150,7 +4169,7 @@ wire  [29:0]  kernel_img_sum_189 = kernel_img_mul_189[0] + kernel_img_mul_189[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1519:1512] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1519:1512] <= kernel_img_sum_189[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1519:1512] <= 'd0;
@@ -4172,7 +4191,7 @@ wire  [29:0]  kernel_img_sum_190 = kernel_img_mul_190[0] + kernel_img_mul_190[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1527:1520] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1527:1520] <= kernel_img_sum_190[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1527:1520] <= 'd0;
@@ -4194,7 +4213,7 @@ wire  [29:0]  kernel_img_sum_191 = kernel_img_mul_191[0] + kernel_img_mul_191[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1535:1528] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1535:1528] <= kernel_img_sum_191[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1535:1528] <= 'd0;
@@ -4216,7 +4235,7 @@ wire  [29:0]  kernel_img_sum_192 = kernel_img_mul_192[0] + kernel_img_mul_192[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1543:1536] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1543:1536] <= kernel_img_sum_192[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1543:1536] <= 'd0;
@@ -4238,7 +4257,7 @@ wire  [29:0]  kernel_img_sum_193 = kernel_img_mul_193[0] + kernel_img_mul_193[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1551:1544] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1551:1544] <= kernel_img_sum_193[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1551:1544] <= 'd0;
@@ -4260,7 +4279,7 @@ wire  [29:0]  kernel_img_sum_194 = kernel_img_mul_194[0] + kernel_img_mul_194[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1559:1552] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1559:1552] <= kernel_img_sum_194[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1559:1552] <= 'd0;
@@ -4282,7 +4301,7 @@ wire  [29:0]  kernel_img_sum_195 = kernel_img_mul_195[0] + kernel_img_mul_195[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1567:1560] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1567:1560] <= kernel_img_sum_195[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1567:1560] <= 'd0;
@@ -4304,7 +4323,7 @@ wire  [29:0]  kernel_img_sum_196 = kernel_img_mul_196[0] + kernel_img_mul_196[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1575:1568] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1575:1568] <= kernel_img_sum_196[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1575:1568] <= 'd0;
@@ -4326,7 +4345,7 @@ wire  [29:0]  kernel_img_sum_197 = kernel_img_mul_197[0] + kernel_img_mul_197[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1583:1576] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1583:1576] <= kernel_img_sum_197[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1583:1576] <= 'd0;
@@ -4348,7 +4367,7 @@ wire  [29:0]  kernel_img_sum_198 = kernel_img_mul_198[0] + kernel_img_mul_198[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1591:1584] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1591:1584] <= kernel_img_sum_198[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1591:1584] <= 'd0;
@@ -4370,7 +4389,7 @@ wire  [29:0]  kernel_img_sum_199 = kernel_img_mul_199[0] + kernel_img_mul_199[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1599:1592] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1599:1592] <= kernel_img_sum_199[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1599:1592] <= 'd0;
@@ -4392,7 +4411,7 @@ wire  [29:0]  kernel_img_sum_200 = kernel_img_mul_200[0] + kernel_img_mul_200[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1607:1600] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1607:1600] <= kernel_img_sum_200[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1607:1600] <= 'd0;
@@ -4414,7 +4433,7 @@ wire  [29:0]  kernel_img_sum_201 = kernel_img_mul_201[0] + kernel_img_mul_201[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1615:1608] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1615:1608] <= kernel_img_sum_201[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1615:1608] <= 'd0;
@@ -4436,7 +4455,7 @@ wire  [29:0]  kernel_img_sum_202 = kernel_img_mul_202[0] + kernel_img_mul_202[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1623:1616] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1623:1616] <= kernel_img_sum_202[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1623:1616] <= 'd0;
@@ -4458,7 +4477,7 @@ wire  [29:0]  kernel_img_sum_203 = kernel_img_mul_203[0] + kernel_img_mul_203[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1631:1624] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1631:1624] <= kernel_img_sum_203[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1631:1624] <= 'd0;
@@ -4480,7 +4499,7 @@ wire  [29:0]  kernel_img_sum_204 = kernel_img_mul_204[0] + kernel_img_mul_204[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1639:1632] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1639:1632] <= kernel_img_sum_204[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1639:1632] <= 'd0;
@@ -4502,7 +4521,7 @@ wire  [29:0]  kernel_img_sum_205 = kernel_img_mul_205[0] + kernel_img_mul_205[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1647:1640] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1647:1640] <= kernel_img_sum_205[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1647:1640] <= 'd0;
@@ -4524,7 +4543,7 @@ wire  [29:0]  kernel_img_sum_206 = kernel_img_mul_206[0] + kernel_img_mul_206[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1655:1648] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1655:1648] <= kernel_img_sum_206[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1655:1648] <= 'd0;
@@ -4546,7 +4565,7 @@ wire  [29:0]  kernel_img_sum_207 = kernel_img_mul_207[0] + kernel_img_mul_207[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1663:1656] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1663:1656] <= kernel_img_sum_207[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1663:1656] <= 'd0;
@@ -4568,7 +4587,7 @@ wire  [29:0]  kernel_img_sum_208 = kernel_img_mul_208[0] + kernel_img_mul_208[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1671:1664] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1671:1664] <= kernel_img_sum_208[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1671:1664] <= 'd0;
@@ -4590,7 +4609,7 @@ wire  [29:0]  kernel_img_sum_209 = kernel_img_mul_209[0] + kernel_img_mul_209[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1679:1672] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1679:1672] <= kernel_img_sum_209[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1679:1672] <= 'd0;
@@ -4612,7 +4631,7 @@ wire  [29:0]  kernel_img_sum_210 = kernel_img_mul_210[0] + kernel_img_mul_210[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1687:1680] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1687:1680] <= kernel_img_sum_210[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1687:1680] <= 'd0;
@@ -4634,7 +4653,7 @@ wire  [29:0]  kernel_img_sum_211 = kernel_img_mul_211[0] + kernel_img_mul_211[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1695:1688] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1695:1688] <= kernel_img_sum_211[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1695:1688] <= 'd0;
@@ -4656,7 +4675,7 @@ wire  [29:0]  kernel_img_sum_212 = kernel_img_mul_212[0] + kernel_img_mul_212[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1703:1696] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1703:1696] <= kernel_img_sum_212[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1703:1696] <= 'd0;
@@ -4678,7 +4697,7 @@ wire  [29:0]  kernel_img_sum_213 = kernel_img_mul_213[0] + kernel_img_mul_213[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1711:1704] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1711:1704] <= kernel_img_sum_213[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1711:1704] <= 'd0;
@@ -4700,7 +4719,7 @@ wire  [29:0]  kernel_img_sum_214 = kernel_img_mul_214[0] + kernel_img_mul_214[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1719:1712] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1719:1712] <= kernel_img_sum_214[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1719:1712] <= 'd0;
@@ -4722,7 +4741,7 @@ wire  [29:0]  kernel_img_sum_215 = kernel_img_mul_215[0] + kernel_img_mul_215[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1727:1720] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1727:1720] <= kernel_img_sum_215[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1727:1720] <= 'd0;
@@ -4744,7 +4763,7 @@ wire  [29:0]  kernel_img_sum_216 = kernel_img_mul_216[0] + kernel_img_mul_216[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1735:1728] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1735:1728] <= kernel_img_sum_216[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1735:1728] <= 'd0;
@@ -4766,7 +4785,7 @@ wire  [29:0]  kernel_img_sum_217 = kernel_img_mul_217[0] + kernel_img_mul_217[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1743:1736] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1743:1736] <= kernel_img_sum_217[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1743:1736] <= 'd0;
@@ -4788,7 +4807,7 @@ wire  [29:0]  kernel_img_sum_218 = kernel_img_mul_218[0] + kernel_img_mul_218[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1751:1744] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1751:1744] <= kernel_img_sum_218[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1751:1744] <= 'd0;
@@ -4810,7 +4829,7 @@ wire  [29:0]  kernel_img_sum_219 = kernel_img_mul_219[0] + kernel_img_mul_219[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1759:1752] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1759:1752] <= kernel_img_sum_219[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1759:1752] <= 'd0;
@@ -4832,7 +4851,7 @@ wire  [29:0]  kernel_img_sum_220 = kernel_img_mul_220[0] + kernel_img_mul_220[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1767:1760] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1767:1760] <= kernel_img_sum_220[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1767:1760] <= 'd0;
@@ -4854,7 +4873,7 @@ wire  [29:0]  kernel_img_sum_221 = kernel_img_mul_221[0] + kernel_img_mul_221[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1775:1768] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1775:1768] <= kernel_img_sum_221[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1775:1768] <= 'd0;
@@ -4876,7 +4895,7 @@ wire  [29:0]  kernel_img_sum_222 = kernel_img_mul_222[0] + kernel_img_mul_222[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1783:1776] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1783:1776] <= kernel_img_sum_222[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1783:1776] <= 'd0;
@@ -4898,7 +4917,7 @@ wire  [29:0]  kernel_img_sum_223 = kernel_img_mul_223[0] + kernel_img_mul_223[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1791:1784] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1791:1784] <= kernel_img_sum_223[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1791:1784] <= 'd0;
@@ -4920,7 +4939,7 @@ wire  [29:0]  kernel_img_sum_224 = kernel_img_mul_224[0] + kernel_img_mul_224[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1799:1792] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1799:1792] <= kernel_img_sum_224[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1799:1792] <= 'd0;
@@ -4942,7 +4961,7 @@ wire  [29:0]  kernel_img_sum_225 = kernel_img_mul_225[0] + kernel_img_mul_225[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1807:1800] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1807:1800] <= kernel_img_sum_225[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1807:1800] <= 'd0;
@@ -4964,7 +4983,7 @@ wire  [29:0]  kernel_img_sum_226 = kernel_img_mul_226[0] + kernel_img_mul_226[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1815:1808] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1815:1808] <= kernel_img_sum_226[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1815:1808] <= 'd0;
@@ -4986,7 +5005,7 @@ wire  [29:0]  kernel_img_sum_227 = kernel_img_mul_227[0] + kernel_img_mul_227[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1823:1816] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1823:1816] <= kernel_img_sum_227[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1823:1816] <= 'd0;
@@ -5008,7 +5027,7 @@ wire  [29:0]  kernel_img_sum_228 = kernel_img_mul_228[0] + kernel_img_mul_228[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1831:1824] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1831:1824] <= kernel_img_sum_228[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1831:1824] <= 'd0;
@@ -5030,7 +5049,7 @@ wire  [29:0]  kernel_img_sum_229 = kernel_img_mul_229[0] + kernel_img_mul_229[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1839:1832] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1839:1832] <= kernel_img_sum_229[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1839:1832] <= 'd0;
@@ -5052,7 +5071,7 @@ wire  [29:0]  kernel_img_sum_230 = kernel_img_mul_230[0] + kernel_img_mul_230[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1847:1840] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1847:1840] <= kernel_img_sum_230[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1847:1840] <= 'd0;
@@ -5074,7 +5093,7 @@ wire  [29:0]  kernel_img_sum_231 = kernel_img_mul_231[0] + kernel_img_mul_231[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1855:1848] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1855:1848] <= kernel_img_sum_231[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1855:1848] <= 'd0;
@@ -5096,7 +5115,7 @@ wire  [29:0]  kernel_img_sum_232 = kernel_img_mul_232[0] + kernel_img_mul_232[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1863:1856] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1863:1856] <= kernel_img_sum_232[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1863:1856] <= 'd0;
@@ -5118,7 +5137,7 @@ wire  [29:0]  kernel_img_sum_233 = kernel_img_mul_233[0] + kernel_img_mul_233[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1871:1864] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1871:1864] <= kernel_img_sum_233[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1871:1864] <= 'd0;
@@ -5140,7 +5159,7 @@ wire  [29:0]  kernel_img_sum_234 = kernel_img_mul_234[0] + kernel_img_mul_234[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1879:1872] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1879:1872] <= kernel_img_sum_234[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1879:1872] <= 'd0;
@@ -5162,7 +5181,7 @@ wire  [29:0]  kernel_img_sum_235 = kernel_img_mul_235[0] + kernel_img_mul_235[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1887:1880] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1887:1880] <= kernel_img_sum_235[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1887:1880] <= 'd0;
@@ -5184,7 +5203,7 @@ wire  [29:0]  kernel_img_sum_236 = kernel_img_mul_236[0] + kernel_img_mul_236[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1895:1888] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1895:1888] <= kernel_img_sum_236[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1895:1888] <= 'd0;
@@ -5206,7 +5225,7 @@ wire  [29:0]  kernel_img_sum_237 = kernel_img_mul_237[0] + kernel_img_mul_237[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1903:1896] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1903:1896] <= kernel_img_sum_237[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1903:1896] <= 'd0;
@@ -5228,7 +5247,7 @@ wire  [29:0]  kernel_img_sum_238 = kernel_img_mul_238[0] + kernel_img_mul_238[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1911:1904] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1911:1904] <= kernel_img_sum_238[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1911:1904] <= 'd0;
@@ -5250,7 +5269,7 @@ wire  [29:0]  kernel_img_sum_239 = kernel_img_mul_239[0] + kernel_img_mul_239[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1919:1912] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1919:1912] <= kernel_img_sum_239[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1919:1912] <= 'd0;
@@ -5272,7 +5291,7 @@ wire  [29:0]  kernel_img_sum_240 = kernel_img_mul_240[0] + kernel_img_mul_240[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1927:1920] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1927:1920] <= kernel_img_sum_240[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1927:1920] <= 'd0;
@@ -5294,7 +5313,7 @@ wire  [29:0]  kernel_img_sum_241 = kernel_img_mul_241[0] + kernel_img_mul_241[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1935:1928] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1935:1928] <= kernel_img_sum_241[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1935:1928] <= 'd0;
@@ -5316,7 +5335,7 @@ wire  [29:0]  kernel_img_sum_242 = kernel_img_mul_242[0] + kernel_img_mul_242[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1943:1936] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1943:1936] <= kernel_img_sum_242[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1943:1936] <= 'd0;
@@ -5338,7 +5357,7 @@ wire  [29:0]  kernel_img_sum_243 = kernel_img_mul_243[0] + kernel_img_mul_243[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1951:1944] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1951:1944] <= kernel_img_sum_243[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1951:1944] <= 'd0;
@@ -5360,7 +5379,7 @@ wire  [29:0]  kernel_img_sum_244 = kernel_img_mul_244[0] + kernel_img_mul_244[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1959:1952] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1959:1952] <= kernel_img_sum_244[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1959:1952] <= 'd0;
@@ -5382,7 +5401,7 @@ wire  [29:0]  kernel_img_sum_245 = kernel_img_mul_245[0] + kernel_img_mul_245[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1967:1960] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1967:1960] <= kernel_img_sum_245[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1967:1960] <= 'd0;
@@ -5404,7 +5423,7 @@ wire  [29:0]  kernel_img_sum_246 = kernel_img_mul_246[0] + kernel_img_mul_246[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1975:1968] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1975:1968] <= kernel_img_sum_246[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1975:1968] <= 'd0;
@@ -5426,7 +5445,7 @@ wire  [29:0]  kernel_img_sum_247 = kernel_img_mul_247[0] + kernel_img_mul_247[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1983:1976] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1983:1976] <= kernel_img_sum_247[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1983:1976] <= 'd0;
@@ -5448,7 +5467,7 @@ wire  [29:0]  kernel_img_sum_248 = kernel_img_mul_248[0] + kernel_img_mul_248[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1991:1984] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1991:1984] <= kernel_img_sum_248[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1991:1984] <= 'd0;
@@ -5470,7 +5489,7 @@ wire  [29:0]  kernel_img_sum_249 = kernel_img_mul_249[0] + kernel_img_mul_249[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[1999:1992] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[1999:1992] <= kernel_img_sum_249[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[1999:1992] <= 'd0;
@@ -5492,7 +5511,7 @@ wire  [29:0]  kernel_img_sum_250 = kernel_img_mul_250[0] + kernel_img_mul_250[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2007:2000] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2007:2000] <= kernel_img_sum_250[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2007:2000] <= 'd0;
@@ -5514,7 +5533,7 @@ wire  [29:0]  kernel_img_sum_251 = kernel_img_mul_251[0] + kernel_img_mul_251[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2015:2008] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2015:2008] <= kernel_img_sum_251[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2015:2008] <= 'd0;
@@ -5536,7 +5555,7 @@ wire  [29:0]  kernel_img_sum_252 = kernel_img_mul_252[0] + kernel_img_mul_252[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2023:2016] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2023:2016] <= kernel_img_sum_252[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2023:2016] <= 'd0;
@@ -5558,7 +5577,7 @@ wire  [29:0]  kernel_img_sum_253 = kernel_img_mul_253[0] + kernel_img_mul_253[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2031:2024] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2031:2024] <= kernel_img_sum_253[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2031:2024] <= 'd0;
@@ -5580,7 +5599,7 @@ wire  [29:0]  kernel_img_sum_254 = kernel_img_mul_254[0] + kernel_img_mul_254[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2039:2032] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2039:2032] <= kernel_img_sum_254[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2039:2032] <= 'd0;
@@ -5602,7 +5621,7 @@ wire  [29:0]  kernel_img_sum_255 = kernel_img_mul_255[0] + kernel_img_mul_255[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2047:2040] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2047:2040] <= kernel_img_sum_255[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2047:2040] <= 'd0;
@@ -5624,7 +5643,7 @@ wire  [29:0]  kernel_img_sum_256 = kernel_img_mul_256[0] + kernel_img_mul_256[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2055:2048] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2055:2048] <= kernel_img_sum_256[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2055:2048] <= 'd0;
@@ -5646,7 +5665,7 @@ wire  [29:0]  kernel_img_sum_257 = kernel_img_mul_257[0] + kernel_img_mul_257[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2063:2056] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2063:2056] <= kernel_img_sum_257[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2063:2056] <= 'd0;
@@ -5668,7 +5687,7 @@ wire  [29:0]  kernel_img_sum_258 = kernel_img_mul_258[0] + kernel_img_mul_258[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2071:2064] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2071:2064] <= kernel_img_sum_258[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2071:2064] <= 'd0;
@@ -5690,7 +5709,7 @@ wire  [29:0]  kernel_img_sum_259 = kernel_img_mul_259[0] + kernel_img_mul_259[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2079:2072] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2079:2072] <= kernel_img_sum_259[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2079:2072] <= 'd0;
@@ -5712,7 +5731,7 @@ wire  [29:0]  kernel_img_sum_260 = kernel_img_mul_260[0] + kernel_img_mul_260[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2087:2080] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2087:2080] <= kernel_img_sum_260[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2087:2080] <= 'd0;
@@ -5734,7 +5753,7 @@ wire  [29:0]  kernel_img_sum_261 = kernel_img_mul_261[0] + kernel_img_mul_261[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2095:2088] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2095:2088] <= kernel_img_sum_261[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2095:2088] <= 'd0;
@@ -5756,7 +5775,7 @@ wire  [29:0]  kernel_img_sum_262 = kernel_img_mul_262[0] + kernel_img_mul_262[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2103:2096] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2103:2096] <= kernel_img_sum_262[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2103:2096] <= 'd0;
@@ -5778,7 +5797,7 @@ wire  [29:0]  kernel_img_sum_263 = kernel_img_mul_263[0] + kernel_img_mul_263[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2111:2104] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2111:2104] <= kernel_img_sum_263[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2111:2104] <= 'd0;
@@ -5800,7 +5819,7 @@ wire  [29:0]  kernel_img_sum_264 = kernel_img_mul_264[0] + kernel_img_mul_264[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2119:2112] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2119:2112] <= kernel_img_sum_264[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2119:2112] <= 'd0;
@@ -5822,7 +5841,7 @@ wire  [29:0]  kernel_img_sum_265 = kernel_img_mul_265[0] + kernel_img_mul_265[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2127:2120] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2127:2120] <= kernel_img_sum_265[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2127:2120] <= 'd0;
@@ -5844,7 +5863,7 @@ wire  [29:0]  kernel_img_sum_266 = kernel_img_mul_266[0] + kernel_img_mul_266[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2135:2128] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2135:2128] <= kernel_img_sum_266[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2135:2128] <= 'd0;
@@ -5866,7 +5885,7 @@ wire  [29:0]  kernel_img_sum_267 = kernel_img_mul_267[0] + kernel_img_mul_267[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2143:2136] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2143:2136] <= kernel_img_sum_267[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2143:2136] <= 'd0;
@@ -5888,7 +5907,7 @@ wire  [29:0]  kernel_img_sum_268 = kernel_img_mul_268[0] + kernel_img_mul_268[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2151:2144] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2151:2144] <= kernel_img_sum_268[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2151:2144] <= 'd0;
@@ -5910,7 +5929,7 @@ wire  [29:0]  kernel_img_sum_269 = kernel_img_mul_269[0] + kernel_img_mul_269[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2159:2152] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2159:2152] <= kernel_img_sum_269[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2159:2152] <= 'd0;
@@ -5932,7 +5951,7 @@ wire  [29:0]  kernel_img_sum_270 = kernel_img_mul_270[0] + kernel_img_mul_270[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2167:2160] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2167:2160] <= kernel_img_sum_270[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2167:2160] <= 'd0;
@@ -5954,7 +5973,7 @@ wire  [29:0]  kernel_img_sum_271 = kernel_img_mul_271[0] + kernel_img_mul_271[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2175:2168] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2175:2168] <= kernel_img_sum_271[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2175:2168] <= 'd0;
@@ -5976,7 +5995,7 @@ wire  [29:0]  kernel_img_sum_272 = kernel_img_mul_272[0] + kernel_img_mul_272[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2183:2176] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2183:2176] <= kernel_img_sum_272[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2183:2176] <= 'd0;
@@ -5998,7 +6017,7 @@ wire  [29:0]  kernel_img_sum_273 = kernel_img_mul_273[0] + kernel_img_mul_273[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2191:2184] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2191:2184] <= kernel_img_sum_273[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2191:2184] <= 'd0;
@@ -6020,7 +6039,7 @@ wire  [29:0]  kernel_img_sum_274 = kernel_img_mul_274[0] + kernel_img_mul_274[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2199:2192] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2199:2192] <= kernel_img_sum_274[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2199:2192] <= 'd0;
@@ -6042,7 +6061,7 @@ wire  [29:0]  kernel_img_sum_275 = kernel_img_mul_275[0] + kernel_img_mul_275[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2207:2200] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2207:2200] <= kernel_img_sum_275[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2207:2200] <= 'd0;
@@ -6064,7 +6083,7 @@ wire  [29:0]  kernel_img_sum_276 = kernel_img_mul_276[0] + kernel_img_mul_276[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2215:2208] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2215:2208] <= kernel_img_sum_276[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2215:2208] <= 'd0;
@@ -6086,7 +6105,7 @@ wire  [29:0]  kernel_img_sum_277 = kernel_img_mul_277[0] + kernel_img_mul_277[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2223:2216] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2223:2216] <= kernel_img_sum_277[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2223:2216] <= 'd0;
@@ -6108,7 +6127,7 @@ wire  [29:0]  kernel_img_sum_278 = kernel_img_mul_278[0] + kernel_img_mul_278[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2231:2224] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2231:2224] <= kernel_img_sum_278[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2231:2224] <= 'd0;
@@ -6130,7 +6149,7 @@ wire  [29:0]  kernel_img_sum_279 = kernel_img_mul_279[0] + kernel_img_mul_279[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2239:2232] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2239:2232] <= kernel_img_sum_279[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2239:2232] <= 'd0;
@@ -6152,7 +6171,7 @@ wire  [29:0]  kernel_img_sum_280 = kernel_img_mul_280[0] + kernel_img_mul_280[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2247:2240] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2247:2240] <= kernel_img_sum_280[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2247:2240] <= 'd0;
@@ -6174,7 +6193,7 @@ wire  [29:0]  kernel_img_sum_281 = kernel_img_mul_281[0] + kernel_img_mul_281[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2255:2248] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2255:2248] <= kernel_img_sum_281[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2255:2248] <= 'd0;
@@ -6196,7 +6215,7 @@ wire  [29:0]  kernel_img_sum_282 = kernel_img_mul_282[0] + kernel_img_mul_282[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2263:2256] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2263:2256] <= kernel_img_sum_282[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2263:2256] <= 'd0;
@@ -6218,7 +6237,7 @@ wire  [29:0]  kernel_img_sum_283 = kernel_img_mul_283[0] + kernel_img_mul_283[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2271:2264] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2271:2264] <= kernel_img_sum_283[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2271:2264] <= 'd0;
@@ -6240,7 +6259,7 @@ wire  [29:0]  kernel_img_sum_284 = kernel_img_mul_284[0] + kernel_img_mul_284[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2279:2272] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2279:2272] <= kernel_img_sum_284[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2279:2272] <= 'd0;
@@ -6262,7 +6281,7 @@ wire  [29:0]  kernel_img_sum_285 = kernel_img_mul_285[0] + kernel_img_mul_285[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2287:2280] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2287:2280] <= kernel_img_sum_285[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2287:2280] <= 'd0;
@@ -6284,7 +6303,7 @@ wire  [29:0]  kernel_img_sum_286 = kernel_img_mul_286[0] + kernel_img_mul_286[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2295:2288] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2295:2288] <= kernel_img_sum_286[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2295:2288] <= 'd0;
@@ -6306,7 +6325,7 @@ wire  [29:0]  kernel_img_sum_287 = kernel_img_mul_287[0] + kernel_img_mul_287[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2303:2296] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2303:2296] <= kernel_img_sum_287[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2303:2296] <= 'd0;
@@ -6328,7 +6347,7 @@ wire  [29:0]  kernel_img_sum_288 = kernel_img_mul_288[0] + kernel_img_mul_288[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2311:2304] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2311:2304] <= kernel_img_sum_288[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2311:2304] <= 'd0;
@@ -6350,7 +6369,7 @@ wire  [29:0]  kernel_img_sum_289 = kernel_img_mul_289[0] + kernel_img_mul_289[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2319:2312] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2319:2312] <= kernel_img_sum_289[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2319:2312] <= 'd0;
@@ -6372,7 +6391,7 @@ wire  [29:0]  kernel_img_sum_290 = kernel_img_mul_290[0] + kernel_img_mul_290[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2327:2320] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2327:2320] <= kernel_img_sum_290[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2327:2320] <= 'd0;
@@ -6394,7 +6413,7 @@ wire  [29:0]  kernel_img_sum_291 = kernel_img_mul_291[0] + kernel_img_mul_291[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2335:2328] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2335:2328] <= kernel_img_sum_291[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2335:2328] <= 'd0;
@@ -6416,7 +6435,7 @@ wire  [29:0]  kernel_img_sum_292 = kernel_img_mul_292[0] + kernel_img_mul_292[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2343:2336] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2343:2336] <= kernel_img_sum_292[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2343:2336] <= 'd0;
@@ -6438,7 +6457,7 @@ wire  [29:0]  kernel_img_sum_293 = kernel_img_mul_293[0] + kernel_img_mul_293[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2351:2344] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2351:2344] <= kernel_img_sum_293[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2351:2344] <= 'd0;
@@ -6460,7 +6479,7 @@ wire  [29:0]  kernel_img_sum_294 = kernel_img_mul_294[0] + kernel_img_mul_294[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2359:2352] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2359:2352] <= kernel_img_sum_294[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2359:2352] <= 'd0;
@@ -6482,7 +6501,7 @@ wire  [29:0]  kernel_img_sum_295 = kernel_img_mul_295[0] + kernel_img_mul_295[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2367:2360] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2367:2360] <= kernel_img_sum_295[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2367:2360] <= 'd0;
@@ -6504,7 +6523,7 @@ wire  [29:0]  kernel_img_sum_296 = kernel_img_mul_296[0] + kernel_img_mul_296[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2375:2368] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2375:2368] <= kernel_img_sum_296[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2375:2368] <= 'd0;
@@ -6526,7 +6545,7 @@ wire  [29:0]  kernel_img_sum_297 = kernel_img_mul_297[0] + kernel_img_mul_297[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2383:2376] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2383:2376] <= kernel_img_sum_297[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2383:2376] <= 'd0;
@@ -6548,7 +6567,7 @@ wire  [29:0]  kernel_img_sum_298 = kernel_img_mul_298[0] + kernel_img_mul_298[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2391:2384] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2391:2384] <= kernel_img_sum_298[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2391:2384] <= 'd0;
@@ -6570,7 +6589,7 @@ wire  [29:0]  kernel_img_sum_299 = kernel_img_mul_299[0] + kernel_img_mul_299[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2399:2392] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2399:2392] <= kernel_img_sum_299[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2399:2392] <= 'd0;
@@ -6592,7 +6611,7 @@ wire  [29:0]  kernel_img_sum_300 = kernel_img_mul_300[0] + kernel_img_mul_300[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2407:2400] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2407:2400] <= kernel_img_sum_300[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2407:2400] <= 'd0;
@@ -6614,7 +6633,7 @@ wire  [29:0]  kernel_img_sum_301 = kernel_img_mul_301[0] + kernel_img_mul_301[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2415:2408] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2415:2408] <= kernel_img_sum_301[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2415:2408] <= 'd0;
@@ -6636,7 +6655,7 @@ wire  [29:0]  kernel_img_sum_302 = kernel_img_mul_302[0] + kernel_img_mul_302[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2423:2416] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2423:2416] <= kernel_img_sum_302[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2423:2416] <= 'd0;
@@ -6658,7 +6677,7 @@ wire  [29:0]  kernel_img_sum_303 = kernel_img_mul_303[0] + kernel_img_mul_303[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2431:2424] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2431:2424] <= kernel_img_sum_303[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2431:2424] <= 'd0;
@@ -6680,7 +6699,7 @@ wire  [29:0]  kernel_img_sum_304 = kernel_img_mul_304[0] + kernel_img_mul_304[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2439:2432] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2439:2432] <= kernel_img_sum_304[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2439:2432] <= 'd0;
@@ -6702,7 +6721,7 @@ wire  [29:0]  kernel_img_sum_305 = kernel_img_mul_305[0] + kernel_img_mul_305[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2447:2440] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2447:2440] <= kernel_img_sum_305[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2447:2440] <= 'd0;
@@ -6724,7 +6743,7 @@ wire  [29:0]  kernel_img_sum_306 = kernel_img_mul_306[0] + kernel_img_mul_306[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2455:2448] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2455:2448] <= kernel_img_sum_306[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2455:2448] <= 'd0;
@@ -6746,7 +6765,7 @@ wire  [29:0]  kernel_img_sum_307 = kernel_img_mul_307[0] + kernel_img_mul_307[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2463:2456] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2463:2456] <= kernel_img_sum_307[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2463:2456] <= 'd0;
@@ -6768,7 +6787,7 @@ wire  [29:0]  kernel_img_sum_308 = kernel_img_mul_308[0] + kernel_img_mul_308[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2471:2464] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2471:2464] <= kernel_img_sum_308[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2471:2464] <= 'd0;
@@ -6790,7 +6809,7 @@ wire  [29:0]  kernel_img_sum_309 = kernel_img_mul_309[0] + kernel_img_mul_309[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2479:2472] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2479:2472] <= kernel_img_sum_309[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2479:2472] <= 'd0;
@@ -6812,7 +6831,7 @@ wire  [29:0]  kernel_img_sum_310 = kernel_img_mul_310[0] + kernel_img_mul_310[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2487:2480] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2487:2480] <= kernel_img_sum_310[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2487:2480] <= 'd0;
@@ -6834,7 +6853,7 @@ wire  [29:0]  kernel_img_sum_311 = kernel_img_mul_311[0] + kernel_img_mul_311[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2495:2488] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2495:2488] <= kernel_img_sum_311[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2495:2488] <= 'd0;
@@ -6856,7 +6875,7 @@ wire  [29:0]  kernel_img_sum_312 = kernel_img_mul_312[0] + kernel_img_mul_312[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2503:2496] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2503:2496] <= kernel_img_sum_312[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2503:2496] <= 'd0;
@@ -6878,7 +6897,7 @@ wire  [29:0]  kernel_img_sum_313 = kernel_img_mul_313[0] + kernel_img_mul_313[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2511:2504] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2511:2504] <= kernel_img_sum_313[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2511:2504] <= 'd0;
@@ -6900,7 +6919,7 @@ wire  [29:0]  kernel_img_sum_314 = kernel_img_mul_314[0] + kernel_img_mul_314[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2519:2512] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2519:2512] <= kernel_img_sum_314[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2519:2512] <= 'd0;
@@ -6922,7 +6941,7 @@ wire  [29:0]  kernel_img_sum_315 = kernel_img_mul_315[0] + kernel_img_mul_315[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2527:2520] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2527:2520] <= kernel_img_sum_315[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2527:2520] <= 'd0;
@@ -6944,7 +6963,7 @@ wire  [29:0]  kernel_img_sum_316 = kernel_img_mul_316[0] + kernel_img_mul_316[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2535:2528] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2535:2528] <= kernel_img_sum_316[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2535:2528] <= 'd0;
@@ -6966,7 +6985,7 @@ wire  [29:0]  kernel_img_sum_317 = kernel_img_mul_317[0] + kernel_img_mul_317[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2543:2536] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2543:2536] <= kernel_img_sum_317[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2543:2536] <= 'd0;
@@ -6988,7 +7007,7 @@ wire  [29:0]  kernel_img_sum_318 = kernel_img_mul_318[0] + kernel_img_mul_318[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2551:2544] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2551:2544] <= kernel_img_sum_318[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2551:2544] <= 'd0;
@@ -7010,7 +7029,7 @@ wire  [29:0]  kernel_img_sum_319 = kernel_img_mul_319[0] + kernel_img_mul_319[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2559:2552] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2559:2552] <= kernel_img_sum_319[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2559:2552] <= 'd0;
@@ -7032,7 +7051,7 @@ wire  [29:0]  kernel_img_sum_320 = kernel_img_mul_320[0] + kernel_img_mul_320[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2567:2560] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2567:2560] <= kernel_img_sum_320[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2567:2560] <= 'd0;
@@ -7054,7 +7073,7 @@ wire  [29:0]  kernel_img_sum_321 = kernel_img_mul_321[0] + kernel_img_mul_321[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2575:2568] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2575:2568] <= kernel_img_sum_321[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2575:2568] <= 'd0;
@@ -7076,7 +7095,7 @@ wire  [29:0]  kernel_img_sum_322 = kernel_img_mul_322[0] + kernel_img_mul_322[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2583:2576] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2583:2576] <= kernel_img_sum_322[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2583:2576] <= 'd0;
@@ -7098,7 +7117,7 @@ wire  [29:0]  kernel_img_sum_323 = kernel_img_mul_323[0] + kernel_img_mul_323[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2591:2584] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2591:2584] <= kernel_img_sum_323[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2591:2584] <= 'd0;
@@ -7120,7 +7139,7 @@ wire  [29:0]  kernel_img_sum_324 = kernel_img_mul_324[0] + kernel_img_mul_324[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2599:2592] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2599:2592] <= kernel_img_sum_324[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2599:2592] <= 'd0;
@@ -7142,7 +7161,7 @@ wire  [29:0]  kernel_img_sum_325 = kernel_img_mul_325[0] + kernel_img_mul_325[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2607:2600] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2607:2600] <= kernel_img_sum_325[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2607:2600] <= 'd0;
@@ -7164,7 +7183,7 @@ wire  [29:0]  kernel_img_sum_326 = kernel_img_mul_326[0] + kernel_img_mul_326[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2615:2608] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2615:2608] <= kernel_img_sum_326[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2615:2608] <= 'd0;
@@ -7186,7 +7205,7 @@ wire  [29:0]  kernel_img_sum_327 = kernel_img_mul_327[0] + kernel_img_mul_327[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2623:2616] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2623:2616] <= kernel_img_sum_327[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2623:2616] <= 'd0;
@@ -7208,7 +7227,7 @@ wire  [29:0]  kernel_img_sum_328 = kernel_img_mul_328[0] + kernel_img_mul_328[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2631:2624] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2631:2624] <= kernel_img_sum_328[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2631:2624] <= 'd0;
@@ -7230,7 +7249,7 @@ wire  [29:0]  kernel_img_sum_329 = kernel_img_mul_329[0] + kernel_img_mul_329[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2639:2632] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2639:2632] <= kernel_img_sum_329[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2639:2632] <= 'd0;
@@ -7252,7 +7271,7 @@ wire  [29:0]  kernel_img_sum_330 = kernel_img_mul_330[0] + kernel_img_mul_330[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2647:2640] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2647:2640] <= kernel_img_sum_330[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2647:2640] <= 'd0;
@@ -7274,7 +7293,7 @@ wire  [29:0]  kernel_img_sum_331 = kernel_img_mul_331[0] + kernel_img_mul_331[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2655:2648] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2655:2648] <= kernel_img_sum_331[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2655:2648] <= 'd0;
@@ -7296,7 +7315,7 @@ wire  [29:0]  kernel_img_sum_332 = kernel_img_mul_332[0] + kernel_img_mul_332[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2663:2656] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2663:2656] <= kernel_img_sum_332[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2663:2656] <= 'd0;
@@ -7318,7 +7337,7 @@ wire  [29:0]  kernel_img_sum_333 = kernel_img_mul_333[0] + kernel_img_mul_333[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2671:2664] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2671:2664] <= kernel_img_sum_333[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2671:2664] <= 'd0;
@@ -7340,7 +7359,7 @@ wire  [29:0]  kernel_img_sum_334 = kernel_img_mul_334[0] + kernel_img_mul_334[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2679:2672] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2679:2672] <= kernel_img_sum_334[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2679:2672] <= 'd0;
@@ -7362,7 +7381,7 @@ wire  [29:0]  kernel_img_sum_335 = kernel_img_mul_335[0] + kernel_img_mul_335[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2687:2680] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2687:2680] <= kernel_img_sum_335[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2687:2680] <= 'd0;
@@ -7384,7 +7403,7 @@ wire  [29:0]  kernel_img_sum_336 = kernel_img_mul_336[0] + kernel_img_mul_336[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2695:2688] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2695:2688] <= kernel_img_sum_336[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2695:2688] <= 'd0;
@@ -7406,7 +7425,7 @@ wire  [29:0]  kernel_img_sum_337 = kernel_img_mul_337[0] + kernel_img_mul_337[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2703:2696] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2703:2696] <= kernel_img_sum_337[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2703:2696] <= 'd0;
@@ -7428,7 +7447,7 @@ wire  [29:0]  kernel_img_sum_338 = kernel_img_mul_338[0] + kernel_img_mul_338[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2711:2704] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2711:2704] <= kernel_img_sum_338[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2711:2704] <= 'd0;
@@ -7450,7 +7469,7 @@ wire  [29:0]  kernel_img_sum_339 = kernel_img_mul_339[0] + kernel_img_mul_339[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2719:2712] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2719:2712] <= kernel_img_sum_339[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2719:2712] <= 'd0;
@@ -7472,7 +7491,7 @@ wire  [29:0]  kernel_img_sum_340 = kernel_img_mul_340[0] + kernel_img_mul_340[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2727:2720] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2727:2720] <= kernel_img_sum_340[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2727:2720] <= 'd0;
@@ -7494,7 +7513,7 @@ wire  [29:0]  kernel_img_sum_341 = kernel_img_mul_341[0] + kernel_img_mul_341[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2735:2728] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2735:2728] <= kernel_img_sum_341[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2735:2728] <= 'd0;
@@ -7516,7 +7535,7 @@ wire  [29:0]  kernel_img_sum_342 = kernel_img_mul_342[0] + kernel_img_mul_342[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2743:2736] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2743:2736] <= kernel_img_sum_342[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2743:2736] <= 'd0;
@@ -7538,7 +7557,7 @@ wire  [29:0]  kernel_img_sum_343 = kernel_img_mul_343[0] + kernel_img_mul_343[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2751:2744] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2751:2744] <= kernel_img_sum_343[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2751:2744] <= 'd0;
@@ -7560,7 +7579,7 @@ wire  [29:0]  kernel_img_sum_344 = kernel_img_mul_344[0] + kernel_img_mul_344[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2759:2752] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2759:2752] <= kernel_img_sum_344[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2759:2752] <= 'd0;
@@ -7582,7 +7601,7 @@ wire  [29:0]  kernel_img_sum_345 = kernel_img_mul_345[0] + kernel_img_mul_345[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2767:2760] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2767:2760] <= kernel_img_sum_345[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2767:2760] <= 'd0;
@@ -7604,7 +7623,7 @@ wire  [29:0]  kernel_img_sum_346 = kernel_img_mul_346[0] + kernel_img_mul_346[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2775:2768] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2775:2768] <= kernel_img_sum_346[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2775:2768] <= 'd0;
@@ -7626,7 +7645,7 @@ wire  [29:0]  kernel_img_sum_347 = kernel_img_mul_347[0] + kernel_img_mul_347[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2783:2776] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2783:2776] <= kernel_img_sum_347[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2783:2776] <= 'd0;
@@ -7648,7 +7667,7 @@ wire  [29:0]  kernel_img_sum_348 = kernel_img_mul_348[0] + kernel_img_mul_348[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2791:2784] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2791:2784] <= kernel_img_sum_348[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2791:2784] <= 'd0;
@@ -7670,7 +7689,7 @@ wire  [29:0]  kernel_img_sum_349 = kernel_img_mul_349[0] + kernel_img_mul_349[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2799:2792] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2799:2792] <= kernel_img_sum_349[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2799:2792] <= 'd0;
@@ -7692,7 +7711,7 @@ wire  [29:0]  kernel_img_sum_350 = kernel_img_mul_350[0] + kernel_img_mul_350[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2807:2800] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2807:2800] <= kernel_img_sum_350[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2807:2800] <= 'd0;
@@ -7714,7 +7733,7 @@ wire  [29:0]  kernel_img_sum_351 = kernel_img_mul_351[0] + kernel_img_mul_351[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2815:2808] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2815:2808] <= kernel_img_sum_351[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2815:2808] <= 'd0;
@@ -7736,7 +7755,7 @@ wire  [29:0]  kernel_img_sum_352 = kernel_img_mul_352[0] + kernel_img_mul_352[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2823:2816] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2823:2816] <= kernel_img_sum_352[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2823:2816] <= 'd0;
@@ -7758,7 +7777,7 @@ wire  [29:0]  kernel_img_sum_353 = kernel_img_mul_353[0] + kernel_img_mul_353[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2831:2824] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2831:2824] <= kernel_img_sum_353[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2831:2824] <= 'd0;
@@ -7780,7 +7799,7 @@ wire  [29:0]  kernel_img_sum_354 = kernel_img_mul_354[0] + kernel_img_mul_354[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2839:2832] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2839:2832] <= kernel_img_sum_354[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2839:2832] <= 'd0;
@@ -7802,7 +7821,7 @@ wire  [29:0]  kernel_img_sum_355 = kernel_img_mul_355[0] + kernel_img_mul_355[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2847:2840] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2847:2840] <= kernel_img_sum_355[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2847:2840] <= 'd0;
@@ -7824,7 +7843,7 @@ wire  [29:0]  kernel_img_sum_356 = kernel_img_mul_356[0] + kernel_img_mul_356[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2855:2848] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2855:2848] <= kernel_img_sum_356[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2855:2848] <= 'd0;
@@ -7846,7 +7865,7 @@ wire  [29:0]  kernel_img_sum_357 = kernel_img_mul_357[0] + kernel_img_mul_357[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2863:2856] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2863:2856] <= kernel_img_sum_357[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2863:2856] <= 'd0;
@@ -7868,7 +7887,7 @@ wire  [29:0]  kernel_img_sum_358 = kernel_img_mul_358[0] + kernel_img_mul_358[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2871:2864] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2871:2864] <= kernel_img_sum_358[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2871:2864] <= 'd0;
@@ -7890,7 +7909,7 @@ wire  [29:0]  kernel_img_sum_359 = kernel_img_mul_359[0] + kernel_img_mul_359[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2879:2872] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2879:2872] <= kernel_img_sum_359[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2879:2872] <= 'd0;
@@ -7912,7 +7931,7 @@ wire  [29:0]  kernel_img_sum_360 = kernel_img_mul_360[0] + kernel_img_mul_360[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2887:2880] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2887:2880] <= kernel_img_sum_360[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2887:2880] <= 'd0;
@@ -7934,7 +7953,7 @@ wire  [29:0]  kernel_img_sum_361 = kernel_img_mul_361[0] + kernel_img_mul_361[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2895:2888] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2895:2888] <= kernel_img_sum_361[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2895:2888] <= 'd0;
@@ -7956,7 +7975,7 @@ wire  [29:0]  kernel_img_sum_362 = kernel_img_mul_362[0] + kernel_img_mul_362[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2903:2896] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2903:2896] <= kernel_img_sum_362[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2903:2896] <= 'd0;
@@ -7978,7 +7997,7 @@ wire  [29:0]  kernel_img_sum_363 = kernel_img_mul_363[0] + kernel_img_mul_363[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2911:2904] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2911:2904] <= kernel_img_sum_363[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2911:2904] <= 'd0;
@@ -8000,7 +8019,7 @@ wire  [29:0]  kernel_img_sum_364 = kernel_img_mul_364[0] + kernel_img_mul_364[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2919:2912] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2919:2912] <= kernel_img_sum_364[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2919:2912] <= 'd0;
@@ -8022,7 +8041,7 @@ wire  [29:0]  kernel_img_sum_365 = kernel_img_mul_365[0] + kernel_img_mul_365[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2927:2920] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2927:2920] <= kernel_img_sum_365[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2927:2920] <= 'd0;
@@ -8044,7 +8063,7 @@ wire  [29:0]  kernel_img_sum_366 = kernel_img_mul_366[0] + kernel_img_mul_366[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2935:2928] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2935:2928] <= kernel_img_sum_366[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2935:2928] <= 'd0;
@@ -8066,7 +8085,7 @@ wire  [29:0]  kernel_img_sum_367 = kernel_img_mul_367[0] + kernel_img_mul_367[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2943:2936] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2943:2936] <= kernel_img_sum_367[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2943:2936] <= 'd0;
@@ -8088,7 +8107,7 @@ wire  [29:0]  kernel_img_sum_368 = kernel_img_mul_368[0] + kernel_img_mul_368[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2951:2944] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2951:2944] <= kernel_img_sum_368[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2951:2944] <= 'd0;
@@ -8110,7 +8129,7 @@ wire  [29:0]  kernel_img_sum_369 = kernel_img_mul_369[0] + kernel_img_mul_369[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2959:2952] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2959:2952] <= kernel_img_sum_369[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2959:2952] <= 'd0;
@@ -8132,7 +8151,7 @@ wire  [29:0]  kernel_img_sum_370 = kernel_img_mul_370[0] + kernel_img_mul_370[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2967:2960] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2967:2960] <= kernel_img_sum_370[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2967:2960] <= 'd0;
@@ -8154,7 +8173,7 @@ wire  [29:0]  kernel_img_sum_371 = kernel_img_mul_371[0] + kernel_img_mul_371[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2975:2968] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2975:2968] <= kernel_img_sum_371[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2975:2968] <= 'd0;
@@ -8176,7 +8195,7 @@ wire  [29:0]  kernel_img_sum_372 = kernel_img_mul_372[0] + kernel_img_mul_372[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2983:2976] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2983:2976] <= kernel_img_sum_372[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2983:2976] <= 'd0;
@@ -8198,7 +8217,7 @@ wire  [29:0]  kernel_img_sum_373 = kernel_img_mul_373[0] + kernel_img_mul_373[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2991:2984] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2991:2984] <= kernel_img_sum_373[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2991:2984] <= 'd0;
@@ -8220,7 +8239,7 @@ wire  [29:0]  kernel_img_sum_374 = kernel_img_mul_374[0] + kernel_img_mul_374[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[2999:2992] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[2999:2992] <= kernel_img_sum_374[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[2999:2992] <= 'd0;
@@ -8242,7 +8261,7 @@ wire  [29:0]  kernel_img_sum_375 = kernel_img_mul_375[0] + kernel_img_mul_375[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3007:3000] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3007:3000] <= kernel_img_sum_375[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3007:3000] <= 'd0;
@@ -8264,7 +8283,7 @@ wire  [29:0]  kernel_img_sum_376 = kernel_img_mul_376[0] + kernel_img_mul_376[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3015:3008] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3015:3008] <= kernel_img_sum_376[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3015:3008] <= 'd0;
@@ -8286,7 +8305,7 @@ wire  [29:0]  kernel_img_sum_377 = kernel_img_mul_377[0] + kernel_img_mul_377[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3023:3016] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3023:3016] <= kernel_img_sum_377[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3023:3016] <= 'd0;
@@ -8308,7 +8327,7 @@ wire  [29:0]  kernel_img_sum_378 = kernel_img_mul_378[0] + kernel_img_mul_378[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3031:3024] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3031:3024] <= kernel_img_sum_378[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3031:3024] <= 'd0;
@@ -8330,7 +8349,7 @@ wire  [29:0]  kernel_img_sum_379 = kernel_img_mul_379[0] + kernel_img_mul_379[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3039:3032] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3039:3032] <= kernel_img_sum_379[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3039:3032] <= 'd0;
@@ -8352,7 +8371,7 @@ wire  [29:0]  kernel_img_sum_380 = kernel_img_mul_380[0] + kernel_img_mul_380[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3047:3040] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3047:3040] <= kernel_img_sum_380[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3047:3040] <= 'd0;
@@ -8374,7 +8393,7 @@ wire  [29:0]  kernel_img_sum_381 = kernel_img_mul_381[0] + kernel_img_mul_381[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3055:3048] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3055:3048] <= kernel_img_sum_381[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3055:3048] <= 'd0;
@@ -8396,7 +8415,7 @@ wire  [29:0]  kernel_img_sum_382 = kernel_img_mul_382[0] + kernel_img_mul_382[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3063:3056] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3063:3056] <= kernel_img_sum_382[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3063:3056] <= 'd0;
@@ -8418,7 +8437,7 @@ wire  [29:0]  kernel_img_sum_383 = kernel_img_mul_383[0] + kernel_img_mul_383[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3071:3064] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3071:3064] <= kernel_img_sum_383[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3071:3064] <= 'd0;
@@ -8440,7 +8459,7 @@ wire  [29:0]  kernel_img_sum_384 = kernel_img_mul_384[0] + kernel_img_mul_384[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3079:3072] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3079:3072] <= kernel_img_sum_384[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3079:3072] <= 'd0;
@@ -8462,7 +8481,7 @@ wire  [29:0]  kernel_img_sum_385 = kernel_img_mul_385[0] + kernel_img_mul_385[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3087:3080] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3087:3080] <= kernel_img_sum_385[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3087:3080] <= 'd0;
@@ -8484,7 +8503,7 @@ wire  [29:0]  kernel_img_sum_386 = kernel_img_mul_386[0] + kernel_img_mul_386[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3095:3088] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3095:3088] <= kernel_img_sum_386[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3095:3088] <= 'd0;
@@ -8506,7 +8525,7 @@ wire  [29:0]  kernel_img_sum_387 = kernel_img_mul_387[0] + kernel_img_mul_387[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3103:3096] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3103:3096] <= kernel_img_sum_387[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3103:3096] <= 'd0;
@@ -8528,7 +8547,7 @@ wire  [29:0]  kernel_img_sum_388 = kernel_img_mul_388[0] + kernel_img_mul_388[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3111:3104] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3111:3104] <= kernel_img_sum_388[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3111:3104] <= 'd0;
@@ -8550,7 +8569,7 @@ wire  [29:0]  kernel_img_sum_389 = kernel_img_mul_389[0] + kernel_img_mul_389[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3119:3112] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3119:3112] <= kernel_img_sum_389[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3119:3112] <= 'd0;
@@ -8572,7 +8591,7 @@ wire  [29:0]  kernel_img_sum_390 = kernel_img_mul_390[0] + kernel_img_mul_390[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3127:3120] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3127:3120] <= kernel_img_sum_390[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3127:3120] <= 'd0;
@@ -8594,7 +8613,7 @@ wire  [29:0]  kernel_img_sum_391 = kernel_img_mul_391[0] + kernel_img_mul_391[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3135:3128] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3135:3128] <= kernel_img_sum_391[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3135:3128] <= 'd0;
@@ -8616,7 +8635,7 @@ wire  [29:0]  kernel_img_sum_392 = kernel_img_mul_392[0] + kernel_img_mul_392[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3143:3136] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3143:3136] <= kernel_img_sum_392[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3143:3136] <= 'd0;
@@ -8638,7 +8657,7 @@ wire  [29:0]  kernel_img_sum_393 = kernel_img_mul_393[0] + kernel_img_mul_393[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3151:3144] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3151:3144] <= kernel_img_sum_393[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3151:3144] <= 'd0;
@@ -8660,7 +8679,7 @@ wire  [29:0]  kernel_img_sum_394 = kernel_img_mul_394[0] + kernel_img_mul_394[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3159:3152] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3159:3152] <= kernel_img_sum_394[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3159:3152] <= 'd0;
@@ -8682,7 +8701,7 @@ wire  [29:0]  kernel_img_sum_395 = kernel_img_mul_395[0] + kernel_img_mul_395[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3167:3160] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3167:3160] <= kernel_img_sum_395[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3167:3160] <= 'd0;
@@ -8704,7 +8723,7 @@ wire  [29:0]  kernel_img_sum_396 = kernel_img_mul_396[0] + kernel_img_mul_396[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3175:3168] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3175:3168] <= kernel_img_sum_396[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3175:3168] <= 'd0;
@@ -8726,7 +8745,7 @@ wire  [29:0]  kernel_img_sum_397 = kernel_img_mul_397[0] + kernel_img_mul_397[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3183:3176] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3183:3176] <= kernel_img_sum_397[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3183:3176] <= 'd0;
@@ -8748,7 +8767,7 @@ wire  [29:0]  kernel_img_sum_398 = kernel_img_mul_398[0] + kernel_img_mul_398[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3191:3184] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3191:3184] <= kernel_img_sum_398[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3191:3184] <= 'd0;
@@ -8770,7 +8789,7 @@ wire  [29:0]  kernel_img_sum_399 = kernel_img_mul_399[0] + kernel_img_mul_399[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3199:3192] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3199:3192] <= kernel_img_sum_399[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3199:3192] <= 'd0;
@@ -8792,7 +8811,7 @@ wire  [29:0]  kernel_img_sum_400 = kernel_img_mul_400[0] + kernel_img_mul_400[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3207:3200] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3207:3200] <= kernel_img_sum_400[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3207:3200] <= 'd0;
@@ -8814,7 +8833,7 @@ wire  [29:0]  kernel_img_sum_401 = kernel_img_mul_401[0] + kernel_img_mul_401[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3215:3208] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3215:3208] <= kernel_img_sum_401[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3215:3208] <= 'd0;
@@ -8836,7 +8855,7 @@ wire  [29:0]  kernel_img_sum_402 = kernel_img_mul_402[0] + kernel_img_mul_402[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3223:3216] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3223:3216] <= kernel_img_sum_402[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3223:3216] <= 'd0;
@@ -8858,7 +8877,7 @@ wire  [29:0]  kernel_img_sum_403 = kernel_img_mul_403[0] + kernel_img_mul_403[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3231:3224] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3231:3224] <= kernel_img_sum_403[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3231:3224] <= 'd0;
@@ -8880,7 +8899,7 @@ wire  [29:0]  kernel_img_sum_404 = kernel_img_mul_404[0] + kernel_img_mul_404[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3239:3232] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3239:3232] <= kernel_img_sum_404[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3239:3232] <= 'd0;
@@ -8902,7 +8921,7 @@ wire  [29:0]  kernel_img_sum_405 = kernel_img_mul_405[0] + kernel_img_mul_405[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3247:3240] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3247:3240] <= kernel_img_sum_405[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3247:3240] <= 'd0;
@@ -8924,7 +8943,7 @@ wire  [29:0]  kernel_img_sum_406 = kernel_img_mul_406[0] + kernel_img_mul_406[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3255:3248] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3255:3248] <= kernel_img_sum_406[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3255:3248] <= 'd0;
@@ -8946,7 +8965,7 @@ wire  [29:0]  kernel_img_sum_407 = kernel_img_mul_407[0] + kernel_img_mul_407[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3263:3256] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3263:3256] <= kernel_img_sum_407[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3263:3256] <= 'd0;
@@ -8968,7 +8987,7 @@ wire  [29:0]  kernel_img_sum_408 = kernel_img_mul_408[0] + kernel_img_mul_408[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3271:3264] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3271:3264] <= kernel_img_sum_408[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3271:3264] <= 'd0;
@@ -8990,7 +9009,7 @@ wire  [29:0]  kernel_img_sum_409 = kernel_img_mul_409[0] + kernel_img_mul_409[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3279:3272] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3279:3272] <= kernel_img_sum_409[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3279:3272] <= 'd0;
@@ -9012,7 +9031,7 @@ wire  [29:0]  kernel_img_sum_410 = kernel_img_mul_410[0] + kernel_img_mul_410[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3287:3280] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3287:3280] <= kernel_img_sum_410[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3287:3280] <= 'd0;
@@ -9034,7 +9053,7 @@ wire  [29:0]  kernel_img_sum_411 = kernel_img_mul_411[0] + kernel_img_mul_411[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3295:3288] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3295:3288] <= kernel_img_sum_411[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3295:3288] <= 'd0;
@@ -9056,7 +9075,7 @@ wire  [29:0]  kernel_img_sum_412 = kernel_img_mul_412[0] + kernel_img_mul_412[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3303:3296] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3303:3296] <= kernel_img_sum_412[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3303:3296] <= 'd0;
@@ -9078,7 +9097,7 @@ wire  [29:0]  kernel_img_sum_413 = kernel_img_mul_413[0] + kernel_img_mul_413[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3311:3304] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3311:3304] <= kernel_img_sum_413[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3311:3304] <= 'd0;
@@ -9100,7 +9119,7 @@ wire  [29:0]  kernel_img_sum_414 = kernel_img_mul_414[0] + kernel_img_mul_414[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3319:3312] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3319:3312] <= kernel_img_sum_414[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3319:3312] <= 'd0;
@@ -9122,7 +9141,7 @@ wire  [29:0]  kernel_img_sum_415 = kernel_img_mul_415[0] + kernel_img_mul_415[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3327:3320] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3327:3320] <= kernel_img_sum_415[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3327:3320] <= 'd0;
@@ -9144,7 +9163,7 @@ wire  [29:0]  kernel_img_sum_416 = kernel_img_mul_416[0] + kernel_img_mul_416[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3335:3328] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3335:3328] <= kernel_img_sum_416[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3335:3328] <= 'd0;
@@ -9166,7 +9185,7 @@ wire  [29:0]  kernel_img_sum_417 = kernel_img_mul_417[0] + kernel_img_mul_417[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3343:3336] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3343:3336] <= kernel_img_sum_417[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3343:3336] <= 'd0;
@@ -9188,7 +9207,7 @@ wire  [29:0]  kernel_img_sum_418 = kernel_img_mul_418[0] + kernel_img_mul_418[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3351:3344] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3351:3344] <= kernel_img_sum_418[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3351:3344] <= 'd0;
@@ -9210,7 +9229,7 @@ wire  [29:0]  kernel_img_sum_419 = kernel_img_mul_419[0] + kernel_img_mul_419[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3359:3352] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3359:3352] <= kernel_img_sum_419[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3359:3352] <= 'd0;
@@ -9232,7 +9251,7 @@ wire  [29:0]  kernel_img_sum_420 = kernel_img_mul_420[0] + kernel_img_mul_420[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3367:3360] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3367:3360] <= kernel_img_sum_420[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3367:3360] <= 'd0;
@@ -9254,7 +9273,7 @@ wire  [29:0]  kernel_img_sum_421 = kernel_img_mul_421[0] + kernel_img_mul_421[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3375:3368] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3375:3368] <= kernel_img_sum_421[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3375:3368] <= 'd0;
@@ -9276,7 +9295,7 @@ wire  [29:0]  kernel_img_sum_422 = kernel_img_mul_422[0] + kernel_img_mul_422[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3383:3376] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3383:3376] <= kernel_img_sum_422[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3383:3376] <= 'd0;
@@ -9298,7 +9317,7 @@ wire  [29:0]  kernel_img_sum_423 = kernel_img_mul_423[0] + kernel_img_mul_423[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3391:3384] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3391:3384] <= kernel_img_sum_423[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3391:3384] <= 'd0;
@@ -9320,7 +9339,7 @@ wire  [29:0]  kernel_img_sum_424 = kernel_img_mul_424[0] + kernel_img_mul_424[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3399:3392] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3399:3392] <= kernel_img_sum_424[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3399:3392] <= 'd0;
@@ -9342,7 +9361,7 @@ wire  [29:0]  kernel_img_sum_425 = kernel_img_mul_425[0] + kernel_img_mul_425[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3407:3400] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3407:3400] <= kernel_img_sum_425[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3407:3400] <= 'd0;
@@ -9364,7 +9383,7 @@ wire  [29:0]  kernel_img_sum_426 = kernel_img_mul_426[0] + kernel_img_mul_426[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3415:3408] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3415:3408] <= kernel_img_sum_426[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3415:3408] <= 'd0;
@@ -9386,7 +9405,7 @@ wire  [29:0]  kernel_img_sum_427 = kernel_img_mul_427[0] + kernel_img_mul_427[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3423:3416] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3423:3416] <= kernel_img_sum_427[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3423:3416] <= 'd0;
@@ -9408,7 +9427,7 @@ wire  [29:0]  kernel_img_sum_428 = kernel_img_mul_428[0] + kernel_img_mul_428[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3431:3424] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3431:3424] <= kernel_img_sum_428[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3431:3424] <= 'd0;
@@ -9430,7 +9449,7 @@ wire  [29:0]  kernel_img_sum_429 = kernel_img_mul_429[0] + kernel_img_mul_429[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3439:3432] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3439:3432] <= kernel_img_sum_429[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3439:3432] <= 'd0;
@@ -9452,7 +9471,7 @@ wire  [29:0]  kernel_img_sum_430 = kernel_img_mul_430[0] + kernel_img_mul_430[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3447:3440] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3447:3440] <= kernel_img_sum_430[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3447:3440] <= 'd0;
@@ -9474,7 +9493,7 @@ wire  [29:0]  kernel_img_sum_431 = kernel_img_mul_431[0] + kernel_img_mul_431[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3455:3448] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3455:3448] <= kernel_img_sum_431[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3455:3448] <= 'd0;
@@ -9496,7 +9515,7 @@ wire  [29:0]  kernel_img_sum_432 = kernel_img_mul_432[0] + kernel_img_mul_432[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3463:3456] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3463:3456] <= kernel_img_sum_432[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3463:3456] <= 'd0;
@@ -9518,7 +9537,7 @@ wire  [29:0]  kernel_img_sum_433 = kernel_img_mul_433[0] + kernel_img_mul_433[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3471:3464] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3471:3464] <= kernel_img_sum_433[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3471:3464] <= 'd0;
@@ -9540,7 +9559,7 @@ wire  [29:0]  kernel_img_sum_434 = kernel_img_mul_434[0] + kernel_img_mul_434[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3479:3472] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3479:3472] <= kernel_img_sum_434[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3479:3472] <= 'd0;
@@ -9562,7 +9581,7 @@ wire  [29:0]  kernel_img_sum_435 = kernel_img_mul_435[0] + kernel_img_mul_435[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3487:3480] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3487:3480] <= kernel_img_sum_435[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3487:3480] <= 'd0;
@@ -9584,7 +9603,7 @@ wire  [29:0]  kernel_img_sum_436 = kernel_img_mul_436[0] + kernel_img_mul_436[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3495:3488] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3495:3488] <= kernel_img_sum_436[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3495:3488] <= 'd0;
@@ -9606,7 +9625,7 @@ wire  [29:0]  kernel_img_sum_437 = kernel_img_mul_437[0] + kernel_img_mul_437[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3503:3496] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3503:3496] <= kernel_img_sum_437[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3503:3496] <= 'd0;
@@ -9628,7 +9647,7 @@ wire  [29:0]  kernel_img_sum_438 = kernel_img_mul_438[0] + kernel_img_mul_438[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3511:3504] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3511:3504] <= kernel_img_sum_438[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3511:3504] <= 'd0;
@@ -9650,7 +9669,7 @@ wire  [29:0]  kernel_img_sum_439 = kernel_img_mul_439[0] + kernel_img_mul_439[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3519:3512] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3519:3512] <= kernel_img_sum_439[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3519:3512] <= 'd0;
@@ -9672,7 +9691,7 @@ wire  [29:0]  kernel_img_sum_440 = kernel_img_mul_440[0] + kernel_img_mul_440[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3527:3520] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3527:3520] <= kernel_img_sum_440[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3527:3520] <= 'd0;
@@ -9694,7 +9713,7 @@ wire  [29:0]  kernel_img_sum_441 = kernel_img_mul_441[0] + kernel_img_mul_441[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3535:3528] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3535:3528] <= kernel_img_sum_441[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3535:3528] <= 'd0;
@@ -9716,7 +9735,7 @@ wire  [29:0]  kernel_img_sum_442 = kernel_img_mul_442[0] + kernel_img_mul_442[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3543:3536] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3543:3536] <= kernel_img_sum_442[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3543:3536] <= 'd0;
@@ -9738,7 +9757,7 @@ wire  [29:0]  kernel_img_sum_443 = kernel_img_mul_443[0] + kernel_img_mul_443[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3551:3544] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3551:3544] <= kernel_img_sum_443[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3551:3544] <= 'd0;
@@ -9760,7 +9779,7 @@ wire  [29:0]  kernel_img_sum_444 = kernel_img_mul_444[0] + kernel_img_mul_444[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3559:3552] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3559:3552] <= kernel_img_sum_444[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3559:3552] <= 'd0;
@@ -9782,7 +9801,7 @@ wire  [29:0]  kernel_img_sum_445 = kernel_img_mul_445[0] + kernel_img_mul_445[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3567:3560] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3567:3560] <= kernel_img_sum_445[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3567:3560] <= 'd0;
@@ -9804,7 +9823,7 @@ wire  [29:0]  kernel_img_sum_446 = kernel_img_mul_446[0] + kernel_img_mul_446[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3575:3568] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3575:3568] <= kernel_img_sum_446[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3575:3568] <= 'd0;
@@ -9826,7 +9845,7 @@ wire  [29:0]  kernel_img_sum_447 = kernel_img_mul_447[0] + kernel_img_mul_447[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3583:3576] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3583:3576] <= kernel_img_sum_447[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3583:3576] <= 'd0;
@@ -9848,7 +9867,7 @@ wire  [29:0]  kernel_img_sum_448 = kernel_img_mul_448[0] + kernel_img_mul_448[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3591:3584] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3591:3584] <= kernel_img_sum_448[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3591:3584] <= 'd0;
@@ -9870,7 +9889,7 @@ wire  [29:0]  kernel_img_sum_449 = kernel_img_mul_449[0] + kernel_img_mul_449[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3599:3592] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3599:3592] <= kernel_img_sum_449[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3599:3592] <= 'd0;
@@ -9892,7 +9911,7 @@ wire  [29:0]  kernel_img_sum_450 = kernel_img_mul_450[0] + kernel_img_mul_450[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3607:3600] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3607:3600] <= kernel_img_sum_450[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3607:3600] <= 'd0;
@@ -9914,7 +9933,7 @@ wire  [29:0]  kernel_img_sum_451 = kernel_img_mul_451[0] + kernel_img_mul_451[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3615:3608] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3615:3608] <= kernel_img_sum_451[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3615:3608] <= 'd0;
@@ -9936,7 +9955,7 @@ wire  [29:0]  kernel_img_sum_452 = kernel_img_mul_452[0] + kernel_img_mul_452[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3623:3616] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3623:3616] <= kernel_img_sum_452[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3623:3616] <= 'd0;
@@ -9958,7 +9977,7 @@ wire  [29:0]  kernel_img_sum_453 = kernel_img_mul_453[0] + kernel_img_mul_453[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3631:3624] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3631:3624] <= kernel_img_sum_453[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3631:3624] <= 'd0;
@@ -9980,7 +9999,7 @@ wire  [29:0]  kernel_img_sum_454 = kernel_img_mul_454[0] + kernel_img_mul_454[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3639:3632] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3639:3632] <= kernel_img_sum_454[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3639:3632] <= 'd0;
@@ -10002,7 +10021,7 @@ wire  [29:0]  kernel_img_sum_455 = kernel_img_mul_455[0] + kernel_img_mul_455[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3647:3640] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3647:3640] <= kernel_img_sum_455[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3647:3640] <= 'd0;
@@ -10024,7 +10043,7 @@ wire  [29:0]  kernel_img_sum_456 = kernel_img_mul_456[0] + kernel_img_mul_456[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3655:3648] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3655:3648] <= kernel_img_sum_456[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3655:3648] <= 'd0;
@@ -10046,7 +10065,7 @@ wire  [29:0]  kernel_img_sum_457 = kernel_img_mul_457[0] + kernel_img_mul_457[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3663:3656] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3663:3656] <= kernel_img_sum_457[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3663:3656] <= 'd0;
@@ -10068,7 +10087,7 @@ wire  [29:0]  kernel_img_sum_458 = kernel_img_mul_458[0] + kernel_img_mul_458[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3671:3664] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3671:3664] <= kernel_img_sum_458[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3671:3664] <= 'd0;
@@ -10090,7 +10109,7 @@ wire  [29:0]  kernel_img_sum_459 = kernel_img_mul_459[0] + kernel_img_mul_459[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3679:3672] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3679:3672] <= kernel_img_sum_459[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3679:3672] <= 'd0;
@@ -10112,7 +10131,7 @@ wire  [29:0]  kernel_img_sum_460 = kernel_img_mul_460[0] + kernel_img_mul_460[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3687:3680] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3687:3680] <= kernel_img_sum_460[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3687:3680] <= 'd0;
@@ -10134,7 +10153,7 @@ wire  [29:0]  kernel_img_sum_461 = kernel_img_mul_461[0] + kernel_img_mul_461[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3695:3688] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3695:3688] <= kernel_img_sum_461[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3695:3688] <= 'd0;
@@ -10156,7 +10175,7 @@ wire  [29:0]  kernel_img_sum_462 = kernel_img_mul_462[0] + kernel_img_mul_462[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3703:3696] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3703:3696] <= kernel_img_sum_462[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3703:3696] <= 'd0;
@@ -10178,7 +10197,7 @@ wire  [29:0]  kernel_img_sum_463 = kernel_img_mul_463[0] + kernel_img_mul_463[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3711:3704] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3711:3704] <= kernel_img_sum_463[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3711:3704] <= 'd0;
@@ -10200,7 +10219,7 @@ wire  [29:0]  kernel_img_sum_464 = kernel_img_mul_464[0] + kernel_img_mul_464[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3719:3712] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3719:3712] <= kernel_img_sum_464[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3719:3712] <= 'd0;
@@ -10222,7 +10241,7 @@ wire  [29:0]  kernel_img_sum_465 = kernel_img_mul_465[0] + kernel_img_mul_465[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3727:3720] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3727:3720] <= kernel_img_sum_465[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3727:3720] <= 'd0;
@@ -10244,7 +10263,7 @@ wire  [29:0]  kernel_img_sum_466 = kernel_img_mul_466[0] + kernel_img_mul_466[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3735:3728] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3735:3728] <= kernel_img_sum_466[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3735:3728] <= 'd0;
@@ -10266,7 +10285,7 @@ wire  [29:0]  kernel_img_sum_467 = kernel_img_mul_467[0] + kernel_img_mul_467[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3743:3736] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3743:3736] <= kernel_img_sum_467[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3743:3736] <= 'd0;
@@ -10288,7 +10307,7 @@ wire  [29:0]  kernel_img_sum_468 = kernel_img_mul_468[0] + kernel_img_mul_468[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3751:3744] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3751:3744] <= kernel_img_sum_468[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3751:3744] <= 'd0;
@@ -10310,7 +10329,7 @@ wire  [29:0]  kernel_img_sum_469 = kernel_img_mul_469[0] + kernel_img_mul_469[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3759:3752] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3759:3752] <= kernel_img_sum_469[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3759:3752] <= 'd0;
@@ -10332,7 +10351,7 @@ wire  [29:0]  kernel_img_sum_470 = kernel_img_mul_470[0] + kernel_img_mul_470[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3767:3760] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3767:3760] <= kernel_img_sum_470[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3767:3760] <= 'd0;
@@ -10354,7 +10373,7 @@ wire  [29:0]  kernel_img_sum_471 = kernel_img_mul_471[0] + kernel_img_mul_471[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3775:3768] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3775:3768] <= kernel_img_sum_471[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3775:3768] <= 'd0;
@@ -10376,7 +10395,7 @@ wire  [29:0]  kernel_img_sum_472 = kernel_img_mul_472[0] + kernel_img_mul_472[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3783:3776] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3783:3776] <= kernel_img_sum_472[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3783:3776] <= 'd0;
@@ -10398,7 +10417,7 @@ wire  [29:0]  kernel_img_sum_473 = kernel_img_mul_473[0] + kernel_img_mul_473[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3791:3784] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3791:3784] <= kernel_img_sum_473[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3791:3784] <= 'd0;
@@ -10420,7 +10439,7 @@ wire  [29:0]  kernel_img_sum_474 = kernel_img_mul_474[0] + kernel_img_mul_474[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3799:3792] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3799:3792] <= kernel_img_sum_474[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3799:3792] <= 'd0;
@@ -10442,7 +10461,7 @@ wire  [29:0]  kernel_img_sum_475 = kernel_img_mul_475[0] + kernel_img_mul_475[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3807:3800] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3807:3800] <= kernel_img_sum_475[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3807:3800] <= 'd0;
@@ -10464,7 +10483,7 @@ wire  [29:0]  kernel_img_sum_476 = kernel_img_mul_476[0] + kernel_img_mul_476[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3815:3808] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3815:3808] <= kernel_img_sum_476[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3815:3808] <= 'd0;
@@ -10486,7 +10505,7 @@ wire  [29:0]  kernel_img_sum_477 = kernel_img_mul_477[0] + kernel_img_mul_477[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3823:3816] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3823:3816] <= kernel_img_sum_477[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3823:3816] <= 'd0;
@@ -10508,7 +10527,7 @@ wire  [29:0]  kernel_img_sum_478 = kernel_img_mul_478[0] + kernel_img_mul_478[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3831:3824] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3831:3824] <= kernel_img_sum_478[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3831:3824] <= 'd0;
@@ -10530,7 +10549,7 @@ wire  [29:0]  kernel_img_sum_479 = kernel_img_mul_479[0] + kernel_img_mul_479[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3839:3832] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3839:3832] <= kernel_img_sum_479[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3839:3832] <= 'd0;
@@ -10552,7 +10571,7 @@ wire  [29:0]  kernel_img_sum_480 = kernel_img_mul_480[0] + kernel_img_mul_480[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3847:3840] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3847:3840] <= kernel_img_sum_480[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3847:3840] <= 'd0;
@@ -10574,7 +10593,7 @@ wire  [29:0]  kernel_img_sum_481 = kernel_img_mul_481[0] + kernel_img_mul_481[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3855:3848] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3855:3848] <= kernel_img_sum_481[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3855:3848] <= 'd0;
@@ -10596,7 +10615,7 @@ wire  [29:0]  kernel_img_sum_482 = kernel_img_mul_482[0] + kernel_img_mul_482[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3863:3856] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3863:3856] <= kernel_img_sum_482[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3863:3856] <= 'd0;
@@ -10618,7 +10637,7 @@ wire  [29:0]  kernel_img_sum_483 = kernel_img_mul_483[0] + kernel_img_mul_483[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3871:3864] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3871:3864] <= kernel_img_sum_483[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3871:3864] <= 'd0;
@@ -10640,7 +10659,7 @@ wire  [29:0]  kernel_img_sum_484 = kernel_img_mul_484[0] + kernel_img_mul_484[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3879:3872] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3879:3872] <= kernel_img_sum_484[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3879:3872] <= 'd0;
@@ -10662,7 +10681,7 @@ wire  [29:0]  kernel_img_sum_485 = kernel_img_mul_485[0] + kernel_img_mul_485[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3887:3880] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3887:3880] <= kernel_img_sum_485[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3887:3880] <= 'd0;
@@ -10684,7 +10703,7 @@ wire  [29:0]  kernel_img_sum_486 = kernel_img_mul_486[0] + kernel_img_mul_486[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3895:3888] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3895:3888] <= kernel_img_sum_486[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3895:3888] <= 'd0;
@@ -10706,7 +10725,7 @@ wire  [29:0]  kernel_img_sum_487 = kernel_img_mul_487[0] + kernel_img_mul_487[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3903:3896] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3903:3896] <= kernel_img_sum_487[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3903:3896] <= 'd0;
@@ -10728,7 +10747,7 @@ wire  [29:0]  kernel_img_sum_488 = kernel_img_mul_488[0] + kernel_img_mul_488[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3911:3904] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3911:3904] <= kernel_img_sum_488[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3911:3904] <= 'd0;
@@ -10750,7 +10769,7 @@ wire  [29:0]  kernel_img_sum_489 = kernel_img_mul_489[0] + kernel_img_mul_489[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3919:3912] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3919:3912] <= kernel_img_sum_489[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3919:3912] <= 'd0;
@@ -10772,7 +10791,7 @@ wire  [29:0]  kernel_img_sum_490 = kernel_img_mul_490[0] + kernel_img_mul_490[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3927:3920] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3927:3920] <= kernel_img_sum_490[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3927:3920] <= 'd0;
@@ -10794,7 +10813,7 @@ wire  [29:0]  kernel_img_sum_491 = kernel_img_mul_491[0] + kernel_img_mul_491[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3935:3928] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3935:3928] <= kernel_img_sum_491[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3935:3928] <= 'd0;
@@ -10816,7 +10835,7 @@ wire  [29:0]  kernel_img_sum_492 = kernel_img_mul_492[0] + kernel_img_mul_492[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3943:3936] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3943:3936] <= kernel_img_sum_492[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3943:3936] <= 'd0;
@@ -10838,7 +10857,7 @@ wire  [29:0]  kernel_img_sum_493 = kernel_img_mul_493[0] + kernel_img_mul_493[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3951:3944] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3951:3944] <= kernel_img_sum_493[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3951:3944] <= 'd0;
@@ -10860,7 +10879,7 @@ wire  [29:0]  kernel_img_sum_494 = kernel_img_mul_494[0] + kernel_img_mul_494[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3959:3952] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3959:3952] <= kernel_img_sum_494[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3959:3952] <= 'd0;
@@ -10882,7 +10901,7 @@ wire  [29:0]  kernel_img_sum_495 = kernel_img_mul_495[0] + kernel_img_mul_495[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3967:3960] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3967:3960] <= kernel_img_sum_495[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3967:3960] <= 'd0;
@@ -10904,7 +10923,7 @@ wire  [29:0]  kernel_img_sum_496 = kernel_img_mul_496[0] + kernel_img_mul_496[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3975:3968] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3975:3968] <= kernel_img_sum_496[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3975:3968] <= 'd0;
@@ -10926,7 +10945,7 @@ wire  [29:0]  kernel_img_sum_497 = kernel_img_mul_497[0] + kernel_img_mul_497[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3983:3976] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3983:3976] <= kernel_img_sum_497[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3983:3976] <= 'd0;
@@ -10948,7 +10967,7 @@ wire  [29:0]  kernel_img_sum_498 = kernel_img_mul_498[0] + kernel_img_mul_498[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3991:3984] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3991:3984] <= kernel_img_sum_498[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3991:3984] <= 'd0;
@@ -10970,7 +10989,7 @@ wire  [29:0]  kernel_img_sum_499 = kernel_img_mul_499[0] + kernel_img_mul_499[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[3999:3992] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[3999:3992] <= kernel_img_sum_499[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[3999:3992] <= 'd0;
@@ -10992,7 +11011,7 @@ wire  [29:0]  kernel_img_sum_500 = kernel_img_mul_500[0] + kernel_img_mul_500[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4007:4000] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4007:4000] <= kernel_img_sum_500[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4007:4000] <= 'd0;
@@ -11014,7 +11033,7 @@ wire  [29:0]  kernel_img_sum_501 = kernel_img_mul_501[0] + kernel_img_mul_501[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4015:4008] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4015:4008] <= kernel_img_sum_501[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4015:4008] <= 'd0;
@@ -11036,7 +11055,7 @@ wire  [29:0]  kernel_img_sum_502 = kernel_img_mul_502[0] + kernel_img_mul_502[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4023:4016] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4023:4016] <= kernel_img_sum_502[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4023:4016] <= 'd0;
@@ -11058,7 +11077,7 @@ wire  [29:0]  kernel_img_sum_503 = kernel_img_mul_503[0] + kernel_img_mul_503[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4031:4024] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4031:4024] <= kernel_img_sum_503[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4031:4024] <= 'd0;
@@ -11080,7 +11099,7 @@ wire  [29:0]  kernel_img_sum_504 = kernel_img_mul_504[0] + kernel_img_mul_504[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4039:4032] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4039:4032] <= kernel_img_sum_504[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4039:4032] <= 'd0;
@@ -11102,7 +11121,7 @@ wire  [29:0]  kernel_img_sum_505 = kernel_img_mul_505[0] + kernel_img_mul_505[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4047:4040] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4047:4040] <= kernel_img_sum_505[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4047:4040] <= 'd0;
@@ -11124,7 +11143,7 @@ wire  [29:0]  kernel_img_sum_506 = kernel_img_mul_506[0] + kernel_img_mul_506[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4055:4048] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4055:4048] <= kernel_img_sum_506[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4055:4048] <= 'd0;
@@ -11146,7 +11165,7 @@ wire  [29:0]  kernel_img_sum_507 = kernel_img_mul_507[0] + kernel_img_mul_507[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4063:4056] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4063:4056] <= kernel_img_sum_507[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4063:4056] <= 'd0;
@@ -11168,7 +11187,7 @@ wire  [29:0]  kernel_img_sum_508 = kernel_img_mul_508[0] + kernel_img_mul_508[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4071:4064] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4071:4064] <= kernel_img_sum_508[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4071:4064] <= 'd0;
@@ -11190,7 +11209,7 @@ wire  [29:0]  kernel_img_sum_509 = kernel_img_mul_509[0] + kernel_img_mul_509[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4079:4072] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4079:4072] <= kernel_img_sum_509[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4079:4072] <= 'd0;
@@ -11212,7 +11231,7 @@ wire  [29:0]  kernel_img_sum_510 = kernel_img_mul_510[0] + kernel_img_mul_510[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4087:4080] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4087:4080] <= kernel_img_sum_510[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4087:4080] <= 'd0;
@@ -11234,7 +11253,7 @@ wire  [29:0]  kernel_img_sum_511 = kernel_img_mul_511[0] + kernel_img_mul_511[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4095:4088] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4095:4088] <= kernel_img_sum_511[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4095:4088] <= 'd0;
@@ -11256,7 +11275,7 @@ wire  [29:0]  kernel_img_sum_512 = kernel_img_mul_512[0] + kernel_img_mul_512[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4103:4096] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4103:4096] <= kernel_img_sum_512[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4103:4096] <= 'd0;
@@ -11278,7 +11297,7 @@ wire  [29:0]  kernel_img_sum_513 = kernel_img_mul_513[0] + kernel_img_mul_513[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4111:4104] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4111:4104] <= kernel_img_sum_513[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4111:4104] <= 'd0;
@@ -11300,7 +11319,7 @@ wire  [29:0]  kernel_img_sum_514 = kernel_img_mul_514[0] + kernel_img_mul_514[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4119:4112] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4119:4112] <= kernel_img_sum_514[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4119:4112] <= 'd0;
@@ -11322,7 +11341,7 @@ wire  [29:0]  kernel_img_sum_515 = kernel_img_mul_515[0] + kernel_img_mul_515[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4127:4120] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4127:4120] <= kernel_img_sum_515[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4127:4120] <= 'd0;
@@ -11344,7 +11363,7 @@ wire  [29:0]  kernel_img_sum_516 = kernel_img_mul_516[0] + kernel_img_mul_516[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4135:4128] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4135:4128] <= kernel_img_sum_516[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4135:4128] <= 'd0;
@@ -11366,7 +11385,7 @@ wire  [29:0]  kernel_img_sum_517 = kernel_img_mul_517[0] + kernel_img_mul_517[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4143:4136] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4143:4136] <= kernel_img_sum_517[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4143:4136] <= 'd0;
@@ -11388,7 +11407,7 @@ wire  [29:0]  kernel_img_sum_518 = kernel_img_mul_518[0] + kernel_img_mul_518[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4151:4144] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4151:4144] <= kernel_img_sum_518[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4151:4144] <= 'd0;
@@ -11410,7 +11429,7 @@ wire  [29:0]  kernel_img_sum_519 = kernel_img_mul_519[0] + kernel_img_mul_519[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4159:4152] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4159:4152] <= kernel_img_sum_519[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4159:4152] <= 'd0;
@@ -11432,7 +11451,7 @@ wire  [29:0]  kernel_img_sum_520 = kernel_img_mul_520[0] + kernel_img_mul_520[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4167:4160] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4167:4160] <= kernel_img_sum_520[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4167:4160] <= 'd0;
@@ -11454,7 +11473,7 @@ wire  [29:0]  kernel_img_sum_521 = kernel_img_mul_521[0] + kernel_img_mul_521[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4175:4168] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4175:4168] <= kernel_img_sum_521[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4175:4168] <= 'd0;
@@ -11476,7 +11495,7 @@ wire  [29:0]  kernel_img_sum_522 = kernel_img_mul_522[0] + kernel_img_mul_522[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4183:4176] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4183:4176] <= kernel_img_sum_522[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4183:4176] <= 'd0;
@@ -11498,7 +11517,7 @@ wire  [29:0]  kernel_img_sum_523 = kernel_img_mul_523[0] + kernel_img_mul_523[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4191:4184] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4191:4184] <= kernel_img_sum_523[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4191:4184] <= 'd0;
@@ -11520,7 +11539,7 @@ wire  [29:0]  kernel_img_sum_524 = kernel_img_mul_524[0] + kernel_img_mul_524[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4199:4192] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4199:4192] <= kernel_img_sum_524[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4199:4192] <= 'd0;
@@ -11542,7 +11561,7 @@ wire  [29:0]  kernel_img_sum_525 = kernel_img_mul_525[0] + kernel_img_mul_525[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4207:4200] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4207:4200] <= kernel_img_sum_525[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4207:4200] <= 'd0;
@@ -11564,7 +11583,7 @@ wire  [29:0]  kernel_img_sum_526 = kernel_img_mul_526[0] + kernel_img_mul_526[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4215:4208] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4215:4208] <= kernel_img_sum_526[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4215:4208] <= 'd0;
@@ -11586,7 +11605,7 @@ wire  [29:0]  kernel_img_sum_527 = kernel_img_mul_527[0] + kernel_img_mul_527[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4223:4216] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4223:4216] <= kernel_img_sum_527[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4223:4216] <= 'd0;
@@ -11608,7 +11627,7 @@ wire  [29:0]  kernel_img_sum_528 = kernel_img_mul_528[0] + kernel_img_mul_528[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4231:4224] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4231:4224] <= kernel_img_sum_528[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4231:4224] <= 'd0;
@@ -11630,7 +11649,7 @@ wire  [29:0]  kernel_img_sum_529 = kernel_img_mul_529[0] + kernel_img_mul_529[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4239:4232] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4239:4232] <= kernel_img_sum_529[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4239:4232] <= 'd0;
@@ -11652,7 +11671,7 @@ wire  [29:0]  kernel_img_sum_530 = kernel_img_mul_530[0] + kernel_img_mul_530[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4247:4240] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4247:4240] <= kernel_img_sum_530[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4247:4240] <= 'd0;
@@ -11674,7 +11693,7 @@ wire  [29:0]  kernel_img_sum_531 = kernel_img_mul_531[0] + kernel_img_mul_531[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4255:4248] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4255:4248] <= kernel_img_sum_531[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4255:4248] <= 'd0;
@@ -11696,7 +11715,7 @@ wire  [29:0]  kernel_img_sum_532 = kernel_img_mul_532[0] + kernel_img_mul_532[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4263:4256] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4263:4256] <= kernel_img_sum_532[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4263:4256] <= 'd0;
@@ -11718,7 +11737,7 @@ wire  [29:0]  kernel_img_sum_533 = kernel_img_mul_533[0] + kernel_img_mul_533[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4271:4264] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4271:4264] <= kernel_img_sum_533[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4271:4264] <= 'd0;
@@ -11740,7 +11759,7 @@ wire  [29:0]  kernel_img_sum_534 = kernel_img_mul_534[0] + kernel_img_mul_534[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4279:4272] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4279:4272] <= kernel_img_sum_534[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4279:4272] <= 'd0;
@@ -11762,7 +11781,7 @@ wire  [29:0]  kernel_img_sum_535 = kernel_img_mul_535[0] + kernel_img_mul_535[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4287:4280] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4287:4280] <= kernel_img_sum_535[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4287:4280] <= 'd0;
@@ -11784,7 +11803,7 @@ wire  [29:0]  kernel_img_sum_536 = kernel_img_mul_536[0] + kernel_img_mul_536[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4295:4288] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4295:4288] <= kernel_img_sum_536[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4295:4288] <= 'd0;
@@ -11806,7 +11825,7 @@ wire  [29:0]  kernel_img_sum_537 = kernel_img_mul_537[0] + kernel_img_mul_537[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4303:4296] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4303:4296] <= kernel_img_sum_537[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4303:4296] <= 'd0;
@@ -11828,7 +11847,7 @@ wire  [29:0]  kernel_img_sum_538 = kernel_img_mul_538[0] + kernel_img_mul_538[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4311:4304] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4311:4304] <= kernel_img_sum_538[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4311:4304] <= 'd0;
@@ -11850,7 +11869,7 @@ wire  [29:0]  kernel_img_sum_539 = kernel_img_mul_539[0] + kernel_img_mul_539[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4319:4312] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4319:4312] <= kernel_img_sum_539[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4319:4312] <= 'd0;
@@ -11872,7 +11891,7 @@ wire  [29:0]  kernel_img_sum_540 = kernel_img_mul_540[0] + kernel_img_mul_540[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4327:4320] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4327:4320] <= kernel_img_sum_540[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4327:4320] <= 'd0;
@@ -11894,7 +11913,7 @@ wire  [29:0]  kernel_img_sum_541 = kernel_img_mul_541[0] + kernel_img_mul_541[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4335:4328] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4335:4328] <= kernel_img_sum_541[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4335:4328] <= 'd0;
@@ -11916,7 +11935,7 @@ wire  [29:0]  kernel_img_sum_542 = kernel_img_mul_542[0] + kernel_img_mul_542[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4343:4336] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4343:4336] <= kernel_img_sum_542[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4343:4336] <= 'd0;
@@ -11938,7 +11957,7 @@ wire  [29:0]  kernel_img_sum_543 = kernel_img_mul_543[0] + kernel_img_mul_543[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4351:4344] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4351:4344] <= kernel_img_sum_543[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4351:4344] <= 'd0;
@@ -11960,7 +11979,7 @@ wire  [29:0]  kernel_img_sum_544 = kernel_img_mul_544[0] + kernel_img_mul_544[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4359:4352] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4359:4352] <= kernel_img_sum_544[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4359:4352] <= 'd0;
@@ -11982,7 +12001,7 @@ wire  [29:0]  kernel_img_sum_545 = kernel_img_mul_545[0] + kernel_img_mul_545[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4367:4360] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4367:4360] <= kernel_img_sum_545[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4367:4360] <= 'd0;
@@ -12004,7 +12023,7 @@ wire  [29:0]  kernel_img_sum_546 = kernel_img_mul_546[0] + kernel_img_mul_546[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4375:4368] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4375:4368] <= kernel_img_sum_546[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4375:4368] <= 'd0;
@@ -12026,7 +12045,7 @@ wire  [29:0]  kernel_img_sum_547 = kernel_img_mul_547[0] + kernel_img_mul_547[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4383:4376] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4383:4376] <= kernel_img_sum_547[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4383:4376] <= 'd0;
@@ -12048,7 +12067,7 @@ wire  [29:0]  kernel_img_sum_548 = kernel_img_mul_548[0] + kernel_img_mul_548[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4391:4384] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4391:4384] <= kernel_img_sum_548[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4391:4384] <= 'd0;
@@ -12070,7 +12089,7 @@ wire  [29:0]  kernel_img_sum_549 = kernel_img_mul_549[0] + kernel_img_mul_549[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4399:4392] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4399:4392] <= kernel_img_sum_549[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4399:4392] <= 'd0;
@@ -12092,7 +12111,7 @@ wire  [29:0]  kernel_img_sum_550 = kernel_img_mul_550[0] + kernel_img_mul_550[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4407:4400] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4407:4400] <= kernel_img_sum_550[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4407:4400] <= 'd0;
@@ -12114,7 +12133,7 @@ wire  [29:0]  kernel_img_sum_551 = kernel_img_mul_551[0] + kernel_img_mul_551[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4415:4408] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4415:4408] <= kernel_img_sum_551[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4415:4408] <= 'd0;
@@ -12136,7 +12155,7 @@ wire  [29:0]  kernel_img_sum_552 = kernel_img_mul_552[0] + kernel_img_mul_552[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4423:4416] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4423:4416] <= kernel_img_sum_552[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4423:4416] <= 'd0;
@@ -12158,7 +12177,7 @@ wire  [29:0]  kernel_img_sum_553 = kernel_img_mul_553[0] + kernel_img_mul_553[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4431:4424] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4431:4424] <= kernel_img_sum_553[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4431:4424] <= 'd0;
@@ -12180,7 +12199,7 @@ wire  [29:0]  kernel_img_sum_554 = kernel_img_mul_554[0] + kernel_img_mul_554[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4439:4432] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4439:4432] <= kernel_img_sum_554[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4439:4432] <= 'd0;
@@ -12202,7 +12221,7 @@ wire  [29:0]  kernel_img_sum_555 = kernel_img_mul_555[0] + kernel_img_mul_555[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4447:4440] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4447:4440] <= kernel_img_sum_555[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4447:4440] <= 'd0;
@@ -12224,7 +12243,7 @@ wire  [29:0]  kernel_img_sum_556 = kernel_img_mul_556[0] + kernel_img_mul_556[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4455:4448] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4455:4448] <= kernel_img_sum_556[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4455:4448] <= 'd0;
@@ -12246,7 +12265,7 @@ wire  [29:0]  kernel_img_sum_557 = kernel_img_mul_557[0] + kernel_img_mul_557[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4463:4456] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4463:4456] <= kernel_img_sum_557[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4463:4456] <= 'd0;
@@ -12268,7 +12287,7 @@ wire  [29:0]  kernel_img_sum_558 = kernel_img_mul_558[0] + kernel_img_mul_558[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4471:4464] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4471:4464] <= kernel_img_sum_558[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4471:4464] <= 'd0;
@@ -12290,7 +12309,7 @@ wire  [29:0]  kernel_img_sum_559 = kernel_img_mul_559[0] + kernel_img_mul_559[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4479:4472] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4479:4472] <= kernel_img_sum_559[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4479:4472] <= 'd0;
@@ -12312,7 +12331,7 @@ wire  [29:0]  kernel_img_sum_560 = kernel_img_mul_560[0] + kernel_img_mul_560[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4487:4480] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4487:4480] <= kernel_img_sum_560[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4487:4480] <= 'd0;
@@ -12334,7 +12353,7 @@ wire  [29:0]  kernel_img_sum_561 = kernel_img_mul_561[0] + kernel_img_mul_561[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4495:4488] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4495:4488] <= kernel_img_sum_561[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4495:4488] <= 'd0;
@@ -12356,7 +12375,7 @@ wire  [29:0]  kernel_img_sum_562 = kernel_img_mul_562[0] + kernel_img_mul_562[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4503:4496] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4503:4496] <= kernel_img_sum_562[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4503:4496] <= 'd0;
@@ -12378,7 +12397,7 @@ wire  [29:0]  kernel_img_sum_563 = kernel_img_mul_563[0] + kernel_img_mul_563[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4511:4504] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4511:4504] <= kernel_img_sum_563[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4511:4504] <= 'd0;
@@ -12400,7 +12419,7 @@ wire  [29:0]  kernel_img_sum_564 = kernel_img_mul_564[0] + kernel_img_mul_564[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4519:4512] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4519:4512] <= kernel_img_sum_564[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4519:4512] <= 'd0;
@@ -12422,7 +12441,7 @@ wire  [29:0]  kernel_img_sum_565 = kernel_img_mul_565[0] + kernel_img_mul_565[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4527:4520] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4527:4520] <= kernel_img_sum_565[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4527:4520] <= 'd0;
@@ -12444,7 +12463,7 @@ wire  [29:0]  kernel_img_sum_566 = kernel_img_mul_566[0] + kernel_img_mul_566[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4535:4528] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4535:4528] <= kernel_img_sum_566[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4535:4528] <= 'd0;
@@ -12466,7 +12485,7 @@ wire  [29:0]  kernel_img_sum_567 = kernel_img_mul_567[0] + kernel_img_mul_567[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4543:4536] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4543:4536] <= kernel_img_sum_567[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4543:4536] <= 'd0;
@@ -12488,7 +12507,7 @@ wire  [29:0]  kernel_img_sum_568 = kernel_img_mul_568[0] + kernel_img_mul_568[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4551:4544] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4551:4544] <= kernel_img_sum_568[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4551:4544] <= 'd0;
@@ -12510,7 +12529,7 @@ wire  [29:0]  kernel_img_sum_569 = kernel_img_mul_569[0] + kernel_img_mul_569[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4559:4552] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4559:4552] <= kernel_img_sum_569[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4559:4552] <= 'd0;
@@ -12532,7 +12551,7 @@ wire  [29:0]  kernel_img_sum_570 = kernel_img_mul_570[0] + kernel_img_mul_570[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4567:4560] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4567:4560] <= kernel_img_sum_570[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4567:4560] <= 'd0;
@@ -12554,7 +12573,7 @@ wire  [29:0]  kernel_img_sum_571 = kernel_img_mul_571[0] + kernel_img_mul_571[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4575:4568] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4575:4568] <= kernel_img_sum_571[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4575:4568] <= 'd0;
@@ -12576,7 +12595,7 @@ wire  [29:0]  kernel_img_sum_572 = kernel_img_mul_572[0] + kernel_img_mul_572[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4583:4576] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4583:4576] <= kernel_img_sum_572[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4583:4576] <= 'd0;
@@ -12598,7 +12617,7 @@ wire  [29:0]  kernel_img_sum_573 = kernel_img_mul_573[0] + kernel_img_mul_573[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4591:4584] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4591:4584] <= kernel_img_sum_573[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4591:4584] <= 'd0;
@@ -12620,7 +12639,7 @@ wire  [29:0]  kernel_img_sum_574 = kernel_img_mul_574[0] + kernel_img_mul_574[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4599:4592] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4599:4592] <= kernel_img_sum_574[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4599:4592] <= 'd0;
@@ -12642,7 +12661,7 @@ wire  [29:0]  kernel_img_sum_575 = kernel_img_mul_575[0] + kernel_img_mul_575[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4607:4600] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4607:4600] <= kernel_img_sum_575[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4607:4600] <= 'd0;
@@ -12664,7 +12683,7 @@ wire  [29:0]  kernel_img_sum_576 = kernel_img_mul_576[0] + kernel_img_mul_576[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4615:4608] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4615:4608] <= kernel_img_sum_576[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4615:4608] <= 'd0;
@@ -12686,7 +12705,7 @@ wire  [29:0]  kernel_img_sum_577 = kernel_img_mul_577[0] + kernel_img_mul_577[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4623:4616] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4623:4616] <= kernel_img_sum_577[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4623:4616] <= 'd0;
@@ -12708,7 +12727,7 @@ wire  [29:0]  kernel_img_sum_578 = kernel_img_mul_578[0] + kernel_img_mul_578[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4631:4624] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4631:4624] <= kernel_img_sum_578[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4631:4624] <= 'd0;
@@ -12730,7 +12749,7 @@ wire  [29:0]  kernel_img_sum_579 = kernel_img_mul_579[0] + kernel_img_mul_579[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4639:4632] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4639:4632] <= kernel_img_sum_579[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4639:4632] <= 'd0;
@@ -12752,7 +12771,7 @@ wire  [29:0]  kernel_img_sum_580 = kernel_img_mul_580[0] + kernel_img_mul_580[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4647:4640] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4647:4640] <= kernel_img_sum_580[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4647:4640] <= 'd0;
@@ -12774,7 +12793,7 @@ wire  [29:0]  kernel_img_sum_581 = kernel_img_mul_581[0] + kernel_img_mul_581[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4655:4648] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4655:4648] <= kernel_img_sum_581[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4655:4648] <= 'd0;
@@ -12796,7 +12815,7 @@ wire  [29:0]  kernel_img_sum_582 = kernel_img_mul_582[0] + kernel_img_mul_582[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4663:4656] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4663:4656] <= kernel_img_sum_582[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4663:4656] <= 'd0;
@@ -12818,7 +12837,7 @@ wire  [29:0]  kernel_img_sum_583 = kernel_img_mul_583[0] + kernel_img_mul_583[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4671:4664] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4671:4664] <= kernel_img_sum_583[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4671:4664] <= 'd0;
@@ -12840,7 +12859,7 @@ wire  [29:0]  kernel_img_sum_584 = kernel_img_mul_584[0] + kernel_img_mul_584[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4679:4672] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4679:4672] <= kernel_img_sum_584[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4679:4672] <= 'd0;
@@ -12862,7 +12881,7 @@ wire  [29:0]  kernel_img_sum_585 = kernel_img_mul_585[0] + kernel_img_mul_585[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4687:4680] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4687:4680] <= kernel_img_sum_585[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4687:4680] <= 'd0;
@@ -12884,7 +12903,7 @@ wire  [29:0]  kernel_img_sum_586 = kernel_img_mul_586[0] + kernel_img_mul_586[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4695:4688] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4695:4688] <= kernel_img_sum_586[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4695:4688] <= 'd0;
@@ -12906,7 +12925,7 @@ wire  [29:0]  kernel_img_sum_587 = kernel_img_mul_587[0] + kernel_img_mul_587[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4703:4696] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4703:4696] <= kernel_img_sum_587[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4703:4696] <= 'd0;
@@ -12928,7 +12947,7 @@ wire  [29:0]  kernel_img_sum_588 = kernel_img_mul_588[0] + kernel_img_mul_588[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4711:4704] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4711:4704] <= kernel_img_sum_588[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4711:4704] <= 'd0;
@@ -12950,7 +12969,7 @@ wire  [29:0]  kernel_img_sum_589 = kernel_img_mul_589[0] + kernel_img_mul_589[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4719:4712] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4719:4712] <= kernel_img_sum_589[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4719:4712] <= 'd0;
@@ -12972,7 +12991,7 @@ wire  [29:0]  kernel_img_sum_590 = kernel_img_mul_590[0] + kernel_img_mul_590[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4727:4720] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4727:4720] <= kernel_img_sum_590[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4727:4720] <= 'd0;
@@ -12994,7 +13013,7 @@ wire  [29:0]  kernel_img_sum_591 = kernel_img_mul_591[0] + kernel_img_mul_591[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4735:4728] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4735:4728] <= kernel_img_sum_591[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4735:4728] <= 'd0;
@@ -13016,7 +13035,7 @@ wire  [29:0]  kernel_img_sum_592 = kernel_img_mul_592[0] + kernel_img_mul_592[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4743:4736] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4743:4736] <= kernel_img_sum_592[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4743:4736] <= 'd0;
@@ -13038,7 +13057,7 @@ wire  [29:0]  kernel_img_sum_593 = kernel_img_mul_593[0] + kernel_img_mul_593[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4751:4744] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4751:4744] <= kernel_img_sum_593[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4751:4744] <= 'd0;
@@ -13060,7 +13079,7 @@ wire  [29:0]  kernel_img_sum_594 = kernel_img_mul_594[0] + kernel_img_mul_594[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4759:4752] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4759:4752] <= kernel_img_sum_594[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4759:4752] <= 'd0;
@@ -13082,7 +13101,7 @@ wire  [29:0]  kernel_img_sum_595 = kernel_img_mul_595[0] + kernel_img_mul_595[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4767:4760] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4767:4760] <= kernel_img_sum_595[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4767:4760] <= 'd0;
@@ -13104,7 +13123,7 @@ wire  [29:0]  kernel_img_sum_596 = kernel_img_mul_596[0] + kernel_img_mul_596[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4775:4768] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4775:4768] <= kernel_img_sum_596[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4775:4768] <= 'd0;
@@ -13126,7 +13145,7 @@ wire  [29:0]  kernel_img_sum_597 = kernel_img_mul_597[0] + kernel_img_mul_597[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4783:4776] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4783:4776] <= kernel_img_sum_597[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4783:4776] <= 'd0;
@@ -13148,7 +13167,7 @@ wire  [29:0]  kernel_img_sum_598 = kernel_img_mul_598[0] + kernel_img_mul_598[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4791:4784] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4791:4784] <= kernel_img_sum_598[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4791:4784] <= 'd0;
@@ -13170,7 +13189,7 @@ wire  [29:0]  kernel_img_sum_599 = kernel_img_mul_599[0] + kernel_img_mul_599[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4799:4792] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4799:4792] <= kernel_img_sum_599[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4799:4792] <= 'd0;
@@ -13192,7 +13211,7 @@ wire  [29:0]  kernel_img_sum_600 = kernel_img_mul_600[0] + kernel_img_mul_600[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4807:4800] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4807:4800] <= kernel_img_sum_600[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4807:4800] <= 'd0;
@@ -13214,7 +13233,7 @@ wire  [29:0]  kernel_img_sum_601 = kernel_img_mul_601[0] + kernel_img_mul_601[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4815:4808] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4815:4808] <= kernel_img_sum_601[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4815:4808] <= 'd0;
@@ -13236,7 +13255,7 @@ wire  [29:0]  kernel_img_sum_602 = kernel_img_mul_602[0] + kernel_img_mul_602[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4823:4816] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4823:4816] <= kernel_img_sum_602[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4823:4816] <= 'd0;
@@ -13258,7 +13277,7 @@ wire  [29:0]  kernel_img_sum_603 = kernel_img_mul_603[0] + kernel_img_mul_603[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4831:4824] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4831:4824] <= kernel_img_sum_603[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4831:4824] <= 'd0;
@@ -13280,7 +13299,7 @@ wire  [29:0]  kernel_img_sum_604 = kernel_img_mul_604[0] + kernel_img_mul_604[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4839:4832] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4839:4832] <= kernel_img_sum_604[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4839:4832] <= 'd0;
@@ -13302,7 +13321,7 @@ wire  [29:0]  kernel_img_sum_605 = kernel_img_mul_605[0] + kernel_img_mul_605[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4847:4840] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4847:4840] <= kernel_img_sum_605[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4847:4840] <= 'd0;
@@ -13324,7 +13343,7 @@ wire  [29:0]  kernel_img_sum_606 = kernel_img_mul_606[0] + kernel_img_mul_606[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4855:4848] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4855:4848] <= kernel_img_sum_606[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4855:4848] <= 'd0;
@@ -13346,7 +13365,7 @@ wire  [29:0]  kernel_img_sum_607 = kernel_img_mul_607[0] + kernel_img_mul_607[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4863:4856] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4863:4856] <= kernel_img_sum_607[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4863:4856] <= 'd0;
@@ -13368,7 +13387,7 @@ wire  [29:0]  kernel_img_sum_608 = kernel_img_mul_608[0] + kernel_img_mul_608[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4871:4864] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4871:4864] <= kernel_img_sum_608[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4871:4864] <= 'd0;
@@ -13390,7 +13409,7 @@ wire  [29:0]  kernel_img_sum_609 = kernel_img_mul_609[0] + kernel_img_mul_609[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4879:4872] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4879:4872] <= kernel_img_sum_609[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4879:4872] <= 'd0;
@@ -13412,7 +13431,7 @@ wire  [29:0]  kernel_img_sum_610 = kernel_img_mul_610[0] + kernel_img_mul_610[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4887:4880] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4887:4880] <= kernel_img_sum_610[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4887:4880] <= 'd0;
@@ -13434,7 +13453,7 @@ wire  [29:0]  kernel_img_sum_611 = kernel_img_mul_611[0] + kernel_img_mul_611[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4895:4888] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4895:4888] <= kernel_img_sum_611[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4895:4888] <= 'd0;
@@ -13456,7 +13475,7 @@ wire  [29:0]  kernel_img_sum_612 = kernel_img_mul_612[0] + kernel_img_mul_612[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4903:4896] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4903:4896] <= kernel_img_sum_612[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4903:4896] <= 'd0;
@@ -13478,7 +13497,7 @@ wire  [29:0]  kernel_img_sum_613 = kernel_img_mul_613[0] + kernel_img_mul_613[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4911:4904] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4911:4904] <= kernel_img_sum_613[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4911:4904] <= 'd0;
@@ -13500,7 +13519,7 @@ wire  [29:0]  kernel_img_sum_614 = kernel_img_mul_614[0] + kernel_img_mul_614[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4919:4912] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4919:4912] <= kernel_img_sum_614[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4919:4912] <= 'd0;
@@ -13522,7 +13541,7 @@ wire  [29:0]  kernel_img_sum_615 = kernel_img_mul_615[0] + kernel_img_mul_615[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4927:4920] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4927:4920] <= kernel_img_sum_615[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4927:4920] <= 'd0;
@@ -13544,7 +13563,7 @@ wire  [29:0]  kernel_img_sum_616 = kernel_img_mul_616[0] + kernel_img_mul_616[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4935:4928] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4935:4928] <= kernel_img_sum_616[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4935:4928] <= 'd0;
@@ -13566,7 +13585,7 @@ wire  [29:0]  kernel_img_sum_617 = kernel_img_mul_617[0] + kernel_img_mul_617[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4943:4936] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4943:4936] <= kernel_img_sum_617[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4943:4936] <= 'd0;
@@ -13588,7 +13607,7 @@ wire  [29:0]  kernel_img_sum_618 = kernel_img_mul_618[0] + kernel_img_mul_618[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4951:4944] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4951:4944] <= kernel_img_sum_618[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4951:4944] <= 'd0;
@@ -13610,7 +13629,7 @@ wire  [29:0]  kernel_img_sum_619 = kernel_img_mul_619[0] + kernel_img_mul_619[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4959:4952] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4959:4952] <= kernel_img_sum_619[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4959:4952] <= 'd0;
@@ -13632,7 +13651,7 @@ wire  [29:0]  kernel_img_sum_620 = kernel_img_mul_620[0] + kernel_img_mul_620[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4967:4960] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4967:4960] <= kernel_img_sum_620[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4967:4960] <= 'd0;
@@ -13654,7 +13673,7 @@ wire  [29:0]  kernel_img_sum_621 = kernel_img_mul_621[0] + kernel_img_mul_621[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4975:4968] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4975:4968] <= kernel_img_sum_621[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4975:4968] <= 'd0;
@@ -13676,7 +13695,7 @@ wire  [29:0]  kernel_img_sum_622 = kernel_img_mul_622[0] + kernel_img_mul_622[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4983:4976] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4983:4976] <= kernel_img_sum_622[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4983:4976] <= 'd0;
@@ -13698,7 +13717,7 @@ wire  [29:0]  kernel_img_sum_623 = kernel_img_mul_623[0] + kernel_img_mul_623[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4991:4984] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4991:4984] <= kernel_img_sum_623[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4991:4984] <= 'd0;
@@ -13720,7 +13739,7 @@ wire  [29:0]  kernel_img_sum_624 = kernel_img_mul_624[0] + kernel_img_mul_624[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[4999:4992] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[4999:4992] <= kernel_img_sum_624[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[4999:4992] <= 'd0;
@@ -13742,7 +13761,7 @@ wire  [29:0]  kernel_img_sum_625 = kernel_img_mul_625[0] + kernel_img_mul_625[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[5007:5000] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[5007:5000] <= kernel_img_sum_625[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[5007:5000] <= 'd0;
@@ -13764,7 +13783,7 @@ wire  [29:0]  kernel_img_sum_626 = kernel_img_mul_626[0] + kernel_img_mul_626[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[5015:5008] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[5015:5008] <= kernel_img_sum_626[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[5015:5008] <= 'd0;
@@ -13786,7 +13805,7 @@ wire  [29:0]  kernel_img_sum_627 = kernel_img_mul_627[0] + kernel_img_mul_627[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[5023:5016] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[5023:5016] <= kernel_img_sum_627[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[5023:5016] <= 'd0;
@@ -13808,7 +13827,7 @@ wire  [29:0]  kernel_img_sum_628 = kernel_img_mul_628[0] + kernel_img_mul_628[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[5031:5024] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[5031:5024] <= kernel_img_sum_628[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[5031:5024] <= 'd0;
@@ -13830,7 +13849,7 @@ wire  [29:0]  kernel_img_sum_629 = kernel_img_mul_629[0] + kernel_img_mul_629[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[5039:5032] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[5039:5032] <= kernel_img_sum_629[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[5039:5032] <= 'd0;
@@ -13852,7 +13871,7 @@ wire  [29:0]  kernel_img_sum_630 = kernel_img_mul_630[0] + kernel_img_mul_630[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[5047:5040] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[5047:5040] <= kernel_img_sum_630[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[5047:5040] <= 'd0;
@@ -13874,7 +13893,7 @@ wire  [29:0]  kernel_img_sum_631 = kernel_img_mul_631[0] + kernel_img_mul_631[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[5055:5048] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[5055:5048] <= kernel_img_sum_631[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[5055:5048] <= 'd0;
@@ -13896,7 +13915,7 @@ wire  [29:0]  kernel_img_sum_632 = kernel_img_mul_632[0] + kernel_img_mul_632[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[5063:5056] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[5063:5056] <= kernel_img_sum_632[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[5063:5056] <= 'd0;
@@ -13918,7 +13937,7 @@ wire  [29:0]  kernel_img_sum_633 = kernel_img_mul_633[0] + kernel_img_mul_633[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[5071:5064] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[5071:5064] <= kernel_img_sum_633[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[5071:5064] <= 'd0;
@@ -13940,7 +13959,7 @@ wire  [29:0]  kernel_img_sum_634 = kernel_img_mul_634[0] + kernel_img_mul_634[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[5079:5072] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[5079:5072] <= kernel_img_sum_634[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[5079:5072] <= 'd0;
@@ -13962,7 +13981,7 @@ wire  [29:0]  kernel_img_sum_635 = kernel_img_mul_635[0] + kernel_img_mul_635[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[5087:5080] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[5087:5080] <= kernel_img_sum_635[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[5087:5080] <= 'd0;
@@ -13984,7 +14003,7 @@ wire  [29:0]  kernel_img_sum_636 = kernel_img_mul_636[0] + kernel_img_mul_636[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[5095:5088] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[5095:5088] <= kernel_img_sum_636[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[5095:5088] <= 'd0;
@@ -14006,7 +14025,7 @@ wire  [29:0]  kernel_img_sum_637 = kernel_img_mul_637[0] + kernel_img_mul_637[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[5103:5096] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[5103:5096] <= kernel_img_sum_637[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[5103:5096] <= 'd0;
@@ -14028,9 +14047,28 @@ wire  [29:0]  kernel_img_sum_638 = kernel_img_mul_638[0] + kernel_img_mul_638[1]
 always @(posedge clk) begin
   if (!rst_n)
     blur_din[5111:5104] <= 'd0;
-  else if (current_state==ST_START || (current_state==ST_IDLE)&&buffer_valid)
+  else if (current_state==ST_START)
     blur_din[5111:5104] <= kernel_img_sum_638[25:18];/*Q12.18 -> Q8.0*/
   else if (current_state==ST_IDLE)
     blur_din[5111:5104] <= 'd0;
+end
+
+wire  [25:0]  kernel_img_mul_639[0:8];
+assign kernel_img_mul_639[0] = buffer_data_2[5111:5104] * G_Kernel_3x3[0][17:0];
+assign kernel_img_mul_639[1] = buffer_data_2[5119:5112] * G_Kernel_3x3[0][35:18];
+assign kernel_img_mul_639[3] = buffer_data_1[5111:5104] * G_Kernel_3x3[1][17:0];
+assign kernel_img_mul_639[4] = buffer_data_1[5119:5112] * G_Kernel_3x3[1][35:18];
+assign kernel_img_mul_639[6] = buffer_data_0[5111:5104] * G_Kernel_3x3[0][17:0];
+assign kernel_img_mul_639[7] = buffer_data_0[5119:5112] * G_Kernel_3x3[0][35:18];
+wire  [29:0]  kernel_img_sum_639 = kernel_img_mul_639[0] + kernel_img_mul_639[1] + kernel_img_mul_639[3] + 
+                kernel_img_mul_639[4] + kernel_img_mul_639[6] + kernel_img_mul_639[7] + 
+                'd0;
+always @(posedge clk) begin
+  if (!rst_n)
+    blur_din[5119:5112] <= 'd0;
+  else if (current_state==ST_START)
+    blur_din[5119:5112] <= kernel_img_sum_639[25:18];/*Q12.18 -> Q8.0*/
+  else if (current_state==ST_IDLE)
+    blur_din[5119:5112] <= 'd0;
 end
 
