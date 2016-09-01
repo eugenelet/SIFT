@@ -32,7 +32,7 @@ int main(int argc, char* argv[])
 		Mat target2 = imread(targetFile2, CV_LOAD_IMAGE_GRAYSCALE);
 		computeSift(haha[0], target, imread(targetFile),time_on);
 		computeSift(haha[1], target2, imread(targetFile),time_on);
-		return 0;
+		// return 0;
 		// haha.filterKeyPoints_Hessian(target, imread(targetFile));
 		//haha.drawKeyPoints(targetFile);
 		VideoCapture cap(0);

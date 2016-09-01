@@ -39,6 +39,7 @@ void match_multi(mySIFT& left1, mySIFT& left2, mySIFT& right, string targetFile1
 Mat concatMultiImg(Mat& target1, Mat& target2, Mat& scene);
 void dumpKeyPoints(mySIFT& left, mySIFT& right);
 void dumpImage(mySIFT& image);
+void dumpFilterKeyPoints(mySIFT& image);
 class Key_Point{
 public:
 	Key_Point(double s, int r, int c, int t, int l) : scale(s), row(r), col(c), type(t), layer(l){}

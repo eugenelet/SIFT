@@ -4,6 +4,7 @@ void mySIFT::detectKeypoints()
 {
 	int size = blurredImgs.size() / nOctave - 1;//¨C¤@­Óoctave¡ADoGªºsize¡A²{¦b¬O4
 	double sigmaTemp = sigma;
+	// cout << blurredImgs.size() << " " << nOctave << " " << size << endl;
 
 	for (int octave = 0; octave < nOctave; ++octave){	
 		for (int layer = octave * nLayersPerOctave + 1; layer < octave * nLayersPerOctave + size - 1; ++layer){//DoGªºlayer

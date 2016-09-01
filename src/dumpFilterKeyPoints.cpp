@@ -2,7 +2,7 @@
 
 void dumpFilterKeyPoints(mySIFT& image)
 {
-	ofstream fout;
+	ofstream fout1, fout2;
 	char* layer1_output_file = "keypoint_layer1.txt";
 	char* layer2_output_file = "keypoint_layer2.txt";
 	fout1.open(layer1_output_file);
@@ -11,10 +11,10 @@ void dumpFilterKeyPoints(mySIFT& image)
 	vector< Key_Point >& kpt = image.keyPoints;
 	
 	for(int i = 0; i < kpt.size(); i++){
-		if(kpt.layer == 1)
-			fout1 << kpt.row << ' ' << kpt.col << endl;
-		else if(kpt.layer == 2)
-			fout2 << kpt.col << ' ' << kpt.col << endl;
+		if(kpt[i].layer == 1)
+			fout1 << kpt[i].row << ' ' << kpt[i].col << endl;
+		else if(kpt[i].layer == 2)
+			fout2 << kpt[i].col << ' ' << kpt[i].col << endl;
 		else
 			cout << "????" << endl;
 	}
