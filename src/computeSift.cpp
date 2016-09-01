@@ -39,6 +39,7 @@ void computeSift(mySIFT &sift_obj, Mat img_scene, Mat img_color, bool time_on){
 		dumpImage(sift_obj);
 		sift_obj.detectKeypoints();
 		sift_obj.filterKeyPoints();
+		dumpFilterKeyPoints(sift_obj);
 		// sift_obj.filterKeyPoints_Hessian(img_scene, img_color);
 		sift_obj.computeDescriptor();
 	}
