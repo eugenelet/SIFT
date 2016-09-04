@@ -25,8 +25,12 @@ int main()
     fout << "  rst_n," << endl;
     fout << "  current_state," << endl;
     fout << "  img_addr," << endl;
-    fout << "  filter_input_0," << endl;
-    fout << "  filter_input_1," << endl;
+    fout << "  filter_input_0_0," << endl;
+    fout << "  filter_input_0_1," << endl;
+    fout << "  filter_input_0_2," << endl;
+    fout << "  filter_input_1_0," << endl;
+    fout << "  filter_input_1_1," << endl;
+    fout << "  filter_input_1_2," << endl;
     fout << "  buffer_data_2," << endl;
     fout << "  buffer_data_3," << endl;
     fout << "  buffer_data_4," << endl;
@@ -34,8 +38,10 @@ int main()
     fout << "  blur3x3_dout," << endl;
     fout << "  blur5x5_1_dout," << endl;
     fout << "  no_keypoint," << endl;
-    fout << "  is_keypoint," << endl;
-    fout << "  current_RowCol" << endl;
+    fout << "  is_keypoint_0," << endl;
+    fout << "  is_keypoint_1," << endl;
+    fout << "  current_RowCol_0," << endl;
+    fout << "  current_RowCol_1" << endl;
     fout << ");" << endl;
 
     fout << endl;
@@ -51,11 +57,17 @@ int main()
     fout << "                   buffer_data_5," << endl;
     fout << "                   blur3x3_dout," << endl;
     fout << "                   blur5x5_1_dout;" << endl;
-    fout << "input  [637:0]     is_keypoint[0:1];" << endl;
-    fout << "output [23:0]      filter_input_0[0:2];" << endl;
-    fout << "output [23:0]      filter_input_1[0:2];" << endl;
+    fout << "input  [637:0]     is_keypoint_0;" << endl;
+    fout << "input  [637:0]     is_keypoint_1;" << endl;
+    fout << "output reg [23:0]  filter_input_0_0; // wire" << endl;
+    fout << "output reg [23:0]  filter_input_0_1; // wire" << endl;
+    fout << "output reg [23:0]  filter_input_0_2; // wire" << endl;
+    fout << "output reg [23:0]  filter_input_1_0; // wire" << endl;
+    fout << "output reg [23:0]  filter_input_1_1; // wire" << endl;
+    fout << "output reg [23:0]  filter_input_1_2; // wire" << endl;
     fout << "output [1:0]       no_keypoint;" << endl;
-    fout << "output [18:0]      current_RowCol[0:1];" << endl;
+    fout << "output reg [18:0]  current_RowCol_0; // wire;" << endl;
+    fout << "output reg [18:0]  current_RowCol_1; // wire;" << endl;
 
     fout << endl;
 
@@ -75,7 +87,7 @@ int main()
         fout << "  if (!rst_n)" << endl;
         fout << "    detected_keypoint[" << module << "] <= 'd0;" << endl;
         fout << "  else if (current_state==ST_DETECT)" << endl;
-        fout << "    detected_keypoint[" << module << "] <= is_keypoint[" << module << "];" << endl;
+        fout << "    detected_keypoint[" << module << "] <= is_keypoint_" << module << ";" << endl;
         for(int i = 0; i < 638; i++){
             fout << "  else if (current_state==ST_FILTER && detected_keypoint[" << module << "][" << i << "])" << endl;
             fout << "    detected_keypoint[" << module << "][" << i << "] <= 1'b0;" << endl;
@@ -87,7 +99,7 @@ int main()
     }
 
     for(int module = 0; module < 2; module++){
-        fout << "assign no_keypoint[" << module << "] = (|detected_keypoint[" << module << "]) ? 0 : 1" << endl;
+        fout << "assign no_keypoint[" << module << "] = (|detected_keypoint[" << module << "]) ? 0 : 1;" << endl;
     }
     fout << endl;
 
@@ -100,15 +112,15 @@ int main()
             if( i == 0){
                 fout << "  if (detected_keypoint[" << module << "][" << i << "]) begin" << endl;
                 for(int j = 0; j < 3; j++)
-                    fout << "    filter_input_" << module << "[" << j << "] = " << layer[module][j] << "[" << 23 + i*8 << ":" << i*8 << "];" << endl;
-                    fout << "    current_RowCol[" << module <<"] = {img_addr, "<< "10'd" << i + 1 << "};" << endl;
+                    fout << "    filter_input_" << module << "_" << j << " = " << layer[module][j] << "[" << 23 + i*8 << ":" << i*8 << "];" << endl;
+                    fout << "    current_RowCol_" << module <<" = {img_addr, "<< "10'd" << i + 1 << "};" << endl;
                 fout << "  end" << endl;    
             }
             else{
                 fout << "  else if (detected_keypoint[" << module << "][" << i << "]) begin" << endl;
                 for(int j = 0; j < 3; j++)
-                    fout << "    filter_input_" << module << "[" << j << "] = " << layer[module][j] << "[" << 23 + i*8 << ":" << i*8 << "];" << endl;
-                    fout << "    current_RowCol[" << module <<"] = {img_addr, "<< "10'd" << i + 1 << "};" << endl;
+                    fout << "    filter_input_" << module << "_" << j << " = " << layer[module][j] << "[" << 23 + i*8 << ":" << i*8 << "];" << endl;
+                    fout << "    current_RowCol_" << module <<" = {img_addr, "<< "10'd" << i + 1 << "};" << endl;
 
                 fout << "  end" << endl;    
             }
@@ -116,9 +128,10 @@ int main()
 
             fout << "  else begin" << endl;
             for(int j = 0; j < 3; j++)
-                fout << "    filter_input_" << module << "[" << j << "] = " << "'d0;" << endl;
-            fout << "    current_RowCol[" << module <<"] = 'd0;" << endl;
-            fout << "  end" << endl;    
+                fout << "    filter_input_" << module << "_" << j << " = " << "'d0;" << endl;
+            fout << "    current_RowCol_" << module <<" = 'd0;" << endl;
+            fout << "  end" << endl;  
+            fout << "end" << endl;  
         fout << endl;
     }
 
