@@ -38,6 +38,7 @@ void computeSift(mySIFT &sift_obj, Mat img_scene, Mat img_color, bool time_on){
 		sift_obj.createDoG();
 		dumpImage(sift_obj);
 		sift_obj.detectKeypoints();
+		dumpDetectKeyPoints(sift_obj);
 		sift_obj.filterKeyPoints();
 		dumpFilterKeyPoints(sift_obj);
 		// sift_obj.filterKeyPoints_Hessian(img_scene, img_color);
