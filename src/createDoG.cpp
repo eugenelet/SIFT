@@ -1,5 +1,5 @@
 #include "../include/sift.h"
-
+#include <limits>
 void mySIFT::createDoG()
 {
 	double tempSigma = sigma;
@@ -75,10 +75,11 @@ Mat mySIFT::GaussianBlur(const Mat& src, double sigma)//input (¹Ï¤ù, sigma),
 	int shift = (kSize - 1) / 2;
 
 	Mat output = src.clone();
-	/*cout << "Sigma: " << sigma << endl;
+	cout.precision(17);
+	cout << "Sigma: " << sigma << endl;
 	for(int i = 0; i < kSize; i++)
 		for(int j = 0; j < kSize; j++)
-			cout << "G_Kernel[" << i <<"][" << j << "] " << G_Kernel[i][j] << endl; */
+			cout << "G_Kernel[" << i <<"][" << j << "] " << G_Kernel[i][j] << endl; 
 	/*double weightSum = 0.0;
 	for(int i = 0; i < kSize; i++)
 		for(int j = 0; j < kSize; j++)

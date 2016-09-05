@@ -4,6 +4,8 @@ void mySIFT::detectKeypoints()
 {
 	int size = blurredImgs.size() / nOctave - 1;//¨C¤@­Óoctave¡ADoGªºsize¡A²{¦b¬O4
 	double sigmaTemp = sigma;
+	int minCount = 0;
+	int maxCount = 0;
 	// cout << blurredImgs.size() << " " << nOctave << " " << size << endl;
 
 	for (int octave = 0; octave < nOctave; ++octave){	
@@ -28,16 +30,22 @@ void mySIFT::detectKeypoints()
 							}
 						}
 					}
-					if (isMax)
+					if (isMax){
 						keyPoints.push_back(Key_Point(sigmaTemp, row, col, 1, layer));
-					if (isMin)
+						maxCount++;
+					}
+					if (isMin){
 						keyPoints.push_back(Key_Point(sigmaTemp, row, col, 0, layer));
+						minCount++;
+					}
 				}
 			}
 			sigmaTemp *= k;
 		}
 	}
 	//computeOrientationHist(keyPoints);
+	cout << "MIN" << minCount << endl;
+	cout << "MAX" << maxCount << endl;
 	cout << keyPoints.size() << "\n";
 
 }
