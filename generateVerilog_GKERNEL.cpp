@@ -27,17 +27,17 @@ int main()
 	fout.open(output_file);
 	for(int i = 0; i < 640; i++){
 		if(i < KERNEL_SIZE/2){
-			fout << "wire  [25:0]  kernel_img_mul_" << i << "[0:" << KERNEL_SIZE*KERNEL_SIZE -1 <<"];" << endl;
+			fout << "wire  [39:0]  kernel_img_mul_" << i << "[0:" << KERNEL_SIZE*KERNEL_SIZE -1 <<"];" << endl;
 			for(int kernel_y = 0; kernel_y < KERNEL_SIZE; kernel_y++)
 				for(int kernel_x = 0; kernel_x < KERNEL_SIZE - KERNEL_SIZE/2 + i; kernel_x++){
 					fout << "assign kernel_img_mul_" << i << "[" << kernel_y*KERNEL_SIZE + kernel_x << "] = buffer_data_"<<
 					(KERNEL_SIZE - 1) - kernel_y <<"["<< kernel_x*8 + 7 + ((KERNEL_SIZE/2) - i)*8 + (i-KERNEL_SIZE/2)*8 <<":"
 					<< kernel_x*8 + ((KERNEL_SIZE/2) - i)*8 + (i-KERNEL_SIZE/2)*8 <<"] * G_Kernel_" << kSize_str << "x" << kSize_str << "["
-					 << KERNEL_SIZE/2 - abs(kernel_y - KERNEL_SIZE/2) <<"]["<< (KERNEL_SIZE/2)*18 - i*18 + kernel_x*18 + 17 
-					 <<":"<< (KERNEL_SIZE/2)*18 - i*18 + kernel_x*18 <<"];" << endl;
+					 << KERNEL_SIZE/2 - abs(kernel_y - KERNEL_SIZE/2) <<"]["<< (KERNEL_SIZE/2)*32 - i*32 + kernel_x*32 + 31 
+					 <<":"<< (KERNEL_SIZE/2)*32 - i*32 + kernel_x*32 <<"];" << endl;
 				}
 
-			fout << "wire  [29:0]  kernel_img_sum_"<< i <<" = ";
+			fout << "wire  [39:0]  kernel_img_sum_"<< i <<" = ";
 			int count = 0;
 			for(int k_y = 0; k_y < KERNEL_SIZE; k_y++)
 				for(int k_x = 0; k_x < KERNEL_SIZE - KERNEL_SIZE/2 + i; k_x++){
@@ -52,24 +52,24 @@ int main()
 			fout << "  if (!rst_n)" << endl;
 			fout << "    blur_din["<< i*8 + 7 <<":"<< i*8 <<"] <= 'd0;" << endl;
 			fout << "  else if (current_state==ST_START)" << endl;// || (current_state==ST_IDLE)&&buffer_valid
-			fout << "    blur_din["<< i*8 + 7 <<":"<< i*8 <<"] <= kernel_img_sum_"<< i <<"[25:18];/*Q12.18 -> Q8.0*/" << endl;
+			fout << "    blur_din["<< i*8 + 7 <<":"<< i*8 <<"] <= kernel_img_sum_"<< i <<"[39:32];/*Q8.32 -> Q8.0*/" << endl;
 			fout << "  else if (current_state==ST_IDLE)" << endl;
 			fout << "    blur_din["<< i*8 + 7 <<":"<< i*8 <<"] <= 'd0;" << endl;
 			fout << "end" << endl;
 			fout << endl;	
 		}
 		else if(i > 639 - KERNEL_SIZE/2){
-			fout << "wire  [25:0]  kernel_img_mul_" << i << "[0:" << KERNEL_SIZE*KERNEL_SIZE -1 <<"];" << endl;
+			fout << "wire  [39:0]  kernel_img_mul_" << i << "[0:" << KERNEL_SIZE*KERNEL_SIZE -1 <<"];" << endl;
 			for(int kernel_y = 0; kernel_y < KERNEL_SIZE; kernel_y++)
 				for(int kernel_x = 0; kernel_x < KERNEL_SIZE - KERNEL_SIZE/2 + (639 - i); kernel_x++){
 					fout << "assign kernel_img_mul_" << i << "[" << kernel_y*KERNEL_SIZE + kernel_x << "] = buffer_data_"<<
 					(KERNEL_SIZE - 1) - kernel_y <<"["<< kernel_x*8 + 7 + (i-KERNEL_SIZE/2)*8 <<":"
 					<< kernel_x*8 + (i-KERNEL_SIZE/2)*8 <<"] * G_Kernel_" << kSize_str << "x" << kSize_str << "["
-					 << KERNEL_SIZE/2 - abs(kernel_y - KERNEL_SIZE/2) <<"]["<< kernel_x*18 + 17 
-					 <<":"<< kernel_x*18 <<"];" << endl;
+					 << KERNEL_SIZE/2 - abs(kernel_y - KERNEL_SIZE/2) <<"]["<< kernel_x*32 + 31 
+					 <<":"<< kernel_x*32 <<"];" << endl;
 				}
 
-			fout << "wire  [29:0]  kernel_img_sum_"<< i <<" = ";
+			fout << "wire  [39:0]  kernel_img_sum_"<< i <<" = ";
 			int count = 0;
 			for(int k_y = 0; k_y < KERNEL_SIZE; k_y++)
 				for(int k_x = 0; k_x < KERNEL_SIZE - KERNEL_SIZE/2 + (639 - i); k_x++){
@@ -84,7 +84,7 @@ int main()
 			fout << "  if (!rst_n)" << endl;
 			fout << "    blur_din["<< i*8 + 7 <<":"<< i*8 <<"] <= 'd0;" << endl;
 			fout << "  else if (current_state==ST_START)" << endl;
-			fout << "    blur_din["<< i*8 + 7 <<":"<< i*8 <<"] <= kernel_img_sum_"<< i <<"[25:18];/*Q12.18 -> Q8.0*/" << endl;
+			fout << "    blur_din["<< i*8 + 7 <<":"<< i*8 <<"] <= kernel_img_sum_"<< i <<"[39:32];/*Q8.32 -> Q8.0*/" << endl;
 			fout << "  else if (current_state==ST_IDLE)" << endl;
 			fout << "    blur_din["<< i*8 + 7 <<":"<< i*8 <<"] <= 'd0;" << endl;
 			fout << "end" << endl;
@@ -92,16 +92,16 @@ int main()
 
 		}
 		else{
-			fout << "wire  [25:0]  kernel_img_mul_" << i << "[0:" << KERNEL_SIZE*KERNEL_SIZE -1 <<"];" << endl;
+			fout << "wire  [39:0]  kernel_img_mul_" << i << "[0:" << KERNEL_SIZE*KERNEL_SIZE -1 <<"];" << endl;
 			for(int kernel_y = 0; kernel_y < KERNEL_SIZE; kernel_y++)
 				for(int kernel_x = 0; kernel_x < KERNEL_SIZE; kernel_x++){
 					fout << "assign kernel_img_mul_" << i << "[" << kernel_y*KERNEL_SIZE + kernel_x << "] = buffer_data_"<<
 					(KERNEL_SIZE - 1) - kernel_y <<"["<< kernel_x*8 + 7 + (i-KERNEL_SIZE/2)*8 <<":"
 					<< kernel_x*8 + (i-KERNEL_SIZE/2)*8 <<"] * G_Kernel_" << kSize_str << "x" << kSize_str << "["
-					 << KERNEL_SIZE/2 - abs(kernel_y - KERNEL_SIZE/2) <<"]["<< kernel_x*18 + 17 <<":"<< kernel_x*18 <<"];" << endl;
+					 << KERNEL_SIZE/2 - abs(kernel_y - KERNEL_SIZE/2) <<"]["<< kernel_x*32 + 31 <<":"<< kernel_x*32 <<"];" << endl;
 				}
 
-			fout << "wire  [29:0]  kernel_img_sum_"<< i <<" = ";
+			fout << "wire  [39:0]  kernel_img_sum_"<< i <<" = ";
 			int j;
 			for(j = 0; j < KERNEL_SIZE*KERNEL_SIZE - 1; j++){
 				fout << "kernel_img_mul_"<< i <<"["<< j <<"] + ";
@@ -114,7 +114,7 @@ int main()
 			fout << "  if (!rst_n)" << endl;
 			fout << "    blur_din["<< i*8 + 7 <<":"<< i*8 <<"] <= 'd0;" << endl;
 			fout << "  else if (current_state==ST_START)" << endl;
-			fout << "    blur_din["<< i*8 + 7 <<":"<< i*8 <<"] <= kernel_img_sum_"<< i <<"[25:18];/*Q12.18 -> Q8.0*/" << endl;
+			fout << "    blur_din["<< i*8 + 7 <<":"<< i*8 <<"] <= kernel_img_sum_"<< i <<"[39:32];/*Q8.32 -> Q8.0*/" << endl;
 			fout << "  else if (current_state==ST_IDLE)" << endl;
 			fout << "    blur_din["<< i*8 + 7 <<":"<< i*8 <<"] <= 'd0;" << endl;
 			fout << "end" << endl;

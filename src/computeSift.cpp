@@ -37,6 +37,7 @@ void computeSift(mySIFT &sift_obj, Mat img_scene, Mat img_color, bool time_on){
 		sift_obj.LoadImage(img_scene);
 		sift_obj.createDoG();
 		dumpImage(sift_obj);
+		dumpDoG(sift_obj);
 		sift_obj.detectKeypoints();
 		dumpDetectKeyPoints(sift_obj);
 		sift_obj.filterKeyPoints();
