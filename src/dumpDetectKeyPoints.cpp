@@ -14,7 +14,7 @@ void dumpDetectKeyPoints(mySIFT& image)
 		if(kpt[i].layer == 1)
 			fout1 << kpt[i].row << ' ' << kpt[i].col << endl;
 		else if(kpt[i].layer == 2)
-			fout2 << kpt[i].col << ' ' << kpt[i].col << endl;
+			fout2 << kpt[i].row << ' ' << kpt[i].col << endl;
 		else
 			cout << "????" << endl;
 	}
