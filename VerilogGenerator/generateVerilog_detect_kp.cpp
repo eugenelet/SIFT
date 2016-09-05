@@ -27,16 +27,16 @@ int main()
                          "layer_3_0", "layer_3_1", "layer_3_2"};
     fout.open(output_file);
     fout << "module detect_keypoint(" << endl;
-    fout << "  layer_0_0," << endl; 
+    fout << "  layer_0_0, /*img*/" << endl; 
     fout << "  layer_0_1," << endl; 
     fout << "  layer_0_2," << endl; 
-    fout << "  layer_1_0," << endl; 
+    fout << "  layer_1_0, /*Blur 0*/" << endl; 
     fout << "  layer_1_1," << endl; 
     fout << "  layer_1_2," << endl; 
-    fout << "  layer_2_0," << endl; 
+    fout << "  layer_2_0, /*Blur 1*/" << endl; 
     fout << "  layer_2_1," << endl; 
     fout << "  layer_2_2," << endl; 
-    fout << "  layer_3_0," << endl; 
+    fout << "  layer_3_0, /*Blur 2*/" << endl; 
     fout << "  layer_3_1," << endl; 
     fout << "  layer_3_2," << endl; 
     fout << "  current_col," << endl; 
@@ -57,7 +57,7 @@ int main()
     fout << "                       layer_3_0," << endl; 
     fout << "                       layer_3_1," << endl; 
     fout << "                       layer_3_2;" << endl; 
-    fout << "input       [8:0]      current_col," << endl; 
+    fout << "input       [9:0]      current_col;" << endl; 
     fout << "output                 is_keypoint;" << endl;
 
     fout << endl;
@@ -96,54 +96,36 @@ int main()
     fout << "end" << endl;
     fout << endl;
 
-    fout << "reg    [25:0]      detect_max; //wire" << endl;
+    fout << "reg    [11:0]      detect_max; //wire" << endl;
     fout << "always@(*) begin" << endl;
-    bool toogle = 0;
+    int count = 0;
     for(int i = 0; i < 3; i++)
         for(int j = 0; j < 3; j++){
             for(int k = 0; k < 3; k++){
-                if(i==1 && j==1 && k==1){
-                    toogle = 1;
-                    continue;
-                }
-                if(toogle){
+                if(j!=1 && k!=1){
                     fout << "  if(" << layer[1][1] << "[1] > " << layer[i][j] << "[" << k << "])" << endl;
-                    fout << "    detect_max[" << i*9 + j*3 + k - 1<< "] = 1;" << endl;
+                    fout << "    detect_max[" << count << "] = 1;" << endl;
                     fout << "  else" << endl;
-                    fout << "    detect_max[" << i*9 + j*3 + k - 1<< "] = 0;" << endl;  
-                }
-                else {
-                    fout << "  if(" << layer[1][1] << "[1] > " << layer[i][j] << "[" << k << "])" << endl;
-                    fout << "    detect_max[" << i*9 + j*3 + k << "] = 1;" << endl;
-                    fout << "  else" << endl;
-                    fout << "    detect_max[" << i*9 + j*3 + k << "] = 0;" << endl; 
+                    fout << "    detect_max[" << count << "] = 0;" << endl;
+                    count++;
                 }
             }
         }
     fout << "end" << endl;
     fout << endl;
 
-    fout << "reg    [25:0]      detect_min; //wire" << endl;
+    fout << "reg    [11:0]      detect_min; //wire" << endl;
     fout << "always@(*) begin" << endl;
-    toogle = 0;
+    count = 0;
     for(int i = 0; i < 3; i++)
         for(int j = 0; j < 3; j++){
             for(int k = 0; k < 3; k++){
-                if(i==1 && j==1 && k==1){
-                    toogle = 1;
-                    continue;
-                }
-                if(toogle){
+                if(j!=1 && k!=1){
                     fout << "  if(" << layer[1][1] << "[1] < " << layer[i][j] << "[" << k << "])" << endl;
-                    fout << "    detect_min[" << i*9 + j*3 + k - 1<< "] = 1;" << endl;
+                    fout << "    detect_min[" << count << "] = 1;" << endl;
                     fout << "  else" << endl;
-                    fout << "    detect_min[" << i*9 + j*3 + k - 1<< "] = 0;" << endl;  
-                }
-                else {
-                    fout << "  if(" << layer[1][1] << "[1] < " << layer[i][j] << "[" << k << "])" << endl;
-                    fout << "    detect_min[" << i*9 + j*3 + k << "] = 1;" << endl;
-                    fout << "  else" << endl;
-                    fout << "    detect_min[" << i*9 + j*3 + k << "] = 0;" << endl; 
+                    fout << "    detect_min[" << count << "] = 0;" << endl; 
+                    count++;
                 }
             }
         }
@@ -152,7 +134,7 @@ int main()
 
     fout << "wire is_max = (&detect_max) ? 1:0;" << endl;  
     fout << "wire is_min = (&detect_min) ? 1:0;" << endl;  
-    fout << "assign is_keypoint = is_max & is_min;" << endl;
+    fout << "assign is_keypoint = is_max | is_min;" << endl;
     fout << endl;
     fout << "endmodule" ;
 
