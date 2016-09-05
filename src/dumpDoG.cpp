@@ -15,7 +15,8 @@ void dumpDoG(mySIFT& image)
 
 		for(int row = 0; row < image.DoGs[i].rows; row++){
 			for(int col = 0; col < image.DoGs[i].cols; col++)
-				fout << image.DoGs[i].at<int>(row, col) << ' ' ;
+				if(col == 68)
+					fout << image.DoGs[i].at<int>(row, col) << ' ' ;
 			fout << endl;
 		}
 		fout << endl;

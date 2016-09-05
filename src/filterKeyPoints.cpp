@@ -349,6 +349,17 @@ void mySIFT::filterKeyPoints()
 		filterKeyPointsHelper1(brighter, darker, thisMat, thisKpt, value, threshold);
 		int nBrighter, nDarker;
 		filterKeyPointsHelper2(brighter, darker, nBrighter, nDarker);
+		if(keyPoints[i].row==17 && keyPoints[i].col==23){
+			cout << "Brighter:" ;
+			for(int i = 0; i < 8; i++)
+				cout << brighter[i];
+			cout << endl;
+			cout << "Darker:" ;
+			for(int i = 0; i < 8; i++)
+				cout << darker[i];
+			cout << endl;
+
+		}
 		thisKpt.cornerValue = max(nBrighter, nDarker);
 		if (thisKpt.cornerValue > 8 || thisKpt.cornerValue < 0)
 			cout << "??\n";
@@ -365,6 +376,8 @@ void mySIFT::filterKeyPoints()
 	int layer1 = 0;
 	int layer2 = 0;
 	for (int i = 0; i < keyPoints.size(); ++i){
+		if(keyPoints[i].row==17 && keyPoints[i].col==23)
+			cout << "keyPoints:" << keyPoints[i].cornerValue << endl;
 		if (keyPoints[i].cornerValue >= 4){
 			temp.push_back(keyPoints[i]);
 			if (keyPoints[i].layer == 1)
@@ -391,15 +404,15 @@ void mySIFT::filterKeyPointsHelper1(vector< int >& brighter, vector< int >& dark
 		brighter[1] = 1;
 	if (thisMat.at<uchar>(thisKpt.row - 1, thisKpt.col + 1) > brighterthshod)
 		brighter[2] = 1;
-	if (thisMat.at<uchar>(thisKpt.row, thisKpt.col - 1) > brighterthshod)
-		brighter[3] = 1;
 	if (thisMat.at<uchar>(thisKpt.row, thisKpt.col + 1) > brighterthshod)
-		brighter[4] = 1;
-	if (thisMat.at<uchar>(thisKpt.row + 1, thisKpt.col - 1) > brighterthshod)
-		brighter[5] = 1;
-	if (thisMat.at<uchar>(thisKpt.row + 1, thisKpt.col) > brighterthshod)
-		brighter[6] = 1;
+		brighter[3] = 1;
 	if (thisMat.at<uchar>(thisKpt.row + 1, thisKpt.col + 1) > brighterthshod)
+		brighter[4] = 1;
+	if (thisMat.at<uchar>(thisKpt.row + 1, thisKpt.col) > brighterthshod)
+		brighter[5] = 1;
+	if (thisMat.at<uchar>(thisKpt.row + 1, thisKpt.col - 1) > brighterthshod)
+		brighter[6] = 1;
+	if (thisMat.at<uchar>(thisKpt.row, thisKpt.col - 1) > brighterthshod)
 		brighter[7] = 1;
 
 	//§Ëdarker
@@ -410,15 +423,15 @@ void mySIFT::filterKeyPointsHelper1(vector< int >& brighter, vector< int >& dark
 		darker[1] = 1;
 	if (thisMat.at<uchar>(thisKpt.row - 1, thisKpt.col + 1) < darkerthshod)
 		darker[2] = 1;
-	if (thisMat.at<uchar>(thisKpt.row, thisKpt.col - 1) < darkerthshod)
-		darker[3] = 1;
 	if (thisMat.at<uchar>(thisKpt.row, thisKpt.col + 1) < darkerthshod)
-		darker[4] = 1;
-	if (thisMat.at<uchar>(thisKpt.row + 1, thisKpt.col - 1) < darkerthshod)
-		darker[5] = 1;
-	if (thisMat.at<uchar>(thisKpt.row + 1, thisKpt.col) < darkerthshod)
-		darker[6] = 1;
+		darker[3] = 1;
 	if (thisMat.at<uchar>(thisKpt.row + 1, thisKpt.col + 1) < darkerthshod)
+		darker[4] = 1;
+	if (thisMat.at<uchar>(thisKpt.row + 1, thisKpt.col) < darkerthshod)
+		darker[5] = 1;
+	if (thisMat.at<uchar>(thisKpt.row + 1, thisKpt.col - 1) < darkerthshod)
+		darker[6] = 1;
+	if (thisMat.at<uchar>(thisKpt.row, thisKpt.col - 1) < darkerthshod)
 		darker[7] = 1;
 }
 

@@ -21,6 +21,8 @@ void mySIFT::detectKeypoints()
 						for (int i = row - (DOG_DETECT_KPT_SIZE - 1) / 2; i <= row + (DOG_DETECT_KPT_SIZE - 1) / 2 && (isMin || isMax); ++i){
 							for (int j = col - (DOG_DETECT_KPT_SIZE - 1) / 2; j <= col + (DOG_DETECT_KPT_SIZE - 1) / 2 && (isMin || isMax); ++j){
 								if (i >= 0 && j >= 0 && i < DoGs[octave * nLayersPerOctave].rows && j < DoGs[octave * nLayersPerOctave].cols && i != row && j != col){//¦b½d³ò¤ºªº¸Ü
+									if(row==2 && col==68)
+										cout << "row:" << i << " col:" << j << " layer:" << layer+layerOffset << " value:" << DoGs[layer + layerOffset].at<int>(i, j) <<endl;
 									int tester = DoGs[layer + layerOffset].at<int>(i, j);
 									if (tester + 0 >= value)
 										isMax = false;
