@@ -345,7 +345,7 @@ void mySIFT::filterKeyPoints()
 		vector< int > brighter(8, 0);
 		vector< int > darker(8, 0);
 		int value = thisMat.at<uchar>(thisKpt.row, thisKpt.col);
-		int threshold = 6;
+		int threshold = FAST_THRESHOLD;
 		filterKeyPointsHelper1(brighter, darker, thisMat, thisKpt, value, threshold);
 		int nBrighter, nDarker;
 		filterKeyPointsHelper2(brighter, darker, nBrighter, nDarker);

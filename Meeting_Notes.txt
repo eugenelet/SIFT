@@ -1,0 +1,6 @@
+Meeting Notes
+
+buffer_mode 1 bit
+only 1 set of filter
+mode to remove filter from design
+dynamic filter threshold
