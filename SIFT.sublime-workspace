@@ -4,12 +4,20 @@
 		"selected_items":
 		[
 			[
-				"inpu",
-				"inputs"
+				"la",
+				"layerOffset"
 			],
 			[
-				"lay",
-				"layer_0_0"
+				"min",
+				"minCount"
+			],
+			[
+				"sif",
+				"sift_obj"
+			],
+			[
+				"blu",
+				"blurredImgs"
 			],
 			[
 				"cout",
@@ -240,6 +248,10 @@
 				"in_valid_flag"
 			],
 			[
+				"inpu",
+				"input_index"
+			],
+			[
 				"igm",
 				"img_scene"
 			],
@@ -432,10 +444,6 @@
 				"imgWidth"
 			],
 			[
-				"min",
-				"min_Y"
-			],
-			[
 				"kern",
 				"kernSize"
 			],
@@ -506,65 +514,41 @@
 			[
 				"left",
 				"leftNode"
-			],
-			[
-				"old",
-				"oldTotal"
-			],
-			[
-				"ballo",
-				"ballotOperator"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "src/createDoG.cpp",
+			"file": "src/computeSift.cpp",
 			"settings":
 			{
-				"buffer_size": 3701,
+				"buffer_size": 1317,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/dumpImage.cpp",
+			"file": "src/filterKeyPoints.cpp",
 			"settings":
 			{
-				"buffer_size": 906,
+				"buffer_size": 16895,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/main.cpp",
+			"file": "src/dumpDetectKeyPoints.cpp",
 			"settings":
 			{
-				"buffer_size": 2219,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/detectKeypoints.cpp",
-			"settings":
-			{
-				"buffer_size": 3836,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/match.cpp",
-			"settings":
-			{
-				"buffer_size": 12832,
+				"buffer_size": 578,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "generateVerilog_detect_kp_no_assign.cpp",
+			"file": "src/dumpFilterKeyPoints.cpp",
 			"settings":
 			{
-				"buffer_size": 6321,
-				"line_ending": "Windows"
+				"buffer_size": 582,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -575,14 +559,10 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 354.0,
-		"last_filter": "past",
+		"height": 257.0,
+		"last_filter": "insta",
 		"selected_items":
 		[
-			[
-				"past",
-				"Text Pastry: Menu"
-			],
 			[
 				"insta",
 				"Package Control: Install Package"
@@ -612,7 +592,7 @@
 				"Package Control: Discover Packages"
 			]
 		],
-		"width": 382.0
+		"width": 467.0
 	},
 	"console":
 	{
@@ -633,12 +613,23 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/Eugene/Documents/GitHub/SIFT"
+		"/home/gene/Documents/NCTU/Project/SIFT",
+		"/home/gene/Documents/NCTU/Project/SIFT/include",
+		"/home/gene/Documents/NCTU/Project/SIFT/src"
 	],
 	"file_history":
 	[
 		"/home/gene/Documents/NCTU/Project/SIFT_Hardware/DoG/01_RTL/SAD.v",
+		"/home/gene/Documents/NCTU/Project/SIFT/src/main.cpp",
+		"/home/gene/Documents/NCTU/Project/SIFT/src/dumpFilterKeyPoints.cpp",
+		"/home/gene/Documents/NCTU/Project/SIFT/src/dumpImage.cpp",
+		"/home/gene/Documents/NCTU/Project/SIFT/include/sift.h",
+		"/home/gene/Documents/NCTU/Project/SIFT/src/dumpDoG.cpp",
+		"/home/gene/Documents/NCTU/Project/SIFT/src/createDoG.cpp",
+		"/home/gene/Documents/NCTU/Project/SIFT/src/detectKeypoints.cpp",
 		"/home/gene/Documents/NCTU/Project/SIFT_Hardware/DoG/01_RTL/mem_ctrl.v",
+		"/home/gene/Documents/NCTU/Project/SIFT/src/match.cpp",
+		"/home/gene/Documents/NCTU/Project/SIFT/src/filterKeyPoints.cpp",
 		"/home/gene/Documents/NCTU/line buffer",
 		"/home/gene/Documents/NCTU/Project/SIFT_Hardware/DoG/01_RTL/Line_Buffer_10.v",
 		"/home/gene/Documents/NCTU/Project/SIFT_Hardware/DoG/01_RTL/Line_Buffer_10 - Copy.v",
@@ -673,18 +664,12 @@
 		"/home/gene/Documents/NCTU/Project/raspCarVid/controller/controller.cpp",
 		"/home/gene/Documents/NCTU/Project/raspCarVid/controllerJack/controller.cpp",
 		"/home/gene/.config/sublime-text-3/Packages/Package Control/Package Control.sublime-settings",
-		"/home/gene/Documents/NCTU/Project/SIFT/src/match.cpp",
 		"/home/gene/Documents/NCTU/Project/SIFT/src/computeDescriptor.cpp",
 		"/home/gene/Documents/NCTU/Project/SIFT/src/drawKeyPoints.cpp",
-		"/home/gene/Documents/NCTU/Project/SIFT/include/sift.h",
-		"/home/gene/Documents/NCTU/Project/SIFT/src/createDoG.cpp",
-		"/home/gene/Documents/NCTU/Project/SIFT/src/detectKeypoints.cpp",
 		"/home/gene/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
-		"/home/gene/Documents/NCTU/Project/SIFT/src/filterKeyPoints.cpp",
 		"/home/gene/Documents/NCTU/Project/SIFT/Makefile",
 		"/home/gene/Documents/NCTU/Project/SIFT/src/debug.cpp",
 		"/home/gene/Documents/NCTU/Project/SIFT/src/computeSift.cpp",
-		"/home/gene/Documents/NCTU/Project/SIFT/src/main.cpp",
 		"/home/gene/Documents/NCTU/Project/SIFT/tmp.cpp",
 		"/home/gene/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
 		"/home/gene/Downloads/main (5).cpp",
@@ -761,10 +746,7 @@
 		"/home/gene/Public/jailhouse/hypervisor/include/jailhouse/header.h",
 		"/home/gene/Public/jailhouse/hypervisor/include/jailhouse/entry.h",
 		"/home/gene/Public/jailhouse/driver/main.c",
-		"/home/gene/Public/jailhouse/hypervisor/include/jailhouse/control.h",
-		"/home/gene/Public/jailhouse/hypervisor/arch/arm/mmu_hyp.c",
-		"/home/gene/Public/jailhouse/hypervisor/arch/arm/mmu_cell.c",
-		"/home/gene/Documents/NCTU/Year3Sem2/Computer_Organization/CO-FP-2016/bns.c"
+		"/home/gene/Public/jailhouse/hypervisor/include/jailhouse/control.h"
 	],
 	"find":
 	{
@@ -784,6 +766,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"blurredImgs",
 			"result.jp",
 			"result",
 			"print",
@@ -901,6 +884,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"DoGs",
 			"bfs_nodes",
 			"TEMP_ODD",
 			"left.blurredImgs[0]",
@@ -922,24 +906,82 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/createDoG.cpp",
+					"file": "src/computeSift.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3701,
+						"buffer_size": 1317,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								806,
-								806
+								1135,
+								1135
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 792.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/filterKeyPoints.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16895,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12611,
+								12611
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 8056.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/dumpDetectKeyPoints.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 578,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								474,
+								474
 							]
 						],
 						"settings":
@@ -955,20 +997,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "src/dumpImage.cpp",
+					"buffer": 3,
+					"file": "src/dumpFilterKeyPoints.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 906,
+						"buffer_size": 582,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								587,
-								587
+								407,
+								407
 							]
 						],
 						"settings":
@@ -980,122 +1022,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/main.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2219,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1010,
-								1010
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 360.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/detectKeypoints.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3836,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1527,
-								1527
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": -0.0,
-						"translation.y": 168.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/match.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12832,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								11850,
-								11850
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 6624.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "generateVerilog_detect_kp_no_assign.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6321,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4327,
-								4327
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2268.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1140,7 +1067,7 @@
 	"project": "SIFT.sublime-project",
 	"replace":
 	{
-		"height": 58.0
+		"height": 114.0
 	},
 	"save_all_on_build": true,
 	"select_file":
