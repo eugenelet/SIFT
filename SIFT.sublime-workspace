@@ -4,569 +4,157 @@
 		"selected_items":
 		[
 			[
-				"inpu",
-				"inputs"
+				"KE",
+				"KERNEL_SIZE"
 			],
 			[
-				"lay",
-				"layer_0_0"
-			],
-			[
-				"cout",
-				"count"
-			],
-			[
-				"an",
-				"answer_end"
-			],
-			[
-				"str",
-				"strcat"
-			],
-			[
-				"ans",
-				"answer_buf"
-			],
-			[
-				"ba",
-				"ballY-ballObj"
-			],
-			[
-				"bal",
-				"ballObj"
-			],
-			[
-				"cro",
-				"crossHairX"
-			],
-			[
-				"ball",
-				"ballX"
-			],
-			[
-				"ballSp",
-				"ballSpeedY"
-			],
-			[
-				"ballS",
-				"ballSpeedX"
-			],
-			[
-				"cros",
-				"crossHairX"
-			],
-			[
-				"acc",
-				"acceInfo"
-			],
-			[
-				"init",
-				"initX"
-			],
-			[
-				"acce",
-				"acceInfo"
-			],
-			[
-				"rece",
-				"receivedACKPacket"
-			],
-			[
-				"receiv",
-				"receivedACKPacket"
-			],
-			[
-				"pthre",
-				"pthread_mutex_unlock"
-			],
-			[
-				"pth",
-				"pthread_mutex_lock"
-			],
-			[
-				"mtx",
-				"mtxRecv"
-			],
-			[
-				"rec",
-				"receivedPacket"
-			],
-			[
-				"ultra",
-				"ultra_thread"
-			],
-			[
-				"pthread_mut",
-				"pthread_mutex_unlock"
-			],
-			[
-				"targ",
-				"target_num"
-			],
-			[
-				"tar",
-				"targetFile"
-			],
-			[
-				"target",
-				"target_num"
-			],
-			[
-				"mul",
-				"multi_on"
-			],
-			[
-				"compute",
-				"computed_corners"
-			],
-			[
-				"accu",
-				"accuBiasDelta"
-			],
-			[
-				"cure",
-				"currentPerimeter"
+				"KERN",
+				"KERNEL_VER"
 			],
 			[
 				"k",
-				"keyPoints"
+				"kernel_y"
 			],
 			[
-				"mult",
-				"multi_on"
+				"NUM",
+				"NUM_PIPE"
 			],
 			[
-				"compu",
-				"computeSift"
+				"ker",
+				"kernel_x"
 			],
 			[
-				"img",
-				"img_color"
+				"col",
+				"COL_PER_PIPE"
 			],
 			[
-				"filter",
-				"filterKeyPoints"
+				"NM",
+				"NUM_PIPE"
 			],
 			[
-				"ar",
-				"argc"
+				"la",
+				"layer_num"
 			],
 			[
-				"time",
-				"time_on"
+				"layer",
+				"layer_num"
 			],
 			[
-				"curren",
-				"current_place"
+				"is",
+				"is_min"
 			],
 			[
-				"outpu",
-				"output_index"
+				"is_",
+				"is_keypoint"
 			],
 			[
-				"out",
-				"out_data"
+				"dete",
+				"detect_max"
 			],
 			[
-				"outp",
-				"output_index"
+				"sif",
+				"sift_obj"
 			],
 			[
-				"in",
-				"in_valid"
-			],
-			[
-				"end",
-				"endcase"
-			],
-			[
-				"dump",
-				"dump_out_flag"
-			],
-			[
-				"in_v",
-				"in_valid_flag"
-			],
-			[
-				"in_",
-				"in_valid"
-			],
-			[
-				"dum",
-				"dump_out_flag"
-			],
-			[
-				"du",
-				"dump_out_flag"
-			],
-			[
-				"ou",
-				"output_index"
-			],
-			[
-				"do",
-				"dump_out_flag"
-			],
-			[
-				"input",
-				"input_index"
-			],
-			[
-				"T",
-				"TEMP_ODD"
-			],
-			[
-				"els",
-				"else	else"
-			],
-			[
-				"TEM",
-				"TEMP_EVEN"
-			],
-			[
-				"IN",
-				"IN_DATA"
-			],
-			[
-				"bub",
-				"bubble_start_flag"
-			],
-			[
-				"bu",
-				"bubble_start_flag"
-			],
-			[
-				"in_vali",
-				"in_valid_flag"
-			],
-			[
-				"igm",
-				"img_scene"
-			],
-			[
-				"bia",
-				"biasQueue"
-			],
-			[
-				"cur",
-				"currentBias"
-			],
-			[
-				"bias",
-				"biasQueue"
-			],
-			[
-				"accuB",
-				"accuBiasDelta"
-			],
-			[
-				"curr",
-				"currentBias"
-			],
-			[
-				"peri",
-				"accuPerimeter"
-			],
-			[
-				"bi",
-				"biasX"
-			],
-			[
-				"tot",
-				"totalBiasDelta"
-			],
-			[
-				"new",
-				"newUpdate"
-			],
-			[
-				"control",
-				"CONTROL"
-			],
-			[
-				"con",
-				"continue"
-			],
-			[
-				"tota",
-				"totalDelta"
-			],
-			[
-				"sc",
-				"scene_corners"
-			],
-			[
-				"y",
-				"yIndex"
-			],
-			[
-				"blurKernelSu",
-				"blurKernelSuccessive_Iterative"
-			],
-			[
-				"blurKernel",
-				"blurKernelSuccessive"
-			],
-			[
-				"clock",
-				"clock_t"
-			],
-			[
-				"sum",
-				"sum_char"
-			],
-			[
-				"dsum",
-				"dsum_char"
-			],
-			[
-				"kerne",
-				"kernel_test"
-			],
-			[
-				"x",
-				"xIndex"
-			],
-			[
-				"__",
-				"__global__"
-			],
-			[
-				"B",
-				"B_out"
-			],
-			[
-				"Col",
-				"Col"
-			],
-			[
-				"Ti",
-				"TILE_WIDTH"
-			],
-			[
-				"d_",
-				"d_input"
-			],
-			[
-				"M",
-				"Mds"
-			],
-			[
-				"th",
-				"threadIdx"
-			],
-			[
-				"bl",
-				"blockIdx"
-			],
-			[
-				"h",
-				"height"
-			],
-			[
-				"gr",
-				"gridDim"
-			],
-			[
-				"num",
-				"numElems"
-			],
-			[
-				"debug",
-				"debug"
-			],
-			[
-				"nu",
-				"numElems"
-			],
-			[
-				"BFS",
-				"BFS_vector"
-			],
-			[
-				"SAT",
-				"SAT_input"
-			],
-			[
-				"pat",
-				"path"
-			],
-			[
-				"SA",
-				"SAT_input"
-			],
-			[
-				"path",
-				"path_count"
-			],
-			[
-				"nod",
-				"node_judge"
+				"kpt",
+				"kpt"
 			],
 			[
 				"cu",
-				"current_node"
+				"current_RowCol"
 			],
 			[
-				"BF",
-				"BFS_vector"
+				"end",
+				"endl"
 			],
 			[
-				"pa",
-				"path_count"
+				"blu",
+				"blur5x5_1_dout"
 			],
 			[
-				"req",
-				"reqPage"
+				"bu",
+				"buffer_data_4"
 			],
 			[
-				"page",
-				"pageNumber"
+				"buf",
+				"buffer_data_3"
 			],
 			[
-				"temp",
-				"tempNode"
+				"btm_",
+				"btm_0"
 			],
 			[
-				"im",
-				"imgWidth"
+				"ne",
+				"neighbours"
 			],
 			[
-				"min",
-				"min_Y"
+				"buff",
+				"buffer_data_1"
 			],
 			[
-				"kern",
-				"kernSize"
+				"blur",
+				"blur_din"
 			],
 			[
-				"SCR",
-				"SCREEN_HEIGHT"
+				"blur_",
+				"blur_mem_we"
 			],
 			[
-				"coo",
-				"coor_y"
+				"ST",
+				"ST_IDLE"
 			],
 			[
-				"coor",
-				"coor_x"
+				"ke",
+				"kernel_img_mul"
 			],
 			[
-				"max",
-				"maxWidth"
+				"G_Kernel_5x5",
+				"G_Kernel_5x5_0"
 			],
 			[
-				"SC",
-				"SCREEN_WIDTH"
+				"G_K",
+				"G_Kernel_3x3"
 			],
 			[
-				"wi",
-				"width"
+				"img",
+				"img_addr"
 			],
 			[
-				"total",
-				"totalConnectedNets"
+				"ST_GA",
+				"ST_GAUSSIAN_START"
 			],
 			[
-				"connect",
-				"connectedNets"
+				"ST_",
+				"ST_GAUSSIAN"
 			],
 			[
-				"connec",
-				"connectNets"
+				"L",
+				"L_IDLE"
 			],
 			[
-				"coor_",
-				"coor_x2"
+				"gaus",
+				"gaussian_done"
 			],
 			[
-				"block",
-				"blockName"
+				"ST_GAU",
+				"ST_GAUSSIAN_START_0"
 			],
 			[
-				"report",
-				"reportPolishTree"
+				"buffe",
+				"buffer_valid"
 			],
 			[
-				"wire",
-				"wireCost"
+				"buffer",
+				"buffer_req"
 			],
 			[
-				"rand",
-				"randTemp"
-			],
-			[
-				"not",
-				"notFoundFlag"
-			],
-			[
-				"pol",
-				"polishExpression"
-			],
-			[
-				"left",
-				"leftNode"
-			],
-			[
-				"old",
-				"oldTotal"
-			],
-			[
-				"ballo",
-				"ballotOperator"
+				"be",
+				"begin	begin"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "src/createDoG.cpp",
-			"settings":
-			{
-				"buffer_size": 3701,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/dumpImage.cpp",
-			"settings":
-			{
-				"buffer_size": 906,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/main.cpp",
-			"settings":
-			{
-				"buffer_size": 2219,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/detectKeypoints.cpp",
-			"settings":
-			{
-				"buffer_size": 3836,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/match.cpp",
-			"settings":
-			{
-				"buffer_size": 12832,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "generateVerilog_detect_kp_no_assign.cpp",
-			"settings":
-			{
-				"buffer_size": 6321,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -584,32 +172,8 @@
 				"Text Pastry: Menu"
 			],
 			[
-				"insta",
-				"Package Control: Install Package"
-			],
-			[
-				"text",
-				"Text Pastry: Menu"
-			],
-			[
 				"install",
 				"Package Control: Install Package"
-			],
-			[
-				"text ",
-				"Text Pastry: uuid (lower-case)"
-			],
-			[
-				"Package Control: ",
-				"Package Control: Disable Package"
-			],
-			[
-				"instak",
-				"Package Control: Install Package"
-			],
-			[
-				"ctags",
-				"Package Control: Discover Packages"
 			]
 		],
 		"width": 382.0
@@ -633,150 +197,52 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/Eugene/Documents/GitHub/SIFT"
+		"/C/Users/Eugene/Documents/GitHub/SIFT",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/VerilogGenerator"
 	],
 	"file_history":
 	[
-		"/home/gene/Documents/NCTU/Project/SIFT_Hardware/DoG/01_RTL/SAD.v",
-		"/home/gene/Documents/NCTU/Project/SIFT_Hardware/DoG/01_RTL/mem_ctrl.v",
-		"/home/gene/Documents/NCTU/line buffer",
-		"/home/gene/Documents/NCTU/Project/SIFT_Hardware/DoG/01_RTL/Line_Buffer_10.v",
-		"/home/gene/Documents/NCTU/Project/SIFT_Hardware/DoG/01_RTL/Line_Buffer_10 - Copy.v",
-		"/home/gene/Documents/NCTU/Project/SIFT_Hardware/DoG/01_RTL/Gaussian_Blur_share_3x3.v",
-		"/home/gene/Documents/NCTU/Project/SIFT_Hardware/DoG/01_RTL/Gaussian_Blur_7x7.v",
-		"/home/gene/Documents/NCTU/Project/SIFT_Hardware/DoG/01_RTL/bmem_480x5120.v",
-		"/home/gene/Documents/NCTU/Project/SIFT_Hardware/DoG/01_RTL/CORE_done.v",
-		"/home/gene/Documents/NCTU/Project/SIFT_Hardware/DoG/01_RTL/CORE.v",
-		"/home/gene/Documents/NCTU/Project/SIFT_Hardware/DoG/01_RTL/Gaussian_Blur_3x3.v",
-		"/home/gene/Documents/NCTU/Project/SIFT_Hardware/DoG/01_RTL/Gaussian_Blur_5x5_1.v",
-		"/home/gene/Documents/NCTU/Project/SIFT_Hardware/DoG/01_RTL/Gaussian_Blur_5x5_2.v",
-		"/home/gene/Documents/HackNTU/QtTest/main.cpp",
-		"/home/gene/Documents/HackNTU/QtTest/mainwindow.cpp",
-		"/home/gene/Documents/HackNTU/QtTest/mainwindow.h",
-		"/home/gene/Documents/HackNTU/QtTest/PushButtonExample.pro",
-		"/home/gene/Documents/NCTU/Project/raspCarVid/controllerJack/src/trackObject.cpp",
-		"/home/gene/Documents/NCTU/Project/raspCarVid/controllerJack/include/global.h",
-		"/home/gene/Documents/NCTU/Project/raspCarVid/controllerJack/src/match.cpp",
-		"/home/gene/Documents/NCTU/Project/raspCarVid/controllerJack/include/sift.h",
-		"/home/gene/Documents/NCTU/Project/raspCarVid/controllerJack/src/controller.cpp",
-		"/home/gene/Documents/NCTU/Project/raspCarVid/controllerJack/src/receiver.cpp",
-		"/home/gene/Documents/NCTU/Project/raspCarVid/controllerJack/src/meeting_8-13",
-		"/home/gene/Documents/NCTU/Project/raspCarVid/controllerJack/include/receiver.h",
-		"/home/gene/Documents/NCTU/Project/raspCarVid/controllerJack/Makefile",
-		"/home/gene/Documents/NCTU/Project/raspCarVid/controllerJack/src/filterKeyPoints.cpp",
-		"/home/gene/Documents/NCTU/Project/raspCarVid/controllerJack/src/getChar.cpp",
-		"/home/gene/Documents/NCTU/Project/raspCarVid/controllerJack/src/computeSift.cpp",
-		"/home/gene/Documents/NCTU/Project/raspCarVid/controllerJack/src/detectKeypoints.cpp",
-		"/home/gene/Documents/NCTU/Project/raspCarVid/controllerJack/src/createDoG.cpp",
-		"/home/gene/Documents/NCTU/Project/raspCarVid/controllerFull/controller.cpp",
-		"/home/gene/Documents/NCTU/Project/raspCarVid/controllerJack/src/main.cpp",
-		"/home/gene/Documents/NCTU/Project/raspCarVid/controller/controller.cpp",
-		"/home/gene/Documents/NCTU/Project/raspCarVid/controllerJack/controller.cpp",
-		"/home/gene/.config/sublime-text-3/Packages/Package Control/Package Control.sublime-settings",
-		"/home/gene/Documents/NCTU/Project/SIFT/src/match.cpp",
-		"/home/gene/Documents/NCTU/Project/SIFT/src/computeDescriptor.cpp",
-		"/home/gene/Documents/NCTU/Project/SIFT/src/drawKeyPoints.cpp",
-		"/home/gene/Documents/NCTU/Project/SIFT/include/sift.h",
-		"/home/gene/Documents/NCTU/Project/SIFT/src/createDoG.cpp",
-		"/home/gene/Documents/NCTU/Project/SIFT/src/detectKeypoints.cpp",
-		"/home/gene/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
-		"/home/gene/Documents/NCTU/Project/SIFT/src/filterKeyPoints.cpp",
-		"/home/gene/Documents/NCTU/Project/SIFT/Makefile",
-		"/home/gene/Documents/NCTU/Project/SIFT/src/debug.cpp",
-		"/home/gene/Documents/NCTU/Project/SIFT/src/computeSift.cpp",
-		"/home/gene/Documents/NCTU/Project/SIFT/src/main.cpp",
-		"/home/gene/Documents/NCTU/Project/SIFT/tmp.cpp",
-		"/home/gene/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
-		"/home/gene/Downloads/main (5).cpp",
-		"/home/gene/Downloads/main.cpp",
-		"/home/gene/.config/sublime-text-3/Packages/CTags/Default.sublime-keymap",
-		"/home/gene/.config/sublime-text-3/Packages/SublimeCodeIntel/Default (Linux).sublime-keymap",
-		"/home/gene/Documents/NCTU/Project/SIFT/src/sift.cpp",
-		"/home/gene/Documents/NCTU/Project/SIFT/main.cpp",
-		"/home/gene/.config/sublime-text-3/Packages/SublimeGDB/Default.sublime-keymap",
-		"/home/gene/.config/sublime-text-3/Packages/SublimeGDB/SublimeGDB.sublime-settings",
-		"/home/gene/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
-		"/home/gene/Documents/NCTU/Year3Sem2/EDA/STA/src/main.cpp",
-		"/home/gene/Documents/NCTU/Year3Sem2/EDA/STA/src/init_crit_path.cpp",
-		"/home/gene/Documents/NCTU/Year3Sem2/EDA/STA/src/debug.cpp",
-		"/home/gene/Documents/NCTU/Year3Sem2/EDA/STA/src/node_judge_for_every_cell.cpp",
-		"/home/gene/Documents/NCTU/Year3Sem2/EDA/STA/src/generate_path.cpp",
-		"/home/gene/Documents/NCTU/Year3Sem2/EDA/STA/src/output.cpp",
-		"/home/gene/Documents/NCTU/Year3Sem2/EDA/STA/src/SAT.cpp",
-		"/home/gene/.config/sublime-text-3/Packages/CTags/Default.sublime-mousemap",
-		"/home/gene/.config/sublime-text-3/Packages/CTags/CTags.sublime-settings",
-		"/home/gene/Documents/NCTU/Year3Sem2/EDA/STA/src/generateTree.cpp",
-		"/home/gene/Documents/NCTU/Year3Sem2/EDA/STA/src/print.cpp",
-		"/home/gene/Documents/test.cpp",
-		"/home/gene/Documents/C++/OpenCV/jack_sift.cpp",
-		"/home/gene/Documents/C++/OpenCV/sift_no_filter.cpp",
-		"/home/gene/Documents/NCTU/Project/Hardware_Training/BubbleSort_Hardware/02_RTL_SIM/CORE.v",
-		"/home/gene/Documents/NCTU/Project/Hardware_Training/BubbleSort_Hardware/01_RTL/Bubble_Sort_FSM.v",
-		"/home/gene/Documents/NCTU/Project/Hardware_Training/BubbleSort_Hardware/02_RTL_SIM/Bubble_Sort.v",
-		"/home/gene/Documents/NCTU/Project/Hardware_Training/BubbleSort_Hardware/02_RTL_SIM/TESTBENCH.v",
-		"/home/gene/Documents/NCTU/Project/Hardware_Training/BubbleSort_Hardware/02_RTL_SIM/PATTERN_normal.v",
-		"/home/gene/Documents/NCTU/Project/T30_FPGA/DaughterBoard/MaCube_A200/Linux/Example/Speed_test/HW/top.v",
-		"/home/gene/Documents/C++/OpenCV/sift.cpp",
-		"/home/gene/Documents/NCTU/Project/raspCarVid/controller/controller.cpp.oriSIFT_Thread",
-		"/home/gene/Documents/NCTU/Year3Sem2/Computer_Architecture/Final/Final_0210101_0210189/main.cpp",
-		"/home/gene/.config/sublime-text-3/Packages/User/TextPastry.sublime-settings",
-		"/home/gene/Documents/NCTU/Project/T30_FPGA/FPGA/top.v",
-		"/home/gene/Documents/NCTU/Project/T30_FPGA/FPGA/top.",
-		"/home/gene/Documents/NCTU/Project/Hardware_Training/BubbleSort_Hardware/01_RTL/CORE.v",
-		"/home/gene/Documents/NCTU/Year3Sem2/Computer_Architecture/Final/Final_0210101_0210189/m",
-		"/home/gene/Downloads/cudaaa/main.cu",
-		"/home/gene/Downloads/cudaaa/device.h",
-		"/home/gene/Downloads/cudaaa/device.cu",
-		"/home/gene/Documents/NCTU/Year3Sem2/Computer_Architecture/Final/Code/main.cpp",
-		"/home/gene/Documents/NCTU/Year3Sem2/Computer_Architecture/Final/Code/gpu.h",
-		"/home/gene/Documents/NCTU/Year3Sem2/Computer_Architecture/Final/Code/gpu.cu",
-		"/home/gene/Documents/NCTU/Year3Sem2/Computer_Architecture/Final/Final_0210101_0210189/cuda.sublime-project",
-		"/home/gene/Downloads/cudaaa/parameters.h",
-		"/home/gene/Documents/NCTU/Year3Sem2/Computer_Architecture/Final/Code/gpu.o",
-		"/home/gene/Documents/C++/OpenCV/Cuda_Cv/main.cu",
-		"/home/gene/Documents/Cuda/2D.cu",
-		"/home/gene/Documents/NCTU/Year3Sem2/Computer_Architecture/Final/Code/gpu.cpp",
-		"/home/gene/Documents/NCTU/Year3Sem2/EDA/Contest/src/include/node.h",
-		"/home/gene/Documents/NCTU/Year3Sem2/EDA/Contest/src/print.cpp",
-		"/home/gene/Documents/NCTU/Year3Sem2/EDA/Contest/STA_Analysis/node.cpp",
-		"/home/gene/Documents/NCTU/Year3Sem2/EDA/Contest/STA_Analysis/node_judge.cpp",
-		"/home/gene/Documents/NCTU/Year3Sem2/EDA/Contest/STA_Analysis/node_judge_for_every_cell.cpp",
-		"/home/gene/Documents/NCTU/Year3Sem2/EDA/EDA.cpp",
-		"/home/gene/Documents/NCTU/Year3Sem2/EDA/Contest/STA_Analysis/main.cpp",
-		"/home/gene/Documents/NCTU/Year3Sem2/EDA/Contest/STA_Analysis/SAT.cpp",
-		"/home/gene/Documents/NCTU/Year3Sem2/EDA/Contest/src/node_judge_for_every_cell.cpp",
-		"/home/gene/Documents/NCTU/Year3Sem2/EDA/Contest/STA_Analysis/node_judge",
-		"/home/gene/Documents/NCTU/Year3Sem2/EDA/Contest/src/node_judge.cpp",
-		"/home/gene/Documents/NCTU/Year3Sem2/Computer_Organization/riscv-tools/riscv-isa-sim/riscv/cachesim.h",
-		"/home/gene/Documents/NCTU/Year3Sem2/Computer_Organization/riscv-tools/riscv-isa-sim/riscv/cachesim.cc",
-		"/home/gene/Downloads/re_input.cpp",
-		"/home/gene/Documents/NCTU/Year3Sem2/EDA/Contest/main.cpp",
-		"/home/gene/Public/jailhouse/Documentation/articles/LWN.net-article-01-2014.txt",
-		"/home/gene/Public/jailhouse/hypervisor/paging.c",
-		"/home/gene/Public/jailhouse/hypervisor/include/jailhouse/cell-config.h",
-		"/home/gene/Public/jailhouse/hypervisor/arch/arm/include/asm/paging.h",
-		"/home/gene/Public/jailhouse/hypervisor/include/jailhouse/paging.h",
-		"/home/gene/Documents/NCTU/Year3Sem2/Global_Issues/final_report.odt",
-		"/home/gene/Public/jailhouse/hypervisor/setup.c",
-		"/home/gene/Public/jailhouse/hypervisor/include/jailhouse/header.h",
-		"/home/gene/Public/jailhouse/hypervisor/include/jailhouse/entry.h",
-		"/home/gene/Public/jailhouse/driver/main.c",
-		"/home/gene/Public/jailhouse/hypervisor/include/jailhouse/control.h",
-		"/home/gene/Public/jailhouse/hypervisor/arch/arm/mmu_hyp.c",
-		"/home/gene/Public/jailhouse/hypervisor/arch/arm/mmu_cell.c",
-		"/home/gene/Documents/NCTU/Year3Sem2/Computer_Organization/CO-FP-2016/bns.c"
+		"/C/Users/Eugene/Documents/GitHub/SIFT/generateVerilog.cpp",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/VerilogGenerator/generateVerilog_detect_kp.cpp",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/keypoint_layer2.txt",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/VerilogGenerator/generateVerilog_GKERNEL.cpp",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/VerilogGenerator/Gaussian_Blur_7x7.v",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/VerilogGenerator/Gaussian_Blur_3x3.v",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/VerilogGenerator/g_kernel_verilog_3x3.v",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/VerilogGenerator/detect_keypoint.v",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/detect_keypoint.v",
+		"/C/Users/Eugene/Documents/GitHub/SIFT_Hardware/keypoint_layer2.txt",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/VerilogGenerator/filter_keypoint.v",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/VerilogGenerator/generateVerilog_filter_kp.cpp",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/src/filterKeyPoints.cpp",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/include/sift.h",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/src/dumpDoG.cpp",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/generateVerilog_prepare_filter.cpp",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/prepare_filter.v",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/src/detectKeypoints.cpp",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/src/dumpFilterKeyPoints.cpp",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/src/computeSift.cpp",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/Makefile",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/detect_kp.v",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/generateVerilog_detect_kp_no_assign.cpp",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/generateVerilog_GKERNEL.cpp",
+		"/C/Users/Eugene/Documents/GitHub/SIFT/generateVerilog_detect_kp.cpp",
+		"/C/Users/Eugene/Documents/GitHub/SIFT_Hardware/DoG/01_RTL/Gaussian_Blur.v",
+		"/C/Users/Eugene/Documents/GitHub/SIFT_Hardware/DoG/01_RTL/bmem_128x32.v",
+		"/C/Users/Eugene/Documents/GitHub/SIFT_Hardware/DoG/00_TESTBENCH/PATTERN.v",
+		"/C/Users/Eugene/AppData/Local/lxss/home/gene/Documents/SIFT_Hardware/DoG/00_TESTBENCH/TESTBENCH.v",
+		"/C/Users/Eugene/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Eugene/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings"
 	],
 	"find":
 	{
-		"height": 70.0
+		"height": 73.0
 	},
 	"find_in_files":
 	{
-		"height": 96.0,
+		"height": 0.0,
 		"where_history":
 		[
-			"/home/gene/Documents/NCTU/Project/SIFT/src",
-			"/home/gene/Public/jailhouse"
 		]
 	},
 	"find_state":
@@ -784,134 +250,23 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"result.jp",
-			"result",
-			"print",
-			"cout",
-			"distance",
-			"pthread_create",
-			"receivedPacket",
-			"receiver",
-			"snd_PORT",
-			"video_t",
-			"imshow",
-			"target_mutex",
-			"trackOb",
-			"cout",
-			"1.6",
-			"biasQueue",
-			"biasX",
-			"Perimeter",
-			"perimeter",
-			"accuPer",
-			"perimeter",
-			"currentPerimeter",
-			"accuBiasDelta",
-			"cout",
-			"sigint",
-			"task",
-			"video_thread",
-			"task",
-			"cout",
-			"){ ",
-			"cout",
-			"type",
-			"layer",
-			"detectK",
-			"SIFT_ORI_RADIUS",
-			"result",
-			"nLayersPerOctave",
-			"createDoG",
-			"LoadImage",
-			"imshow",
-			"LoadImage",
-			"], ",
-			"drawKeyPoints",
-			"computeOrientationHist",
-			"detectKeypoints",
-			"computeDes",
-			"computeOrientationHist",
-			"drawKeyPoints",
-			"cout",
-			"dfs_nodes",
-			"output_in",
-			"TEMP",
-			"match",
-			"img_object",
-			"img_matches",
-			"scene_corners",
-			"MatMulti",
-			"match",
-			"end",
-			"COL",
-			"src",
-			"resize",
-			"createDoG",
-			"resize",
-			"biasQueue",
-			"drawMatches",
-			"scene",
-			"workingdir",
-			"median_filter",
-			"Read_bmp",
-			"createDoG",
-			"fix",
-			"delay",
-			"true",
-			"delay",
-			"cout",
-			"hierachy",
-			"return_type",
-			"now_try",
-			"jailhouse_system_config_size",
-			"page_offset",
-			"system_config",
-			"hypervisor_header",
-			"base_address",
-			"paging_init",
-			"page_offset",
-			"extern",
-			"page_offset",
-			"alpha",
-			"imgSize",
-			"data",
-			"Pixel",
-			"data",
-			"weights",
-			"numFilter",
-			"numInput",
-			"cout",
-			"V|",
-			"printPolishTree",
-			"placeB",
-			"computeArea",
-			"->node",
-			"block",
-			"computeCost",
-			"computeC",
-			"update",
-			"computeCost",
-			"computeC",
-			"blocks",
-			"ctrl+alt+d"
+			"detect_max",
+			"current_addr",
+			"ST_START",
+			"gaussian_start",
+			"img_addr",
+			"img_va",
+			"u_core",
+			"CONF_K"
 		],
 		"highlight": true,
-		"in_selection": false,
+		"in_selection": true,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
 		[
-			"bfs_nodes",
-			"TEMP_ODD",
-			"left.blurredImgs[0]",
-			"result",
-			"computed_corners",
-			"fixed",
-			"hierarchy",
-			"return_condition",
-			"input_count",
-			"computeArea",
-			"terminals"
+			"detect_min",
+			"current_col"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -919,195 +274,27 @@
 		"whole_word": false,
 		"wrap": true
 	},
+	"folders":
+	[
+		{
+			"path": "C:\\Users\\Eugene\\Documents\\GitHub\\SIFT"
+		}
+	],
 	"groups":
 	[
 		{
-			"selected": 5,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/createDoG.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3701,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								806,
-								806
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/dumpImage.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 906,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								587,
-								587
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/main.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2219,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1010,
-								1010
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 360.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/detectKeypoints.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3836,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1527,
-								1527
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": -0.0,
-						"translation.y": 168.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/match.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12832,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								11850,
-								11850
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 6624.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "generateVerilog_detect_kp_no_assign.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6321,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4327,
-								4327
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2268.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 31.0
+		"height": 35.0
 	},
 	"input":
 	{
-		"height": 47.0
+		"height": 0.0
 	},
 	"layout":
 	{
@@ -1137,10 +324,10 @@
 		"height": 0.0
 	},
 	"pinned_build_system": "",
-	"project": "SIFT.sublime-project",
+	"project": "",
 	"replace":
 	{
-		"height": 58.0
+		"height": 120.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1149,14 +336,6 @@
 		"last_filter": "",
 		"selected_items":
 		[
-			[
-				"paging.h",
-				"hypervisor/include/jailhouse/paging.h"
-			],
-			[
-				"mmu",
-				"hypervisor/arch/arm/mmu_hyp.c"
-			]
 		],
 		"width": 0.0
 	},
@@ -1171,67 +350,23 @@
 	},
 	"select_symbol":
 	{
-		"height": 47.0,
+		"height": 0.0,
 		"last_filter": "",
 		"selected_items":
 		[
-			[
-				"",
-				"LoadImage"
-			],
-			[
-				"Load",
-				"LoadImage"
-			],
-			[
-				"do_bfs_with_hierarchy",
-				"do_bfs_with_hierarchy"
-			],
-			[
-				"print",
-				"print"
-			],
-			[
-				"jailhouse_system",
-				"jailhouse_system"
-			],
-			[
-				"PAGE_SIZE",
-				"PAGE_SIZE"
-			],
-			[
-				"PAGES",
-				"PAGES"
-			],
-			[
-				"jailhouse_header",
-				"jailhouse_header"
-			],
-			[
-				"paging_virt2phys",
-				"paging_virt2phys"
-			],
-			[
-				"INVALID_PHYS_ADDR",
-				"INVALID_PHYS_ADDR"
-			],
-			[
-				"paging_get_phys_invalid",
-				"paging_get_phys_invalid"
-			]
 		],
-		"width": 374.0
+		"width": 0.0
 	},
 	"selected_group": 0,
 	"settings":
 	{
 	},
 	"show_minimap": true,
-	"show_open_files": true,
+	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 245.0,
-	"status_bar_visible": false,
+	"side_bar_width": 285.0,
+	"status_bar_visible": true,
 	"template_settings":
 	{
 	}
