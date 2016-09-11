@@ -1,6 +1,7 @@
 Meeting Notes
 
-buffer_mode 1 bit
-only 1 set of filter
-mode to remove filter from design
-dynamic filter threshold
+[O] buffer_mode 1 bit 
+[O] only 1 set of filter
+[O] mode to remove filter from design (TOO MUCH KEYPOINTS! 10k)
+[O] dynamic filter threshold (FIXED BY EXTENDING BITS OF OPERAND!!) <<=== ASK!!
+[O] Only a single memory for filter allocation (Make sure of choice of memory)
