@@ -102,7 +102,7 @@ int main()
     for(int i = 0; i < 3; i++)
         for(int j = 0; j < 3; j++){
             for(int k = 0; k < 3; k++){
-                if(j!=1 && k!=1){
+                if((i==1 && j!=1 && k!=1) || (i!=1 && (j==1 || k==1) && !(j==1 && k==1))){
                     fout << "  if(" << layer[1][1] << "[1] > " << layer[i][j] << "[" << k << "])" << endl;
                     fout << "    detect_max[" << count << "] = 1;" << endl;
                     fout << "  else" << endl;
@@ -120,7 +120,7 @@ int main()
     for(int i = 0; i < 3; i++)
         for(int j = 0; j < 3; j++){
             for(int k = 0; k < 3; k++){
-                if(j!=1 && k!=1){
+                if((i==1 && j!=1 && k!=1) || (i!=1 && (j==1 || k==1) && !(j==1 && k==1))){
                     fout << "  if(" << layer[1][1] << "[1] < " << layer[i][j] << "[" << k << "])" << endl;
                     fout << "    detect_min[" << count << "] = 1;" << endl;
                     fout << "  else" << endl;

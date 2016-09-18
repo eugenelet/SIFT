@@ -937,6 +937,7 @@
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
@@ -966,6 +967,7 @@
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
@@ -995,6 +997,7 @@
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
@@ -1024,6 +1027,7 @@
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
@@ -1054,6 +1058,7 @@
 						"settings":
 						{
 							"auto_name": "Meeting Notes",
+							"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
 							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
