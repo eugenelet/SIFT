@@ -20,7 +20,7 @@
 #define SIFT_ORI_RADIUS 3 * SIFT_ORI_SIG// determines the radius of the region used in orientation assignment
 #define SCALE 1.6
 #define DOG_DETECT_KPT_SIZE 3
-#define FAST_THRESHOLD	6
+#define FAST_THRESHOLD	2
 
 using namespace cv;
 using namespace std;
