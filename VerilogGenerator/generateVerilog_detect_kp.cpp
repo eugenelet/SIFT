@@ -71,7 +71,7 @@ int main()
 
     fout << "always@(*) begin" << endl;
     fout << "  case(current_col)" << endl;
-    for (int k = 1; k < 639; k++){
+    for (int k = 8; k < 631; k++){
         fout << "    'd" << k << ": begin" << endl;
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++){
@@ -103,7 +103,7 @@ int main()
         for(int j = 0; j < 3; j++){
             for(int k = 0; k < 3; k++){
                 if((i==1 && j!=1 && k!=1) || (i!=1 && (j==1 || k==1) && !(j==1 && k==1))){
-                    fout << "  if(" << layer[1][1] << "[1] >= " << layer[i][j] << "[" << k << "])" << endl;
+                    fout << "  if(" << layer[1][1] << "[1] > " << layer[i][j] << "[" << k << "])" << endl;
                     fout << "    detect_max[" << count << "] = 1;" << endl;
                     fout << "  else" << endl;
                     fout << "    detect_max[" << count << "] = 0;" << endl;
@@ -121,7 +121,7 @@ int main()
         for(int j = 0; j < 3; j++){
             for(int k = 0; k < 3; k++){
                 if((i==1 && j!=1 && k!=1) || (i!=1 && (j==1 || k==1) && !(j==1 && k==1))){
-                    fout << "  if(" << layer[1][1] << "[1] =< " << layer[i][j] << "[" << k << "])" << endl;
+                    fout << "  if(" << layer[1][1] << "[1] < " << layer[i][j] << "[" << k << "])" << endl;
                     fout << "    detect_min[" << count << "] = 1;" << endl;
                     fout << "  else" << endl;
                     fout << "    detect_min[" << count << "] = 0;" << endl; 
